@@ -41,7 +41,7 @@ public class Pull : MonoBehaviour
             hasPressedPull = false;
         }
 
-        if (Time.time - timebox > 1)
+        if (Time.time - timebox > 0.25)
         {
             boxColliderPusher.enabled = true;
         }

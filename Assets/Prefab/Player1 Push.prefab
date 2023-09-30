@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 56455372308317671}
   - component: {fileID: 3969561338719803279}
   - component: {fileID: 4613569147380446184}
-  - component: {fileID: 2484903271029073267}
   - component: {fileID: 8579998021255492804}
   - component: {fileID: 1545128923084080689}
   - component: {fileID: 6150044834828803466}
@@ -165,30 +164,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2484903271029073267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1675015520253059547}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d42e4357e66b5414db36fb495d1f8298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  speed: 8
-  jumpingPower: 8
-  movementX: 0
-  jumpUp: 0
-  moveRight: 0
-  moveLeft: 0
-  groundCheck: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  hasPressedJump: 0
 --- !u!114 &8579998021255492804
 MonoBehaviour:
   m_ObjectHideFlags: 0

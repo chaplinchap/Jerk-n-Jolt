@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
 
      bool IsGrounded()
     {
-         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);        
+         return Physics2D.OverlapCircle(groundCheck.position, 1, groundLayer);        
     }
 
     private void Flip()
@@ -121,13 +121,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D deathTrigger)
-    {
-        if (deathTrigger.gameObject.CompareTag("DeathTrigger"))
-        {
-            SceneManager.LoadScene("SampleScene");
-        }
-    }
 
 
 }
