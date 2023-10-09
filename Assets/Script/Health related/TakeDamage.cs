@@ -6,7 +6,7 @@ public class TakeDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Pusher")
+        if(collision.tag == "Pusher" || collision.tag == ("Puller"))
         {
             collision.GetComponent<Health>().TakeDamage(damage);
         }

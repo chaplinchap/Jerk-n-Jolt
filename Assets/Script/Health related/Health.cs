@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float startingHealth;
-    public float currentHealth {get; private set;}
+    public float currentHealth; //{get; private set;}
     public string sceneToLoad;
 
     private void Awake()
@@ -12,9 +12,9 @@ public class Health : MonoBehaviour
         currentHealth = startingHealth;
     }
 
-    public void TakeDamage(float _damage)
+    public void TakeDamage(float damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
     }
     private void Update()
     {
