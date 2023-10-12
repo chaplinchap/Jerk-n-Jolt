@@ -48,7 +48,6 @@ public class Pull : MonoBehaviour
         if (Time.time - timebox > 0.25)
         {
             boxColliderPusher.gameObject.layer = defaultLayer;
-            print("Push");
         }
 
     }

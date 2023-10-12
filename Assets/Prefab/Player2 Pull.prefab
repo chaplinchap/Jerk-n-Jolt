@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 8152077003433105955}
   - component: {fileID: 3527094187740927622}
   - component: {fileID: 847568949796497890}
+  - component: {fileID: 8031019046633304450}
+  - component: {fileID: 8658766195836136235}
   m_Layer: 0
   m_Name: Player2 Pull
   m_TagString: Puller
@@ -254,7 +256,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -320,7 +322,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e537e56962ff5e94388d04b000a9473e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullForce: 100
+  pullForce: 30
   position: {x: 0, y: 0, z: 0}
   normVectorBetween: {x: 0, y: 0, z: 0}
   pullOnPress: 256
+  pusherLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &8031019046633304450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7831007007408972477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66b21ea514b1dc64a8402deb1bcb29d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col: {fileID: 8152077003433105955}
+  time: 0.15
+--- !u!114 &8658766195836136235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7831007007408972477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8004df0633b14d4182ebd96922c44d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 3
+  currentHealth: 0
+  sceneToLoad: HealthbarScene
+  gameIsOver: 0
+  uim: {fileID: 0}
