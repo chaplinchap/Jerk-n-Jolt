@@ -10,15 +10,19 @@ public class Pull : MonoBehaviour
     private Rigidbody2D rigidbodyPusher;
     private FieldTrigger pullField;
     private BoxCollider2D boxColliderPusher;
-
+ 
     private float timebox;
     public float pullForce = 10;
     public Vector3 position;
     public Vector3 normVectorBetween;
     public KeyCode pullOnPress;
     private bool hasPressedPull = false;
-    private bool hasPulled = false;
 
+
+    public LayerMask pusherLayer;
+
+    private int defaultLayer = 0;
+    private int pushLayer = 8;
 
 
     void Start()
@@ -33,7 +37,7 @@ public class Pull : MonoBehaviour
     {
         if (Input.GetKeyDown(pullOnPress))
         {
-         hasPressedPull = true;
+            hasPressedPull = true;
         }
 
         if (Input.GetKeyUp(pullOnPress))
@@ -43,7 +47,8 @@ public class Pull : MonoBehaviour
 
         if (Time.time - timebox > 0.25)
         {
-            boxColliderPusher.enabled = true;
+            boxColliderPusher.gameObject.layer = defaultLayer;
+            print("Push");
         }
 
     }
@@ -51,32 +56,16 @@ public class Pull : MonoBehaviour
     private void FixedUpdate()
     {
         position = gameObject.GetComponent<Transform>().position;
-        normVectorBetween = (position - thePusher.transform.position).normalized;
+        normVectorBetween = (position - thePusher.transform.position);
 
 
         if (pullField.inField && hasPressedPull == true)
         {
+           
             rigidbodyPusher.AddForce(normVectorBetween * pullForce, ForceMode2D.Impulse);
             hasPressedPull = false;
-            hasPulled = true;
-            
-        }
-    }
-
-    private void OnTriggerStay2D (Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Pusher") && hasPulled)
-        {
-            boxColliderPusher.enabled = false;
-            hasPulled = false;     
+            boxColliderPusher.gameObject.layer = pushLayer;
             timebox = Time.time;
-           
         }
-
-
     }
-
-  
-
-
 }
