@@ -21,8 +21,8 @@ public class Pull : MonoBehaviour
 
     public LayerMask pusherLayer;
 
-    public int defaultLayer = 0;
-    public int pushLayer = 8;
+    private int defaultLayer = 0;
+    private int pushLayer = 8;
 
 
     void Start()
