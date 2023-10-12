@@ -9,7 +9,7 @@ public class Push : MonoBehaviour
     private GameObject thePuller;
     private Rigidbody2D rigidbodyPuller;
     private FieldTrigger pushField;
-    public float pushForce = 1;
+    public float pushForce = 100;
     public Vector3 position;
     public Vector3 normVectorBetween;
     public KeyCode pushOnPress;
