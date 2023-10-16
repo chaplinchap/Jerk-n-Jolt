@@ -133,6 +133,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8268484747344192969, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
   m_PrefabInstance: {fileID: 1718784012}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &145481148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6218380128302007168, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
+  m_PrefabInstance: {fileID: 1318434282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &154967240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1374,11 +1379,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebce81c6ccd1e494ea1ba7c3f4997f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform:
+  platforms:
   - {fileID: 1018090445}
-  trigger: {fileID: 1014810967}
+  - {fileID: 145481148}
+  triggerSwitch: {fileID: 1014810967}
   coolDown: 3
   platformColor: {r: 0, g: 0.14901961, b: 0.4901961, a: 1}
+  turnedOffColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!58 &1014810969
 CircleCollider2D:
   m_ObjectHideFlags: 0

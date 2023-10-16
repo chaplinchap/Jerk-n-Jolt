@@ -10,13 +10,8 @@ public class Push : MonoBehaviour
     private Rigidbody2D rigidbodyPuller;
     private FieldTrigger pushField;
     public float pushForce = 100;
-    public Vector3 position;
-    public Vector3 normVectorBetween;
     public KeyCode pushOnPress;
     private bool hasPressedPush = false;
-
-
-  
 
 
     void Start()
@@ -43,14 +38,18 @@ public class Push : MonoBehaviour
 
     private void FixedUpdate()
     {
-        position = gameObject.GetComponent<Transform>().position;
-        normVectorBetween = (thePuller.transform.position - position).normalized;
-
-
         if (pushField.inField && hasPressedPush)
         {
-            rigidbodyPuller.AddForce(normVectorBetween * pushForce, ForceMode2D.Impulse);
+            rigidbodyPuller.AddForce(VectorBetween().normalized * pushForce, ForceMode2D.Impulse);
             hasPressedPush = false;
         }
+    }
+
+    private Vector3 VectorBetween()
+    {
+        Vector3 position;
+
+        position = gameObject.GetComponent<Transform>().position;
+        return (thePuller.transform.position - position);
     }
 }

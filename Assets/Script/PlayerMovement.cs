@@ -1,15 +1,23 @@
+using System.Collections;
 using UnityEngine;
 
 
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public BoxCollider2D playerCollider;    
     public BoxCollider2D feet;
+
+    public float time = 0.15f;
+
+    private LayerMask throughGround = 10;
+    private LayerMask defaultLayer = 0;
 
     public float speed = 8f;
     public float jumpingPower = 8f;
     public int movementX = 0;
     public float doubleJumpingPower = 40f;
+
 
     private bool isWallSliding;
     private float wallSlidingSpeed = 2f;
@@ -25,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode jumpUp; 
     public KeyCode moveRight;
     public KeyCode moveLeft;
+    public KeyCode throughButton; 
 
     //[SerializeField] private Transform groundCheck;
     //[SerializeField] private LayerMask groundLayer;
@@ -103,7 +112,13 @@ public class PlayerMovement : MonoBehaviour
             doubleJump = false;
             }  
         }
-       
+
+        if (Input.GetKeyDown(throughButton) && IsGrounded())
+        {
+            playerCollider.gameObject.layer = throughGround;
+            StartCoroutine(WaitTime());
+        }
+
 
         Flip();
         WallSlide();
@@ -209,5 +224,11 @@ public class PlayerMovement : MonoBehaviour
     private void StopWallJumping()
     {
         isWallJumping = false;
+    }
+
+    private IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(time);
+        playerCollider.gameObject.layer = defaultLayer;
     }
 }

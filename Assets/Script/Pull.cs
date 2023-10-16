@@ -9,10 +9,8 @@ public class Pull : MonoBehaviour
     private FieldTrigger pullField;
     private BoxCollider2D boxColliderPusher;
  
-    private float timebox;
+    private float time = 0.15f;
     public float pullForce = 10;
-    public Vector3 position;
-    public Vector3 normVectorBetween;
     public KeyCode pullOnPress;
     private bool hasPressedPull = false;
 
@@ -43,33 +41,34 @@ public class Pull : MonoBehaviour
             hasPressedPull = false;
         }
 
-        if (Time.time - timebox > 0.25)
-        {
-            //boxColliderPusher.gameObject.layer = defaultLayer;
-        }
-
     }
 
     private void FixedUpdate()
     {
-        position = gameObject.GetComponent<Transform>().position;
-        normVectorBetween = (position - thePusher.transform.position);
-
-
+        
         if (pullField.inField && hasPressedPull == true)
         {
            
-            rigidbodyPusher.AddForce(normVectorBetween * pullForce, ForceMode2D.Impulse);
+            rigidbodyPusher.AddForce(-VectorBetween() * pullForce, ForceMode2D.Impulse);
             hasPressedPull = false;
             boxColliderPusher.gameObject.layer = pushLayer;
-            timebox = Time.time;
             StartCoroutine(ChangeLayer());
         }
     }
 
     IEnumerator ChangeLayer()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(time);
         boxColliderPusher.gameObject.layer = defaultLayer;
     }
+
+    private Vector3 VectorBetween() 
+    {
+        Vector3 position;
+
+        position = gameObject.GetComponent<Transform>().position;
+        return (thePusher.transform.position - position);
+    }
+
+
 }

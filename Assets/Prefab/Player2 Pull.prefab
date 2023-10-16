@@ -244,7 +244,6 @@ GameObject:
   - component: {fileID: 8152077003433105955}
   - component: {fileID: 3527094187740927622}
   - component: {fileID: 847568949796497890}
-  - component: {fileID: 8031019046633304450}
   - component: {fileID: 8658766195836136235}
   m_Layer: 0
   m_Name: Player2 Pull
@@ -409,7 +408,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8386127129370546744}
+  playerCollider: {fileID: 8152077003433105955}
   feet: {fileID: 7600740549158947554}
+  time: 0.15
   speed: 160
   jumpingPower: 60
   movementX: 0
@@ -417,6 +418,7 @@ MonoBehaviour:
   jumpUp: 273
   moveRight: 275
   moveLeft: 276
+  throughButton: 274
   Wall:
     serializedVersion: 2
     m_Bits: 512
@@ -439,25 +441,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullForce: 30
-  position: {x: 0, y: 0, z: 0}
-  normVectorBetween: {x: 0, y: 0, z: 0}
   pullOnPress: 109
   pusherLayer:
     serializedVersion: 2
     m_Bits: 256
---- !u!114 &8031019046633304450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7831007007408972477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66b21ea514b1dc64a8402deb1bcb29d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 0.15
 --- !u!114 &8658766195836136235
 MonoBehaviour:
   m_ObjectHideFlags: 0

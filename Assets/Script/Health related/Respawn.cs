@@ -3,7 +3,7 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     //Varibles declared
-    public GameObject PusherRespawnPoint; 
+    public GameObject PusherRespawnPoint;
     public GameObject PullerRespawnPoint;
     public GameObject Pusher;
     public GameObject Puller;
@@ -13,18 +13,16 @@ public class Respawn : MonoBehaviour
     {
         //Pusher player respawn
         if (collision.gameObject.CompareTag("Pusher"))
-            {
-             //Change players current position to another objects position
-            Pusher.transform.position = PusherRespawnPoint.transform.position;
+        {
+            Spawn(Pusher, PusherRespawnPoint);
         }
 
         //Puller player repspawn
-       if (collision.gameObject.CompareTag("Puller"))
+        if (collision.gameObject.CompareTag("Puller"))
         {
-            //Change players current position to another objects position
-            Puller.transform.position = PullerRespawnPoint.transform.position;
+            Spawn(Puller, PullerRespawnPoint);
         }
-       
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -32,16 +30,23 @@ public class Respawn : MonoBehaviour
         //Pusher player respawn
         if (collision.gameObject.CompareTag("Pusher"))
         {
-            //Change players current position to another objects position
-            Pusher.transform.position = PusherRespawnPoint.transform.position;
+            Spawn(Pusher, PusherRespawnPoint);
         }
 
         //Puller player repspawn
         if (collision.gameObject.CompareTag("Puller"))
         {
-            //Change players current position to another objects position
-            Puller.transform.position = PullerRespawnPoint.transform.position;
+            Spawn(Puller, PullerRespawnPoint);
         }
 
+    }
+
+
+    // METHODS //
+
+    private void Spawn(GameObject player, GameObject spawner)
+    {
+        //Change players current position to another objects position
+        player.transform.position = spawner.transform.position;
     }
 }

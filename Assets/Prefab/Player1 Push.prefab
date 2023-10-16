@@ -91,7 +91,6 @@ GameObject:
   - component: {fileID: 4613569147380446184}
   - component: {fileID: 8579998021255492804}
   - component: {fileID: 1545128923084080689}
-  - component: {fileID: 7899136926313507293}
   - component: {fileID: 4597733226625496044}
   m_Layer: 0
   m_Name: Player1 Push
@@ -257,7 +256,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3969561338719803279}
+  playerCollider: {fileID: 4613569147380446184}
   feet: {fileID: 52689546230113494}
+  time: 0.15
   speed: 160
   jumpingPower: 60
   movementX: 0
@@ -265,6 +266,7 @@ MonoBehaviour:
   jumpUp: 119
   moveRight: 100
   moveLeft: 97
+  throughButton: 115
   Wall:
     serializedVersion: 2
     m_Bits: 512
@@ -290,19 +292,6 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 0}
   normVectorBetween: {x: 0, y: 0, z: 0}
   pushOnPress: 32
---- !u!114 &7899136926313507293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1675015520253059547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ede8c851f8d8be4e91cf1542f032522, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 0.15
 --- !u!114 &4597733226625496044
 MonoBehaviour:
   m_ObjectHideFlags: 0
