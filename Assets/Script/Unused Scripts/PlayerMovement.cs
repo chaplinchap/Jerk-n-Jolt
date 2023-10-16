@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class PlayerMovement_Force : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 8f;
     public float jumpingPower = 8f;
+    private BoxCollider2D col;
    
 
 
@@ -36,6 +38,7 @@ public class PlayerMovement_Force : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<BoxCollider2D>();
 
     }
     // Update is called once per frame
@@ -74,13 +77,30 @@ public class PlayerMovement_Force : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(jumpUp) && IsGrounded())
+        if (Input.GetKeyDown(jumpUp) && !hasPressedJump)
         {
-            hasPressedJump = true;
+            rb.velocity = new Vector2 (rb.velocity.x, jumpingPower);
+            hasPressedJump = false;
         }
 
         Flip();
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            StartCoroutine(Landing());
+            //hasPressedJump = false;
+        }
+    }
+
+    IEnumerator Landing()
+        {
+            yield return new WaitForSeconds (2f);
+            hasPressedJump = true;
+        }
+
     private void FixedUpdate()
     {
 
@@ -109,22 +129,26 @@ public class PlayerMovement_Force : MonoBehaviour
             rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
         }
         
-
+ /*
         if (hasPressedJump && IsGrounded()) 
         {
            hasPressedJump = false;
-            
             rb.velocity = new Vector2 (rb.velocity.x, jumpingPower);
-            
-            
         }
-       
-        
+        /*
+       IEnumerator Landing()
+        {
+            yield return new WaitForSeconds (10f);
+            hasPressedJump = false;
+        }
+        */
     }
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        //return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0f, Vector2.down, 0.01f, groundLayer);
+        //return Physics2D.Raycast(col.bounds.center, Vector2.down, col.bounds.extents.y + 0.01f, groundLayer);
     }
 
     private void Flip()

@@ -1,33 +1,32 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class Player1PassThrough : MonoBehaviour
 {
-
-    public BoxCollider2D col;
-    public BoxCollider2D col1;
+    //Variables
+    private GameObject player;
     public float time = 0.15f;
+    
+    //Called at the start
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Pusher");  //Finds the object with given tag
+    }
 
     // Update is called once per frame
     void Update()
     {
         //When pressing down the button "S" you lose your collision for a short while
-        if (Input.GetKeyDown(KeyCode.S)) //Input
+        if (Input.GetKeyDown(KeyCode.S))    //Input
         {
-            StartCoroutine(waittime()); //Activate class
-            col.enabled = false;        //Disable collision
+            StartCoroutine(Waittime());                                             //Activate Coroutine
+            player.gameObject.layer = LayerMask.NameToLayer("IgnoreCollision");     //Disable collision
         }
     }
     
-    IEnumerator waittime()                      //Happeens at the same time as the if statement
+    IEnumerator Waittime()                                                  //Corutine will give feedback after given time
     {
-        yield return new WaitForSeconds(time);  //Given wait time in seconds
-        col.enabled = true;                     //After countdown enable collision again
+        yield return new WaitForSeconds(time);                              //Given wait time in seconds
+        player.gameObject.layer = LayerMask.NameToLayer("Default");         //After countdown enable collision again
     } 
 }
-
-
-
-

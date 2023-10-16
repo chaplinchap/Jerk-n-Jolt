@@ -18,9 +18,9 @@ TagManager:
   - Ground
   - Field
   - Pusher
-  - 
-  - 
-  - 
+  - Wall
+  - IgnoreCollision
+  - Surface
   - 
   - 
   - 

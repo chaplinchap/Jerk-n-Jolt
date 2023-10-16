@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6465747639977077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 344273215120220937}
+  m_Layer: 0
+  m_Name: WallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &344273215120220937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6465747639977077}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1626964684136801760}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2579352975826371630
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,6 +153,83 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1626964684136801760}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7600320033532204099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2548055601682030051}
+  - component: {fileID: 7600740549158947554}
+  m_Layer: 0
+  m_Name: Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2548055601682030051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600320033532204099}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 0.01, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1626964684136801760}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &7600740549158947554
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600320033532204099}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &7831007007408972477
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +268,8 @@ Transform:
   m_Children:
   - {fileID: 8813902848446118176}
   - {fileID: 7130576299061769754}
+  - {fileID: 344273215120220937}
+  - {fileID: 2548055601682030051}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1883660612196377515
@@ -299,17 +409,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8386127129370546744}
+  feet: {fileID: 7600740549158947554}
   speed: 160
   jumpingPower: 60
   movementX: 0
+  doubleJumpingPower: 40
   jumpUp: 273
   moveRight: 275
   moveLeft: 276
-  groundCheck: {fileID: 8813902848446118176}
-  groundLayer:
+  Wall:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 512
+  WallCheck: {fileID: 344273215120220937}
+  platformSurface:
+    serializedVersion: 2
+    m_Bits: 2048
   hasPressedJump: 0
+  doubleJump: 0
 --- !u!114 &847568949796497890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,7 +441,7 @@ MonoBehaviour:
   pullForce: 30
   position: {x: 0, y: 0, z: 0}
   normVectorBetween: {x: 0, y: 0, z: 0}
-  pullOnPress: 256
+  pullOnPress: 109
   pusherLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -341,7 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b21ea514b1dc64a8402deb1bcb29d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 8152077003433105955}
   time: 0.15
 --- !u!114 &8658766195836136235
 MonoBehaviour:
@@ -357,6 +472,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 3
   currentHealth: 0
-  sceneToLoad: HealthbarScene
+  sceneToLoad: midlertidigScene
   gameIsOver: 0
   uim: {fileID: 0}

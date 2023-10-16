@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -47,7 +45,7 @@ public class Pull : MonoBehaviour
 
         if (Time.time - timebox > 0.25)
         {
-            boxColliderPusher.gameObject.layer = defaultLayer;
+            //boxColliderPusher.gameObject.layer = defaultLayer;
         }
 
     }
@@ -65,6 +63,13 @@ public class Pull : MonoBehaviour
             hasPressedPull = false;
             boxColliderPusher.gameObject.layer = pushLayer;
             timebox = Time.time;
+            StartCoroutine(ChangeLayer());
         }
+    }
+
+    IEnumerator ChangeLayer()
+    {
+        yield return new WaitForSeconds(0.25f);
+        boxColliderPusher.gameObject.layer = defaultLayer;
     }
 }
