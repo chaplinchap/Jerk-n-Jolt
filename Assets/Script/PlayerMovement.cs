@@ -41,10 +41,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform WallCheck;
     [SerializeField] private LayerMask platformSurface;
 
-    public bool hasPressedJump;
+    //public bool hasPressedJump;
     private bool isFacingRight = true;
     private bool lastPressedRight = false;
-    public bool doubleJump;
+    public bool doubleJump = true;
 
 
     // Start is called before the first frame update
@@ -97,20 +97,21 @@ public class PlayerMovement : MonoBehaviour
             doubleJump = true;
         }
         */
-
+        if (IsGrounded())
+        {
+            doubleJump = true;
+        }
         if (Input.GetKeyDown(jumpUp))
         {
-            if (IsGrounded())
-            {
-                rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
-            doubleJump = true;
-            }
-
-            if (!IsGrounded() && doubleJump && !WallSliding())
+            if (doubleJump && !IsGrounded() && !WallSliding())
             {
             rb.AddForce(Vector2.up * doubleJumpingPower, ForceMode2D.Impulse);
             doubleJump = false;
-            }  
+            }
+            else if(IsGrounded())
+            {
+            rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
+            }
         }
 
         if (Input.GetKeyDown(throughButton) && IsGrounded())
