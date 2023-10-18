@@ -30,6 +30,13 @@ public class Health : MonoBehaviour
         //Current health will take x damage (later decided damage)   
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
     }
+    public void GiveHP(float Hp)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + Hp, 0, startingHealth);
+    }
+
+
+
     private void Update()
     {
         if (gameIsOver == true)
@@ -49,7 +56,6 @@ public class Health : MonoBehaviour
 
             // SceneManager.LoadScene(sceneToLoad);
             gameIsOver = true;
-
         }
       
     }

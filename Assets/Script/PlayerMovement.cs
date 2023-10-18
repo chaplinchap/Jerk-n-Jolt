@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpingDirection;
     private float wallJumpingTime = 0.2f;
     private float wallJumpingCounter;
-    private float wallJumpingDuration = 0.4f;
     private Vector2 wallJumpingPower = new Vector2(20f,40f);
 
 
@@ -41,10 +40,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform WallCheck;
     [SerializeField] private LayerMask platformSurface;
 
-    //public bool hasPressedJump;
     private bool isFacingRight = true;
     private bool lastPressedRight = false;
-    public bool doubleJump = true;
+    public bool doubleJump;
 
 
     // Start is called before the first frame update
@@ -89,28 +87,21 @@ public class PlayerMovement : MonoBehaviour
             movementX = -1;
         }
 
-
-
-        /*if (Input.GetKeyDown(jumpUp) && IsGrounded())
-        {
-            hasPressedJump = true;
-            doubleJump = true;
-        }
-        */
         if (IsGrounded())
         {
             doubleJump = true;
         }
         if (Input.GetKeyDown(jumpUp))
         {
+            if(IsGrounded())
+            {
+                rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
+            }
+
             if (doubleJump && !IsGrounded() && !WallSliding())
             {
-            rb.AddForce(Vector2.up * doubleJumpingPower, ForceMode2D.Impulse);
-            doubleJump = false;
-            }
-            else if(IsGrounded())
-            {
-            rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * doubleJumpingPower, ForceMode2D.Impulse);
+                doubleJump = false;
             }
         }
 
@@ -144,20 +135,10 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector2.left * speed, ForceMode2D.Force);
             movementX = 0;           
         }
-
-     
- /*       if (Input.GetKeyDown(jumpUp) && IsGrounded()) 
-        {
-           hasPressedJump = false;
-           rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse); 
-        }
-       */
-        
     }
 
      bool IsGrounded()
     {
-         //return Physics2D.OverlapCircle(groundCheck.position, 1, groundLayer);
          return Physics2D.BoxCast(feet.bounds.center, feet.bounds.size, 0f, Vector2.down, 0.01f, platformSurface);
     }
 
