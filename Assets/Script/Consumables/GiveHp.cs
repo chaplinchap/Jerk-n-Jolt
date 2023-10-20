@@ -5,6 +5,7 @@ using UnityEngine;
 public class GiveHp : MonoBehaviour
 {
     [SerializeField] private float hp;
+
     private void OnTriggerEnter2D(Collider2D collision) //Trigger on collision
     {
         if(collision.CompareTag("Pusher") || collision.CompareTag("Puller")) //When one of the player is hit 
