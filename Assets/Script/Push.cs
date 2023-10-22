@@ -13,6 +13,11 @@ public class Push : MonoBehaviour
     public KeyCode pushOnPress;
     private bool hasPressedPush = false;
 
+    private float timer;
+    public float chargingTime = 2f;
+
+    private bool isCharging;
+    private bool hasCharged; 
 
     void Start()
     {
@@ -34,16 +39,17 @@ public class Push : MonoBehaviour
         {
             hasPressedPush = false;       
         }
+
+        Timer(); 
     }
 
     private void FixedUpdate()
     {
-        if (pushField.inField && hasPressedPush)
-        {
-            rigidbodyPuller.AddForce(VectorBetween().normalized * pushForce, ForceMode2D.Impulse);
-            hasPressedPush = false;
-        }
+        ChargePush();
     }
+
+
+        // METHODS //   
 
     private Vector3 VectorBetween()
     {
@@ -51,5 +57,62 @@ public class Push : MonoBehaviour
 
         position = gameObject.GetComponent<Transform>().position;
         return (thePuller.transform.position - position);
+    }
+
+    private void ThePush(float extraForce) 
+    {
+        rigidbodyPuller.AddForce(VectorBetween().normalized * pushForce * extraForce, ForceMode2D.Impulse);
+        hasPressedPush = false;
+    }
+
+    private void Pushing()
+    {
+        if (pushField.inField && hasPressedPush)
+        {
+            ThePush(1);
+        }
+    }
+
+
+    private void ChargePush() 
+    {
+        if (isCharging && pushField.inField)
+        {
+            ThePush(1);
+            isCharging = false;
+            hasCharged = false;
+        }
+
+        if (hasCharged && pushField.inField)
+        {
+            ThePush(10);
+            isCharging = false;
+            hasCharged = false;
+        }
+    }
+
+    private void Timer()
+    {
+
+        if (Input.GetKeyDown(pushOnPress))
+        {
+            timer = 0;
+            isCharging = false;
+            hasCharged = false;
+        }
+        else if (Input.GetKeyUp(pushOnPress) && timer > chargingTime && pushField.inField)
+        {
+            hasCharged = true;
+        }
+        else if (Input.GetKeyUp(pushOnPress) && pushField.inField)
+        {
+            isCharging = true;
+        }
+
+        if (Input.GetKey(pushOnPress))
+        {
+            timer += Time.deltaTime;
+        }
+
     }
 }

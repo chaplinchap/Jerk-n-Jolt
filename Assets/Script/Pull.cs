@@ -16,10 +16,17 @@ public class Pull : MonoBehaviour
 
 
     public LayerMask pusherLayer;
+    
 
     private int defaultLayer = 0;
     private int pushLayer = 8;
 
+    public float timer;
+    private bool isCharging;
+    private bool hasCharged;
+
+    public float chargingTime = 2f;
+   
 
     void Start()
     {
@@ -27,6 +34,8 @@ public class Pull : MonoBehaviour
         rigidbodyPusher = thePusher.GetComponent<Rigidbody2D>();
         pullField = gameObject.GetComponentInChildren<FieldTrigger>();
         boxColliderPusher = thePusher.GetComponent<BoxCollider2D>();
+
+        timer = 0;
     }
 
     private void Update()
@@ -41,20 +50,18 @@ public class Pull : MonoBehaviour
             hasPressedPull = false;
         }
 
+        Timer(); 
+
     }
 
     private void FixedUpdate()
     {
-        
-        if (pullField.inField && hasPressedPull == true)
-        {
-           
-            rigidbodyPusher.AddForce(-VectorBetween() * pullForce, ForceMode2D.Impulse);
-            hasPressedPull = false;
-            boxColliderPusher.gameObject.layer = pushLayer;
-            StartCoroutine(ChangeLayer());
-        }
+        ChargePulling();
     }
+
+
+
+        // METHODS //
 
     IEnumerator ChangeLayer()
     {
@@ -68,6 +75,69 @@ public class Pull : MonoBehaviour
 
         position = gameObject.GetComponent<Transform>().position;
         return (thePusher.transform.position - position);
+    }
+
+    private void ThePull(float extraForce) 
+    {
+        rigidbodyPusher.AddForce(-VectorBetween().normalized * pullForce * extraForce, ForceMode2D.Impulse);
+        hasPressedPull = false;
+        boxColliderPusher.gameObject.layer = pushLayer;
+        StartCoroutine(ChangeLayer());
+    }
+
+    private void Pulling()
+    {
+
+        if (pullField.inField && hasPressedPull == true)
+        {
+            ThePull(1);
+        }
+    }
+
+    private void ChargePulling()
+    {
+
+        if (isCharging && pullField.inField)
+        {
+            ThePull(1);
+            isCharging = false;
+            hasCharged = false;
+        }
+
+        if (hasCharged && pullField.inField)
+        {
+            ThePull(10);
+            isCharging = false;
+            hasCharged = false;
+        }
+        
+    }
+
+
+    private void Timer()
+    {
+
+        if (Input.GetKeyDown(pullOnPress))
+        {
+            timer = 0;
+            isCharging = false;
+            hasCharged = false; 
+        }
+        else if (Input.GetKeyUp(pullOnPress) && timer > chargingTime && pullField.inField)
+        {
+            hasCharged = true;
+        }
+        else if (Input.GetKeyUp(pullOnPress) && pullField.inField) 
+        {
+            isCharging = true;
+        }
+
+        if (Input.GetKey(pullOnPress))
+        {
+            timer += Time.deltaTime;
+        } 
+
+        
     }
 
 
