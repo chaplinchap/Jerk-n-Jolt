@@ -5,8 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 0
+    path: Assets/Scenes/AdamTestScene.unity
+    guid: 4a740a870189f484ba3332c6cbf1eabb
+  - enabled: 0
+    path: Assets/Scenes/HealthbarScene.unity
+    guid: 3d46e06861e065048b1366ae06e99c11
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 990a4124a5f32524aa9856bfd128f397, type: 2}
