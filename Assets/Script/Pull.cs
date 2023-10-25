@@ -14,6 +14,7 @@ public class Pull : MonoBehaviour
     public KeyCode pullOnPress;
     private bool hasPressedPull = false;
 
+    public float extraForce = 1f;
 
     public LayerMask pusherLayer;
     
@@ -56,7 +57,7 @@ public class Pull : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ChargePulling();
+        ChargePulling(1 * extraForce , 4 * extraForce);
     }
 
 
@@ -94,19 +95,19 @@ public class Pull : MonoBehaviour
         }
     }
 
-    private void ChargePulling()
+    private void ChargePulling(float normalPull, float chargedPull)
     {
 
         if (isCharging && pullField.inField)
         {
-            ThePull(1);
+            ThePull(normalPull);
             isCharging = false;
             hasCharged = false;
         }
 
         if (hasCharged && pullField.inField)
         {
-            ThePull(10);
+            ThePull(chargedPull);
             isCharging = false;
             hasCharged = false;
         }
@@ -139,6 +140,7 @@ public class Pull : MonoBehaviour
 
         
     }
+
 
 
 }

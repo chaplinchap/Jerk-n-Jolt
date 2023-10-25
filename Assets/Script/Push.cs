@@ -9,23 +9,26 @@ public class Push : MonoBehaviour
     private GameObject thePuller;
     private Rigidbody2D rigidbodyPuller;
     private FieldTrigger pushField;
+
     public float pushForce = 100;
     public KeyCode pushOnPress;
     private bool hasPressedPush = false;
+
 
     private float timer;
     public float chargingTime = 2f;
 
     private bool isCharging;
-    private bool hasCharged; 
+    private bool hasCharged;
+
+
+    public float extraForce = 1; 
 
     void Start()
     {
         thePuller = GameObject.FindWithTag("Puller");
         rigidbodyPuller = thePuller.GetComponent<Rigidbody2D>();
         pushField = gameObject.GetComponentInChildren<FieldTrigger>();
-     
-
     }
 
     private void Update()
@@ -45,7 +48,7 @@ public class Push : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ChargePush();
+        ChargePush(1f * extraForce, 4f * extraForce);
     }
 
 
@@ -74,18 +77,18 @@ public class Push : MonoBehaviour
     }
 
 
-    private void ChargePush() 
+    public void ChargePush(float pushNormal, float pushCharged) 
     {
         if (isCharging && pushField.inField)
         {
-            ThePush(1);
+            ThePush(pushNormal);
             isCharging = false;
             hasCharged = false;
         }
 
         if (hasCharged && pushField.inField)
         {
-            ThePush(10);
+            ThePush(pushCharged);
             isCharging = false;
             hasCharged = false;
         }
@@ -114,5 +117,10 @@ public class Push : MonoBehaviour
             timer += Time.deltaTime;
         }
 
+    }
+
+    public void setExtraForce(float force) 
+    {
+        extraForce = force;
     }
 }
