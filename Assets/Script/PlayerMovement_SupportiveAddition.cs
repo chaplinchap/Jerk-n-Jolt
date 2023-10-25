@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement_SupportiveAdition : MonoBehaviour
 {
     public Rigidbody2D rb;
     public BoxCollider2D playerCollider;    
@@ -16,16 +16,33 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 8f;
     public float jumpingPower = 8f;
     public int movementX = 0;
+    public float doubleJumpingPower = 40f;
+
+
+    private bool isWallSliding;
+    private float wallSlidingSpeed = 2f;
+
+    private bool isWallJumping;
+    private float wallJumpingDirection;
+    private float wallJumpingTime = 0.2f;
+    private float wallJumpingCounter;
+    private Vector2 wallJumpingPower = new (20f,40f);
+
 
     public KeyCode jumpUp; 
     public KeyCode moveRight;
     public KeyCode moveLeft;
     public KeyCode throughButton; 
 
+    //[SerializeField] private Transform groundCheck;
+    //[SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask Wall;
+    [SerializeField] private Transform WallCheck;
     [SerializeField] private LayerMask platformSurface;
 
     private bool isFacingRight = true;
     private bool lastPressedRight = false;
+    public bool doubleJump;
 
 
     // Start is called before the first frame update
@@ -70,12 +87,21 @@ public class PlayerMovement : MonoBehaviour
             movementX = -1;
         }
 
-      
+        if (IsGrounded())
+        {
+            doubleJump = true;
+        }
         if (Input.GetKeyDown(jumpUp))
         {
             if(IsGrounded())
             {
                 rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
+            }
+
+            if (doubleJump && !IsGrounded() && !WallSliding())
+            {
+                rb.AddForce(Vector2.up * doubleJumpingPower, ForceMode2D.Impulse);
+                doubleJump = false;
             }
         }
 
@@ -87,7 +113,13 @@ public class PlayerMovement : MonoBehaviour
 
 
         Flip();
+        WallSlide();
+        WallJump();
 
+        if (isWallJumping)
+        {
+            Flip();
+        }
     }
     private void FixedUpdate()
     {
@@ -119,6 +151,61 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+
+      private bool WallSliding()
+    {
+        return Physics2D.OverlapCircle(WallCheck.position, 0.2f, Wall);
+    }
+
+    private void WallSlide()
+    {
+        if (WallSliding() && !IsGrounded() && movementX != 0f)
+        {
+            isWallSliding = true;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+        }
+        else
+        {
+            isWallSliding= false;
+        }
+    }
+
+    private void WallJump()
+    {
+        if (isWallSliding)
+        {
+            isWallJumping = false;
+            wallJumpingDirection = -transform.localScale.x;
+            wallJumpingCounter = wallJumpingTime;
+
+            CancelInvoke(nameof(StopWallJumping));
+        }
+        else
+        {
+            wallJumpingCounter -= Time.deltaTime;
+        }
+        if (Input.GetKeyDown(jumpUp) && wallJumpingCounter > 0f)
+        {
+            isWallJumping= true;
+            rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
+            wallJumpingCounter = 0f;
+
+            if (transform.localScale.x != wallJumpingDirection)
+            {
+                isFacingRight = !isFacingRight;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
+            }
+
+            Invoke(nameof(StopWallJumping), wallJumpingDirection);
+        }
+    }
+
+    private void StopWallJumping()
+    {
+        isWallJumping = false;
     }
 
     private IEnumerator WaitTime()
