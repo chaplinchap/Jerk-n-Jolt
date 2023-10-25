@@ -7,7 +7,6 @@ public class Player1PassThrough : MonoBehaviour
 {
 
     public BoxCollider2D col;
-    public BoxCollider2D col1;
     public float time = 0.15f;
 
     // Update is called once per frame
