@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TakeDamage : MonoBehaviour
 {
-    [SerializeField] private float damage; //Input how much damage to take
+    [SerializeField] private float damage = 1; //Input how much damage to take
 
     private void OnTriggerEnter2D(Collider2D collision) //Trigger on collision
     {
