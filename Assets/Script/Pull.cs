@@ -95,7 +95,7 @@ public class Pull : MonoBehaviour
         }
     }
 
-    private void ChargePulling(float normalPull, float chargedPull)
+    public void ChargePulling(float normalPull, float chargedPull)
     {
 
         if (isCharging && pullField.inField)

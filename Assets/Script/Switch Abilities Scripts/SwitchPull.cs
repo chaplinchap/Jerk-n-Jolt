@@ -7,7 +7,7 @@ using UnityEngine;
 public class SwitchPull : MonoBehaviour
 {
     private GameObject swtichPusher;
-
+    private Pull pullObject;
     private Rigidbody2D rigidbodySwitchPusher;
     private FieldTrigger pullField;
     private BoxCollider2D boxColliderSwitchPusher;
@@ -32,6 +32,7 @@ public class SwitchPull : MonoBehaviour
         rigidbodySwitchPusher = swtichPusher.GetComponent<Rigidbody2D>();
         pullField = gameObject.GetComponentInChildren<FieldTrigger>();
         boxColliderSwitchPusher = swtichPusher.GetComponent<BoxCollider2D>();
+        pullObject = GetComponent<Pull>();
 
     }
 
@@ -60,7 +61,9 @@ public class SwitchPull : MonoBehaviour
         position = gameObject.GetComponent<Transform>().position;
         normVectorBetween = (position - swtichPusher.transform.position);
 
+        
 
+        
         if (pullField.inField && hasPressedPull == true)
         {
            
@@ -69,5 +72,6 @@ public class SwitchPull : MonoBehaviour
             boxColliderSwitchPusher.gameObject.layer = pushLayer;
             timebox = Time.time;
         }
+        
     }
 }

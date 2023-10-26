@@ -123,6 +123,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &22362698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2053849015289168190, guid: b98e1598271432b4cb1a61798f806e0e, type: 3}
+  m_PrefabInstance: {fileID: 5974889204267012556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &22362703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22362698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7231d44f8d785a48b59d658df91d781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platforms:
+  - {fileID: 145481148}
+  - {fileID: 145481148}
+  triggerSwitch: {fileID: 22362698}
+  timeBox: 0
+  coolDown: 2
+  platformColor:
+    r: 0
+    g: 0.14901961
+    b: 0.48627454
+    a: 1
+  turnedOffColor:
+    r: 0
+    g: 0.14901961
+    b: 0.48627454
+    a: 0.09803922
 --- !u!4 &68991184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8268484747344192969, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
@@ -4243,6 +4276,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5082048264365786653, guid: b98e1598271432b4cb1a61798f806e0e, type: 3}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 22362698}
+    - target: {fileID: 5082048264365786653, guid: b98e1598271432b4cb1a61798f806e0e, type: 3}
       propertyPath: platforms.Array.data[0]
       value: 
       objectReference: {fileID: 1018090445}
@@ -4250,10 +4287,14 @@ PrefabInstance:
       propertyPath: platforms.Array.data[1]
       value: 
       objectReference: {fileID: 145481148}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5082048264365786653, guid: b98e1598271432b4cb1a61798f806e0e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2053849015289168190, guid: b98e1598271432b4cb1a61798f806e0e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 22362703}
   m_SourcePrefab: {fileID: 100100000, guid: b98e1598271432b4cb1a61798f806e0e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -4265,9 +4306,9 @@ SceneRoots:
   - {fileID: 2826552128795819710}
   - {fileID: 681575353}
   - {fileID: 1386346996}
-  - {fileID: 685584429528868495}
   - {fileID: 1597781090}
   - {fileID: 1836267740}
   - {fileID: 5974889204267012556}
   - {fileID: 391999259}
   - {fileID: 1897568776}
+  - {fileID: 578005348}
