@@ -8,6 +8,10 @@ TagManager:
   - Pusher
   - Puller
   - DeathTrigger
+  - PushField
+  - PullField
+  - SwitchToPullField
+  - SwitchToPushField
   layers:
   - Default
   - TransparentFX
