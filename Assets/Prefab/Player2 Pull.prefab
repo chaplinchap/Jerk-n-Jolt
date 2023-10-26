@@ -242,9 +242,9 @@ GameObject:
   - component: {fileID: 1883660612196377515}
   - component: {fileID: 8386127129370546744}
   - component: {fileID: 8152077003433105955}
-  - component: {fileID: 3527094187740927622}
   - component: {fileID: 847568949796497890}
   - component: {fileID: 8658766195836136235}
+  - component: {fileID: 2265338096847633156}
   m_Layer: 0
   m_Name: Player2 Pull
   m_TagString: Puller
@@ -395,39 +395,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3527094187740927622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7831007007408972477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c84a5fa72b13f48b0479672d93bd88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 8386127129370546744}
-  playerCollider: {fileID: 8152077003433105955}
-  feet: {fileID: 7600740549158947554}
-  time: 0.15
-  speed: 160
-  jumpingPower: 60
-  movementX: 0
-  doubleJumpingPower: 40
-  jumpUp: 273
-  moveRight: 275
-  moveLeft: 276
-  throughButton: 274
-  Wall:
-    serializedVersion: 2
-    m_Bits: 512
-  WallCheck: {fileID: 344273215120220937}
-  platformSurface:
-    serializedVersion: 2
-    m_Bits: 2048
-  hasPressedJump: 0
-  doubleJump: 0
 --- !u!114 &847568949796497890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,9 +409,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pullForce: 30
   pullOnPress: 109
+  extraForce: 1
   pusherLayer:
     serializedVersion: 2
     m_Bits: 256
+  timer: 0
+  chargingTime: 2
 --- !u!114 &8658766195836136235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +429,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 3
   currentHealth: 0
-  sceneToLoad: midlertidigScene
-  gameIsOver: 0
-  uim: {fileID: 0}
+--- !u!114 &2265338096847633156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7831007007408972477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abda7ac66aed6ea4f9509b7d8a9734eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 8386127129370546744}
+  playerCollider: {fileID: 8152077003433105955}
+  feet: {fileID: 7600740549158947554}
+  time: 0.15
+  speed: 160
+  jumpingPower: 60
+  movementX: 0
+  jumpUp: 273
+  moveRight: 275
+  moveLeft: 276
+  throughButton: 274
+  platformSurface:
+    serializedVersion: 2
+    m_Bits: 2048
