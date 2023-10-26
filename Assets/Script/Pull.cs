@@ -57,7 +57,7 @@ public class Pull : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ChargePulling(1 * extraForce , 4 * extraForce);
+        ChargePulling(4f * extraForce , 4f * extraForce);
     }
 
 
