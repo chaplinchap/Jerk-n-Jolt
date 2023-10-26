@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2623745699018943251}
   - component: {fileID: 6522649648983353459}
   - component: {fileID: 8550794801072969828}
-  - component: {fileID: 4259056653387610965}
+  - component: {fileID: 5221073109971013453}
   m_Layer: 0
   m_Name: Platform Trigger
   m_TagString: Untagged
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.94117653, g: 0.04705883, b: 0.08235294, a: 1}
+  m_Color: {r: 0.8352942, g: 0.882353, b: 0.06666667, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -115,13 +115,13 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4259056653387610965
+--- !u!114 &5221073109971013453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,10 +130,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1230954302745074923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebce81c6ccd1e494ea1ba7c3f4997f28, type: 3}
+  m_Script: {fileID: 11500000, guid: c7231d44f8d785a48b59d658df91d781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: []
-  trigger: {fileID: 0}
+  platforms: []
+  triggerSwitch: {fileID: 0}
   coolDown: 0
   platformColor: {r: 0, g: 0, b: 0, a: 0}
+  turnedOffColor: {r: 0, g: 0, b: 0, a: 0}

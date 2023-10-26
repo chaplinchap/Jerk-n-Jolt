@@ -156,6 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pusher: {fileID: 1388173218}
   puller: {fileID: 1449906316}
+  pusherSize: {fileID: 0}
+  pullerSize: {fileID: 0}
 --- !u!70 &18962245
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -337,11 +339,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8268484747344192969, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
   m_PrefabInstance: {fileID: 1718784012}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &138938128 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6218380128302007168, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
-  m_PrefabInstance: {fileID: 529914952}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &138938129 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8268484747344192969, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
@@ -488,6 +485,7 @@ MonoBehaviour:
   platform: {fileID: 729768288}
   platform2: {fileID: 963938622}
   trigger: {fileID: 174349622}
+  timeBox: 0
   coolDown: 5
 --- !u!4 &192374300 stripped
 Transform:
@@ -2011,6 +2009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchTrigger: {fileID: 826496122}
+  switchNormal: {fileID: 0}
   timeStampBack: 0
   isSwitchedBack: 0
 --- !u!1 &963938622 stripped
@@ -2022,11 +2021,6 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8268484747344192969, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
   m_PrefabInstance: {fileID: 1356605989}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1067327580 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6218380128302007168, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
-  m_PrefabInstance: {fileID: 1355462007}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1067327581 stripped
 Transform:
@@ -2606,11 +2600,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1675015520253059547, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
   m_PrefabInstance: {fileID: 2853931416465516403}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1388173222 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 4613569147380446184, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
-  m_PrefabInstance: {fileID: 2853931416465516403}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1388173226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2623,7 +2612,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ede8c851f8d8be4e91cf1542f032522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 1388173222}
+  col: {fileID: 0}
+  col1: {fileID: 0}
   time: 0.15
 --- !u!114 &1388173233
 MonoBehaviour:
@@ -2639,9 +2629,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 3
   currentHealth: 0
-  sceneToLoad: MainScene
+  sceneToLoad: 
   gameIsOver: 0
-  uim: {fileID: 1836267739}
+  uim: {fileID: 0}
 --- !u!4 &1388173238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5443167318930251627, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
@@ -2659,21 +2649,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6043a2d77017384b98c622d1c380694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swtichPusher: {fileID: 0}
+  pullObject: {fileID: 0}
+  rigidbodySwitchPusher: {fileID: 0}
+  pullField: {fileID: 0}
+  boxColliderSwitchPusher: {fileID: 0}
+  timebox: 0
   pullForce: 30
   position: {x: 0, y: 0, z: 0}
   normVectorBetween: {x: 0, y: 0, z: 0}
   pullOnPress: 32
+  hasPressedPull: 0
   pusherLayer:
-    serializedVersion: 2
     m_Bits: 256
+  defaultLayer: 0
+  pushLayer: 8
 --- !u!1 &1449906316 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7831007007408972477, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
-  m_PrefabInstance: {fileID: 2826552128795819710}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1449906319 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 8152077003433105955, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
   m_PrefabInstance: {fileID: 2826552128795819710}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1449906323
@@ -2688,7 +2681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b21ea514b1dc64a8402deb1bcb29d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 1449906319}
+  col: {fileID: 0}
   time: 0.15
 --- !u!114 &1449906324
 MonoBehaviour:
@@ -2704,9 +2697,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 3
   currentHealth: 0
-  sceneToLoad: MainScene
+  sceneToLoad: 
   gameIsOver: 0
-  uim: {fileID: 1836267739}
+  uim: {fileID: 0}
 --- !u!4 &1449906329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1626964684136801760, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
@@ -2724,10 +2717,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5863b1e83a181824c9b0b8ab5ffb817a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theSwitchPuller: {fileID: 0}
+  rigidbodySwitchPuller: {fileID: 0}
+  pushField: {fileID: 0}
   pushForce: 100
   position: {x: 0, y: 0, z: 0}
   normVectorBetween: {x: 0, y: 0, z: 0}
   pushOnPress: 256
+  hasPressedPush: 0
 --- !u!1 &1505044386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2838,6 +2835,7 @@ MonoBehaviour:
   platform2: {fileID: 555017462}
   platform3: {fileID: 626358809}
   trigger: {fileID: 1507331759}
+  timeBox: 0
   coolDown: 5
 --- !u!58 &1507331761
 CircleCollider2D:
@@ -2974,6 +2972,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pusher: {fileID: 1388173218}
   puller: {fileID: 1449906316}
+  pusherTeleport: {fileID: 0}
+  pullerTeleport: {fileID: 0}
 --- !u!70 &1527059633
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3207,10 +3207,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebce81c6ccd1e494ea1ba7c3f4997f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: {fileID: 1067327580}
-  platform2: {fileID: 138938128}
+  platform: []
   trigger: {fileID: 1791583411}
   coolDown: 5
+  platformColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!58 &1791583413
 CircleCollider2D:
   m_ObjectHideFlags: 0
