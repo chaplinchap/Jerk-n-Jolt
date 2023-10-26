@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -11,19 +9,25 @@ public class Pull : MonoBehaviour
     private FieldTrigger pullField;
     private BoxCollider2D boxColliderPusher;
  
-    private float timebox;
+    private float time = 0.15f;
     public float pullForce = 10;
-    public Vector3 position;
-    public Vector3 normVectorBetween;
     public KeyCode pullOnPress;
     private bool hasPressedPull = false;
 
+    public float extraForce = 1f;
 
     public LayerMask pusherLayer;
+    
 
     private int defaultLayer = 0;
     private int pushLayer = 8;
 
+    public float timer;
+    private bool isCharging;
+    private bool hasCharged;
+
+    public float chargingTime = 2f;
+   
 
     void Start()
     {
@@ -31,6 +35,8 @@ public class Pull : MonoBehaviour
         rigidbodyPusher = thePusher.GetComponent<Rigidbody2D>();
         pullField = gameObject.GetComponentInChildren<FieldTrigger>();
         boxColliderPusher = thePusher.GetComponent<BoxCollider2D>();
+
+        timer = 0;
     }
 
     private void Update()
@@ -45,26 +51,96 @@ public class Pull : MonoBehaviour
             hasPressedPull = false;
         }
 
-        if (Time.time - timebox > 0.25)
-        {
-            boxColliderPusher.gameObject.layer = defaultLayer;
-        }
+        Timer(); 
 
     }
 
     private void FixedUpdate()
     {
-        position = gameObject.GetComponent<Transform>().position;
-        normVectorBetween = (position - thePusher.transform.position);
+        ChargePulling(1 * extraForce , 4 * extraForce);
+    }
 
+
+
+        // METHODS //
+
+    IEnumerator ChangeLayer()
+    {
+        yield return new WaitForSeconds(time);
+        boxColliderPusher.gameObject.layer = defaultLayer;
+    }
+
+    private Vector3 VectorBetween() 
+    {
+        Vector3 position;
+
+        position = gameObject.GetComponent<Transform>().position;
+        return (thePusher.transform.position - position);
+    }
+
+    private void ThePull(float extraForce) 
+    {
+        rigidbodyPusher.AddForce(-VectorBetween().normalized * pullForce * extraForce, ForceMode2D.Impulse);
+        hasPressedPull = false;
+        boxColliderPusher.gameObject.layer = pushLayer;
+        StartCoroutine(ChangeLayer());
+    }
+
+    private void Pulling()
+    {
 
         if (pullField.inField && hasPressedPull == true)
         {
-           
-            rigidbodyPusher.AddForce(normVectorBetween * pullForce, ForceMode2D.Impulse);
-            hasPressedPull = false;
-            boxColliderPusher.gameObject.layer = pushLayer;
-            timebox = Time.time;
+            ThePull(1);
         }
     }
+
+    public void ChargePulling(float normalPull, float chargedPull)
+    {
+
+        if (isCharging && pullField.inField)
+        {
+            ThePull(normalPull);
+            isCharging = false;
+            hasCharged = false;
+        }
+
+        if (hasCharged && pullField.inField)
+        {
+            ThePull(chargedPull);
+            isCharging = false;
+            hasCharged = false;
+        }
+        
+    }
+
+
+    private void Timer()
+    {
+
+        if (Input.GetKeyDown(pullOnPress))
+        {
+            timer = 0;
+            isCharging = false;
+            hasCharged = false; 
+        }
+        else if (Input.GetKeyUp(pullOnPress) && timer > chargingTime && pullField.inField)
+        {
+            hasCharged = true;
+        }
+        else if (Input.GetKeyUp(pullOnPress) && pullField.inField) 
+        {
+            isCharging = true;
+        }
+
+        if (Input.GetKey(pullOnPress))
+        {
+            timer += Time.deltaTime;
+        } 
+
+        
+    }
+
+
+
 }

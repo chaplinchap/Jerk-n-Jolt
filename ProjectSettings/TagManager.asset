@@ -8,6 +8,10 @@ TagManager:
   - Pusher
   - Puller
   - DeathTrigger
+  - PushField
+  - PullField
+  - SwitchToPullField
+  - SwitchToPushField
   layers:
   - Default
   - TransparentFX
@@ -18,9 +22,9 @@ TagManager:
   - Ground
   - Field
   - Pusher
-  - 
-  - 
-  - 
+  - Wall
+  - IgnoreCollision
+  - Surface
   - 
   - 
   - 

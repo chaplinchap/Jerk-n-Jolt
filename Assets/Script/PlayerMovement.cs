@@ -1,42 +1,37 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 
-public class PlayerMovement_Force : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public BoxCollider2D playerCollider;    
+    public BoxCollider2D feet;
+
+    public float time = 0.15f;
+
+    private LayerMask throughGround = 10;
+    private LayerMask defaultLayer = 0;
+
     public float speed = 8f;
     public float jumpingPower = 8f;
-   
-
-
     public int movementX = 0;
 
     public KeyCode jumpUp; 
     public KeyCode moveRight;
     public KeyCode moveLeft;
+    public KeyCode throughButton; 
 
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask platformSurface;
 
-   
-    public bool hasPressedJump;
     private bool isFacingRight = true;
-   
-
-    bool lastPressedRight = false;
+    private bool lastPressedRight = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
     }
     // Update is called once per frame
     void Update()
@@ -57,74 +52,62 @@ public class PlayerMovement_Force : MonoBehaviour
             {
                 movementX = 1;
             }
+
             else
+            {
                 movementX = -1;
+            }
+
         }
+
         else if (Input.GetKey(moveRight))
         {
-
             movementX = 1;
         }
 
         else if (Input.GetKey(moveLeft))
         {
             movementX = -1;
-
         }
 
-
-
-        if (Input.GetKeyDown(jumpUp) && IsGrounded())
+      
+        if (Input.GetKeyDown(jumpUp))
         {
-            hasPressedJump = true;
+            if(IsGrounded())
+            {
+                rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
+            }
         }
+
+        if (Input.GetKeyDown(throughButton) && IsGrounded())
+        {
+            playerCollider.gameObject.layer = throughGround;
+            StartCoroutine(WaitTime());
+        }
+
 
         Flip();
+
     }
     private void FixedUpdate()
     {
 
         if (movementX == 1) 
         {
-            rb.velocity = new Vector2 (speed, rb.velocity.y);
-            movementX = 0;
-            
+            rb.AddForce(Vector2.right * speed, ForceMode2D.Force);
+            movementX = 0;            
         }
          
          else if (movementX == -1) 
         { 
-            rb.velocity = new Vector2 (-speed, rb.velocity.y);
-            movementX = 0;
-           
+            rb.AddForce(Vector2.left * speed, ForceMode2D.Force);
+            movementX = 0;           
         }
-
-        
-        else if (movementX == 0)
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
-
-        else
-        {
-            rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
-        }
-        
-
-        if (hasPressedJump && IsGrounded()) 
-        {
-           hasPressedJump = false;
-            
-            rb.velocity = new Vector2 (rb.velocity.x, jumpingPower);
-            
-            
-        }
-       
-        
     }
 
-    private bool IsGrounded()
+     bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+         return Physics2D.BoxCast(feet.bounds.center, feet.bounds.size, 0f, Vector2.down, 0.01f, platformSurface);
     }
 
     private void Flip()
@@ -138,5 +121,9 @@ public class PlayerMovement_Force : MonoBehaviour
         }
     }
 
-
+    private IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(time);
+        playerCollider.gameObject.layer = defaultLayer;
+    }
 }
