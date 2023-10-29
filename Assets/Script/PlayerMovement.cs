@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isFacingRight = true;
     private bool lastPressedRight = false;
+    private bool canJump;
 
 
     // Start is called before the first frame update
@@ -70,14 +71,27 @@ public class PlayerMovement : MonoBehaviour
             movementX = -1;
         }
 
+       if (IsGrounded())
+        {
+            canJump = true; //when on ground allow player to jump
+        }
       
         if (Input.GetKeyDown(jumpUp))
         {
             if(IsGrounded())
             {
                 rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
+                Invoke (nameof(anotherJump), 0.1f); //Calls for a boolean statement to be false. Needs a delay otherwise it just gonna check for ground and check true right away             
+                Debug.Log("jump");
+            }
+            else if (canJump) 
+            {
+                rb.AddForce(Vector2.up * jumpingPower*1.3f, ForceMode2D.Impulse); //jumping force +added a bit more power, for the jump to look okay
+                canJump = false; // Cannot jump again
+                Debug.Log("you saved your ass!");
             }
         }
+
 
         if (Input.GetKeyDown(throughButton) && IsGrounded())
         {
@@ -105,6 +119,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void anotherJump()
+    {
+        canJump = false;
+    }
      bool IsGrounded()
     {
          return Physics2D.BoxCast(feet.bounds.center, feet.bounds.size, 0f, Vector2.down, 0.01f, platformSurface);
