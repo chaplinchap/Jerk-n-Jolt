@@ -48,7 +48,7 @@ public class Push : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ChargePush(1f * extraForce, 4f * extraForce);
+        ChargePush(1f, extraForce);
     }
 
 
@@ -116,11 +116,5 @@ public class Push : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-
-    }
-
-    public void setExtraForce(float force) 
-    {
-        extraForce = force;
     }
 }

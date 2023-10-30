@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public BoxCollider2D playerCollider;    
     public BoxCollider2D feet;
 
+
     public float time = 0.15f;
 
     private LayerMask throughGround = 10;
