@@ -3359,6 +3359,10 @@ PrefabInstance:
       propertyPath: m_Targets.Array.data[1].target
       value: 
       objectReference: {fileID: 1449906323}
+    - target: {fileID: 2482511055653295656, guid: 583c4ba6a49f11e408b2e62d3c2d9e26, type: 3}
+      propertyPath: m_Damping
+      value: 0.68
+      objectReference: {fileID: 0}
     - target: {fileID: 3506892869185282501, guid: 583c4ba6a49f11e408b2e62d3c2d9e26, type: 3}
       propertyPath: m_Name
       value: Virtual Camera
