@@ -39,9 +39,9 @@ public class PlayerAnimator : MonoBehaviour
 
             ChangeAnimationState(attack);
 
-            float delay = animator.GetCurrentAnimatorStateInfo(0).length;
+            //float delay = animator.GetCurrentAnimatorStateInfo(0).length;
 
-            Invoke("AttackComplete", delay);
+            Invoke("AttackComplete", 0.2f);
         }
 
         if (Input.GetKey(push.pushOnPress))
@@ -55,32 +55,34 @@ public class PlayerAnimator : MonoBehaviour
     private void FixedUpdate()
     {
 
+        if (isAttacking && isAttackFinished && move.IsGrounded()) {
 
-        if (move.movementX != 0 && move.IsGrounded() && !isAttacking)
-        {
-                ChangeAnimationState(running);
-        }
-
-
-        if (move.movementX == 0 && move.IsGrounded() && !isAttacking && !Input.GetKey(push.pushOnPress))
-        {
-                ChangeAnimationState(idle);
-        }
-
-        if (isAttacking && isAttackFinished) {
-
-            if (move.IsGrounded() && move.movementX == 0)
+            if (Input.GetKey(move.moveLeft) || Input.GetKey(move.moveRight))
             {
 
-                ChangeAnimationState(charge);
+                ChangeAnimationState(runningCharge);
 
             }
-            else if (move.IsGrounded()) 
+            else
             {
-                ChangeAnimationState(runningCharge);
+                ChangeAnimationState(charge);
             }
 
         
+        }
+
+        if (move.IsGrounded() && !isAttacking)
+        {
+
+            if (Input.GetKey(move.moveLeft) || Input.GetKey(move.moveRight))
+            {
+                ChangeAnimationState(running);
+            }
+
+            else if (move.movementX == 0 && !Input.GetKey(push.pushOnPress))
+            {
+                ChangeAnimationState(idle);
+            }
         }
 
 
