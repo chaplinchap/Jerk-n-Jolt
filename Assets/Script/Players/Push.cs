@@ -18,8 +18,8 @@ public class Push : MonoBehaviour
     private float timer;
     public float chargingTime = 2f;
 
-    private bool isCharging;
-    private bool hasCharged;
+    public bool isCharging;
+    public bool hasCharged;
 
 
     public float extraForce = 1; 
