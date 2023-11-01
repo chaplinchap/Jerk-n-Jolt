@@ -39,7 +39,9 @@ public class PlayerAnimator : MonoBehaviour
 
             ChangeAnimationState(attack);
 
-            Invoke("AttackComplete", 0.2f);
+            float delay = animator.GetCurrentAnimatorStateInfo(0).length;
+
+            Invoke("AttackComplete", delay);
         }
 
         if (Input.GetKey(push.pushOnPress))
