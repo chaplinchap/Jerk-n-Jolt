@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PausedGameUI : MonoBehaviour
@@ -7,7 +7,7 @@ public class PausedGameUI : MonoBehaviour
     public string sceneToLoad;
     private bool onPause;
 
-    public void ContinuebuttonPressed() { // When clickin button
+    public void ContinuebuttonPressed() { // When clicking button
         PauseMenu.SetActive(false); // Close Pause Menu
         onPause = false; // Set to false
         Time.timeScale = 1; // Make time run again
@@ -56,3 +56,4 @@ public class PausedGameUI : MonoBehaviour
             onPause = true;
         }
 } 
+*/
