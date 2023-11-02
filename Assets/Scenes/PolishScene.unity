@@ -2477,7 +2477,7 @@ MonoBehaviour:
   Exit: {fileID: 0}
   StartAgain: {fileID: 0}
   PauseMenu: {fileID: 0}
-  sceneToLoad: 
+  sceneToLoad: PolishScene
 --- !u!1 &1868354263
 GameObject:
   m_ObjectHideFlags: 0
