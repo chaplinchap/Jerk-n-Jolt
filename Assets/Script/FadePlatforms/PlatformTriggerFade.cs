@@ -14,7 +14,7 @@ public class PlatformTriggerFade : MonoBehaviour
     [SerializeField] private bool offPlatformFade = false;
     [SerializeField] private bool platformDespawned = false;
 
-    private IEnumerator respawnCoroutine;
+    private IEnumerator despawnCoroutine;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -29,8 +29,8 @@ public class PlatformTriggerFade : MonoBehaviour
             if (onPlatformFade && !offPlatformFade && !platformDespawned)
             {
                 Debug.Log("starts Despawn");
-                respawnCoroutine = StartDespawn(gameObject, durationTime);
-                StartCoroutine(respawnCoroutine);
+                despawnCoroutine = StartDespawn(gameObject, durationTime);
+                StartCoroutine(despawnCoroutine);
                 onPlatformFade = false;
                 offPlatformFade = false;
 
@@ -53,9 +53,7 @@ public class PlatformTriggerFade : MonoBehaviour
 
             if (offPlatformFade && !onPlatformFade && !platformDespawned)
             {
-                Debug.Log("Stops Despawn routine");
-                //StopCoroutine(coroutine);
-                //Invoke("platformScriptableObject.CancelDespawn(gameObject)", durationTime);
+                Debug.Log("Stops Despawn routine");             
                 StartCoroutine(CancelDespawn(gameObject, cancelFadeTime));
                 offPlatformFade = false;
                 onPlatformFade = false;
@@ -109,7 +107,7 @@ public class PlatformTriggerFade : MonoBehaviour
 
     public IEnumerator CancelDespawn (GameObject target, float time)
     {
-        StopCoroutine(respawnCoroutine);
+        StopCoroutine(despawnCoroutine);
         Debug.Log("CancelDespawn Starts");
         yield return new WaitForSeconds(time);
         platformScriptableObject.CancelDespawn(target);
