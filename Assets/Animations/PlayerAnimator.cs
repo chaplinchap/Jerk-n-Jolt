@@ -21,6 +21,8 @@ public class PlayerAnimator : MonoBehaviour
     const string charge = "PusherCharging";
     const string attack = "PusherAttack";
     const string runningCharge = "PusherRunningCharge";
+    const string jumpingCharge = "PusherJumpCharge";
+    const string jumpingAttack = "PusherJumpAttack";
 
 
     void Start()
@@ -33,11 +35,20 @@ public class PlayerAnimator : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyUp(push.pushOnPress) )
+        if (Input.GetKeyUp(push.pushOnPress) && isAttacking)
         {
             isAttackFinished = false;
 
-            ChangeAnimationState(attack);
+            
+            if (!move.IsGrounded())
+            {
+                ChangeAnimationState(jumpingAttack);
+
+            }
+             else{
+            
+                ChangeAnimationState(attack);
+            }
 
             //float delay = animator.GetCurrentAnimatorStateInfo(0).length;
 
@@ -57,7 +68,7 @@ public class PlayerAnimator : MonoBehaviour
 
         if (isAttacking && isAttackFinished && move.IsGrounded()) {
 
-            if (Input.GetKey(move.moveLeft) || Input.GetKey(move.moveRight))
+            if (move.rb.velocity.x !=0)
             {
 
                 ChangeAnimationState(runningCharge);
@@ -74,7 +85,7 @@ public class PlayerAnimator : MonoBehaviour
         if (move.IsGrounded() && !isAttacking)
         {
 
-            if (Input.GetKey(move.moveLeft) || Input.GetKey(move.moveRight))
+            if (move.rb.velocity.x != 0)
             {
                 ChangeAnimationState(running);
             }
@@ -86,10 +97,19 @@ public class PlayerAnimator : MonoBehaviour
         }
 
 
-        if (move.rb.velocity.y > 0.2f) {
-            ChangeAnimationState(jumping);
-        }
+        if (move.rb.velocity.y > 0.2f && isAttackFinished)
+        {
 
+            if (isAttacking)
+            {
+                ChangeAnimationState(jumpingCharge);
+            }
+            else
+            {
+                ChangeAnimationState(jumping);
+
+            }
+        }
 
     }
 
