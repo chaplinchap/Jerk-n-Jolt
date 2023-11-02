@@ -11,7 +11,6 @@ public class PlayerAnimator : MonoBehaviour
     private PlayerMovement move;
     private Push push;
 
-
     bool isAttacking = false;
     bool isAttackFinished = true;
 
