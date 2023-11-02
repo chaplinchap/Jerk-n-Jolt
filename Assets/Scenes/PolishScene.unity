@@ -206,6 +206,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3112094983763757771, guid: b5a9d50bedd137d42bed75c095f370bb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423668607757432920, guid: b5a9d50bedd137d42bed75c095f370bb, type: 3}
+      propertyPath: duration
+      value: 0.498
+      objectReference: {fileID: 0}
     - target: {fileID: 6233422998513018790, guid: b5a9d50bedd137d42bed75c095f370bb, type: 3}
       propertyPath: m_Name
       value: TimeManager
@@ -2451,7 +2459,7 @@ MonoBehaviour:
   playersHealth:
   - {fileID: 6028297809312690273}
   - {fileID: 6851087558206985621}
-  player1: {fileID: 5716928097360411092}
+  player1: {fileID: 0}
   text: {fileID: 1101449635}
 --- !u!114 &1836267742
 MonoBehaviour:
@@ -2465,11 +2473,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2533db6c8852164082b7556b207bcaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Continue: {fileID: 1773792188}
-  Exit: {fileID: 2102466516}
-  StartAgain: {fileID: 392292239}
-  PauseMenu: {fileID: 352075260}
-  sceneToLoad: PolishScene
+  Continue: {fileID: 0}
+  Exit: {fileID: 0}
+  StartAgain: {fileID: 0}
+  PauseMenu: {fileID: 0}
+  sceneToLoad: 
 --- !u!1 &1868354263
 GameObject:
   m_ObjectHideFlags: 0

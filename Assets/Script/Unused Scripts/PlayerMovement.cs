@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
@@ -141,7 +141,7 @@ public class PlayerMovement_Force : MonoBehaviour
             yield return new WaitForSeconds (10f);
             hasPressedJump = false;
         }
-        
+        */
     }
 
     private bool IsGrounded()
@@ -164,4 +164,3 @@ public class PlayerMovement_Force : MonoBehaviour
 
 
 }
-*/

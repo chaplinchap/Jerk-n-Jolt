@@ -6,10 +6,6 @@ public class VerticalMovingPlatform : MonoBehaviour
     public float speed = 1f; //The speed at which it will float
     Vector2 MovePos, StartPos;
 
-    [Range (-1, 1)] // Dont put it on 0!
-    public int initialDirection = 1;
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +15,8 @@ public class VerticalMovingPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Vertical
-        MovePos.y = StartPos.y + initialDirection * Mathf.Sin(Time.time * speed) * Distance;
+        //horizontal
+        MovePos.y = StartPos.y + Mathf.Sin(Time.time * speed) * Distance;
         transform.position = new Vector2(transform.position.x, MovePos.y);
     }
 
@@ -42,13 +38,13 @@ public class VerticalMovingPlatform : MonoBehaviour
     }
 
     private void OnDrawGizmos()
-{
-    Gizmos.color = Color.red; // Set the color for the Gizmos
+    {
+        Gizmos.color = Color.red; // Set the color for the Gizmos
 
-    // Draw a vertical line representing the floating range of the platform
-    Vector2 startPos = StartPos + new Vector2(0, -Distance);
-    Vector2 endPos = StartPos + new Vector2(0, Distance);
+        // Draw a line representing the floating range of the platform
+        Vector2 startPos = StartPos + new Vector2(0, -Distance);
+        Vector2 endPos = StartPos + new Vector2(0, Distance);
 
-    Gizmos.DrawLine(startPos, endPos);
-}
+        Gizmos.DrawLine(startPos, endPos);
+    }
 }

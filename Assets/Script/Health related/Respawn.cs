@@ -13,11 +13,18 @@ public class Respawn : MonoBehaviour
     public GameObject Puller;
     public GameObject PullerRespawnPoint;
     public Health Pul_healthScript; //reference to Health script
-    
-    
-    private float respawnDelay = 1f; //Decide when should respawn
 
-    
+    [Header("Respawn Delay")]
+    public float respawnDelay = 1f; //Decide when should respawn
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Pusher"))
@@ -49,11 +56,13 @@ public class Respawn : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnDelay);
         Spawn(Pusher, PusherRespawnPoint);
+        
 
         // If player has more health it will spawn
         if (Push_healthScript.currentHealth > 0) {
             Pusher.gameObject.SetActive(true);
             Debug.Log("Player Spawns");
+            audioManager.PlaySFX(audioManager.respawn);
         }
         
         // If player has no more health left it will not spawn
@@ -67,15 +76,21 @@ public class Respawn : MonoBehaviour
         yield return new WaitForSeconds(respawnDelay);
         Spawn(Puller, PullerRespawnPoint);
         
+
         // If player has more health it will spawn
         if (Pul_healthScript.currentHealth > 0) {
             Puller.gameObject.SetActive(true);
             Debug.Log("Player Spawns");
+            audioManager.PlaySFX(audioManager.respawn);
+            
         }
 
         // If player has no more health left it will not spawn
-        else {
+        else 
+        {
             Debug.Log("The player is dead and will not spawn");
         }  
     }
+
+   
 }
