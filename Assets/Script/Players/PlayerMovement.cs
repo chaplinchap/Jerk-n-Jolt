@@ -8,13 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public BoxCollider2D playerCollider;    
     public BoxCollider2D feet;
 
+
     public float time = 0.15f;
 
     private LayerMask throughGround = 10;
     private LayerMask defaultLayer = 0;
 
     public float speed = 8f;
-    public float jumpingPower = 8f;
+    public float jumpingPower = 2f;
     public int movementX = 0;
 
     public KeyCode jumpUp; 
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isFacingRight = true;
     private bool lastPressedRight = false;
+    private bool pressedJump = false;
 
 
     // Start is called before the first frame update
@@ -36,6 +38,46 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        KeyInputs();
+
+        Flip();
+    }
+    private void FixedUpdate()
+    {
+        Movement();
+        Jump();
+    }
+
+
+
+
+     // METHODES \\ 
+
+    public bool IsGrounded()
+    {
+         return Physics2D.BoxCast(feet.bounds.center, feet.bounds.size, 0f, Vector2.down, 0.01f, platformSurface);
+    }
+
+
+    private void Flip()
+    {
+        if (isFacingRight && movementX < 0f || !isFacingRight && movementX > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
+    }
+
+    private IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(time);
+        playerCollider.gameObject.layer = defaultLayer;
+    }
+
+    private void KeyInputs() 
+    {
         if (Input.GetKeyDown(moveRight))
         {
             lastPressedRight = true;
@@ -45,8 +87,8 @@ public class PlayerMovement : MonoBehaviour
         {
             lastPressedRight = false;
         }
-        
-       if (Input.GetKey(moveRight) && Input.GetKey(moveLeft))
+
+        if (Input.GetKey(moveRight) && Input.GetKey(moveLeft))
         {
             if (lastPressedRight)
             {
@@ -70,13 +112,10 @@ public class PlayerMovement : MonoBehaviour
             movementX = -1;
         }
 
-      
-        if (Input.GetKeyDown(jumpUp))
+
+        if (Input.GetKeyDown(jumpUp) && IsGrounded())
         {
-            if(IsGrounded())
-            {
-                rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
-            }
+            pressedJump = true;
         }
 
         if (Input.GetKeyDown(throughButton) && IsGrounded())
@@ -84,46 +123,30 @@ public class PlayerMovement : MonoBehaviour
             playerCollider.gameObject.layer = throughGround;
             StartCoroutine(WaitTime());
         }
-
-
-        Flip();
-
     }
-    private void FixedUpdate()
-    {
 
-        if (movementX == 1) 
+
+    private void Movement()
+    {
+        if (movementX == 1)
         {
             rb.AddForce(Vector2.right * speed, ForceMode2D.Force);
-            movementX = 0;            
+            movementX = 0;
         }
-         
-         else if (movementX == -1) 
-        { 
-            rb.AddForce(Vector2.left * speed, ForceMode2D.Force);
-            movementX = 0;           
-        }
-    }
 
-     bool IsGrounded()
-    {
-         return Physics2D.BoxCast(feet.bounds.center, feet.bounds.size, 0f, Vector2.down, 0.01f, platformSurface);
-    }
-
-    private void Flip()
-    {
-        if (isFacingRight && movementX < 0f || !isFacingRight && movementX > 0f)
+        else if (movementX == -1)
         {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+            rb.AddForce(Vector2.left * speed, ForceMode2D.Force);
+            movementX = 0;
         }
     }
 
-    private IEnumerator WaitTime()
+    private void Jump() 
     {
-        yield return new WaitForSeconds(time);
-        playerCollider.gameObject.layer = defaultLayer;
+        if (pressedJump)
+        {
+            rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
+            pressedJump = false;
+        }
     }
 }

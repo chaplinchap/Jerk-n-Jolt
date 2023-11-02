@@ -26,17 +26,4 @@ public class FieldTrigger : MonoBehaviour
 
     }
 
-    void Start()
-    {
-
-
-    }
-
-
-    void FixedUpdate()
-    {
-
-    }
-
-
 }
