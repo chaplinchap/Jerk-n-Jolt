@@ -50,9 +50,13 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         if (player1.activeInHierarchy)
-        text.text = "Player 1 Wins";
-        else 
-        text.text = "Player 2 Wins";
+        {
+            text.text = "Player 1 Wins";
+        }
+        else
+        {
+            text.text = "Player 2 Wins";
+        }
     }
 
 }

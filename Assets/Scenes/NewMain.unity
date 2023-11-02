@@ -1145,8 +1145,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1836267742}
-        m_TargetAssemblyTypeName: ContinueGame, Assembly-CSharp
-        m_MethodName: ExitbuttonPressed
+        m_TargetAssemblyTypeName: PausedGameUI, Assembly-CSharp
+        m_MethodName: Goback
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1829,8 +1829,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1836267742}
-        m_TargetAssemblyTypeName: ContinueGame, Assembly-CSharp
-        m_MethodName: ExitbuttonPressed
+        m_TargetAssemblyTypeName: PausedGameUI, Assembly-CSharp
+        m_MethodName: Goback
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2096,7 +2096,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1836267742}
-        m_TargetAssemblyTypeName: ContinueGame, Assembly-CSharp
+        m_TargetAssemblyTypeName: PausedGameUI, Assembly-CSharp
         m_MethodName: ContinuebuttonPressed
         m_Mode: 1
         m_Arguments:
@@ -3359,6 +3359,10 @@ PrefabInstance:
       propertyPath: m_Targets.Array.data[1].target
       value: 
       objectReference: {fileID: 1449906323}
+    - target: {fileID: 2482511055653295656, guid: 583c4ba6a49f11e408b2e62d3c2d9e26, type: 3}
+      propertyPath: m_Damping
+      value: 0.68
+      objectReference: {fileID: 0}
     - target: {fileID: 3506892869185282501, guid: 583c4ba6a49f11e408b2e62d3c2d9e26, type: 3}
       propertyPath: m_Name
       value: Virtual Camera
@@ -3536,12 +3540,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1836267739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2533db6c8852164082b7556b207bcaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 405ca609194386947b78a1f9a441342f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Continue: {fileID: 1773792188}
-  Exit: {fileID: 2102466516}
-  StartAgain: {fileID: 392292239}
   PauseMenu: {fileID: 352075260}
   sceneToLoad: NewMain
 --- !u!1 &1868354263
@@ -3867,6 +3868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   speed: 1
+  initialDirection: 1
 --- !u!4 &2004958716 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8268484747344192969, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
@@ -3886,6 +3888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   speed: 1
+  initialDirection: -1
 --- !u!1001 &2052788771
 PrefabInstance:
   m_ObjectHideFlags: 0

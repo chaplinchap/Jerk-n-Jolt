@@ -7,7 +7,7 @@ public class ConsumV4 : MonoBehaviour
     public List<Rect> spawnAreas = new List<Rect>();
     public float minSpawnDelay = 2f;  // Change as needed
     public float maxSpawnDelay = 5f;  // Change as needed
-    private int maxSpawnAttempts = 100; // Maximum attempts to find a valid position
+    private int maxSpawnAttempts = 1000; // Maximum attempts to find a valid position
     private float minDistanceBetweenItems = 1f; // Distance between itemPrefabs
 
     private float nextSpawnTime;
@@ -47,7 +47,7 @@ public class ConsumV4 : MonoBehaviour
                     validPosition = true;
                     break;
                 }
-
+                Debug.Log("Checks for spawn position");
                 attempts++;
             }
 
