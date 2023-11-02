@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public BoxCollider2D playerCollider;    
     public BoxCollider2D feet;
 
-    public float time = 0.25f;
+    public float time = 0.15f;
 
     private LayerMask throughGround = 10;
     private LayerMask defaultLayer = 0;
@@ -26,8 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isFacingRight = true;
     private bool lastPressedRight = false;
-    private bool canJump;
-
+    [SerializeField] bool hasJumped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,14 +52,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 movementX = 1;
             }
-
             else
             {
                 movementX = -1;
             }
-
         }
-
         else if (Input.GetKey(moveRight))
         {
             movementX = 1;
@@ -70,10 +66,13 @@ public class PlayerMovement : MonoBehaviour
         {
             movementX = -1;
         }
-
-       if (IsGrounded())
+       
+        if (hasJumped == true)
         {
-            canJump = true; //when on ground allow player to jump
+            if (IsGrounded())
+            {
+                hasJumped = false;
+            }
         }
       
         if (Input.GetKeyDown(jumpUp))
@@ -81,28 +80,16 @@ public class PlayerMovement : MonoBehaviour
             if(IsGrounded())
             {
                 rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
-                Invoke (nameof(anotherJump), 0.1f); //Calls for a boolean statement to be false. Needs a delay otherwise it just gonna check for ground and check true right away             
-                //anotherJump(); // Cannot jump again
-                Debug.Log("jump");
-            }
-            else if (canJump) 
-            {
-                rb.AddForce(Vector2.up * jumpingPower*1.3f, ForceMode2D.Impulse); //jumping force +added a bit more power, for the jump to look okay
-                anotherJump(); // Cannot jump again
-                Debug.Log("you saved your ass!");
+                hasJumped = true;
             }
         }
-
 
         if (Input.GetKeyDown(throughButton) && IsGrounded())
         {
             playerCollider.gameObject.layer = throughGround;
             StartCoroutine(WaitTime());
         }
-
-
         Flip();
-
     }
     private void FixedUpdate()
     {
@@ -120,11 +107,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void anotherJump()
-    {
-        canJump = false;
-    }
-    public bool IsGrounded()
+     bool IsGrounded()
     {
          return Physics2D.BoxCast(feet.bounds.center, feet.bounds.size, 0f, Vector2.down, 0.01f, platformSurface);
     }

@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 8684249045343630653}
   - component: {fileID: 158651740227473327}
   - component: {fileID: 1597502361969031818}
-  - component: {fileID: 8028544214276844121}
-  - component: {fileID: 4802237781070576512}
   m_Layer: 0
   m_Name: Hearts
   m_TagString: Untagged
@@ -146,29 +144,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
---- !u!114 &8028544214276844121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7116104095172799416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ad0d7fec8ecdd54dbc98efdecacd80d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wave: 0.25
-  speed: 1
---- !u!114 &4802237781070576512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7116104095172799416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3784ad4363aeb1f4298799f3fedcf808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
