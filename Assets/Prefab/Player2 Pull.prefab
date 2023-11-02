@@ -404,30 +404,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7831007007408972477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c84a5fa72b13f48b0479672d93bd88, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f71eecd0413e1748bd0e7f8e3e6ff18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8386127129370546744}
   playerCollider: {fileID: 8152077003433105955}
   feet: {fileID: 7600740549158947554}
   time: 0.15
-  speed: 160
-  jumpingPower: 60
+  speed: 8
+  jumpingPower: 8
   movementX: 0
-  doubleJumpingPower: 40
-  jumpUp: 273
-  moveRight: 275
-  moveLeft: 276
-  throughButton: 274
-  Wall:
-    serializedVersion: 2
-    m_Bits: 512
-  WallCheck: {fileID: 344273215120220937}
+  jumpUp: 105
+  moveRight: 108
+  moveLeft: 106
+  throughButton: 107
   platformSurface:
     serializedVersion: 2
     m_Bits: 2048
-  hasPressedJump: 0
-  doubleJump: 0
 --- !u!114 &847568949796497890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,9 +435,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pullForce: 30
   pullOnPress: 109
+  extraForce: 1
   pusherLayer:
     serializedVersion: 2
     m_Bits: 256
+  timer: 0
+  chargingTime: 2
 --- !u!114 &8658766195836136235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +455,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 3
   currentHealth: 0
-  sceneToLoad: midlertidigScene
-  gameIsOver: 0
-  uim: {fileID: 0}
