@@ -1,11 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public BoxCollider2D playerCollider;    
+    public BoxCollider2D playerCollider;
     public BoxCollider2D feet;
 
     public float time = 0.15f;
@@ -17,10 +17,10 @@ public class PlayerMovement : MonoBehaviour
     public float jumpingPower = 8f;
     public int movementX = 0;
 
-    public KeyCode jumpUp; 
+    public KeyCode jumpUp;
     public KeyCode moveRight;
     public KeyCode moveLeft;
-    public KeyCode throughButton; 
+    public KeyCode throughButton;
 
     [SerializeField] private LayerMask platformSurface;
 
@@ -45,8 +45,8 @@ public class PlayerMovement : MonoBehaviour
         {
             lastPressedRight = false;
         }
-        
-       if (Input.GetKey(moveRight) && Input.GetKey(moveLeft))
+
+        if (Input.GetKey(moveRight) && Input.GetKey(moveLeft))
         {
             if (lastPressedRight)
             {
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         {
             movementX = -1;
         }
-       
+
         if (hasJumped == true)
         {
             if (IsGrounded())
@@ -74,10 +74,10 @@ public class PlayerMovement : MonoBehaviour
                 hasJumped = false;
             }
         }
-      
+
         if (Input.GetKeyDown(jumpUp))
         {
-            if(IsGrounded())
+            if (IsGrounded())
             {
                 rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
                 hasJumped = true;
@@ -94,22 +94,22 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (movementX == 1) 
+        if (movementX == 1)
         {
             rb.AddForce(Vector2.right * speed, ForceMode2D.Force);
-            movementX = 0;            
+            movementX = 0;
         }
-         
-         else if (movementX == -1) 
-        { 
+
+        else if (movementX == -1)
+        {
             rb.AddForce(Vector2.left * speed, ForceMode2D.Force);
-            movementX = 0;           
+            movementX = 0;
         }
     }
 
-     bool IsGrounded()
+    bool IsGrounded()
     {
-         return Physics2D.BoxCast(feet.bounds.center, feet.bounds.size, 0f, Vector2.down, 0.01f, platformSurface);
+        return Physics2D.BoxCast(feet.bounds.center, feet.bounds.size, 0f, Vector2.down, 0.01f, platformSurface);
     }
 
     private void Flip()

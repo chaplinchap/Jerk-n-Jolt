@@ -210,9 +210,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3112094983763757771, guid: b5a9d50bedd137d42bed75c095f370bb, type: 3}
+      propertyPath: slowdownFactor
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 3112094983763757771, guid: b5a9d50bedd137d42bed75c095f370bb, type: 3}
+      propertyPath: slowdownLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5423668607757432920, guid: b5a9d50bedd137d42bed75c095f370bb, type: 3}
       propertyPath: duration
-      value: 0.498
+      value: 0.071
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423668607757432920, guid: b5a9d50bedd137d42bed75c095f370bb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6233422998513018790, guid: b5a9d50bedd137d42bed75c095f370bb, type: 3}
       propertyPath: m_Name

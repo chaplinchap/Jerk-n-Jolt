@@ -99,7 +99,7 @@ public class Push : MonoBehaviour
         {
             hasPressedPush = false;
             audioManager.PlaySFX(audioManager.push);
-            freeze.Freeze();
+            //freeze.Freeze();
         }
         Timer();
 
@@ -170,7 +170,8 @@ public class Push : MonoBehaviour
         else if (Input.GetKeyUp(pushOnPress) && timer > chargingTime && pushField.inField)
         {
             hasCharged = true;
-            slowMotion.DoSlowmotion();
+            //slowMotion.DoSlowmotion(); 
+            freeze.Freeze();
             SetPitch();
         }
         else if (Input.GetKeyUp(pushOnPress) && pushField.inField)

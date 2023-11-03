@@ -9874,7 +9874,7 @@ GameObject:
   - component: {fileID: 7719585137359669761}
   - component: {fileID: 6963166518732996147}
   - component: {fileID: 898157367118283664}
-  - component: {fileID: 1348747421246163553}
+  - component: {fileID: -6188233848807894872}
   - component: {fileID: 936007456463318814}
   - component: {fileID: 2499878951222969756}
   m_Layer: 0
@@ -10029,7 +10029,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1348747421246163553
+--- !u!114 &-6188233848807894872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10044,7 +10044,7 @@ MonoBehaviour:
   rb: {fileID: 6963166518732996147}
   playerCollider: {fileID: 898157367118283664}
   feet: {fileID: 7904101445794725421}
-  time: 0.2
+  time: 0.3
   speed: 160
   jumpingPower: 60
   movementX: 0
@@ -10072,11 +10072,11 @@ MonoBehaviour:
   pushOnPress: 32
   chargingTime: 2
   extraForce: 1
-  timeManager: {fileID: 0}
+  slowMotion: {fileID: 0}
+  freeze: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 850058da11c79b7419b8eec230ea1087, type: 2}
   pitchValue: 0.4
   audioCoolDown: 0.3
-  freeze: {fileID: 0}
   deathParticles: {fileID: 2653249403125423823}
   landingParticles: {fileID: 1157186885578406772}
 --- !u!114 &2499878951222969756

@@ -5222,7 +5222,7 @@ MonoBehaviour:
   rb: {fileID: 6086269410677205165}
   playerCollider: {fileID: 1243911877509427456}
   feet: {fileID: 4578309076332800655}
-  time: 0.2
+  time: 0.3
   speed: 160
   jumpingPower: 60
   movementX: 0
