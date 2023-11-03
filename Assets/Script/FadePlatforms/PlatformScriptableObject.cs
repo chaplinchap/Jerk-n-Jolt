@@ -13,4 +13,6 @@ public abstract class PlatformScriptableObject : ScriptableObject
 
     public abstract void Spawn(GameObject target);
 
+    public abstract void Destroy(GameObject target);
+
 }

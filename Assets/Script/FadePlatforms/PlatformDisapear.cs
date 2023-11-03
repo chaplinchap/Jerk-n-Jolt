@@ -48,6 +48,11 @@ public class PlatformDisapear : PlatformScriptableObject
 
     }
 
+    public override void Destroy(GameObject target)
+    {
+        target.SetActive(false);
+    }
+
     public void Start()
     {
         

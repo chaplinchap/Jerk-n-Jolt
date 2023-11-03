@@ -7,7 +7,7 @@ public class PlatformTriggerFade : MonoBehaviour
 {
 
     public PlatformScriptableObject platformScriptableObject;
-    public float durationTime = 3f;
+    public float durationTime = 1.5f;
     public float cancelFadeTime = 1f;
 
     [SerializeField] private bool onPlatformFade = false;
@@ -91,7 +91,7 @@ public class PlatformTriggerFade : MonoBehaviour
 
     public IEnumerator StartDespawn(GameObject target, float time)
     {
-        for(int i = 0; i <= 3; i++)
+        for(int i = 0; i <= 4; i++)
         {
             yield return new WaitForSeconds(time);
             platformScriptableObject.Fade(target);
@@ -118,7 +118,7 @@ public class PlatformTriggerFade : MonoBehaviour
     public IEnumerator Respawn(GameObject target, float time)
     {
         Debug.Log("Respawns Platform");
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(time * 2);
         platformScriptableObject.Spawn(target);     
 
     }

@@ -6,9 +6,9 @@ public class GameStateChangePlatformDespawns : MonoBehaviour
 {
 
     [SerializeField] PlatformScriptableObject platformScriptableObject;
-    [SerializeField] private float gamestateChangeTimer = 10f;
+    private float gamestateChangeTimer = 120f;
+   
 
-    private bool gamestateChangeEnabled = false;
     private IEnumerator startGameStateChange;
 
 
@@ -29,7 +29,15 @@ public class GameStateChangePlatformDespawns : MonoBehaviour
     public IEnumerator startCountDown(GameObject target, float time)
     {
         Debug.Log("CountDown starts");
+        
         yield return new WaitForSeconds(time);
-        platformScriptableObject.Despawn(target);
+        Debug.Log("Destroying platform starts");
+        for (int i = 0; i <= 5;  i++)
+        {
+            yield return new WaitForSeconds(1f);
+            platformScriptableObject.Fade(target);
+        }
+
+        platformScriptableObject.Destroy(target);
     }
 }
