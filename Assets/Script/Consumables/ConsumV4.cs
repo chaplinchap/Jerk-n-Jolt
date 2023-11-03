@@ -10,6 +10,8 @@ public class ConsumV4 : MonoBehaviour
     private int maxSpawnAttempts = 1000; // Maximum attempts to find a valid position
     private float minDistanceBetweenItems = 0f; // Distance between itemPrefabs
 
+
+
     private float nextSpawnTime;
     private List<Vector2> spawnedItemPositions = new List<Vector2>();
 

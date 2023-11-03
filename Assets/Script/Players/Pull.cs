@@ -80,7 +80,7 @@ public class Pull : MonoBehaviour
 
     private void ThePull(float extraForce) 
     {
-        rigidbodyPusher.AddForce(-VectorBetween().normalized * pullForce * extraForce, ForceMode2D.Impulse);
+        rigidbodyPusher.AddForce(-VectorBetween() * pullForce * extraForce, ForceMode2D.Impulse);
         hasPressedPull = false;
         boxColliderPusher.gameObject.layer = pushLayer;
         StartCoroutine(ChangeLayer());
