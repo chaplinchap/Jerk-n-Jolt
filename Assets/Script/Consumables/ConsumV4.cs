@@ -7,10 +7,18 @@ public class ConsumV4 : MonoBehaviour
     public List<Rect> spawnAreas = new List<Rect>();
     public float minSpawnDelay = 2f;  // Change as needed
     public float maxSpawnDelay = 5f;  // Change as needed
-    private int maxSpawnAttempts = 1000; // Maximum attempts to find a valid position
-    private float minDistanceBetweenItems = 0f; // Distance between itemPrefabs
+    private int maxSpawnAttempts = 100; // Maximum attempts to find a valid position
+    private float minDistanceBetweenItems = 1f; // Distance between itemPrefabs
+
+    public int maxConsumables = 3;
+    public int currentConsumables = 0;
+
+    
 
 
+ 
+    
+    
 
     private float nextSpawnTime;
     private List<Vector2> spawnedItemPositions = new List<Vector2>();
@@ -22,7 +30,10 @@ public class ConsumV4 : MonoBehaviour
 
     void Update()
     {
-        if (Time.time >= nextSpawnTime)
+     
+
+
+        if (Time.time >= nextSpawnTime && currentConsumables < maxConsumables)
         {
             // Choose a random spawn area and item prefab
             int randomSpawnAreaIndex = Random.Range(0, spawnAreas.Count);
@@ -49,7 +60,7 @@ public class ConsumV4 : MonoBehaviour
                     validPosition = true;
                     break;
                 }
-                Debug.Log("Checks for spawn position");
+
                 attempts++;
             }
 
@@ -64,9 +75,9 @@ public class ConsumV4 : MonoBehaviour
 
             // Instantiate the selected item prefab at the random position
             GameObject selectedItemPrefab = itemPrefabs[randomItemPrefabIndex];
-            GameObject newItem = Instantiate(selectedItemPrefab, randomPosition, Quaternion.identity);
-            newItem.GetComponent<Item>().OnConsumed += () => RemovePositionFromList(randomPosition);
-
+            Instantiate(selectedItemPrefab, randomPosition, Quaternion.identity);
+            currentConsumables++;
+            
 
             // Set the next spawn time
             nextSpawnTime = Time.time + GetRandomSpawnTime();
@@ -91,14 +102,9 @@ public class ConsumV4 : MonoBehaviour
         return true;
     }
 
-    void RemovePositionFromList(Vector2 position)
-    {
-        spawnedItemPositions.Remove(position);
-    }
-
 
     //for Debugging purpose. Shows area where objects can spawn
-   void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         foreach (var spawnArea in spawnAreas)
@@ -111,4 +117,30 @@ public class ConsumV4 : MonoBehaviour
             Gizmos.DrawLine(min, new Vector3(max.x, min.y, 0));
         }
     }
+
+    /*
+    public int CurrentConsumables
+    {
+        get{
+            return currentConsumables;
+        }
+
+        set
+        {
+            currentConsumables = value;
+        }
+    }
+    */
+
+    /*
+    public int GetCurrentConsumables()
+    {
+        return currentConsumables;
+    }
+    public int SetCurrentConsumables (int setCurrenConsumables) 
+    {
+        currentConsumables = setCurrenConsumables;
+        return setCurrenConsumables;
+    }
+    */
 }

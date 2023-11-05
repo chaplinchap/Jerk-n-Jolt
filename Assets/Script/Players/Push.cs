@@ -10,7 +10,10 @@ public class Push : MonoBehaviour
     private Rigidbody2D rigidbodyPuller;
     private FieldTrigger pushField;
 
-    public float pushForce = 100;
+
+    
+    public float pushForce = 100; 
+
     public KeyCode pushOnPress;
     private bool hasPressedPush = false;
 
@@ -117,4 +120,6 @@ public class Push : MonoBehaviour
             timer += Time.deltaTime;
         }
     }
+
+
 }
