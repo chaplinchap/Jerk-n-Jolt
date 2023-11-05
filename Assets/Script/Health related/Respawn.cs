@@ -1,18 +1,23 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
+
+    public List<GameObject> randomSpawnPoints = new List<GameObject>();
+
+
     //Varibles declared
     [Header("Pusher Settings")]
-    public GameObject Pusher;
-    public GameObject PusherRespawnPoint;
-    public Health Push_healthScript; //reference to Health script
+    public GameObject pusher;
+    // public GameObject PusherRespawnPoint;
+    public Health pushHealthScript; //reference to Health script
     
     [Header("Puller Settings")]
-    public GameObject Puller;
-    public GameObject PullerRespawnPoint;
-    public Health Pul_healthScript; //reference to Health script
+    public GameObject puller;
+    // public GameObject PullerRespawnPoint;
+    public Health pullHealthScript; //reference to Health script
     
     
     private float respawnDelay = 1f; //Decide when should respawn
@@ -20,9 +25,12 @@ public class Respawn : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // int randomSpawnPoint = Random.Range(0, randomSpawnPoints.Count);
+
         if (collision.gameObject.CompareTag("Pusher"))
         {
-            Pusher.gameObject.SetActive(false);
+           
+            pusher.gameObject.SetActive(false);
             StartCoroutine(RespawnPusher());   
             Debug.Log("Player has fallen out");
         }
@@ -30,7 +38,7 @@ public class Respawn : MonoBehaviour
         //Puller player repspawn
         if (collision.gameObject.CompareTag("Puller"))
         {
-            Puller.gameObject.SetActive(false);
+            puller.gameObject.SetActive(false);
             StartCoroutine(RespawnPuller());   
             Debug.Log("Player has fallen out");
         }
@@ -47,12 +55,16 @@ public class Respawn : MonoBehaviour
 
     private IEnumerator RespawnPusher()
     {
+        int randomSpawnPoint = Random.Range(0, randomSpawnPoints.Count);
+        GameObject selectedSpawnPoint = randomSpawnPoints[randomSpawnPoint];
+
+        
         yield return new WaitForSeconds(respawnDelay);
-        Spawn(Pusher, PusherRespawnPoint);
+        Spawn(pusher, selectedSpawnPoint);
 
         // If player has more health it will spawn
-        if (Push_healthScript.currentHealth > 0) {
-            Pusher.gameObject.SetActive(true);
+        if (pushHealthScript.currentHealth > 0) {
+            pusher.gameObject.SetActive(true);
             Debug.Log("Player Spawns");
         }
         
@@ -64,12 +76,15 @@ public class Respawn : MonoBehaviour
 
     private IEnumerator RespawnPuller()
     {
+        int randomSpawnPoint = Random.Range(0, randomSpawnPoints.Count);
+        GameObject selectedSpawnPoint = randomSpawnPoints[randomSpawnPoint];
+
         yield return new WaitForSeconds(respawnDelay);
-        Spawn(Puller, PullerRespawnPoint);
+        Spawn(puller, selectedSpawnPoint);
         
         // If player has more health it will spawn
-        if (Pul_healthScript.currentHealth > 0) {
-            Puller.gameObject.SetActive(true);
+        if (pullHealthScript.currentHealth > 0) {
+            puller.gameObject.SetActive(true);
             Debug.Log("Player Spawns");
         }
 

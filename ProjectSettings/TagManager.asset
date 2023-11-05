@@ -18,7 +18,7 @@ TagManager:
   - FadingPlatform3
   - FadingPlatform4
   - FadingPlatform5
-  - ConsumableManager
+  - Consumables
   layers:
   - Default
   - TransparentFX

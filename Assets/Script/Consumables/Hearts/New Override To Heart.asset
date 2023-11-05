@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: New Override To Heart
   m_EditorClassIdentifier: 
   hp: 1
-  startingPowerPush: 0
-  startingPowerPull: 0
-  startingMoveSpeedPush: 0
-  startingMoveSpeedPull: 0
-  startingFrictionPush: 0
-  startingFrictionPull: 0
+  startingPowerPush: 100
+  startingPowerPull: 35
+  startingMoveSpeedPush: 160
+  startingMoveSpeedPull: 160
+  startingFrictionPush: 0.5
+  startingFrictionPull: 0.5

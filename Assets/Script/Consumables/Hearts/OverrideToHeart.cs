@@ -14,14 +14,14 @@ public class OverrideToHeart : ConsumableScriptableObject
     private float amountSpeedReduced = 1.4f;
     private float amountFrictionReduced = 20;
 
-    public float startingPowerPush;
-    public float startingPowerPull;
+    public float startingPowerPush = 100;
+    public float startingPowerPull = 35;
 
-    public float startingMoveSpeedPush;
-    public float startingMoveSpeedPull;
+    public float startingMoveSpeedPush = 160;
+    public float startingMoveSpeedPull = 160;
 
-    public float startingFrictionPush;
-    public float startingFrictionPull;
+    public float startingFrictionPush = 0.5f;
+    public float startingFrictionPull = 0.5f;
 
 
     public override void ApplyPusher(GameObject target)
@@ -30,10 +30,11 @@ public class OverrideToHeart : ConsumableScriptableObject
         Debug.Log("the dice roll was: " + rollDice);
 
         target.GetComponent<Health>().GiveHP(hp);
-
+        /*
         startingFrictionPush = target.GetComponent<Rigidbody2D>().sharedMaterial.friction;
         startingMoveSpeedPush = target.GetComponent<PlayerMovement>().speed;
         startingPowerPush = target.GetComponent<Push>().pushForce;
+        */
 
         if (rollDice == 1)
         {
@@ -60,10 +61,11 @@ public class OverrideToHeart : ConsumableScriptableObject
         rollDice = Random.Range(1, 4);
 
         target.GetComponent<Health>().GiveHP(hp);
+        /*
         startingPowerPull = target.GetComponent<Pull>().pullForce;
         startingMoveSpeedPull = target.GetComponent<PlayerMovement>().speed;
         startingFrictionPull = target.GetComponent<Rigidbody2D>().sharedMaterial.friction;
-
+        */
         if (rollDice == 1)
         {
             target.GetComponent<Pull>().pullForce /= amountPowerReduced;

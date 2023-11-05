@@ -11,10 +11,12 @@ public class ConsumV4 : MonoBehaviour
     private float minDistanceBetweenItems = 1f; // Distance between itemPrefabs
 
     public int maxConsumables = 3;
-    public int currentConsumables = 0;
+    public int currentConsumablesTracker = 0;
 
-    
-
+    /*
+    public GameObject consumbleParentObject;
+    private ConsumableParentObject consumableParent;
+    */
 
  
     
@@ -25,6 +27,7 @@ public class ConsumV4 : MonoBehaviour
 
     void Start()
     {
+        // consumableParent = consumbleParentObject.GetComponent<ConsumableParentObject>();
         nextSpawnTime = GetRandomSpawnTime();
     }
 
@@ -33,8 +36,10 @@ public class ConsumV4 : MonoBehaviour
      
 
 
-        if (Time.time >= nextSpawnTime && currentConsumables < maxConsumables)
+        if (Time.time >= nextSpawnTime && /* consumableParent.GetCurrentConsumables()*/ currentConsumablesTracker < maxConsumables)
         {
+            // currentConsumablesTracker = consumableParent.GetCurrentConsumables();
+
             // Choose a random spawn area and item prefab
             int randomSpawnAreaIndex = Random.Range(0, spawnAreas.Count);
             int randomItemPrefabIndex = Random.Range(0, itemPrefabs.Count);
@@ -76,8 +81,10 @@ public class ConsumV4 : MonoBehaviour
             // Instantiate the selected item prefab at the random position
             GameObject selectedItemPrefab = itemPrefabs[randomItemPrefabIndex];
             Instantiate(selectedItemPrefab, randomPosition, Quaternion.identity);
-            currentConsumables++;
-            
+            currentConsumablesTracker++;
+            // consumableParent.SetCurrentConsumables(currentConsumablesTracker);
+
+
 
             // Set the next spawn time
             nextSpawnTime = Time.time + GetRandomSpawnTime();

@@ -83,13 +83,13 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
                 Invoke (nameof(anotherJump), 0.1f); //Calls for a boolean statement to be false. Needs a delay otherwise it just gonna check for ground and check true right away             
                 //anotherJump(); // Cannot jump again
-                Debug.Log("jump");
+               
             }
             else if (canJump) 
             {
                 rb.AddForce(Vector2.up * jumpingPower*1.3f, ForceMode2D.Impulse); //jumping force +added a bit more power, for the jump to look okay
                 anotherJump(); // Cannot jump again
-                Debug.Log("you saved your ass!");
+               
             }
         }
 

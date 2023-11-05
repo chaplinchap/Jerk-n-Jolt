@@ -5,6 +5,7 @@ using UnityEngine;
 public class ConsumableParentObject : MonoBehaviour
 {
 
+     // [SerializeField] private int currentConsumables = 0;
     // public int newCurrentConsumables;  // local variable to store the currentConsumable virable from Consum4V script.
 
     /**
@@ -30,6 +31,7 @@ public class ConsumableParentObject : MonoBehaviour
         yield return new WaitForSeconds(time);  // This will yield for the duration of the powerup 
         power.DeApplyPusher(player);  // This will DeAppley the powerup from the Player which has taken it
         Destroy(gameObject); // This destroyes the Object that holds the powerup, such that is does not clog up in memory
+       
     }
 
     public IEnumerator DurationPuller(ConsumableScriptableObject power, GameObject player, float time)
@@ -37,6 +39,7 @@ public class ConsumableParentObject : MonoBehaviour
         yield return new WaitForSeconds(time);  // This will yield for the duration of the powerup 
         power.DeApplyPuller(player);  // This will DeAppley the powerup from the Player which has taken it
         Destroy(gameObject); // This destroyes the Object that holds the powerup, such that is does not clog up in memory
+        
     }
 
 
@@ -49,16 +52,25 @@ public class ConsumableParentObject : MonoBehaviour
 
     public void TurnOffConsumable()
     {
-       // currentConsumables--;
-
-        /*
-        currentConsumables = GetCurrentConsumables(); //get currentConsumable from Consum4V script and save into local variable
-        newCurrentConsumables--; //decremate the amunt
-        SetCurrentConsumables(newCurrentConsumables); //store the new value into currentConsumable from Consum4V script
-        */
-
+        // currentConsumables--;
+       
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<Collider2D>().enabled = false;
         //gameObject.GetComponent<CircleCollider2D>().enabled = false;
     }
+
+    /*
+    public int GetCurrentConsumables ()
+    {
+        
+        return currentConsumables;
+    }
+
+
+    public void SetCurrentConsumables (int newCurrentConsumables)
+    {
+        currentConsumables = newCurrentConsumables;
+
+    }
+    */
 }

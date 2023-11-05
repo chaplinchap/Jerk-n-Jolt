@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8684249045343630653}
   - component: {fileID: 158651740227473327}
   - component: {fileID: 8028544214276844121}
-  - component: {fileID: 2231778975456191880}
+  - component: {fileID: -9054267854222835038}
   m_Layer: 0
   m_Name: Hearts
-  m_TagString: Untagged
+  m_TagString: Consumables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wave: 0.25
   speed: 1
---- !u!114 &2231778975456191880
+--- !u!114 &-9054267854222835038
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

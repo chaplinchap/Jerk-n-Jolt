@@ -29,7 +29,7 @@ public class TriggerApplyPower : ConsumableParentObject
 
             else if(collision.CompareTag("Puller"))
             {
-               
+
                 TurnOffConsumable();
                 powerUp.ApplyPuller(collision.gameObject);
                 StartCoroutine(DurationPuller(powerUp, collision.gameObject, time));

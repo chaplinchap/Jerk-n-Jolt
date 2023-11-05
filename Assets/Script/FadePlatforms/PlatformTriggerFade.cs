@@ -18,7 +18,7 @@ public class PlatformTriggerFade : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Works");
+        
 
         if (collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
         {

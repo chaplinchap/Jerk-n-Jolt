@@ -18,21 +18,16 @@ public class TriggerApplyHeart : ConsumableParentObject
         {
             if (collision.CompareTag("Pusher"))
             {
-                
-                hearts.ApplyPusher(collision.gameObject);
-                StartCoroutine(DurationPusher(hearts, collision.gameObject, time));
                 TurnOffConsumable();
-                
-                
+                hearts.ApplyPusher(collision.gameObject);                
+                StartCoroutine(DurationPusher(hearts, collision.gameObject, time));              
             }
 
             else if (collision.CompareTag("Puller"))
             {
-                             
-                hearts.ApplyPuller(collision.gameObject);
-                StartCoroutine(DurationPuller(hearts, collision.gameObject, time));
                 TurnOffConsumable();
-               
+                hearts.ApplyPuller(collision.gameObject);                
+                StartCoroutine(DurationPuller(hearts, collision.gameObject, time));
                 
             }
         }
