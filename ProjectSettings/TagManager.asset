@@ -18,6 +18,10 @@ TagManager:
   - FadingPlatform3
   - FadingPlatform4
   - FadingPlatform5
+  - Audio
+  - DamageTrigger
+  - Pull
+  - Floor
   layers:
   - Default
   - TransparentFX

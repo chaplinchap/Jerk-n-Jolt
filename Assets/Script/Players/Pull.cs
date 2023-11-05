@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.Audio;
 
 public class Pull : MonoBehaviour
 {
@@ -9,25 +9,56 @@ public class Pull : MonoBehaviour
     private FieldTrigger pullField;
     private BoxCollider2D boxColliderPusher;
  
+    //Pull
     private float time = 0.15f;
     public float pullForce = 10;
     public KeyCode pullOnPress;
     private bool hasPressedPull = false;
-
     public float extraForce = 1f;
-
     public LayerMask pusherLayer;
-    
-
     private int defaultLayer = 0;
     private int pushLayer = 8;
 
+    //Charge
     public float timer;
     private bool isCharging;
     private bool hasCharged;
-
     public float chargingTime = 2f;
-   
+
+    //SlowMotion
+    public SlowMotion slowMotion;
+
+    // Freezer
+    public Freezer freeze;
+
+    // Audiosystem
+    AudioManager audioManager;
+    public AudioMixer audioMixer;
+    public float pitchValue;
+    private float timeBox;
+    public float audioCoolDown;
+
+    //Flash
+    private Material matFlash;
+    private Material matDefault;
+    SpriteRenderer flashRender;
+
+    //Particles
+    public ParticleSystem deathParticles;
+    public ParticleSystem landingParticles;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
+    public void SetPitch()
+    {
+        audioMixer.SetFloat("ExposedPitch", pitchValue);
+        Debug.Log("Pitch Value: " + pitchValue);
+        timeBox = Time.time;
+    }
+
 
     void Start()
     {
@@ -35,8 +66,25 @@ public class Pull : MonoBehaviour
         rigidbodyPusher = thePusher.GetComponent<Rigidbody2D>();
         pullField = gameObject.GetComponentInChildren<FieldTrigger>();
         boxColliderPusher = thePusher.GetComponent<BoxCollider2D>();
-
         timer = 0;
+
+        flashRender = GetComponent<SpriteRenderer>();
+        matFlash = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        matDefault = flashRender.material;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Pull"))
+        {
+            //En eller form for koder der registrer om Pulleren har aktiveret hans pull-mechanic
+            flashRender.material = matFlash;
+            Invoke("ResetMaterial", 0.25f);
+        }
+        if (collision.CompareTag("DamageTrigger"))
+        {
+            DeathParticles();
+        }
     }
 
     private void Update()
@@ -49,10 +97,20 @@ public class Pull : MonoBehaviour
         if (Input.GetKeyUp(pullOnPress))
         {
             hasPressedPull = false;
+            audioManager.PlaySFX(audioManager.pull);
         }
 
-        Timer(); 
+        Timer();
+        if (Time.time - timeBox > audioCoolDown)
+        {
+            audioMixer.SetFloat("ExposedPitch", 1f);
+        }
 
+    }
+
+    void ResetMaterial()
+    {
+        flashRender.material = matDefault;
     }
 
     private void FixedUpdate()
@@ -65,7 +123,7 @@ public class Pull : MonoBehaviour
         // METHODS //
 
     IEnumerator ChangeLayer()
-    {
+    {   
         yield return new WaitForSeconds(time);
         boxColliderPusher.gameObject.layer = defaultLayer;
     }
@@ -127,6 +185,9 @@ public class Pull : MonoBehaviour
         else if (Input.GetKeyUp(pullOnPress) && timer > chargingTime && pullField.inField)
         {
             hasCharged = true;
+            slowMotion.DoSlowmotion();
+            freeze.Freeze();
+            SetPitch();
         }
         else if (Input.GetKeyUp(pullOnPress) && pullField.inField) 
         {
@@ -141,6 +202,10 @@ public class Pull : MonoBehaviour
         
     }
 
+    void DeathParticles()
+    {
+        deathParticles.Play();
+    }
 
 
 }

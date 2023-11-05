@@ -104,7 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1206460337c2342b30898f5bdcf7e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pusher: {fileID: 1675015520253059547, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
   PusherRespawnPoint: {fileID: 0}
+  Push_healthScript: {fileID: 0}
+  Puller: {fileID: 7831007007408972477, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
   PullerRespawnPoint: {fileID: 0}
-  Pusher: {fileID: 0}
-  Puller: {fileID: 0}
+  Pul_healthScript: {fileID: 0}

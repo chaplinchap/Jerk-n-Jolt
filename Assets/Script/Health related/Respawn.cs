@@ -17,7 +17,14 @@ public class Respawn : MonoBehaviour
     
     private float respawnDelay = 1f; //Decide when should respawn
 
-    
+    AudioManager audioManager;
+
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Pusher"))
@@ -54,6 +61,7 @@ public class Respawn : MonoBehaviour
         if (Push_healthScript.currentHealth > 0) {
             Pusher.gameObject.SetActive(true);
             Debug.Log("Player Spawns");
+            audioManager.PlaySFX(audioManager.respawn);
         }
         
         // If player has no more health left it will not spawn
@@ -71,6 +79,7 @@ public class Respawn : MonoBehaviour
         if (Pul_healthScript.currentHealth > 0) {
             Puller.gameObject.SetActive(true);
             Debug.Log("Player Spawns");
+            audioManager.PlaySFX(audioManager.respawn);
         }
 
         // If player has no more health left it will not spawn
