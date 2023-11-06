@@ -45,11 +45,10 @@ public class Push : MonoBehaviour
     public ParticleSystem deathParticles;
     public ParticleSystem landingParticles;
 
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
 
+    
+
+     
     public void SetPitch()
     {
         audioMixer.SetFloat("ExposedPitch", pitchValue);
@@ -61,6 +60,8 @@ public class Push : MonoBehaviour
         thePuller = GameObject.FindWithTag("Puller");
         rigidbodyPuller = thePuller.GetComponent<Rigidbody2D>();
         pushField = gameObject.GetComponentInChildren<FieldTrigger>();
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

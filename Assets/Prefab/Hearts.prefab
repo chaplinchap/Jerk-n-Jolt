@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5338208012764649475}
   - component: {fileID: 8684249045343630653}
   - component: {fileID: 158651740227473327}
-  - component: {fileID: 8028544214276844121}
-  - component: {fileID: -9054267854222835038}
+  - component: {fileID: 2833053347076155316}
+  - component: {fileID: 4703568076314956155}
   m_Layer: 0
   m_Name: Hearts
   m_TagString: Consumables
@@ -132,7 +132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 40, y: 32}
   m_EdgeRadius: 0
---- !u!114 &8028544214276844121
+--- !u!114 &2833053347076155316
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,12 +141,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7116104095172799416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ad0d7fec8ecdd54dbc98efdecacd80d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d6827a2307112e429158120d2c4eaa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wave: 0.25
   speed: 1
---- !u!114 &-9054267854222835038
+--- !u!114 &4703568076314956155
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7116104095172799416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b305fab70406f094291216949e73dbf6, type: 3}
+  m_Script: {fileID: 11500000, guid: c50251aa97f18b2478610f5b20f9d388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hearts: {fileID: 11400000, guid: 3430eed802177c94e83daf9f6ec1f90e, type: 2}
+  hearts: {fileID: 11400000, guid: f2fde32cc717af64cac840268ac5c27f, type: 2}
   time: 5

@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218380128302007168, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
       propertyPath: m_TagString
-      value: FadingPlatform3
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7611505804186471146, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
       propertyPath: m_ColliderMask.m_Bits
