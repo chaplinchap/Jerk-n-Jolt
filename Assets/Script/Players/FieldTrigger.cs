@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FieldTrigger : MonoBehaviour
 {
-
     public bool inField;
 
     void OnTriggerEnter2D(Collider2D other)
@@ -12,18 +11,15 @@ public class FieldTrigger : MonoBehaviour
 
         if (other.gameObject.CompareTag("Puller") || other.gameObject.CompareTag("Pusher"))
         {
-
-                   inField = true;
+            inField = true;
 
         }
 
     }
 
-
-    void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         inField = false;
-
     }
 
 }

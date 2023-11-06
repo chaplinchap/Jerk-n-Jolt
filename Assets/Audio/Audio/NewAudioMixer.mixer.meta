@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefab/PowerUp.prefab.meta
+guid: 6d6262e9e6859234dab615669bc580f9
+PrefabImporter:
+  externalObjects: {}
+========
+guid: 850058da11c79b7419b8eec230ea1087
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 24100000
+>>>>>>>> NewestPolishSAFE:Assets/Audio/Audio/NewAudioMixer.mixer.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Script/PowerUp/TriggerApplyPower.cs.meta
+guid: ca39cd9cafa4d484ea47e5b1366ca57b
+========
+guid: 7ba29391892f70440a1164cd50dbfbda
+>>>>>>>> NewestPolishSAFE:Assets/Script/SlowMotion.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

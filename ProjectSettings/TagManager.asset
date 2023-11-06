@@ -12,13 +12,11 @@ TagManager:
   - PullField
   - SwitchToPullField
   - SwitchToPushField
-  - FadingPlatform
-  - FadingPlatform1
-  - FadingPlatform2
-  - FadingPlatform3
-  - FadingPlatform4
-  - FadingPlatform5
   - Consumables
+  - Audio
+  - DamageTrigger
+  - Floor
+
   layers:
   - Default
   - TransparentFX

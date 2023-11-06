@@ -1,7 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefab/ConsumableManager.prefab.meta
 guid: 896bd69bbc3fb6d43a637d3ce17789dc
 PrefabImporter:
   externalObjects: {}
+========
+guid: a0d98eebcdca31f4796095c5135da602
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+>>>>>>>> NewestPolishSAFE:Assets/Materials/WhiteFlash.mat.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

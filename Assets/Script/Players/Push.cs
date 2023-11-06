@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.Audio;
 
 public class Push : MonoBehaviour
 {
@@ -11,28 +10,67 @@ public class Push : MonoBehaviour
     private FieldTrigger pushField;
 
 
-    
-    public float pushForce = 100; 
-
+    //Push
+    public float pushForce = 100;
     public KeyCode pushOnPress;
     private bool hasPressedPush = false;
 
-
+    //Charge
     private float timer;
     public float chargingTime = 2f;
-
     public bool isCharging;
     public bool hasCharged;
 
 
-    public float extraForce = 1; 
+    public float extraForce = 1;
 
+    // Slowmotion
+    public SlowMotion slowMotion;
+
+    // Freezer
+    public Freezer freeze;
+
+    // Audiosystem
+    AudioManager audioManager;
+    public AudioMixer audioMixer;
+    public float pitchValue;
+    private float timeBox;
+    public float audioCoolDown;
+
+    //Flash
+    public GameObject puller;
+    public float flashTime = 0.075f;
+
+    //Particles
+    public ParticleSystem deathParticles;
+    public ParticleSystem landingParticles;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
+    public void SetPitch()
+    {
+        audioMixer.SetFloat("ExposedPitch", pitchValue);
+        Debug.Log("Pitch Value: " + pitchValue);
+        timeBox = Time.time;
+    }
     void Start()
     {
         thePuller = GameObject.FindWithTag("Puller");
         rigidbodyPuller = thePuller.GetComponent<Rigidbody2D>();
         pushField = gameObject.GetComponentInChildren<FieldTrigger>();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("DamageTrigger"))
+        {
+            DeathParticles();
+        }
+    }
+
 
     private void Update()
     {
@@ -43,10 +81,27 @@ public class Push : MonoBehaviour
 
         if (Input.GetKeyUp(pushOnPress)) 
         {
-            hasPressedPush = false;       
+            hasPressedPush = false;
+            audioManager.PlaySFX(audioManager.pull);
+            Invoke("ResetMaterial", flashTime);
         }
 
-        Timer(); 
+        if (Input.GetKeyUp(pushOnPress) && pushField.inField)
+        {
+            puller.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
+        if (Time.time - timeBox > audioCoolDown)
+        {
+            audioMixer.SetFloat("ExposedPitch", 1f);
+        }
+
+        Timer();
+    }
+
+    void ResetMaterial()
+    {
+        puller.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     private void FixedUpdate()
@@ -60,7 +115,6 @@ public class Push : MonoBehaviour
     private Vector3 VectorBetween()
     {
         Vector3 position;
-
         position = gameObject.GetComponent<Transform>().position;
         return (thePuller.transform.position - position);
     }
@@ -109,6 +163,9 @@ public class Push : MonoBehaviour
         else if (Input.GetKeyUp(pushOnPress) && timer > chargingTime && pushField.inField)
         {
             hasCharged = true;
+            slowMotion.DoSlowmotion();
+            freeze.Freeze();
+            SetPitch();
         }
         else if (Input.GetKeyUp(pushOnPress) && pushField.inField)
         {
@@ -121,5 +178,10 @@ public class Push : MonoBehaviour
         }
     }
 
+
+    void DeathParticles()
+    {
+        deathParticles.Play();
+    }
 
 }

@@ -5,27 +5,37 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
 
+
     public List<GameObject> randomSpawnPoints = new List<GameObject>();
 
+    AudioManager audioManager;
 
     //Varibles declared
     [Header("Pusher Settings")]
     public GameObject pusher;
     // public GameObject PusherRespawnPoint;
     public Health pushHealthScript; //reference to Health script
+    public ParticleSystem pusherRespawnParticles;
     
     [Header("Puller Settings")]
     public GameObject puller;
     // public GameObject PullerRespawnPoint;
     public Health pullHealthScript; //reference to Health script
-    
-    
+    public ParticleSystem pullerRespawnParticles;
     private float respawnDelay = 1f; //Decide when should respawn
 
-    
+
+// METHODS //
+
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // int randomSpawnPoint = Random.Range(0, randomSpawnPoints.Count);
+       
 
         if (collision.gameObject.CompareTag("Pusher"))
         {
@@ -44,8 +54,6 @@ public class Respawn : MonoBehaviour
         }
     }
 
-
-    // METHODS //
 
     private void Spawn(GameObject player, GameObject spawner)
     {
@@ -66,6 +74,8 @@ public class Respawn : MonoBehaviour
         if (pushHealthScript.currentHealth > 0) {
             pusher.gameObject.SetActive(true);
             Debug.Log("Player Spawns");
+            audioManager.PlaySFX(audioManager.respawn);
+            PusherRespawnParticles();
         }
         
         // If player has no more health left it will not spawn
@@ -86,6 +96,8 @@ public class Respawn : MonoBehaviour
         if (pullHealthScript.currentHealth > 0) {
             puller.gameObject.SetActive(true);
             Debug.Log("Player Spawns");
+            audioManager.PlaySFX(audioManager.respawn);
+            PullerRespawnParticles();
         }
 
         // If player has no more health left it will not spawn
@@ -93,4 +105,15 @@ public class Respawn : MonoBehaviour
             Debug.Log("The player is dead and will not spawn");
         }  
     }
+
+    void PusherRespawnParticles()
+    {
+        pusherRespawnParticles.Play();
+    }
+
+    void PullerRespawnParticles()
+    {
+        pullerRespawnParticles.Play();
+    }
+
 }

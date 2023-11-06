@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Script/Hearts/TriggerApplyHeart.cs.meta
+guid: c50251aa97f18b2478610f5b20f9d388
+========
+guid: 09d3dafc20ff4a143a7f0c34faff9777
+>>>>>>>> NewestPolishSAFE:Assets/Script/Audio Manager/AudioManager.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
