@@ -37,9 +37,8 @@ public class Push : MonoBehaviour
     public float audioCoolDown;
 
     //Flash
-    private Material matFlash;
-    private Material matDefault;
-    SpriteRenderer flashRender;
+    public GameObject puller;
+    public float flashTime = 0.075f;
 
     //Particles
     public ParticleSystem deathParticles;
@@ -61,28 +60,22 @@ public class Push : MonoBehaviour
         thePuller = GameObject.FindWithTag("Puller");
         rigidbodyPuller = thePuller.GetComponent<Rigidbody2D>();
         pushField = gameObject.GetComponentInChildren<FieldTrigger>();
-        flashRender = GetComponent<SpriteRenderer>();
-        matFlash = Resources.Load("WhiteFlash", typeof(Material)) as Material;
-        matDefault = flashRender.material;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Pull"))
-        {
-            //En eller form for koder der registrer om Pulleren har aktiveret hans pull-mechanic
-            flashRender.material = matFlash;
-            Invoke("ResetMaterial", 0.25f);
-        }
         if (collision.CompareTag("DamageTrigger"))
         {
             DeathParticles();
         }
     }
 
-    void ResetMaterial()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        flashRender.material = matDefault;
+        if (collision.CompareTag("Pull"))
+        {
+            //Invoke("ResetMaterial", flashTime);
+        }
     }
 
     private void Update()
@@ -96,12 +89,25 @@ public class Push : MonoBehaviour
         {
             hasPressedPush = false;
             audioManager.PlaySFX(audioManager.pull);
+            Invoke("ResetMaterial", flashTime);
         }
-        Timer();
+
+        if (Input.GetKeyUp(pushOnPress) && pushField.inField)
+        {
+            puller.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
         if (Time.time - timeBox > audioCoolDown)
         {
             audioMixer.SetFloat("ExposedPitch", 1f);
         }
+
+        Timer();
+    }
+
+    void ResetMaterial()
+    {
+        puller.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     private void FixedUpdate()

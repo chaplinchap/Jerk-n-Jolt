@@ -3,22 +3,23 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
+    AudioManager audioManager;
+
     //Varibles declared
     [Header("Pusher Settings")]
     public GameObject Pusher;
     public GameObject PusherRespawnPoint;
     public Health Push_healthScript; //reference to Health script
-    
+    public ParticleSystem pusherRespawnParticles;
+
     [Header("Puller Settings")]
     public GameObject Puller;
     public GameObject PullerRespawnPoint;
     public Health Pul_healthScript; //reference to Health script
-    
-    
+    public ParticleSystem pullerRespawnParticles;
+
+
     private float respawnDelay = 1f; //Decide when should respawn
-
-    AudioManager audioManager;
-
 
     private void Awake()
     {
@@ -43,7 +44,6 @@ public class Respawn : MonoBehaviour
         }
     }
 
-
     // METHODS //
 
     private void Spawn(GameObject player, GameObject spawner)
@@ -62,6 +62,7 @@ public class Respawn : MonoBehaviour
             Pusher.gameObject.SetActive(true);
             Debug.Log("Player Spawns");
             audioManager.PlaySFX(audioManager.respawn);
+            PusherRespawnParticles();
         }
         
         // If player has no more health left it will not spawn
@@ -80,6 +81,7 @@ public class Respawn : MonoBehaviour
             Puller.gameObject.SetActive(true);
             Debug.Log("Player Spawns");
             audioManager.PlaySFX(audioManager.respawn);
+            PullerRespawnParticles();
         }
 
         // If player has no more health left it will not spawn
@@ -87,4 +89,15 @@ public class Respawn : MonoBehaviour
             Debug.Log("The player is dead and will not spawn");
         }  
     }
+
+    void PusherRespawnParticles()
+    {
+        pusherRespawnParticles.Play();
+    }
+
+    void PullerRespawnParticles()
+    {
+        pullerRespawnParticles.Play();
+    }
+
 }

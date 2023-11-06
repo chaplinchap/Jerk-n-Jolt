@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -39,9 +40,8 @@ public class Pull : MonoBehaviour
     public float audioCoolDown;
 
     //Flash
-    private Material matFlash;
-    private Material matDefault;
-    SpriteRenderer flashRender;
+    public GameObject pusher;
+    public float flashTime = 0.075f;
 
     //Particles
     public ParticleSystem deathParticles;
@@ -67,23 +67,21 @@ public class Pull : MonoBehaviour
         pullField = gameObject.GetComponentInChildren<FieldTrigger>();
         boxColliderPusher = thePusher.GetComponent<BoxCollider2D>();
         timer = 0;
-
-        flashRender = GetComponent<SpriteRenderer>();
-        matFlash = Resources.Load("WhiteFlash", typeof(Material)) as Material;
-        matDefault = flashRender.material;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Pull"))
-        {
-            //En eller form for koder der registrer om Pulleren har aktiveret hans pull-mechanic
-            flashRender.material = matFlash;
-            Invoke("ResetMaterial", 0.25f);
-        }
         if (collision.CompareTag("DamageTrigger"))
         {
             DeathParticles();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Push"))
+        {
+            //Invoke("ResetMaterial", flashTime);
         }
     }
 
@@ -98,27 +96,32 @@ public class Pull : MonoBehaviour
         {
             hasPressedPull = false;
             audioManager.PlaySFX(audioManager.pull);
+            Invoke("ResetMaterial", flashTime);
         }
 
-        Timer();
+        if (Input.GetKeyUp(pullOnPress) && pullField.inField)
+        {
+            pusher.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
         if (Time.time - timeBox > audioCoolDown)
         {
             audioMixer.SetFloat("ExposedPitch", 1f);
         }
 
+        Timer();
     }
 
     void ResetMaterial()
     {
-        flashRender.material = matDefault;
+        pusher.GetComponent<SpriteRenderer>().enabled = true;
     }
+
 
     private void FixedUpdate()
     {
         ChargePulling(1f , extraForce);
     }
-
-
 
         // METHODS //
 
