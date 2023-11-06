@@ -6,7 +6,7 @@ public class Health : MonoBehaviour
 
 
     //Varibles declared
-    [SerializeField] private float startingHealth; 
+    public float startingHealth; 
     public float currentHealth; //{get; private set;}
     
 

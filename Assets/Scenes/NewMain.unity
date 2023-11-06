@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 318452309}
   - component: {fileID: 318452310}
   m_Layer: 5
-  m_Name: Healthbar1
+  m_Name: Healthbar_Pull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1606,6 +1606,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729454168}
   m_CullTransparentMesh: 1
+--- !u!1 &759642863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 759642865}
+  - component: {fileID: 759642864}
+  m_Layer: 0
+  m_Name: SuddenDeathManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &759642864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759642863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d2215ca36e9464ea223de87ed9037d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pusher: {fileID: 1388173218}
+  Push_healthScript: {fileID: 1388173219}
+  Push_healthbarScript: {fileID: 775111225}
+  Push_totalHealthbar: {fileID: 342192313}
+  Puller: {fileID: 1449906316}
+  Pul_healthScript: {fileID: 1449906317}
+  Pul_healthbarScript: {fileID: 318452310}
+  Pull_totalHealthbar: {fileID: 233638143}
+  SuddenDeathTimer: 5
+--- !u!4 &759642865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759642863}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2188712, y: -5.3939857, z: -0.30559134}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &775111223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,7 +1670,7 @@ GameObject:
   - component: {fileID: 775111224}
   - component: {fileID: 775111225}
   m_Layer: 5
-  m_Name: Healthbar
+  m_Name: Healthbar_Push
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5170,3 +5223,4 @@ SceneRoots:
   - {fileID: 578005348}
   - {fileID: 1316277507}
   - {fileID: 160561387}
+  - {fileID: 759642865}
