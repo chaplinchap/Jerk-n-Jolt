@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5238554989180161808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba29391892f70440a1164cd50dbfbda, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a71b71d7fab05842ae4521ef0cb148e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slowdownFactor: 0.05
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6713615452408683078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 066f4f8fb814dae429876b4b43f425ea, type: 3}
+  m_Script: {fileID: 11500000, guid: e7245be6605c5a045a1c3e07320c5a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.075
+  duration: 1

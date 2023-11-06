@@ -40,14 +40,6 @@ public class Push : MonoBehaviour
     //Flash
     public GameObject puller;
     public float flashTime = 0.075f;
-
-    //Particles
-    public ParticleSystem deathParticles;
-    public ParticleSystem landingParticles;
-
-
-    
-
      
     public void SetPitch()
     {
@@ -55,21 +47,13 @@ public class Push : MonoBehaviour
         Debug.Log("Pitch Value: " + pitchValue);
         timeBox = Time.time;
     }
+
     void Start()
     {
         thePuller = GameObject.FindWithTag("Puller");
         rigidbodyPuller = thePuller.GetComponent<Rigidbody2D>();
         pushField = gameObject.GetComponentInChildren<FieldTrigger>();
-
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("DamageTrigger"))
-        {
-            DeathParticles();
-        }
     }
 
 
@@ -83,7 +67,7 @@ public class Push : MonoBehaviour
         if (Input.GetKeyUp(pushOnPress)) 
         {
             hasPressedPush = false;
-            audioManager.PlaySFX(audioManager.pull);
+            audioManager.PlaySFX(audioManager.push);
             Invoke("ResetMaterial", flashTime);
         }
 
@@ -177,12 +161,6 @@ public class Push : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-    }
-
-
-    void DeathParticles()
-    {
-        deathParticles.Play();
     }
 
 }

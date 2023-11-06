@@ -43,14 +43,6 @@ public class Pull : MonoBehaviour
     public GameObject pusher;
     public float flashTime = 0.075f;
 
-    //Particles
-    public ParticleSystem deathParticles;
-    public ParticleSystem landingParticles;
-
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
 
     public void SetPitch()
     {
@@ -67,22 +59,7 @@ public class Pull : MonoBehaviour
         pullField = gameObject.GetComponentInChildren<FieldTrigger>();
         boxColliderPusher = thePusher.GetComponent<BoxCollider2D>();
         timer = 0;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("DamageTrigger"))
-        {
-            DeathParticles();
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Push"))
-        {
-            //Invoke("ResetMaterial", flashTime);
-        }
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -204,11 +181,5 @@ public class Pull : MonoBehaviour
 
         
     }
-
-    void DeathParticles()
-    {
-        deathParticles.Play();
-    }
-
 
 }
