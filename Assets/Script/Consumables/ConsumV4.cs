@@ -11,12 +11,7 @@ public class ConsumV4 : MonoBehaviour
     private float minDistanceBetweenItems = 1f; // Distance between itemPrefabs
 
     public int maxConsumables = 3;
-    public int currentConsumablesTracker = 0;
-
-    /*
-    public GameObject consumbleParentObject;
-    private ConsumableParentObject consumableParent;
-    */
+    public static int currentConsumablesTracker = 0;
 
  
     
@@ -36,9 +31,9 @@ public class ConsumV4 : MonoBehaviour
      
 
 
-        if (Time.time >= nextSpawnTime && /* consumableParent.GetCurrentConsumables()*/ currentConsumablesTracker < maxConsumables)
+        if (Time.time >= nextSpawnTime && currentConsumablesTracker < maxConsumables)
         {
-            // currentConsumablesTracker = consumableParent.GetCurrentConsumables();
+           
 
             // Choose a random spawn area and item prefab
             int randomSpawnAreaIndex = Random.Range(0, spawnAreas.Count);
@@ -80,9 +75,12 @@ public class ConsumV4 : MonoBehaviour
 
             // Instantiate the selected item prefab at the random position
             GameObject selectedItemPrefab = itemPrefabs[randomItemPrefabIndex];
-            Instantiate(selectedItemPrefab, randomPosition, Quaternion.identity);
+            GameObject spawnObject = Instantiate(selectedItemPrefab, randomPosition, Quaternion.identity);
+            
+              
+
             currentConsumablesTracker++;
-            // consumableParent.SetCurrentConsumables(currentConsumablesTracker);
+            
 
 
 
@@ -125,29 +123,5 @@ public class ConsumV4 : MonoBehaviour
         }
     }
 
-    /*
-    public int CurrentConsumables
-    {
-        get{
-            return currentConsumables;
-        }
 
-        set
-        {
-            currentConsumables = value;
-        }
-    }
-    */
-
-    /*
-    public int GetCurrentConsumables()
-    {
-        return currentConsumables;
-    }
-    public int SetCurrentConsumables (int setCurrenConsumables) 
-    {
-        currentConsumables = setCurrenConsumables;
-        return setCurrenConsumables;
-    }
-    */
 }

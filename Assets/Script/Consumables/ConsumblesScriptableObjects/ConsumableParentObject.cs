@@ -5,9 +5,6 @@ using UnityEngine;
 public class ConsumableParentObject : MonoBehaviour
 {
 
-     // [SerializeField] private int currentConsumables = 0;
-    // public int newCurrentConsumables;  // local variable to store the currentConsumable virable from Consum4V script.
-
     /**
      * This class exists such that you do not have to make the Coroutine and TurnOffConsumable Methodes
      * in the power up triggers. They should inherit this class to make it easier to understand
@@ -28,6 +25,7 @@ public class ConsumableParentObject : MonoBehaviour
 
     public IEnumerator DurationPusher(ConsumableScriptableObject power, GameObject player, float time)
     {
+        ConsumV4.currentConsumablesTracker--;
         yield return new WaitForSeconds(time);  // This will yield for the duration of the powerup 
         power.DeApplyPusher(player);  // This will DeAppley the powerup from the Player which has taken it
         Destroy(gameObject); // This destroyes the Object that holds the powerup, such that is does not clog up in memory
@@ -36,13 +34,24 @@ public class ConsumableParentObject : MonoBehaviour
 
     public IEnumerator DurationPuller(ConsumableScriptableObject power, GameObject player, float time)
     {
+        ConsumV4.currentConsumablesTracker--;
         yield return new WaitForSeconds(time);  // This will yield for the duration of the powerup 
         power.DeApplyPuller(player);  // This will DeAppley the powerup from the Player which has taken it
         Destroy(gameObject); // This destroyes the Object that holds the powerup, such that is does not clog up in memory
         
     }
 
+ 
+    public IEnumerator DespawnConsumable(float time)
+    {
+       
+        yield return new WaitForSeconds(time);        
+        Destroy(gameObject);
+        ConsumV4.currentConsumablesTracker--;
+    }
 
+
+   
 
     /**
      * The method TurnOffConsumable simply turns off the Sprite and Collider of the object that holds the Consumable.
@@ -52,25 +61,11 @@ public class ConsumableParentObject : MonoBehaviour
 
     public void TurnOffConsumable()
     {
-        // currentConsumables--;
        
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<Collider2D>().enabled = false;
-        //gameObject.GetComponent<CircleCollider2D>().enabled = false;
-    }
-
-    /*
-    public int GetCurrentConsumables ()
-    {
-        
-        return currentConsumables;
     }
 
 
-    public void SetCurrentConsumables (int newCurrentConsumables)
-    {
-        currentConsumables = newCurrentConsumables;
-
-    }
-    */
+    
 }
