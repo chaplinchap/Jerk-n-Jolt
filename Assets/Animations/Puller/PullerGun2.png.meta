@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1a95c2f88a350004ea8fd1d1b0d17766
+guid: 83d7b83f16408554ab86cb6ebc5b1ec5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1400
+  spritePixelsToUnits: 1000
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,85 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PullerLegBack
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 1359
-        width: 494
-        height: 1205
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07b4c68e4e9abbc4f8d648e971590ab6
-      internalID: -1667479285
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PullerLegFront
-      rect:
-        serializedVersion: 2
-        x: 687
-        y: 1375
-        width: 494
-        height: 1206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8dac437a20f2c104f9d992e2a846af85
-      internalID: -1873845760
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PullerBody
-      rect:
-        serializedVersion: 2
-        x: 1454
-        y: 0
-        width: 1950
-        height: 2635
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3c8fc99a1b8b52b4bbb30b7deb70d4f7
-      internalID: 775908581
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: PullerArmFront
       rect:
         serializedVersion: 2
-        x: 3846
-        y: 917
-        width: 761
-        height: 1631
+        x: 188
+        y: 1007
+        width: 420
+        height: 1343
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0852a35a5c45d534fa1d6782ad80ad8a
-      internalID: -1498795610
+      spriteID: aec8a9be3e7f7bc4b9d139751b32e2e1
+      internalID: 167856815
       vertices: []
       indices: 
       edges: []
@@ -197,61 +134,19 @@ TextureImporter:
       name: PullerArmBack
       rect:
         serializedVersion: 2
-        x: 4884
-        y: 1194
-        width: 1502
-        height: 1084
+        x: 702
+        y: 1006
+        width: 409
+        height: 1349
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4e870eb36e249f4ab91d1b6aa339e22
-      internalID: -1700143103
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PullerHook
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 35
-        width: 687
-        height: 1139
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c5824c8376775943a1b614a6d633849
-      internalID: -533513853
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PullerRopes
-      rect:
-        serializedVersion: 2
-        x: 776
-        y: 117
-        width: 560
-        height: 721
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9c0cda273722a2d48845161c6006cac3
-      internalID: 99368904
+      spriteID: 872a618804021cc4ba7ecdaf4e91a62a
+      internalID: 1944678355
       vertices: []
       indices: 
       edges: []
@@ -260,82 +155,103 @@ TextureImporter:
       name: PullerEye
       rect:
         serializedVersion: 2
-        x: 3639
-        y: 259
-        width: 375
-        height: 408
+        x: 1260
+        y: 1449
+        width: 227
+        height: 302
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7260d9f6c55db648bcc7b0fc67b564b
-      internalID: -1050390256
+      spriteID: 4340fa6b4fcb4b14d897fe9ebd05cadb
+      internalID: 1612049570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PullerRope
+      name: PullerBody
       rect:
         serializedVersion: 2
-        x: 4370
-        y: 41
-        width: 1430
-        height: 784
+        x: 1772
+        y: 166
+        width: 1791
+        height: 1983
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43276bdcbf65fb1488bbe57907cfff33
-      internalID: 1796606352
+      spriteID: e3fc6454f7d3648458e2a471a81a212f
+      internalID: -834695926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PullerLineSmall
+      name: PullerGun
       rect:
         serializedVersion: 2
-        x: 6442
-        y: 509
-        width: 56
-        height: 375
+        x: 0
+        y: 353
+        width: 697
+        height: 520
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f95d9c7aa7cf44d48bc1f487cee51882
-      internalID: -231994011
+      spriteID: 684875fcc27055c4a99cd089d673c8e4
+      internalID: 1953156365
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PullerLineLong
+      name: PullerLegFront
       rect:
         serializedVersion: 2
-        x: 6696
-        y: 35
-        width: 51
-        height: 852
+        x: 843
+        y: 0
+        width: 294
+        height: 902
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19f2f50595d1b2942bbb544815d7a602
-      internalID: 1981375263
+      spriteID: 4c0a384436115804bbae0a766bebd282
+      internalID: 720293862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PullerLegBack
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 10
+        width: 294
+        height: 905
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8aba6aade1e7b499f1412cbbf9ba8f
+      internalID: -1724067935
       vertices: []
       indices: 
       edges: []
@@ -351,17 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PullerArmBack: -1700143103
-      PullerArmFront: -1700143103
-      PullerBody: 775908581
-      PullerEye: -1050390256
-      PullerHook: -533513853
-      PullerLegBack: -1667479285
-      PullerLegFront: -1873845760
-      PullerLineLong: 1981375263
-      PullerLineSmall: -231994011
-      PullerRope: 1796606352
-      PullerRopes: 99368904
+      PullerArmBack: 1944678355
+      PullerArmFront: 167856815
+      PullerBody: -834695926
+      PullerEye: 1612049570
+      PullerGun: 1953156365
+      PullerLegBack: -1724067935
+      PullerLegFront: 720293862
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

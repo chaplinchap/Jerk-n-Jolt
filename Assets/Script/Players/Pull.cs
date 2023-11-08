@@ -108,7 +108,7 @@ public class Pull : MonoBehaviour
         boxColliderPusher.gameObject.layer = defaultLayer;
     }
 
-    private Vector3 VectorBetween() 
+    public Vector3 VectorBetween() 
     {
         Vector3 position;
 

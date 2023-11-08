@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerAnimator : MonoBehaviour
+public class PusherAnimator : MonoBehaviour
 {
 
     private Animator animator;
@@ -23,6 +23,7 @@ public class PlayerAnimator : MonoBehaviour
     const string runningCharge = "PusherRunningCharge";
     const string jumpingCharge = "PusherJumpCharge";
     const string jumpingAttack = "PusherJumpAttack";
+    const string falling = "PusherFalling";
 
 
     void Start()
@@ -110,6 +111,14 @@ public class PlayerAnimator : MonoBehaviour
 
             }
         }
+
+        /*
+        if (move.rb.velocity.y > 0.1f && isAttackFinished) {
+
+            ChangeAnimationState(falling);
+        
+        }
+         */
 
     }
 
