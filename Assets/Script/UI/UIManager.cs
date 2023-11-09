@@ -15,13 +15,13 @@ public class UIManager : MonoBehaviour
     public bool deadPlayer = false;
     private bool onPause;
 
-    public List<Health> playersHealth = new List<Health>(); //reference to Health script
+    public List<HealthV2> playersHealth = new List<HealthV2>(); //reference to Health script
 
     private GameObject player1; // Varible given
 
     private void Awake()
     {
-        player1 = GameObject.Find("Player1 Push"); // Find Player 1 
+        player1 = GameObject.Find("Player1 Push"); // Find Player 1 . Used to check when game is over to see which player is left
     }
 
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI text;
      private void Update()
      {
-        foreach (Health playerHealth in playersHealth)
+        foreach (HealthV2 playerHealth in playersHealth)
         {
             if (playerHealth.currentHealth <= 0) {
                 deadPlayer = true;
@@ -53,9 +53,12 @@ public class UIManager : MonoBehaviour
                     SceneManager.LoadScene(sceneToLoad);
                     Debug.Log("Game is over!");
                 }
+                if (Input.GetKeyDown(KeyCode.Escape)){
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1); //Goes back to MainMenu
+                }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape)) // Pauses game when pressing "Escape"
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameIsOver) // Pauses game when pressing "Escape"
         {
             if (!onPause) // If not on Pause Menu show Pause Menu
             {

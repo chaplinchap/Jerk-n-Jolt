@@ -29,7 +29,7 @@ public class OverrideToHeart : ConsumableScriptableObject
         rollDice = Random.Range(1, 4);
         Debug.Log("the dice roll was: " + rollDice);
 
-        target.GetComponent<Health>().GiveHP(hp);
+        target.GetComponent<HealthV2>().GiveHP(hp);
         /*
         startingFrictionPush = target.GetComponent<Rigidbody2D>().sharedMaterial.friction;
         startingMoveSpeedPush = target.GetComponent<PlayerMovement>().speed;
@@ -60,7 +60,7 @@ public class OverrideToHeart : ConsumableScriptableObject
     {
         rollDice = Random.Range(1, 4);
 
-        target.GetComponent<Health>().GiveHP(hp);
+        target.GetComponent<HealthV2>().GiveHP(hp);
         /*
         startingPowerPull = target.GetComponent<Pull>().pullForce;
         startingMoveSpeedPull = target.GetComponent<PlayerMovement>().speed;

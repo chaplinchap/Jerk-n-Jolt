@@ -14,7 +14,7 @@ public class TakeDamage : MonoBehaviour
     {
         if(collision.CompareTag("Pusher") || collision.CompareTag("Puller")) //When one of the player is hit 
         {
-            collision.GetComponent<Health>().TakeDamage(damage); //The hit player takes damage
+            collision.GetComponent<HealthV2>().TakeDamage(damage); //The hit player takes damage
             audioManager.PlaySFX(audioManager.death);
         }
     }

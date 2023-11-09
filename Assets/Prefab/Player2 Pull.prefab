@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 8152077003433105955}
   - component: {fileID: 3527094187740927622}
   - component: {fileID: 847568949796497890}
-  - component: {fileID: 8658766195836136235}
+  - component: {fileID: 2840529185926110316}
   m_Layer: 0
   m_Name: Player2 Pull
   m_TagString: Puller
@@ -394,7 +394,7 @@ MonoBehaviour:
   rb: {fileID: 8386127129370546744}
   playerCollider: {fileID: 8152077003433105955}
   feet: {fileID: 7600740549158947554}
-  time: 0.2
+  time: 0.4
   speed: 160
   jumpingPower: 60
   movementX: 0
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullForce: 35
-  pullOnPress: 109
+  pullOnPress: 303
   extraForce: 1
   pusherLayer:
     serializedVersion: 2
@@ -432,7 +432,7 @@ MonoBehaviour:
   audioCoolDown: 0.3
   pusher: {fileID: 0}
   flashTime: 0.05
---- !u!114 &8658766195836136235
+--- !u!114 &2840529185926110316
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -441,11 +441,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7831007007408972477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8004df0633b14d4182ebd96922c44d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 419a7c496c68f8e4a9bc53dad9c5c3f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
-  currentHealth: 0
+  maxHealth: 3
+  currentHealth: 3
+  totalHealthbar: {fileID: 0}
+  currentHealthbar: {fileID: 0}
 --- !u!1 &9032958060952469884
 GameObject:
   m_ObjectHideFlags: 0

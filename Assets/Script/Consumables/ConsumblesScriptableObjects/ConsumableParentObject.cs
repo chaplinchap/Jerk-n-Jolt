@@ -48,6 +48,7 @@ public class ConsumableParentObject : MonoBehaviour
         yield return new WaitForSeconds(time);        
         Destroy(gameObject);
         ConsumV4.currentConsumablesTracker--;
+        //ConsumV4.removeSpawnlocation();
     }
 
 
