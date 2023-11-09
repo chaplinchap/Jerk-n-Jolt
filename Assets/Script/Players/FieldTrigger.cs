@@ -17,6 +17,16 @@ public class FieldTrigger : MonoBehaviour
 
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Puller") || other.gameObject.CompareTag("Pusher"))
+        {
+            inField = true;
+
+        }
+
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         inField = false;

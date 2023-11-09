@@ -176,13 +176,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1173737105884267666}
   SFXSource: {fileID: 6526916223313250801}
-  background: {fileID: 0}
+  background: {fileID: 8300000, guid: 9dc52aabd5d866d46bd8f63af451601f, type: 3}
   jump: {fileID: 0}
-  push: {fileID: 0}
-  pull: {fileID: 0}
-  death: {fileID: 0}
-  respawn: {fileID: 0}
-  collectible: {fileID: 0}
+  push: {fileID: 8300000, guid: 90fb91c5d9f18df4183363d36d921429, type: 3}
+  pull: {fileID: 8300000, guid: c266e86e5ec11e344bf66dede26cbc46, type: 3}
+  death: {fileID: 8300000, guid: c0f40bd64b0bbc64a91a11944b7f8ce6, type: 3}
+  respawn: {fileID: 8300000, guid: b1b9c1f0ea1fcae439ed1a4d44ff05fd, type: 3}
+  collectible: {fileID: 8300000, guid: 78419f98379502c4dbfb2774bc94e7c1, type: 3}
 --- !u!1 &9138024816527328880
 GameObject:
   m_ObjectHideFlags: 0

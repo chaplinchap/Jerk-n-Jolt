@@ -151,30 +151,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
-      propertyPath: pull
-      value: 
-      objectReference: {fileID: 8300000, guid: c266e86e5ec11e344bf66dede26cbc46, type: 3}
-    - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
-      propertyPath: push
-      value: 
-      objectReference: {fileID: 8300000, guid: 90fb91c5d9f18df4183363d36d921429, type: 3}
-    - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
-      propertyPath: death
-      value: 
-      objectReference: {fileID: 8300000, guid: c0f40bd64b0bbc64a91a11944b7f8ce6, type: 3}
-    - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
-      propertyPath: respawn
-      value: 
-      objectReference: {fileID: 8300000, guid: b1b9c1f0ea1fcae439ed1a4d44ff05fd, type: 3}
-    - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
-      propertyPath: background
-      value: 
-      objectReference: {fileID: 8300000, guid: 9dc52aabd5d866d46bd8f63af451601f, type: 3}
-    - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
-      propertyPath: collectible
-      value: 
-      objectReference: {fileID: 8300000, guid: 78419f98379502c4dbfb2774bc94e7c1, type: 3}
     - target: {fileID: 4544540692550397746, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
