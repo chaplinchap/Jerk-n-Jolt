@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
-public class TriggerApplyHeart : ConsumableParentObject
-{
-    
+public class TriggerApplyChargeBuff : ConsumableParentObject
+{ 
 
-    public ConsumableScriptableObject hearts;
+
+    public ConsumableScriptableObject charge;
 
     public float time = 5f;
 
@@ -19,12 +18,11 @@ public class TriggerApplyHeart : ConsumableParentObject
     private float timeCoroutineDespawn = 3f;
     private bool isDespawned = false;
 
-  
+
 
     private void Awake()
     {
         timeStampOnAwake = Time.time;
-        
 
     }
 
@@ -36,7 +34,7 @@ public class TriggerApplyHeart : ConsumableParentObject
         {
             isDespawned = true;
             StartCoroutine(DespawnConsumable(timeCoroutineDespawn));
-            
+
         }
     }
 
@@ -46,23 +44,23 @@ public class TriggerApplyHeart : ConsumableParentObject
         if (collision.CompareTag("Pusher") && !triggerOnce || collision.CompareTag("Puller") && !triggerOnce)
 
         {
-           
+
 
             triggerOnce = true;
             if (collision.CompareTag("Pusher"))
             {
                 TurnOffConsumable();
-                hearts.ApplyPusher(collision.gameObject);                
-                StartCoroutine(DurationPusher(hearts, collision.gameObject, time));
-                
+                charge.ApplyPusher(collision.gameObject);
+                StartCoroutine(DurationPusher(charge, collision.gameObject, time));
+
             }
 
             else if (collision.CompareTag("Puller"))
             {
                 TurnOffConsumable();
-                hearts.ApplyPuller(collision.gameObject);                
-                StartCoroutine(DurationPuller(hearts, collision.gameObject, time));
-                
+                charge.ApplyPuller(collision.gameObject);
+                StartCoroutine(DurationPuller(charge, collision.gameObject, time));
+
             }
         }
 

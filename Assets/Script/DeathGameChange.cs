@@ -19,8 +19,8 @@ public class DeathGameChange : MonoBehaviour
     
 
     [Header(" SuddenDeath Settings")]
-    public int SuddenDeathTimer = 5; // deside when sudden Death change to happen
- 
+    public int SuddenDeathTimer = 120; // deside when sudden Death change to happen
+    public bool suddenDeathTriggered = false;
     
 
     // Start is called before the first frame update
@@ -32,6 +32,8 @@ public class DeathGameChange : MonoBehaviour
     private IEnumerator SuddenDeath()
     {
         yield return new WaitForSeconds(SuddenDeathTimer);
+
+        suddenDeathTriggered = true;
 
         // Set players current health to 1
         Pul_healthScript.currentHealth = 1; 

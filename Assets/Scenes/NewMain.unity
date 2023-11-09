@@ -1219,6 +1219,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 6292766695016044924, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: offPlatformFade
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7748005987508325142, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
@@ -1643,7 +1647,8 @@ MonoBehaviour:
   Pul_healthScript: {fileID: 1449906317}
   Pul_healthbarScript: {fileID: 318452310}
   Pull_totalHealthbar: {fileID: 233638143}
-  SuddenDeathTimer: 5
+  SuddenDeathTimer: 120
+  suddenDeathTriggered: 0
 --- !u!4 &759642865
 Transform:
   m_ObjectHideFlags: 0
@@ -5094,6 +5099,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6536721504088083773, guid: d5ee713a78f4ebb43bfd058ab851e004, type: 3}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
+      propertyPath: suddenDeathObject
+      value: 
+      objectReference: {fileID: 759642863}
+    - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: currentConsumables
       value: 0
       objectReference: {fileID: 0}
@@ -5107,12 +5116,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: itemPrefabs.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: itemPrefabs.Array.data[1]
       value: 
       objectReference: {fileID: 6536721504088083773, guid: d5ee713a78f4ebb43bfd058ab851e004, type: 3}
+    - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
+      propertyPath: itemPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 584269336279805221, guid: 01b773f1902d503449c649512b9b2b0d, type: 3}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[1].x
       value: 22.4

@@ -5,9 +5,11 @@ public class ConsumV4 : MonoBehaviour
 {
     public List<GameObject> itemPrefabs = new List<GameObject>();
     public List<Rect> spawnAreas = new List<Rect>();
+    public GameObject suddenDeathObject;
+    private DeathGameChange suddenDeathScript;
     public float minSpawnDelay = 2f;  // Change as needed
     public float maxSpawnDelay = 5f;  // Change as needed
-    private int maxSpawnAttempts = 100; // Maximum attempts to find a valid position
+    private int maxSpawnAttempts = 250; // Maximum attempts to find a valid position
     private float minDistanceBetweenItems = 1f; // Distance between itemPrefabs
 
     public int maxConsumables = 3;
@@ -20,10 +22,18 @@ public class ConsumV4 : MonoBehaviour
     private float nextSpawnTime;
     private List<Vector2> spawnedItemPositions = new List<Vector2>();
 
+
+    private void Awake()
+    {
+        currentConsumablesTracker = 0;
+    }
+
+
     void Start()
     {
         // consumableParent = consumbleParentObject.GetComponent<ConsumableParentObject>();
         nextSpawnTime = GetRandomSpawnTime();
+       suddenDeathScript = suddenDeathObject.GetComponent<DeathGameChange>();
     }
 
     void Update()
@@ -31,7 +41,7 @@ public class ConsumV4 : MonoBehaviour
      
 
 
-        if (Time.time >= nextSpawnTime && currentConsumablesTracker < maxConsumables)
+        if (Time.time >= nextSpawnTime && currentConsumablesTracker < maxConsumables && !suddenDeathScript.suddenDeathTriggered)
         {
            
 

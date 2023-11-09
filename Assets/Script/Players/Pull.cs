@@ -21,10 +21,11 @@ public class Pull : MonoBehaviour
     private int pushLayer = 8;
 
     //Charge
-    public float timer;
-    private bool isCharging;
-    private bool hasCharged;
-    public float chargingTime = 2f;
+    public float chargeTrackingTimer;
+    private bool ifFailedChargeTime;
+    private bool ifSuccesChargeTime;
+    public float minChargingTime = 2f;
+    public float maxChargeingTime = 4;
 
     //SlowMotion
     public SlowMotion slowMotion;
@@ -42,7 +43,7 @@ public class Pull : MonoBehaviour
     //Flash
     public GameObject pusher;
     public float flashTime = 0.075f;
-
+   
 
     public void SetPitch()
     {
@@ -58,7 +59,7 @@ public class Pull : MonoBehaviour
         rigidbodyPusher = thePusher.GetComponent<Rigidbody2D>();
         pullField = gameObject.GetComponentInChildren<FieldTrigger>();
         boxColliderPusher = thePusher.GetComponent<BoxCollider2D>();
-        timer = 0;
+        chargeTrackingTimer = 0;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
@@ -136,18 +137,18 @@ public class Pull : MonoBehaviour
     public void ChargePulling(float normalPull, float chargedPull)
     {
 
-        if (isCharging && pullField.inField)
+        if (ifFailedChargeTime && pullField.inField)
         {
             ThePull(normalPull);
-            isCharging = false;
-            hasCharged = false;
+            ifFailedChargeTime = false;
+            ifSuccesChargeTime = false;
         }
 
-        if (hasCharged && pullField.inField)
+        if (ifSuccesChargeTime && pullField.inField)
         {
             ThePull(chargedPull);
-            isCharging = false;
-            hasCharged = false;
+            ifFailedChargeTime = false;
+            ifSuccesChargeTime = false;
         }
         
     }
@@ -158,25 +159,33 @@ public class Pull : MonoBehaviour
 
         if (Input.GetKeyDown(pullOnPress))
         {
-            timer = 0;
-            isCharging = false;
-            hasCharged = false; 
+            chargeTrackingTimer = 0;
+            ifFailedChargeTime = false;
+            ifSuccesChargeTime = false; 
         }
-        else if (Input.GetKeyUp(pullOnPress) && timer > chargingTime && pullField.inField)
+
+        else if (chargeTrackingTimer > maxChargeingTime)
         {
-            hasCharged = true;
+            chargeTrackingTimer = 0;
+            ifFailedChargeTime = false;
+            ifSuccesChargeTime = false;
+        }
+
+        else if (Input.GetKeyUp(pullOnPress) && chargeTrackingTimer > minChargingTime && pullField.inField)
+        {
+            ifSuccesChargeTime = true;
             slowMotion.DoSlowmotion();
             freeze.Freeze();
             SetPitch();
         }
         else if (Input.GetKeyUp(pullOnPress) && pullField.inField) 
         {
-            isCharging = true;
+            ifFailedChargeTime = true;
         }
 
         if (Input.GetKey(pullOnPress))
         {
-            timer += Time.deltaTime;
+            chargeTrackingTimer += Time.deltaTime;
         } 
 
         

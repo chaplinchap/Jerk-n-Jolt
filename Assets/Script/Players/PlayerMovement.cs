@@ -28,6 +28,10 @@ public class PlayerMovement : MonoBehaviour
     private bool lastPressedRight = false;
     private bool canJump;
 
+    private void Awake()
+    {
+        rb.sharedMaterial.friction = 0.5f;
+    }
 
     // Start is called before the first frame update
     void Start()
