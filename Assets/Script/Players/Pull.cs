@@ -43,6 +43,8 @@ public class Pull : MonoBehaviour
     public GameObject pusher;
     public float flashTime = 0.075f;
 
+    
+
 
     public void SetPitch()
     {
@@ -87,6 +89,8 @@ public class Pull : MonoBehaviour
         }
 
         Timer();
+
+        
     }
 
     void ResetMaterial()
@@ -165,8 +169,8 @@ public class Pull : MonoBehaviour
         else if (Input.GetKeyUp(pullOnPress) && timer > chargingTime && pullField.inField)
         {
             hasCharged = true;
-            slowMotion.DoSlowmotion();
-            freeze.Freeze();
+            //slowMotion.DoSlowmotion();
+            //freeze.Freeze();
             SetPitch();
         }
         else if (Input.GetKeyUp(pullOnPress) && pullField.inField) 

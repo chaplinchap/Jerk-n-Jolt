@@ -8,6 +8,14 @@ public class PullerAnimator : MonoBehaviour
     private string currentState;
     private PlayerMovement move;
     private Pull pull;
+    private FieldTrigger field; 
+
+
+    [SerializeField] private Transform[] points;
+    [SerializeField] private LineController line;
+    [SerializeField] private GameObject lineRenderer;
+
+
 
 
     bool isAttacking = false;
@@ -15,8 +23,8 @@ public class PullerAnimator : MonoBehaviour
 
     const string idle = "PullerIdle";
     const string running = "PullerRunning";
-    const string jumping = "PullerJump";
-    const string charge = "PullerCharging";
+    const string jumping = "PullerJumping";
+    const string charge = "PullerCharge";
     const string attack = "PullerAttack";
     const string runningCharge = "PullerRunningCharge";
     const string jumpingCharge = "PullerJumpCharge";
@@ -29,25 +37,35 @@ public class PullerAnimator : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         move = GetComponent<PlayerMovement>();
         pull = GetComponent<Pull>();
+        //field = GetComponentInChildren<FieldTrigger>();
+
+
+        line.SetUpLine(points);
+        //lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.SetActive(false);
     }
 
     private void Update()
     {
 
+        
+
         if (Input.GetKeyUp(pull.pullOnPress) && isAttacking)
         {
+            lineRenderer.SetActive(false);
             isAttackFinished = false;
 
 
             if (!move.IsGrounded())
             {
-                ChangeAnimationState(jumpingAttack);
+                //ChangeAnimationState(jumpingAttack);
+                //lineRenderer.SetActive(true);  
 
             }
             else
             {
 
-                ChangeAnimationState(attack);
+                //ChangeAnimationState(attack);
             }
 
             //float delay = animator.GetCurrentAnimatorStateInfo(0).length;
@@ -57,8 +75,13 @@ public class PullerAnimator : MonoBehaviour
 
         if (Input.GetKey(pull.pullOnPress))
         {
+
+              // lineRenderer.SetActive(true);
+
+            
             isAttacking = true;
         }
+         
 
     }
 
@@ -73,11 +96,13 @@ public class PullerAnimator : MonoBehaviour
             {
 
                 ChangeAnimationState(runningCharge);
+                lineRenderer.SetActive(true);
 
             }
             else
             {
                 ChangeAnimationState(charge);
+                lineRenderer.SetActive(true);
             }
 
 
@@ -104,6 +129,7 @@ public class PullerAnimator : MonoBehaviour
             if (isAttacking)
             {
                 ChangeAnimationState(jumpingCharge);
+                lineRenderer.SetActive(true);
             }
             else
             {
@@ -131,6 +157,8 @@ public class PullerAnimator : MonoBehaviour
     public void ChangeAnimationState(string newState)
     {
         if (currentState == newState) return;
+
+        Debug.Log(newState);
 
         animator.Play(newState);
 
