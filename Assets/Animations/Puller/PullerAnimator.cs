@@ -158,8 +158,6 @@ public class PullerAnimator : MonoBehaviour
     {
         if (currentState == newState) return;
 
-        Debug.Log(newState);
-
         animator.Play(newState);
 
         currentState = newState;
