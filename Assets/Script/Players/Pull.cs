@@ -9,6 +9,7 @@ public class Pull : MonoBehaviour
     private Rigidbody2D rigidbodyPusher;
     private FieldTrigger pullField;
     private BoxCollider2D boxColliderPusher;
+    private PlayerMovement movement;
  
     //Pull
     private float time = 0.15f;
@@ -26,6 +27,13 @@ public class Pull : MonoBehaviour
     private bool ifSuccesChargeTime;
     public float minChargingTime = 2f;
     public float maxChargeingTime = 4;
+    private bool isChargingReal;
+    private bool isStunned;
+    public float speedReducerMultiplier = 0.75f;
+    private float reducedSpeed;  //Initialiseret ved Start()
+    private float originalSpeed; //Initialiseret ved Start()
+    private float originalJump;  //Initialiseret ved Start()
+    private float timeToUnstun;
 
     //SlowMotion
     public SlowMotion slowMotion;
@@ -45,6 +53,7 @@ public class Pull : MonoBehaviour
     public float flashTime = 0.075f;
    
 
+
     public void SetPitch()
     {
         audioMixer.SetFloat("ExposedPitch", pitchValue);
@@ -61,6 +70,13 @@ public class Pull : MonoBehaviour
         boxColliderPusher = thePusher.GetComponent<BoxCollider2D>();
         chargeTrackingTimer = 0;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+        movement = GetComponent<PlayerMovement>();
+
+        //Charge
+        reducedSpeed = movement.speed * speedReducerMultiplier;
+        originalSpeed = movement.speed;
+        originalJump = movement.jumpingPower;
     }
 
     private void Update()
@@ -136,6 +152,7 @@ public class Pull : MonoBehaviour
         }
     }
 
+    /*
     public void ChargePulling(float normalPull, float chargedPull)
     {
 
@@ -154,6 +171,51 @@ public class Pull : MonoBehaviour
         }
         
     }
+     */
+
+    public void ChargePulling(float normalPull, float chargedPull)
+    {
+
+        if (isChargingReal && !isStunned)
+        {
+            movement.speed = reducedSpeed;
+        }
+        if (isChargingReal == false)
+        {
+            movement.speed = originalSpeed;
+        }
+        if (isStunned)
+        {
+            movement.speed = 0;
+            movement.jumpingPower = 0;
+            timeToUnstun += Time.deltaTime;
+            if (timeToUnstun > 2f)
+            {
+                isStunned = false;
+            }
+
+        }
+        if (!isStunned && !isChargingReal)
+        {
+            movement.speed = originalSpeed;
+            movement.jumpingPower = originalJump;
+        }
+
+        if (ifFailedChargeTime && pullField.inField)
+        {
+            ThePull(normalPull);
+            ifFailedChargeTime = false;
+            ifSuccesChargeTime = false;
+        }
+
+        if (ifSuccesChargeTime && pullField.inField)
+        {
+            ThePull(chargedPull);
+            ifFailedChargeTime = false;
+            ifSuccesChargeTime = false;
+        }
+
+    }
 
 
     private void Timer()
@@ -161,6 +223,7 @@ public class Pull : MonoBehaviour
 
         if (Input.GetKeyDown(pullOnPress))
         {
+            timeToUnstun = 0; 
             chargeTrackingTimer = 0;
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false; 
@@ -185,12 +248,33 @@ public class Pull : MonoBehaviour
             ifFailedChargeTime = true;
         }
 
+
         if (Input.GetKey(pullOnPress))
         {
             chargeTrackingTimer += Time.deltaTime;
-        } 
 
-        
+            if (chargeTrackingTimer > 0.5f)
+            {
+                isChargingReal = true;
+            }
+
+            if (chargeTrackingTimer > 4f)
+            {
+                isStunned = true;
+            }
+        }
+
+        else if (Input.GetKeyUp(pullOnPress))
+        {
+            isChargingReal = false;
+        }
+
+        if (Input.GetKeyUp(pullOnPress) && isStunned)
+        {
+            timeToUnstun += Time.deltaTime;
+        }
+
+
     }
 
 }
