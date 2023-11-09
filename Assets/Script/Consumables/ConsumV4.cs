@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 
 public class ConsumV4 : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class ConsumV4 : MonoBehaviour
     
 
     private float nextSpawnTime;
-    private List<Vector2> spawnedItemPositions = new List<Vector2>();
+    [SerializeField] public List<Vector2> spawnedItemPositions = new List<Vector2>();
 
     void Start()
     {
@@ -28,7 +29,6 @@ public class ConsumV4 : MonoBehaviour
 
     void Update()
     {
-     
 
 
         if (Time.time >= nextSpawnTime && currentConsumablesTracker < maxConsumables)
@@ -122,6 +122,5 @@ public class ConsumV4 : MonoBehaviour
             Gizmos.DrawLine(min, new Vector3(max.x, min.y, 0));
         }
     }
-
 
 }

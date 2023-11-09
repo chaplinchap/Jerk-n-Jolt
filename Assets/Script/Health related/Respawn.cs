@@ -14,13 +14,13 @@ public class Respawn : MonoBehaviour
     [Header("Pusher Settings")]
     public GameObject pusher;
     // public GameObject PusherRespawnPoint;
-    public Health pushHealthScript; //reference to Health script
+    public HealthV2 pushHealthScript; //reference to Health script
     public ParticleSystem pusherRespawnParticles;
     
     [Header("Puller Settings")]
     public GameObject puller;
     // public GameObject PullerRespawnPoint;
-    public Health pullHealthScript; //reference to Health script
+    public HealthV2 pullHealthScript; //reference to Health script
     public ParticleSystem pullerRespawnParticles;
     private float respawnDelay = 1f; //Decide when should respawn
 
@@ -33,7 +33,8 @@ public class Respawn : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    private void OnTriggerStay2D(Collider2D collision)
     {
        
 
