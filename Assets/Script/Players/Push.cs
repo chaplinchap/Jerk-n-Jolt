@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 public class Push : MonoBehaviour
 {
     private GameObject thePuller;
     private Rigidbody2D rigidbodyPuller;
     private FieldTrigger pushField;
-
+    public PlayerMovement movement;
 
     //Push
     public float pushForce = 100;
@@ -20,9 +22,15 @@ public class Push : MonoBehaviour
     public float chargingTime = 2f;
     public bool isCharging;
     public bool hasCharged;
-
-
     public float extraForce = 1;
+    
+    private bool isChargingReal;
+    private bool isStunned;
+    public float speedReducerMultiplier = 0.75f;     
+    private float reducedSpeed;  //Initialiseret ved Start()
+    private float originalSpeed; //Initialiseret ved Start()
+    private float originalJump;  //Initialiseret ved Start()
+    private float timeToUnstun; 
 
     // Slowmotion
     public SlowMotion slowMotion;
@@ -50,6 +58,11 @@ public class Push : MonoBehaviour
 
     void Start()
     {
+        //Charge
+        reducedSpeed = movement.speed * speedReducerMultiplier;
+        originalSpeed = movement.speed;
+        originalJump = movement.jumpingPower;
+        
         thePuller = GameObject.FindWithTag("Puller");
         rigidbodyPuller = thePuller.GetComponent<Rigidbody2D>();
         pushField = gameObject.GetComponentInChildren<FieldTrigger>();
@@ -118,14 +131,32 @@ public class Push : MonoBehaviour
         }
     }
 
-
     public void ChargePush(float pushNormal, float pushCharged) 
     {
-        if (isCharging && pushField.inField)
+
+        if (isChargingReal && !isStunned)    
         {
-            ThePush(pushNormal);
-            isCharging = false;
-            hasCharged = false;
+            movement.speed = reducedSpeed;
+        }
+        if (isChargingReal == false)
+        {
+            movement.speed = originalSpeed;
+        }
+        if (isStunned)
+        {
+            movement.speed = 0;
+            movement.jumpingPower = 0;
+            timeToUnstun += Time.deltaTime;
+            if (timeToUnstun > 2f)
+            {
+                isStunned = false;
+            }
+            
+        }
+        if (!isStunned && !isChargingReal)
+        {
+            movement.speed = originalSpeed;
+            movement.jumpingPower = originalJump;
         }
 
         if (hasCharged && pushField.inField)
@@ -134,16 +165,25 @@ public class Push : MonoBehaviour
             isCharging = false;
             hasCharged = false;
         }
+
+        if (isCharging && pushField.inField)
+        {
+            ThePush(pushNormal);
+            isCharging = false;
+            hasCharged = false;
+        }
+
     }
 
     private void Timer()
     {
-
         if (Input.GetKeyDown(pushOnPress))
         {
             timer = 0;
+            timeToUnstun = 0;
             isCharging = false;
             hasCharged = false;
+
         }
         else if (Input.GetKeyUp(pushOnPress) && timer > chargingTime && pushField.inField)
         {
@@ -152,6 +192,7 @@ public class Push : MonoBehaviour
             freeze.Freeze();
             SetPitch();
         }
+
         else if (Input.GetKeyUp(pushOnPress) && pushField.inField)
         {
             isCharging = true;
@@ -160,7 +201,29 @@ public class Push : MonoBehaviour
         if (Input.GetKey(pushOnPress))
         {
             timer += Time.deltaTime;
+
+            if (timer > 0.5f)
+            {
+                isChargingReal = true;
+            }
+
+            if (timer > 4f)
+            {
+                isStunned = true;
+            }
+        }
+
+        else if (Input.GetKeyUp(pushOnPress))
+        {
+            isChargingReal = false;
+        }
+        
+        if (Input.GetKeyUp(pushOnPress) && isStunned)
+        {
+            timeToUnstun += Time.deltaTime;
         }
     }
-
+     
 }
+
+

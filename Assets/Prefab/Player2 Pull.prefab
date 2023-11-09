@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6465747639977077
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 344273215120220937}
-  m_Layer: 0
-  m_Name: WallCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &344273215120220937
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6465747639977077}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1626964684136801760}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2579352975826371630
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +219,6 @@ Transform:
   m_Children:
   - {fileID: 4462166521201640982}
   - {fileID: 7130576299061769754}
-  - {fileID: 344273215120220937}
   - {fileID: 2548055601682030051}
   - {fileID: 8770616291892608829}
   m_Father: {fileID: 0}
@@ -417,6 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e537e56962ff5e94388d04b000a9473e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 0}
   pullForce: 35
   pullOnPress: 109
   extraForce: 1
@@ -425,6 +394,7 @@ MonoBehaviour:
     m_Bits: 0
   timer: 0
   chargingTime: 2
+  speedReducerMultiplier: 0.75
   slowMotion: {fileID: 0}
   freeze: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 6d6262e9e6859234dab615669bc580f9, type: 2}
