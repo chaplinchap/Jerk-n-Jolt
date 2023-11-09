@@ -88,7 +88,7 @@ public class Push : MonoBehaviour
 
         if (Input.GetKeyUp(pushOnPress) && pushField.inField)
         {
-            puller.GetComponent<SpriteRenderer>().enabled = false;
+            //puller.GetComponent<SpriteRenderer>().enabled = false;
         }
 
         if (Time.time - timeBox > audioCoolDown)
@@ -101,7 +101,7 @@ public class Push : MonoBehaviour
 
     void ResetMaterial()
     {
-        puller.GetComponent<SpriteRenderer>().enabled = true;
+        //puller.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     private void FixedUpdate()
@@ -198,7 +198,7 @@ public class Push : MonoBehaviour
         {
             ifSuccesChargeTime = true;
             slowMotion.DoSlowmotion();
-            freeze.Freeze();
+            //freeze.Freeze();
             SetPitch();
         }
         else if (Input.GetKeyUp(pushOnPress) && pushField.inField)

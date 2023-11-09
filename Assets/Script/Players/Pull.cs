@@ -95,7 +95,7 @@ public class Pull : MonoBehaviour
 
         if (Input.GetKeyUp(pullOnPress) && pullField.inField)
         {
-            pusher.GetComponent<SpriteRenderer>().enabled = false;
+            //pusher.GetComponent<SpriteRenderer>().enabled = false;
         }
 
         if (Time.time - timeBox > audioCoolDown)
@@ -110,7 +110,7 @@ public class Pull : MonoBehaviour
 
     void ResetMaterial()
     {
-        pusher.GetComponent<SpriteRenderer>().enabled = true;
+        //pusher.GetComponent<SpriteRenderer>().enabled = true;
     }
 
 
@@ -240,7 +240,7 @@ public class Pull : MonoBehaviour
         {
             ifSuccesChargeTime = true;
             slowMotion.DoSlowmotion();
-            freeze.Freeze();
+            //  freeze.Freeze();
             SetPitch();
         }
         else if (Input.GetKeyUp(pullOnPress) && pullField.inField) 
@@ -258,7 +258,7 @@ public class Pull : MonoBehaviour
                 isChargingReal = true;
             }
 
-            if (chargeTrackingTimer > 4f)
+            if (chargeTrackingTimer > maxChargeingTime)
             {
                 isStunned = true;
             }
