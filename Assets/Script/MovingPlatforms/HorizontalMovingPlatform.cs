@@ -36,6 +36,7 @@ public class HorizontalMovingPlatform : MonoBehaviour
             playerRb.interpolation = RigidbodyInterpolation2D.Interpolate;
     }
 
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red; // Set the color for the Gizmos

@@ -25,7 +25,7 @@ public class Respawn : MonoBehaviour
     private float respawnDelay = 1f; //Decide when should respawn
 
 
-// METHODS //
+    // METHODS //
 
 
     private void Awake()
@@ -33,11 +33,9 @@ public class Respawn : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-    
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-       
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.CompareTag("Pusher"))
         {
            
@@ -53,6 +51,7 @@ public class Respawn : MonoBehaviour
             StartCoroutine(RespawnPuller());   
             Debug.Log("Player has fallen out");
         }
+
     }
 
 
