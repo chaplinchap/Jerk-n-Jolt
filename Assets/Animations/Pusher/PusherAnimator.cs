@@ -40,14 +40,14 @@ public class PusherAnimator : MonoBehaviour
         {
             isAttackFinished = false;
 
-            
+
             if (!move.IsGrounded())
             {
                 ChangeAnimationState(jumpingAttack);
 
             }
-             else{
-            
+            else {
+
                 ChangeAnimationState(attack);
             }
 
@@ -66,6 +66,7 @@ public class PusherAnimator : MonoBehaviour
 
     private void FixedUpdate()
     {
+
 
         if (isAttacking && isAttackFinished && move.IsGrounded()) {
 
