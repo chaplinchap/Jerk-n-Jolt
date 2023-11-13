@@ -314,10 +314,12 @@ MonoBehaviour:
   speed: 160
   jumpingPower: 60
   movementX: 0
+  fastFallSpeed: 35
   jumpUp: 273
   moveRight: 275
   moveLeft: 276
   throughButton: 274
+  fastFall: 0
   platformSurface:
     serializedVersion: 2
     m_Bits: 2048

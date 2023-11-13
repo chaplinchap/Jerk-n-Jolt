@@ -16,11 +16,13 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 8f;
     public float jumpingPower = 8f;
     public int movementX = 0;
+    public float fastFallSpeed = 35;
 
     public KeyCode jumpUp; 
     public KeyCode moveRight;
     public KeyCode moveLeft;
-    public KeyCode throughButton; 
+    public KeyCode throughButton;
+    public KeyCode fastFall;
 
     [SerializeField] private LayerMask platformSurface;
 
@@ -79,6 +81,11 @@ public class PlayerMovement : MonoBehaviour
         {
             canJump = true; //when on ground allow player to jump
         }
+
+        if (!IsGrounded() && Input.GetKey(fastFall))
+        {
+            rb.AddForce(Vector2.down * fastFallSpeed, ForceMode2D.Force);
+        }
         
         if (Input.GetKeyDown(jumpUp))
         {
@@ -120,7 +127,6 @@ public class PlayerMovement : MonoBehaviour
             movementX = 0;           
         }
     }
-
 
 
     private void anotherJump()
