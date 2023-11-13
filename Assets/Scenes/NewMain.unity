@@ -2471,7 +2471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5667740418135855318, guid: 583c4ba6a49f11e408b2e62d3c2d9e26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.124441855
+      value: -0.12444194
       objectReference: {fileID: 0}
     - target: {fileID: 5667740418135855318, guid: 583c4ba6a49f11e408b2e62d3c2d9e26, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4946,6 +4946,10 @@ PrefabInstance:
       propertyPath: slowMotion
       value: 
       objectReference: {fileID: 2001116499}
+    - target: {fileID: 847568949796497890, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
+      propertyPath: pusherLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 1626964684136801760, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -5011,10 +5015,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 761251209570154705, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: fastFall
+      value: 115
+      objectReference: {fileID: 0}
     - target: {fileID: 1545128923084080689, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: puller
       value: 
       objectReference: {fileID: 1449906316}
+    - target: {fileID: 1545128923084080689, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: pushForce
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1545128923084080689, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: slowMotion
       value: 
@@ -5167,7 +5179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5472147495159294361, guid: 0cbb929ffaff869469e544c41b3dda9f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00000059604645
+      value: -0.00000023841858
       objectReference: {fileID: 0}
     - target: {fileID: 5472147495159294361, guid: 0cbb929ffaff869469e544c41b3dda9f, type: 3}
       propertyPath: m_LocalPosition.y

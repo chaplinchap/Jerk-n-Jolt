@@ -223,10 +223,12 @@ MonoBehaviour:
   speed: 160
   jumpingPower: 60
   movementX: 0
+  fastFallSpeed: 35
   jumpUp: 119
   moveRight: 100
   moveLeft: 97
   throughButton: 115
+  fastFall: 0
   platformSurface:
     serializedVersion: 2
     m_Bits: 2048
@@ -250,6 +252,7 @@ MonoBehaviour:
   ifSuccesChargeTime: 0
   maxChargeingTime: 4
   speedReducerMultiplier: 0.75
+  timeToUnstun: 0
   extraForce: 4
   slowMotion: {fileID: 0}
   freeze: {fileID: 0}
