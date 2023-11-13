@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-
 public class UIManager : MonoBehaviour
 {
 
@@ -16,8 +15,11 @@ public class UIManager : MonoBehaviour
     private bool onPause;
 
     public List<HealthV2> playersHealth = new List<HealthV2>(); //reference to Health script
+    public ScoreManager scoreManager; //reference to the ScoreManager
 
-    private GameObject player1; // Varible given
+    public GameObject player1; // Used to check for players left when game is over
+    public TextMeshProUGUI text;
+
 
     private void Awake()
     {
@@ -31,9 +33,8 @@ public class UIManager : MonoBehaviour
         PauseMenu.SetActive(false); //ensure pause menu is not loaded on start
     }
 
-    public TextMeshProUGUI text;
-     private void Update()
-     {
+    private void LateUpdate()
+    {
         foreach (HealthV2 playerHealth in playersHealth)
         {
             if (playerHealth.currentHealth <= 0) {
@@ -41,6 +42,10 @@ public class UIManager : MonoBehaviour
                 break; // No need to continue checking if one player is dead.
             }
         }
+    }
+
+    private void Update()
+     {
 
         if (deadPlayer) {
             gameIsOver = true;
@@ -49,7 +54,7 @@ public class UIManager : MonoBehaviour
         
         if (gameIsOver == true) {
             GameOverSequence();
-                if (Input.GetKeyDown(KeyCode.Return)){
+                if (Input.GetKeyDown(KeyCode.Return)){                   
                     SceneManager.LoadScene(sceneToLoad);
                     Debug.Log("Game is over!");
                 }
@@ -82,16 +87,27 @@ public class UIManager : MonoBehaviour
             onPause = true;
         }
 
+    private bool stopChecking = true;
     public void GameOverSequence()
     {
+        {
+        if (!stopChecking)
+        return; // Stops the code here if boolean is false
+
         gameOverPanel.SetActive(true);
-        if (player1.activeInHierarchy) // If player 1 is still alive 
-        {
+        if (player1.activeInHierarchy){ // If player 1 is still alive
             text.text = "Player 1 Wins";
+            scoreManager.UpdateScores(1,0);
+            //player1Score.text = "Pusher: " + playerScore1.ToString();
         }
-        else // If player 1 is not alive
-        {
+        else{ // If player 1 is not alive
             text.text = "Player 2 Wins";
+            scoreManager.UpdateScores(0,1);
+            //player2Score.text = "Pusher: " + playerScore2.ToString();
+        }
+
+        //scoreManager.UpdateScoreText();
+        stopChecking = false;
         }
     }
 
@@ -110,6 +126,4 @@ public class UIManager : MonoBehaviour
     {   
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1); //Goes back to MainMenu
     }
-
-
 }

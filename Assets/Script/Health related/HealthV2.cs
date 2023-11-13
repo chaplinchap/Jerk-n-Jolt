@@ -6,11 +6,11 @@ public class HealthV2 : MonoBehaviour
     //Varibles declared
     public float maxHealth = 3;  //Maximum health the player can get
     public float currentHealth; //Current health the player has 
-    int ImageLength = 12; //Image length has 12 hearts = can support up to 12 hearths
+    //int ImageLength = 12; //Image length has 12 hearts = can support up to 12 hearths
 
     //[SerializeField] private Health playerHealth; //Input player health
-    [SerializeField] private Image totalHealthbar; //UI of healthbar (background)
-    [SerializeField] private Image currentHealthbar; //UI of players current healthbar (foreground)
+    //[SerializeField] private Image totalHealthbar; //UI of healthbar (background)
+    //[SerializeField] private Image currentHealthbar; //UI of players current healthbar (foreground)
 
      private void Awake()
     {
@@ -20,13 +20,13 @@ public class HealthV2 : MonoBehaviour
     private void Start()
     {
         //Access to image fill amount. players starting health (3) devided by ImageLenght (12) 
-        totalHealthbar.fillAmount = currentHealth / ImageLength;
+        //totalHealthbar.fillAmount = currentHealth / ImageLength;
     }
 
     private void Update()
     {
         //Access to image fill amount. look for what player health is. when losing health change fill amount
-        currentHealthbar.fillAmount = currentHealth / ImageLength;
+        //currentHealthbar.fillAmount = currentHealth / ImageLength;
     }
 
     public void TakeDamage(float damage) //When taken damage

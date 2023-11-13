@@ -41,6 +41,7 @@ public class PlatformDisapear : PlatformScriptableObject
 
     public override void Spawn(GameObject target)
     {
+
         Color respawnColor = target.GetComponent<SpriteRenderer>().color;
         respawnColor.a = 1f;
         target.GetComponent<SpriteRenderer>().color = respawnColor;
@@ -58,6 +59,4 @@ public class PlatformDisapear : PlatformScriptableObject
         
         
     }
-
-
 }
