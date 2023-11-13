@@ -17,7 +17,7 @@ public class OverrideToAbilityPower : ConsumableScriptableObject
 
     public override void ApplyPusher(GameObject target)
     {
-       
+
         // startingPowerPush = target.GetComponent<Push>().pushForce;
         target.GetComponent<Push>().pushForce *= amountPower;
 

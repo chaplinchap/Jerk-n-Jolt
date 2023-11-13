@@ -16,6 +16,7 @@ public class TakeDamage : MonoBehaviour
         {
             collision.GetComponent<HealthV2>().TakeDamage(damage); //The hit player takes damage
             audioManager.PlaySFX(audioManager.death);
+            CameraShake.Instance.ShakeCamera(50f, .5f);
         }
     }
 }

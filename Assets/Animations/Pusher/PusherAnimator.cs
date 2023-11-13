@@ -24,6 +24,7 @@ public class PusherAnimator : MonoBehaviour
     const string jumpingCharge = "PusherJumpCharge";
     const string jumpingAttack = "PusherJumpAttack";
     const string falling = "PusherFalling";
+    const string stun = "PusherStun";
 
 
     void Start()
@@ -35,6 +36,7 @@ public class PusherAnimator : MonoBehaviour
 
     private void Update()
     {
+
 
         if (Input.GetKeyUp(push.pushOnPress) && isAttacking)
         {

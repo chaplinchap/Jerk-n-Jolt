@@ -5,7 +5,7 @@ using UnityEngine;
 public class NegativeFeedbackLoop : MonoBehaviour
 {
 
-    public float decreaseMultiplier = 2f; 
+    public float increaseMultiplier = 2f; 
 
     private HealthV2 healthScript;
     private Pull pullScript;
@@ -39,7 +39,7 @@ public class NegativeFeedbackLoop : MonoBehaviour
     {
         if (startingHealth != GetHealth()) {
 
-            CameraShake.Instance.ShakeCamera(10f, .5f);
+            //CameraShake.Instance.ShakeCamera(10f, .5f);
 
             SetForce();
             startingHealth = GetHealth();
@@ -51,7 +51,7 @@ public class NegativeFeedbackLoop : MonoBehaviour
     { return healthScript.currentHealth; }
 
 
-    private float GetForce() 
+    public float GetForce() 
     {
         float force = 1;
         try
@@ -78,18 +78,18 @@ public class NegativeFeedbackLoop : MonoBehaviour
         if (GetHealth() == 3)
         {
 
-            force = startingForce;
+            force = Mathf.Floor(startingForce);
 
         }
         else if (GetHealth() == 2)
         {
 
-            force = startingForce / decreaseMultiplier;
+            force = Mathf.Floor(startingForce * increaseMultiplier);
 
         }
-        else if (GetHealth() == 1) { 
-            
-            force = startingForce / decreaseMultiplier / decreaseMultiplier;
+        else if (GetHealth() == 1) {
+
+            force = Mathf.Floor(startingForce * increaseMultiplier * increaseMultiplier);
         
         }
 

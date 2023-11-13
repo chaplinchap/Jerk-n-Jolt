@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1173737105884267666, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
       propertyPath: m_Volume
-      value: 0
+      value: 0.195
       objectReference: {fileID: 0}
     - target: {fileID: 4544540692550397746, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3091,7 +3091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9858e8c32e9d3439c29dd827861507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decreaseMultiplier: 2
+  increaseMultiplier: 1.2
 --- !u!1 &1388336570 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3506892869185282501, guid: 583c4ba6a49f11e408b2e62d3c2d9e26, type: 3}
@@ -3353,7 +3353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9858e8c32e9d3439c29dd827861507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decreaseMultiplier: 2
+  increaseMultiplier: 1.2
 --- !u!4 &1459212816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7748005987508325142, guid: e6c32039061febc438e251c76dd8b513, type: 3}
