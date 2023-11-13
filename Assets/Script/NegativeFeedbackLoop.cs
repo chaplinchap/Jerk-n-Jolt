@@ -38,6 +38,9 @@ public class NegativeFeedbackLoop : MonoBehaviour
     void Update()
     {
         if (startingHealth != GetHealth()) {
+
+            CameraShake.Instance.ShakeCamera(10f, .5f);
+
             SetForce();
             startingHealth = GetHealth();
         }
@@ -106,5 +109,6 @@ public class NegativeFeedbackLoop : MonoBehaviour
         catch { }
 
     }
+
 
 }
