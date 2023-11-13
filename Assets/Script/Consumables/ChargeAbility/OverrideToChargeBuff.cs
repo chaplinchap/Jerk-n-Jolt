@@ -37,7 +37,7 @@ public class OverrideToChargeBuff : ConsumableScriptableObject
 
     public override void DeApplyPuller(GameObject target)
     {
-        target.GetComponent<Pull>().pullForce = startingMinChargingTime;
+        target.GetComponent<Pull>().minChargingTime = startingMinChargingTime;
         target.GetComponent<Pull>().maxChargeingTime = startingMaxChargingTime;
     }
 }

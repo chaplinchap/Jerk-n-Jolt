@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 
+// This script is refered to in the UIManager script
+
 public class ScoreManager : MonoBehaviour
 {
 

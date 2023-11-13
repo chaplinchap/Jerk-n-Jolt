@@ -6,7 +6,7 @@ public class GameStateChangePlatformDespawns : MonoBehaviour
 {
 
     [SerializeField] PlatformScriptableObject platformScriptableObject;
-    private float gamestateChangeTimer = 6f;
+    private float gamestateChangeTimer = 120f;
    
 
     private IEnumerator startGameStateChange;
