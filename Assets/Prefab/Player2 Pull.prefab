@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 847568949796497890}
   - component: {fileID: 2840529185926110316}
   - component: {fileID: 1593877366679419715}
+  - component: {fileID: 2094154324210754525}
   m_Layer: 0
   m_Name: Player2 Pull
   m_TagString: Puller
@@ -310,7 +311,7 @@ MonoBehaviour:
   rb: {fileID: 8386127129370546744}
   playerCollider: {fileID: 8152077003433105955}
   feet: {fileID: 7600740549158947554}
-  time: 0.4
+  time: 0.3
   speed: 160
   jumpingPower: 60
   movementX: 0
@@ -319,7 +320,7 @@ MonoBehaviour:
   moveRight: 275
   moveLeft: 276
   throughButton: 274
-  fastFall: 0
+  fastFall: 274
   platformSurface:
     serializedVersion: 2
     m_Bits: 2048
@@ -340,11 +341,12 @@ MonoBehaviour:
   extraForce: 2
   pusherLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   chargeTrackingTimer: 0
   minChargingTime: 2
   maxChargeingTime: 4
   speedReducerMultiplier: 0.75
+  timeToUnstun: 0
   slowMotion: {fileID: 0}
   freeze: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 6d6262e9e6859234dab615669bc580f9, type: 2}
@@ -366,8 +368,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   currentHealth: 3
-  totalHealthbar: {fileID: 0}
-  currentHealthbar: {fileID: 0}
 --- !u!114 &1593877366679419715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +385,19 @@ MonoBehaviour:
   - {fileID: 8535957501582002034}
   line: {fileID: 115911409125121561}
   lineRenderer: {fileID: 8460213468245997565}
+--- !u!114 &2094154324210754525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7831007007408972477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9858e8c32e9d3439c29dd827861507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increaseMultiplier: 1.2
 --- !u!1001 &2297080068562931501
 PrefabInstance:
   m_ObjectHideFlags: 0

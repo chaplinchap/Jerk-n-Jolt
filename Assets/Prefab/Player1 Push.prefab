@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 1545128923084080689}
   - component: {fileID: 6291614743756611388}
   - component: {fileID: 1919701950871859034}
+  - component: {fileID: 3944283588468354252}
   m_Layer: 0
   m_Name: Player1 Push
   m_TagString: Pusher
@@ -228,7 +229,7 @@ MonoBehaviour:
   moveRight: 100
   moveLeft: 97
   throughButton: 115
-  fastFall: 0
+  fastFall: 115
   platformSurface:
     serializedVersion: 2
     m_Bits: 2048
@@ -275,8 +276,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   currentHealth: 0
-  totalHealthbar: {fileID: 0}
-  currentHealthbar: {fileID: 0}
 --- !u!114 &1919701950871859034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +288,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b493685ba6210499080cc16512fd92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3944283588468354252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675015520253059547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9858e8c32e9d3439c29dd827861507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increaseMultiplier: 1.2
 --- !u!1 &2977566204947500839
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,9 +440,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2801454933509258414, guid: efcd5c3ba6ba3a7428c609c2bc3658a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3130001
+      objectReference: {fileID: 0}
     - target: {fileID: 4984373237145742084, guid: efcd5c3ba6ba3a7428c609c2bc3658a3, type: 3}
       propertyPath: m_Name
       value: Pusher
+      objectReference: {fileID: 0}
+    - target: {fileID: 8692370989965831836, guid: efcd5c3ba6ba3a7428c609c2bc3658a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.03054619
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
