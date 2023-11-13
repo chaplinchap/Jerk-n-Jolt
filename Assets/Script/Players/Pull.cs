@@ -80,6 +80,8 @@ public class Pull : MonoBehaviour
         reducedSpeed = movement.speed * speedReducerMultiplier;
         originalSpeed = movement.speed;
         originalJump = movement.jumpingPower;
+        stunnedPullForce = 0;
+        originalPullForce = pullForce;
     }
 
     private void Update()
