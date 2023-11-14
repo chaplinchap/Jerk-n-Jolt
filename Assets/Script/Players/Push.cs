@@ -25,11 +25,8 @@ public class Push : MonoBehaviour
     private bool isChargingReal;
     private bool isStunned;
     public float speedReducerMultiplier = 0.75f;
-    private float reducedSpeed;      //Initialiseret ved Start()
-    private float originalSpeed;     //Initialiseret ved Start()
-    private float originalJump;      //Initialiseret ved Start()
-    private float stunnedPushForce;  //Initialiseret ved Start()
-    private float originalPushForce; //Initialiseret ved Start()
+    public float stunTime = 2f;
+
     public float timeToUnstun;
 
     public float extraForce = 1;
@@ -68,12 +65,6 @@ public class Push : MonoBehaviour
 
         movement = GetComponent<PlayerMovement>();
 
-        //Charge
-        reducedSpeed = movement.speed * speedReducerMultiplier;
-        originalSpeed = movement.speed;
-        originalJump = movement.jumpingPower;
-        stunnedPushForce = 0;
-        originalPushForce = pushForce;
     }
 
 
@@ -151,30 +142,6 @@ public class Push : MonoBehaviour
     public void ChargePush(float normalPush, float chargedPush)
     {
 
-        if (isChargingReal && !isStunned)
-        {
-            movement.speed = reducedSpeed;
-        }
-        if (!isChargingReal)
-        {
-            movement.speed = originalSpeed;
-        }
-        if (isStunned)
-        {
-            hasPressedPush = true;
-            pushForce = stunnedPushForce;
-            gameObject.GetComponent<PlayerMovement>().enabled = false;
-            timeToUnstun += Time.deltaTime;
-            if (timeToUnstun > 2f)
-            {
-                isStunned = false;
-            }
-        }
-        if (!isStunned && !isChargingReal)
-        {
-            pushForce = originalPushForce;
-            gameObject.GetComponent<PlayerMovement>().enabled = true;
-        }
 
         if (ifFailedChargeTime && pushField.inField)
         {
@@ -200,11 +167,17 @@ public class Push : MonoBehaviour
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
         }
-        else if (chargeTrackingTimer > maxChargeingTime)
+        else if (Input.GetKey(pushOnPress))
         {
-            chargeTrackingTimer = 0;
-            ifFailedChargeTime = false;
-            ifSuccesChargeTime = false;
+            if (chargeTrackingTimer > maxChargeingTime)
+            {
+                chargeTrackingTimer = 0;
+                ifFailedChargeTime = false;
+                ifSuccesChargeTime = false;
+                return;
+            }
+
+            chargeTrackingTimer += Time.deltaTime;
         }
         else if (Input.GetKeyUp(pushOnPress) && chargeTrackingTimer > minChargingTime && pushField.inField)
         {
@@ -216,26 +189,6 @@ public class Push : MonoBehaviour
         else if (Input.GetKeyUp(pushOnPress) && pushField.inField)
         {
             ifFailedChargeTime = true;
-        }
-        if (Input.GetKey(pushOnPress) && !isStunned)
-        {
-            chargeTrackingTimer += Time.deltaTime;
-            if (chargeTrackingTimer > 0.5f)
-            {
-                isChargingReal = true;
-            }
-            if (chargeTrackingTimer > maxChargeingTime)
-            {
-                isStunned = true;
-            }
-        }
-        else if (Input.GetKeyUp(pushOnPress))
-        {
-            isChargingReal = false;
-        }
-        if (!isStunned)
-        {
-            timeToUnstun = 0;
         }
         
     }
