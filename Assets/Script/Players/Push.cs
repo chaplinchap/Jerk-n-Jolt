@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class Push : MonoBehaviour
+public class Push : AbiltyPower
 {
     private GameObject thePuller;
     private Rigidbody2D rigidbodyPuller;

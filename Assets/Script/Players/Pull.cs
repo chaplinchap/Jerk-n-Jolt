@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class Pull : MonoBehaviour
+public class Pull : AbiltyPower
 {
     private GameObject thePusher;
     private Rigidbody2D rigidbodyPusher;

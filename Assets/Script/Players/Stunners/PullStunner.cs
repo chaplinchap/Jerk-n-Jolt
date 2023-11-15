@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PushStunner : Stunner
+public class PullStunner : Stunner
 {
-    private Push pushScript;
+
+    private Pull pullScript;
 
     public float stunTime;
     public float timeToStun;
 
-    void Update()
+    void Update() 
     {
-        Stun(timeToStun, stunTime, pushScript.pushOnPress);
-
+        Stun(timeToStun, stunTime, pullScript.pullOnPress);
     }
 
 
@@ -21,12 +21,15 @@ public class PushStunner : Stunner
     protected override void GetScripts()
     {
         base.GetScripts();
-        pushScript = GetComponent<Push>();
+        pullScript = GetComponent<Pull> ();
     }
 
     protected override void TurnScripts(bool turn)
     {
         base.TurnScripts(turn);
-        pushScript.enabled = turn;
+        pullScript.enabled = turn;
     }
+
+
+
 }

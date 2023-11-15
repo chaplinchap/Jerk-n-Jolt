@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Stunner : MonoBehaviour
 {
 
-
     private PlayerMovement playerMovement;
     private MovementAid movementAid;
-
+    protected StunbarScript stunbarScript;
 
     private float startingSpeed;
     private float duration;
@@ -22,7 +22,6 @@ public class Stunner : MonoBehaviour
         GetScripts();
         startingSpeed = playerMovement.speed;
     }
-
 
 
     float time = 0;
@@ -87,6 +86,7 @@ public class Stunner : MonoBehaviour
 
         playerMovement = GetComponent<PlayerMovement>();
         movementAid = GetComponent<MovementAid>();
+        stunbarScript = GetComponentInChildren<StunbarScript>();
 
     }
 
@@ -95,9 +95,12 @@ public class Stunner : MonoBehaviour
     {
         playerMovement.enabled = turn;
         movementAid.enabled = turn;
-
+        stunbarScript.enabled = turn;
+     
     }
 
     public bool IsStunned() { return isStunned; }
+
+    protected float GetTime() { return time; }
 
 }
