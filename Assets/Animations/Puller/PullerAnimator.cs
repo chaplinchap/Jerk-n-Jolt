@@ -8,8 +8,8 @@ public class PullerAnimator : MonoBehaviour
     private string currentState;
     private PlayerMovement move;
     private Pull pull;
-    private FieldTrigger field; 
-
+    private FieldTrigger field;
+    private Stunner stunScript;
 
     [SerializeField] private Transform[] points;
     [SerializeField] private LineController line;
@@ -18,8 +18,8 @@ public class PullerAnimator : MonoBehaviour
 
 
 
-    bool isAttacking = false;
-    bool isAttackFinished = true;
+    public bool isAttacking = false;
+    public bool isAttackFinished = true;
 
     const string idle = "PullerIdle";
     const string running = "PullerRunning";
@@ -30,6 +30,7 @@ public class PullerAnimator : MonoBehaviour
     const string jumpingCharge = "PullerJumpCharge";
     const string jumpingAttack = "PullerJumpAttack";
     const string falling = "PullerFalling";
+    const string stun = "PullerStun";
 
 
     void Start()
@@ -38,7 +39,7 @@ public class PullerAnimator : MonoBehaviour
         move = GetComponent<PlayerMovement>();
         pull = GetComponent<Pull>();
         //field = GetComponentInChildren<FieldTrigger>();
-
+        stunScript = GetComponent<Stunner>();
 
         line.SetUpLine(points);
         //lineRenderer = GetComponent<LineRenderer>();
@@ -48,9 +49,17 @@ public class PullerAnimator : MonoBehaviour
     private void Update()
     {
 
+        if (stunScript.IsStunned())
+        {
+            ChangeAnimationState(stun);
+            AttackComplete();
+            lineRenderer.SetActive(false);
+            return;
+        }
+
         
 
-        if (Input.GetKeyUp(pull.pullOnPress) && isAttacking)
+        if (!pull.GetHasPressedPull() && isAttacking)
         {
             lineRenderer.SetActive(false);
             isAttackFinished = false;
@@ -70,14 +79,13 @@ public class PullerAnimator : MonoBehaviour
 
             //float delay = animator.GetCurrentAnimatorStateInfo(0).length;
 
-            Invoke("AttackComplete", 0.2f);
+            Invoke("AttackComplete", 0.1f);
         }
 
-        if (Input.GetKey(pull.pullOnPress))
+        if (pull.GetHasPressedPull())
         {
 
-              // lineRenderer.SetActive(true);
-
+            //lineRenderer.SetActive(true);
             
             isAttacking = true;
         }
@@ -89,10 +97,12 @@ public class PullerAnimator : MonoBehaviour
     private void FixedUpdate()
     {
 
+        if (stunScript.IsStunned()) { return; }
+
         if (isAttacking && isAttackFinished && move.IsGrounded())
         {
 
-            if (move.rb.velocity.x != 0)
+            if (move.GetMovementX() != 0)
             {
 
                 ChangeAnimationState(runningCharge);
@@ -111,19 +121,19 @@ public class PullerAnimator : MonoBehaviour
         if (move.IsGrounded() && !isAttacking)
         {
 
-            if (move.rb.velocity.x != 0)
+            if (move.GetMovementX() != 0)
             {
                 ChangeAnimationState(running);
             }
 
-            else if (move.movementX == 0 && !Input.GetKey(pull.pullOnPress))
+            else if (move.GetMovementX() == 0 && !pull.GetHasPressedPull())
             {
                 ChangeAnimationState(idle);
             }
         }
 
 
-        if (move.rb.velocity.y > 0.2f && isAttackFinished)
+        if (!move.IsGrounded() && isAttackFinished)
         {
 
             if (isAttacking)

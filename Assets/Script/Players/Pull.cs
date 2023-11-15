@@ -11,12 +11,12 @@ public class Pull : MonoBehaviour
     private BoxCollider2D boxColliderPusher;
     private PlayerMovement movement;
     private bool timeWait = false; //Used for GameStartCoolDown
- 
+
     //Pull
     private float time = 0.15f;
     public float pullForce = 10;
     public KeyCode pullOnPress;
-    private bool hasPressedPull = false;
+    [SerializeField] private bool hasPressedPull = false; 
     public float extraForce = 1f;
     public LayerMask pusherLayer;
     private int defaultLayer = 0;
@@ -28,15 +28,8 @@ public class Pull : MonoBehaviour
     private bool ifSuccesChargeTime;
     public float minChargingTime = 2f;
     public float maxChargeingTime = 4;
-    private bool isChargingReal;
-    private bool isStunned;
     public float speedReducerMultiplier = 0.75f;
-    private float reducedSpeed;      //Initialiseret ved Start()
-    private float originalSpeed;     //Initialiseret ved Start()
-    private float originalJump;      //Initialiseret ved Start()
-    private float stunnedPullForce;  //Initialiseret ved Start()
-    private float originalPullForce; //Initialiseret ved Start()
-    public float timeToUnstun;
+
 
     //SlowMotion
     public SlowMotion slowMotion;
@@ -75,23 +68,22 @@ public class Pull : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         movement = GetComponent<PlayerMovement>();
-
-        //Charge
-        reducedSpeed = movement.speed * speedReducerMultiplier;
-        originalSpeed = movement.speed;
-        originalJump = movement.jumpingPower;
-        stunnedPullForce = 0;
-        originalPullForce = pullForce;
     }
+
+    private void OnEnable()
+    {
+        hasPressedPull = false;
+    }
+
 
     private void Update()
     {
-        if (Input.GetKeyDown(pullOnPress) && !isStunned)
+        if (Input.GetKeyDown(pullOnPress))
         {
             hasPressedPull = true;
         }
 
-        if (Input.GetKeyUp(pullOnPress) && !isStunned)
+        if (Input.GetKeyUp(pullOnPress))
         {
             hasPressedPull = false;
             audioManager.PlaySFX(audioManager.pull);
@@ -162,7 +154,7 @@ public class Pull : MonoBehaviour
     private void Pulling()
     {
 
-        if (pullField.inField && hasPressedPull && !isStunned)
+        if (pullField.inField && hasPressedPull)
         {
             ThePull(1);
         }
@@ -170,32 +162,6 @@ public class Pull : MonoBehaviour
 
     public void ChargePulling(float normalPull, float chargedPull)
     {
-
-        if (isChargingReal && !isStunned)
-        {
-            movement.speed = reducedSpeed;
-        }
-        if (!isChargingReal)
-        {
-            movement.speed = originalSpeed;
-        }
-        if (isStunned)
-        {
-            hasPressedPull = true;
-            pullForce = stunnedPullForce;
-            gameObject.GetComponent<PlayerMovement>().enabled = false;
-            timeToUnstun += Time.deltaTime;
-            if (timeToUnstun > 2f)
-            {
-                isStunned = false;
-            }
-        }
-        if (!isStunned && !isChargingReal)
-        {
-            pullForce = originalPullForce;
-            gameObject.GetComponent<PlayerMovement>().enabled = true;
-        }
-
         if (ifFailedChargeTime && pullField.inField)
         {
             ThePull(normalPull);
@@ -209,7 +175,6 @@ public class Pull : MonoBehaviour
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
         }
-
     }
 
 
@@ -219,13 +184,19 @@ public class Pull : MonoBehaviour
         {
             chargeTrackingTimer = 0;
             ifFailedChargeTime = false;
-            ifSuccesChargeTime = false; 
-        }
-        else if (chargeTrackingTimer > maxChargeingTime)
-        {
-            chargeTrackingTimer = 0;
-            ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
+        }
+        else if (Input.GetKey(pullOnPress))
+        {
+            if (chargeTrackingTimer > maxChargeingTime)
+            {
+                chargeTrackingTimer = 0;
+                ifFailedChargeTime = false;
+                ifSuccesChargeTime = false;
+                return;
+            }
+
+            chargeTrackingTimer += Time.deltaTime;
         }
         else if (Input.GetKeyUp(pullOnPress) && chargeTrackingTimer > minChargingTime && pullField.inField)
         {
@@ -234,33 +205,13 @@ public class Pull : MonoBehaviour
             //freeze.Freeze();
             SetPitch();
         }
-        else if (Input.GetKeyUp(pullOnPress) && pullField.inField) 
+        else if (Input.GetKeyUp(pullOnPress) && pullField.inField)
         {
             ifFailedChargeTime = true;
         }
-        if (Input.GetKey(pullOnPress) && !isStunned)
-        {
-            chargeTrackingTimer += Time.deltaTime;
-            if (chargeTrackingTimer > 0.5f)
-            {
-                isChargingReal = true;
-            }
-            if (chargeTrackingTimer > maxChargeingTime)
-            {
-                isStunned = true;
-            }
-        }
-        else if (Input.GetKeyUp(pullOnPress))
-        {
-            isChargingReal = false;
-        }
-      
-        if (!isStunned)
-        {
-            timeToUnstun = 0; 
-        }
-
 
     }
+
+    public bool GetHasPressedPull() { return hasPressedPull; }
 
 }

@@ -22,12 +22,7 @@ public class Push : MonoBehaviour
     public bool ifFailedChargeTime;
     public bool ifSuccesChargeTime;
     public float maxChargeingTime = 4;
-    private bool isChargingReal;
-    private bool isStunned;
     public float speedReducerMultiplier = 0.75f;
-    public float stunTime = 2f;
-
-    public float timeToUnstun;
 
     public float extraForce = 1;
 
@@ -67,15 +62,19 @@ public class Push : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        hasPressedPush = false;
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(pushOnPress) && !isStunned)
+        if (Input.GetKeyDown(pushOnPress))
         {
             hasPressedPush = true;
         }
 
-        if (Input.GetKeyUp(pushOnPress) && !isStunned) 
+        if (Input.GetKeyUp(pushOnPress)) 
         {
             hasPressedPush = false;
             audioManager.PlaySFX(audioManager.push);
@@ -99,6 +98,8 @@ public class Push : MonoBehaviour
     {
         //puller.GetComponent<SpriteRenderer>().enabled = true;
     }
+
+    
     private void FixedUpdate()
     {
         Invoke("waitForTime",3);
@@ -112,6 +113,7 @@ public class Push : MonoBehaviour
     {
         timeWait = true;
     }
+     
 
    
 
@@ -132,7 +134,7 @@ public class Push : MonoBehaviour
 
     private void Pushing()
     {
-        if (pushField.inField && hasPressedPush && !isStunned)
+        if (pushField.inField && hasPressedPush)
         {
             ThePush(1);
         }
@@ -171,6 +173,7 @@ public class Push : MonoBehaviour
         {
             if (chargeTrackingTimer > maxChargeingTime)
             {
+              
                 chargeTrackingTimer = 0;
                 ifFailedChargeTime = false;
                 ifSuccesChargeTime = false;
@@ -192,5 +195,7 @@ public class Push : MonoBehaviour
         }
         
     }
+
+    public bool GetHasPressedPush() { return hasPressedPush; }
 
 }

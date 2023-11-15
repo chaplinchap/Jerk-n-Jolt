@@ -10,6 +10,7 @@ public class PusherAnimator : MonoBehaviour
     private string currentState;
     private PlayerMovement move;
     private Push push;
+    private Stunner stunScript;
 
 
     bool isAttacking = false;
@@ -32,13 +33,20 @@ public class PusherAnimator : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         move = GetComponent<PlayerMovement>();
         push = GetComponent<Push>();
+        stunScript = GetComponent<Stunner>();
     }
 
     private void Update()
     {
 
+        if (stunScript.IsStunned())
+        {
+            ChangeAnimationState(stun);
+            AttackComplete();
+            return;
+        }
 
-        if (Input.GetKeyUp(push.pushOnPress) && isAttacking)
+        if (!push.GetHasPressedPush() && isAttacking)
         {
             isAttackFinished = false;
 
@@ -58,7 +66,7 @@ public class PusherAnimator : MonoBehaviour
             Invoke("AttackComplete", 0.2f);
         }
 
-        if (Input.GetKey(push.pushOnPress))
+        if (push.GetHasPressedPush())
         {
             isAttacking = true;
         }
@@ -68,11 +76,11 @@ public class PusherAnimator : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        if (stunScript.IsStunned()) { return; }
 
         if (isAttacking && isAttackFinished && move.IsGrounded()) {
 
-            if (move.rb.velocity.x !=0)
+            if (move.GetMovementX() !=0)
             {
 
                 ChangeAnimationState(runningCharge);
@@ -89,19 +97,19 @@ public class PusherAnimator : MonoBehaviour
         if (move.IsGrounded() && !isAttacking)
         {
 
-            if (move.rb.velocity.x != 0)
+            if (move.GetMovementX() != 0)
             {
                 ChangeAnimationState(running);
             }
 
-            else if (move.movementX == 0 && !Input.GetKey(push.pushOnPress))
+            else if (move.GetMovementX() == 0 && !push.GetHasPressedPush())
             {
                 ChangeAnimationState(idle);
             }
         }
 
 
-        if (move.rb.velocity.y > 0.2f && isAttackFinished)
+        if (!move.IsGrounded() && isAttackFinished)
         {
 
             if (isAttacking)

@@ -154,4 +154,8 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(time);
         playerCollider.gameObject.layer = defaultLayer;
     }
+
+
+    public int GetMovementX() { return movementX; }
+
 }
