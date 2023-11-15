@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 2840529185926110316}
   - component: {fileID: 1593877366679419715}
   - component: {fileID: 2094154324210754525}
+  - component: {fileID: 3107498242687067512}
   m_Layer: 0
   m_Name: Player2 Pull
   m_TagString: Puller
@@ -346,7 +347,6 @@ MonoBehaviour:
   minChargingTime: 2
   maxChargeingTime: 4
   speedReducerMultiplier: 0.75
-  timeToUnstun: 0
   slowMotion: {fileID: 0}
   freeze: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 6d6262e9e6859234dab615669bc580f9, type: 2}
@@ -385,6 +385,8 @@ MonoBehaviour:
   - {fileID: 8535957501582002034}
   line: {fileID: 115911409125121561}
   lineRenderer: {fileID: 8460213468245997565}
+  isAttacking: 0
+  isAttackFinished: 1
 --- !u!114 &2094154324210754525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +400,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   increaseMultiplier: 1.2
+--- !u!114 &3107498242687067512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7831007007408972477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc3fa0e4083e21e4c927af1bee725cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 2
+  timeToStun: 4
 --- !u!1001 &2297080068562931501
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 6291614743756611388}
   - component: {fileID: 1919701950871859034}
   - component: {fileID: 3944283588468354252}
+  - component: {fileID: 4586860268441141576}
   m_Layer: 0
   m_Name: Player1 Push
   m_TagString: Pusher
@@ -253,7 +254,6 @@ MonoBehaviour:
   ifSuccesChargeTime: 0
   maxChargeingTime: 4
   speedReducerMultiplier: 0.75
-  timeToUnstun: 0
   extraForce: 4
   slowMotion: {fileID: 0}
   freeze: {fileID: 0}
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  currentHealth: 0
+  currentHealth: 3
 --- !u!114 &1919701950871859034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +301,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   increaseMultiplier: 1.2
+--- !u!114 &4586860268441141576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675015520253059547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36027e27df086543a774fb130f8bfa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 2
+  timeToStun: 4
 --- !u!1 &2977566204947500839
 GameObject:
   m_ObjectHideFlags: 0

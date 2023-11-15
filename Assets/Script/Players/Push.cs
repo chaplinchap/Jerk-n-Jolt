@@ -42,7 +42,8 @@ public class Push : MonoBehaviour
     //Flash
     public GameObject puller;
     public float flashTime = 0.075f;
-    
+
+
 
     public void SetPitch()
     {
@@ -64,6 +65,11 @@ public class Push : MonoBehaviour
 
     private void OnEnable()
     {
+        if (Input.GetKey(pushOnPress)) { 
+            hasPressedPush = true;
+            return;
+        }
+
         hasPressedPush = false;
     }
 
@@ -150,6 +156,7 @@ public class Push : MonoBehaviour
             ThePush(normalPush);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
+            CameraShake.Instance.ShakeCamera(CameraShakeValues.normalAbilityIntensity, CameraShakeValues.normalAbilityDuration);
         }
 
         if (ifSuccesChargeTime && pushField.inField)
@@ -157,6 +164,8 @@ public class Push : MonoBehaviour
             ThePush(chargedPush);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
+
+            CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity, CameraShakeValues.chargedAbilityDuration);
         }
 
     }

@@ -5,6 +5,7 @@ public class TakeDamage : MonoBehaviour
     [SerializeField] private float damage = 1; //Input how much damage to take
     AudioManager audioManager;
 
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -17,7 +18,7 @@ public class TakeDamage : MonoBehaviour
         {
             collision.GetComponent<HealthV2>().TakeDamage(damage); //The hit player takes damage
             audioManager.PlaySFX(audioManager.death);
-            CameraShake.Instance.ShakeCamera(50f, .5f);
+            CameraShake.Instance.ShakeCamera(CameraShakeValues.deathIntensity, CameraShakeValues.deathDuration);
         }
     }
 }

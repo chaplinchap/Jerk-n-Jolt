@@ -7,6 +7,7 @@ public class Stunner : MonoBehaviour
 
 
     private PlayerMovement playerMovement;
+    private MovementAid movementAid;
 
 
     private float startingSpeed;
@@ -85,6 +86,7 @@ public class Stunner : MonoBehaviour
     {
 
         playerMovement = GetComponent<PlayerMovement>();
+        movementAid = GetComponent<MovementAid>();
 
     }
 
@@ -92,6 +94,7 @@ public class Stunner : MonoBehaviour
     protected virtual void TurnScripts(bool turn)
     {
         playerMovement.enabled = turn;
+        movementAid.enabled = turn;
 
     }
 

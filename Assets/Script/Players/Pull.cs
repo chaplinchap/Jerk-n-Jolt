@@ -16,7 +16,7 @@ public class Pull : MonoBehaviour
     private float time = 0.15f;
     public float pullForce = 10;
     public KeyCode pullOnPress;
-    [SerializeField] private bool hasPressedPull = false; 
+    private bool hasPressedPull = false; 
     public float extraForce = 1f;
     public LayerMask pusherLayer;
     private int defaultLayer = 0;
@@ -47,7 +47,8 @@ public class Pull : MonoBehaviour
     //Flash
     public GameObject pusher;
     public float flashTime = 0.075f;
-   
+
+    
 
 
     public void SetPitch()
@@ -72,6 +73,11 @@ public class Pull : MonoBehaviour
 
     private void OnEnable()
     {
+        if (Input.GetKey(pullOnPress)) {
+            hasPressedPull = true;
+            return;
+        }
+
         hasPressedPull = false;
     }
 
@@ -167,6 +173,8 @@ public class Pull : MonoBehaviour
             ThePull(normalPull);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
+
+            CameraShake.Instance.ShakeCamera(CameraShakeValues.normalAbilityIntensity, CameraShakeValues.normalAbilityDuration);
         }
 
         if (ifSuccesChargeTime && pullField.inField)
@@ -174,6 +182,8 @@ public class Pull : MonoBehaviour
             ThePull(chargedPull);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
+
+            CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity, CameraShakeValues.chargedAbilityDuration);
         }
     }
 
