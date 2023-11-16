@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AbiltyPower : MonoBehaviour
+public class AbilityPower : MonoBehaviour
 {
 
 
@@ -13,6 +13,7 @@ public class AbiltyPower : MonoBehaviour
     protected bool downAbilityPress;
     protected bool isAbilityPress;
     protected bool upAbilityPress;
+    private bool hasPressedAbility;
 
 
     private float timeSinceLastPressedUp = 0f;
@@ -20,24 +21,39 @@ public class AbiltyPower : MonoBehaviour
 
     [SerializeField] private static float deadTimeBetweenPress = .2f;
 
+
+    private void OnEnable()
+    {
+        if (isAbilityPress)
+        {
+            hasPressedAbility = true;
+            return;
+        }
+
+        hasPressedAbility = false;
+    }
+
+
+
     protected void KeyInputs() 
     {
-        downAbilityPress = PressAbilityDown(abilityPress);
+        downAbilityPress = PressAbilityDown();
 
-        isAbilityPress = PressAbility(abilityPress);
+        isAbilityPress = PressAbility();
       
-        upAbilityPress = PressAbilityUp(abilityPress);
+        upAbilityPress = PressAbilityUp();
 
     }
 
 
-    protected bool PressAbilityDown(KeyCode abilityPress) 
+    public bool PressAbilityDown() 
     {
         bool result;
 
         if (Input.GetKeyDown(abilityPress))
         {
             result = true;
+            hasPressedAbility = true;
         }
         else
         {
@@ -47,7 +63,7 @@ public class AbiltyPower : MonoBehaviour
         return result;
     }
 
-    protected bool PressAbility(KeyCode abilityPress) {
+    public bool PressAbility() {
 
         bool result;
         
@@ -63,7 +79,7 @@ public class AbiltyPower : MonoBehaviour
         return result;
     }
 
-    protected bool PressAbilityUp(KeyCode abilityPress)
+    public bool PressAbilityUp()
     {
 
         bool result;
@@ -81,6 +97,7 @@ public class AbiltyPower : MonoBehaviour
             else
             {
                 result = true;
+                hasPressedAbility = false; 
             }
 
             timeSinceLastPressedDown = Time.time;
@@ -100,7 +117,21 @@ public class AbiltyPower : MonoBehaviour
         return (otherPlayer.transform.position - position);
     }
 
+    public bool HasPressedAbility() {
+        
+        bool result = false;
 
+        if (upAbilityPress)
+        {
+            result = false;
+        }
+        else if (isAbilityPress)
+        {
+            result = true;
+        }
+
+        return result;
+    }
 
     /*
 

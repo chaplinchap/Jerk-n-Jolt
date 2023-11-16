@@ -59,7 +59,7 @@ public class PullerAnimator : MonoBehaviour
 
         
 
-        if (!pull.GetHasPressedPull() && isAttacking)
+        if (!pull.HasPressedAbility() && isAttacking)
         {
             lineRenderer.SetActive(false);
             isAttackFinished = false;
@@ -82,7 +82,7 @@ public class PullerAnimator : MonoBehaviour
             Invoke("AttackComplete", 0.1f);
         }
 
-        if (pull.GetHasPressedPull())
+        if (pull.HasPressedAbility())
         {
 
             //lineRenderer.SetActive(true);
@@ -126,7 +126,7 @@ public class PullerAnimator : MonoBehaviour
                 ChangeAnimationState(running);
             }
 
-            else if (move.GetMovementX() == 0 && !pull.GetHasPressedPull())
+            else if (move.GetMovementX() == 0 && !pull.HasPressedAbility())
             {
                 ChangeAnimationState(idle);
             }

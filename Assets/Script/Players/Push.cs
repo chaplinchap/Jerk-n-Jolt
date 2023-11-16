@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class Push : AbiltyPower
+public class Push : AbilityPower
 {
     private GameObject thePuller;
     private Rigidbody2D rigidbodyPuller;
@@ -13,7 +13,7 @@ public class Push : AbiltyPower
 
     //Push
     public float pushForce = 100;
-    public KeyCode pushOnPress;
+    //public KeyCode pushOnPress;
     private bool hasPressedPush = false;
 
     //Charge
@@ -64,15 +64,6 @@ public class Push : AbiltyPower
 
     }
 
-    private void OnEnable()
-    {
-        if (Input.GetKey(pushOnPress)) { 
-            hasPressedPush = true;
-            return;
-        }
-
-        hasPressedPush = false;
-    }
 
     private void Update()
     {
@@ -146,7 +137,7 @@ public class Push : AbiltyPower
     private void ThePush(float extraForce) 
     {
         rigidbodyPuller.AddForce(VectorBetween(thePuller).normalized * pushForce * extraForce, ForceMode2D.Impulse);
-        hasPressedPush = false;
+        //hasPressedPush = false;
     }
 
     private void Pushing()
@@ -215,7 +206,5 @@ public class Push : AbiltyPower
         }
         
     }
-
-    public bool GetHasPressedPush() { return hasPressedPush; }
 
 }

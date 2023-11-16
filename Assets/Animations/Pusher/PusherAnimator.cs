@@ -46,7 +46,7 @@ public class PusherAnimator : MonoBehaviour
             return;
         }
 
-        if (!push.GetHasPressedPush() && isAttacking)
+        if (!push.HasPressedAbility() && isAttacking)
         {
             isAttackFinished = false;
 
@@ -66,7 +66,7 @@ public class PusherAnimator : MonoBehaviour
             Invoke("AttackComplete", 0.2f);
         }
 
-        if (push.GetHasPressedPush())
+        if (push.HasPressedAbility())
         {
             isAttacking = true;
         }
@@ -102,7 +102,7 @@ public class PusherAnimator : MonoBehaviour
                 ChangeAnimationState(running);
             }
 
-            else if (move.GetMovementX() == 0 && !push.GetHasPressedPush())
+            else if (move.GetMovementX() == 0 && !push.HasPressedAbility())
             {
                 ChangeAnimationState(idle);
             }

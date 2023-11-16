@@ -316,8 +316,8 @@ GameObject:
   - component: {fileID: 2840529185926110316}
   - component: {fileID: 1593877366679419715}
   - component: {fileID: 2094154324210754525}
-  - component: {fileID: 3107498242687067512}
   - component: {fileID: 17747070242925368}
+  - component: {fileID: 4478591503074237220}
   m_Layer: 0
   m_Name: Player2 Pull
   m_TagString: Puller
@@ -457,8 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e537e56962ff5e94388d04b000a9473e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityPress: 109
   pullForce: 35
-  pullOnPress: 109
   extraForce: 2
   pusherLayer:
     serializedVersion: 2
@@ -520,20 +520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   increaseMultiplier: 1.2
---- !u!114 &3107498242687067512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7831007007408972477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc3fa0e4083e21e4c927af1bee725cd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stunTime: 2
-  timeToStun: 4
 --- !u!114 &17747070242925368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,6 +534,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashingPower: 50
   duration: 2
+--- !u!114 &4478591503074237220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7831007007408972477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be26ab780a038d04f9c0bbddc06ff8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 2
+  timeToStun: 4
 --- !u!1 &8320437807093494604
 GameObject:
   m_ObjectHideFlags: 0

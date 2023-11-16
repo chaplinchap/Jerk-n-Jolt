@@ -8,7 +8,7 @@ public class Stunner : MonoBehaviour
 
     private PlayerMovement playerMovement;
     private MovementAid movementAid;
-    private AbiltyPower abiltyPower;
+    protected AbilityPower abilityPower;
     protected StunbarScript stunbarScript;
 
     [SerializeField] protected float stunTime;
@@ -27,6 +27,17 @@ public class Stunner : MonoBehaviour
         startingSpeed = playerMovement.speed;
     }
 
+    protected void OnEnable()
+    {
+            GetScripts();   
+    }
+
+    protected void Update()
+    {
+        Stun(timeToStun, stunTime, abilityPower.HasPressedAbility());
+        stunbarScript.UpdateStunBar(GetTime(), timeToStun);
+    }
+
 
     float time = 0;
     public void Slower(float penalty, float duration)
@@ -43,7 +54,7 @@ public class Stunner : MonoBehaviour
     }
 
     bool isPenalty = false;
-    protected void Stun(float timeToStun, float duration, KeyCode button)
+    protected void Stun(float timeToStun, float duration, bool isKeyPressed)
     {
 
         if (isPenalty)
@@ -51,7 +62,7 @@ public class Stunner : MonoBehaviour
             return;
         }
 
-        else if (Input.GetKey(button))
+        else if (isKeyPressed)
         {
             time += Time.deltaTime;
 
@@ -65,7 +76,7 @@ public class Stunner : MonoBehaviour
                 return;
             }
         }
-        else if (Input.GetKeyUp(button))
+        else if (!isKeyPressed)
         {
             time = 0;
         }
@@ -91,7 +102,7 @@ public class Stunner : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         movementAid = GetComponent<MovementAid>();
         stunbarScript = GetComponentInChildren<StunbarScript>();
-        abiltyPower = GetComponent<AbiltyPower>();
+        abilityPower = GetComponent<AbilityPower>();
     }
 
 
@@ -100,7 +111,7 @@ public class Stunner : MonoBehaviour
         playerMovement.enabled = turn;
         movementAid.enabled = turn;
         stunbarScript.enabled = turn;
-        abiltyPower.enabled = turn;
+        abilityPower.enabled = turn;
      
     }
 

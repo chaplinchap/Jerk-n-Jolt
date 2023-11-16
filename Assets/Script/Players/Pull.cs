@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class Pull : AbiltyPower
+public class Pull : AbilityPower
 {
     private GameObject thePusher;
     private Rigidbody2D rigidbodyPusher;
@@ -15,7 +15,7 @@ public class Pull : AbiltyPower
     //Pull
     private float time = 0.15f;
     public float pullForce = 10;
-    public KeyCode pullOnPress;
+    //public KeyCode pullOnPress;
     private bool hasPressedPull = false; 
     public float extraForce = 1f;
     public LayerMask pusherLayer;
@@ -71,19 +71,11 @@ public class Pull : AbiltyPower
         movement = GetComponent<PlayerMovement>();
     }
 
-    private void OnEnable()
-    {
-        if (Input.GetKey(pullOnPress)) {
-            hasPressedPull = true;
-            return;
-        }
-
-        hasPressedPull = false;
-    }
 
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(pullOnPress))
         {
             hasPressedPull = true;
@@ -106,6 +98,10 @@ public class Pull : AbiltyPower
             audioMixer.SetFloat("ExposedPitch", 1f);
         }
 
+        */
+
+        KeyInputs();
+
         Timer();
 
         
@@ -118,6 +114,7 @@ public class Pull : AbiltyPower
     
     private void FixedUpdate()
     {
+
         Invoke("waitForTime",3);
         if (timeWait)
         {
@@ -139,14 +136,6 @@ public class Pull : AbiltyPower
     {   
         yield return new WaitForSeconds(time);
         boxColliderPusher.gameObject.layer = defaultLayer;
-    }
-
-    public Vector3 VectorBetween() 
-    {
-        Vector3 position;
-
-        position = gameObject.GetComponent<Transform>().position;
-        return (thePusher.transform.position - position);
     }
 
     private void ThePull(float extraForce) 
@@ -187,16 +176,16 @@ public class Pull : AbiltyPower
         }
     }
 
-
+    
     private void Timer()
     {
-        if (Input.GetKeyDown(pullOnPress))
+        if (downAbilityPress)
         {
             chargeTrackingTimer = 0;
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
         }
-        else if (Input.GetKey(pullOnPress))
+        else if (isAbilityPress)
         {
             if (chargeTrackingTimer > maxChargeingTime)
             {
@@ -208,20 +197,18 @@ public class Pull : AbiltyPower
 
             chargeTrackingTimer += Time.deltaTime;
         }
-        else if (Input.GetKeyUp(pullOnPress) && chargeTrackingTimer > minChargingTime && pullField.inField)
+        else if (upAbilityPress && chargeTrackingTimer > minChargingTime && pullField.inField)
         {
             ifSuccesChargeTime = true;
             slowMotion.DoSlowmotion();
             //freeze.Freeze();
             SetPitch();
         }
-        else if (Input.GetKeyUp(pullOnPress) && pullField.inField)
+        else if (upAbilityPress && pullField.inField)
         {
             ifFailedChargeTime = true;
         }
 
     }
-
-    public bool GetHasPressedPull() { return hasPressedPull; }
 
 }
