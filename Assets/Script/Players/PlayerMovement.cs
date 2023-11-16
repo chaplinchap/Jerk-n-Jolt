@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public int movementX = 0;
     public float fastFallSpeed = 35;
 
-    public float turningPartical = 17.5f;
+    public float maxSpeed = 17.5f;
 
     public KeyCode jumpUp; 
     public KeyCode moveRight;
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
-        dashParticles = gameObject.GetComponent<LandingParticles>();
+        LandingParticles dashParticles = gameObject.GetComponent<LandingParticles>();
         rb = GetComponent<Rigidbody2D>();
     }
     
@@ -175,12 +175,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (IsGrounded() && rb.velocity.x >= turningPartical)
+        if (IsGrounded() && rb.velocity.x >= 17.5f)
         {
             dashParticles.LandParticles();
         }
 
-        if (IsGrounded() && rb.velocity.x <= -turningPartical)
+        if (IsGrounded() && rb.velocity.x <= -17.5f)
         {
             dashParticles.LandParticles();
         }
