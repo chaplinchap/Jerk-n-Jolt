@@ -6,9 +6,6 @@ public class PushStunner : Stunner
 {
     private Push pushScript;
 
-    public float stunTime;
-    public float timeToStun;
-
     void Update()
     {
         Stun(timeToStun, stunTime, pushScript.pushOnPress);
@@ -24,9 +21,4 @@ public class PushStunner : Stunner
         pushScript = GetComponent<Push>();
     }
 
-    protected override void TurnScripts(bool turn)
-    {
-        base.TurnScripts(turn);
-        pushScript.enabled = turn;
-    }
 }

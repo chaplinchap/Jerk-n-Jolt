@@ -5,16 +5,29 @@ using UnityEngine.UI;
 
 public class StunbarScript : MonoBehaviour
 {
-    [SerializeField] private Image StunImage;
+    private Image StunImage;
+    [SerializeField] private Gradient gradient;
 
-    [SerializeField] private Color startColor;
-    [SerializeField] private Color endColor;
+    private float fill = 0f; 
 
+    private void Start() 
+    {
+        StunImage = GetComponent<Image>();
 
-    public void UpdateStunBar(float chargeTime, float timeTillStun ) {
-
-        StunImage.fillAmount = chargeTime / timeTillStun;
-        //StunImage.color.a = Mathf.Lerp(0, 1, chargeTime / timeTillStun);
+        UpdateGradiantAmount(); 
     }
 
+    public void UpdateStunBar(float chargeTime, float timeTillStun) {
+            
+        fill = chargeTime / timeTillStun;
+
+        StunImage.fillAmount = fill;
+
+        UpdateGradiantAmount();
+    }
+
+    private void UpdateGradiantAmount() 
+    {
+        StunImage.color = gradient.Evaluate(fill);
+    }
 }

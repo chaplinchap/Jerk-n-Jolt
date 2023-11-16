@@ -151,7 +151,7 @@ public class Pull : AbiltyPower
 
     private void ThePull(float extraForce) 
     {
-        rigidbodyPusher.AddForce(-VectorBetween() * pullForce * extraForce, ForceMode2D.Impulse);
+        rigidbodyPusher.AddForce(-VectorBetween(thePusher) * pullForce * extraForce, ForceMode2D.Impulse);
         hasPressedPull = false;
         boxColliderPusher.gameObject.layer = pushLayer;
         StartCoroutine(ChangeLayer());

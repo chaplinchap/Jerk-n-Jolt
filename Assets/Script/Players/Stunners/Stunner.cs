@@ -8,7 +8,11 @@ public class Stunner : MonoBehaviour
 
     private PlayerMovement playerMovement;
     private MovementAid movementAid;
+    private AbiltyPower abiltyPower;
     protected StunbarScript stunbarScript;
+
+    [SerializeField] protected float stunTime;
+    [SerializeField] protected float timeToStun;
 
     private float startingSpeed;
     private float duration;
@@ -87,7 +91,7 @@ public class Stunner : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         movementAid = GetComponent<MovementAid>();
         stunbarScript = GetComponentInChildren<StunbarScript>();
-
+        abiltyPower = GetComponent<AbiltyPower>();
     }
 
 
@@ -96,6 +100,7 @@ public class Stunner : MonoBehaviour
         playerMovement.enabled = turn;
         movementAid.enabled = turn;
         stunbarScript.enabled = turn;
+        abiltyPower.enabled = turn;
      
     }
 

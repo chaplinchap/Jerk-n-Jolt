@@ -35,12 +35,17 @@ public class PlayerMovement : MonoBehaviour
         rb.sharedMaterial.friction = 0.5f;
     }
 
-    // Start is called before the first frame update
+    private void OnEnable() 
+    {
+        movementX = 0;
+    }
+
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(moveRight))

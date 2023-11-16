@@ -7,12 +7,10 @@ public class PullStunner : Stunner
 
     private Pull pullScript;
 
-    public float stunTime;
-    public float timeToStun;
-
     void Update() 
     {
         Stun(timeToStun, stunTime, pullScript.pullOnPress);
+        stunbarScript.UpdateStunBar(GetTime(), timeToStun);
     }
 
 
@@ -23,13 +21,5 @@ public class PullStunner : Stunner
         base.GetScripts();
         pullScript = GetComponent<Pull> ();
     }
-
-    protected override void TurnScripts(bool turn)
-    {
-        base.TurnScripts(turn);
-        pullScript.enabled = turn;
-    }
-
-
 
 }

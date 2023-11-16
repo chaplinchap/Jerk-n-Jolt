@@ -7,7 +7,7 @@ using UnityEngine;
 public class MovementAid : MonoBehaviour
 {
 
-    private const float DOUBLE_TAP_TIME = .15f;
+    private const float DOUBLE_TAP_TIME = .2f;
 
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;

@@ -24,6 +24,7 @@ public class Push : AbiltyPower
     public float maxChargeingTime = 4;
     public float speedReducerMultiplier = 0.75f;
 
+
     public float extraForce = 1;
 
     // Slowmotion
@@ -75,15 +76,28 @@ public class Push : AbiltyPower
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(pushOnPress))
         {
-            hasPressedPush = true;
+            float timeBetween = Time.time - timeSinceLastPressed;
+
+
+            if (timeBetween <= deadTimeBetweenPress)
+            {
+                hasPressedPush = false;
+
+            }
+            else {
+                hasPressedPush = true;
+            }
+
+            timeSinceLastPressed = Time.time;
         }
 
         if (Input.GetKeyUp(pushOnPress)) 
         {
             hasPressedPush = false;
-            audioManager.PlaySFX(audioManager.push);
+            //audioManager.PlaySFX(audioManager.push);
             Invoke("ResetMaterial", flashTime);
         }
 
@@ -96,6 +110,9 @@ public class Push : AbiltyPower
         {
             audioMixer.SetFloat("ExposedPitch", 1f);
         }
+         */
+
+        KeyInputs();
 
         Timer();
     }
@@ -125,16 +142,10 @@ public class Push : AbiltyPower
 
         // METHODS //   
 
-    private Vector3 VectorBetween()
-    {
-        Vector3 position;
-        position = gameObject.GetComponent<Transform>().position;
-        return (thePuller.transform.position - position);
-    }
 
     private void ThePush(float extraForce) 
     {
-        rigidbodyPuller.AddForce(VectorBetween().normalized * pushForce * extraForce, ForceMode2D.Impulse);
+        rigidbodyPuller.AddForce(VectorBetween(thePuller).normalized * pushForce * extraForce, ForceMode2D.Impulse);
         hasPressedPush = false;
     }
 
@@ -172,13 +183,13 @@ public class Push : AbiltyPower
 
     private void Timer()
     {
-        if (Input.GetKeyDown(pushOnPress))
+        if (downAbilityPress)
         {
             chargeTrackingTimer = 0;
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
         }
-        else if (Input.GetKey(pushOnPress))
+        else if (isAbilityPress)
         {
             if (chargeTrackingTimer > maxChargeingTime)
             {
@@ -191,14 +202,14 @@ public class Push : AbiltyPower
 
             chargeTrackingTimer += Time.deltaTime;
         }
-        else if (Input.GetKeyUp(pushOnPress) && chargeTrackingTimer > minChargingTime && pushField.inField)
+        else if (upAbilityPress && chargeTrackingTimer > minChargingTime && pushField.inField)
         {
             ifSuccesChargeTime = true;
             slowMotion.DoSlowmotion();
             //freeze.Freeze();
             SetPitch();
         }
-        else if (Input.GetKeyUp(pushOnPress) && pushField.inField)
+        else if (upAbilityPress && pushField.inField)
         {
             ifFailedChargeTime = true;
         }
