@@ -46,6 +46,12 @@ public class PullerAnimator : MonoBehaviour
         lineRenderer.SetActive(false);
     }
 
+    private void OnEnable()
+    {
+        AttackComplete();
+        
+    }
+
     private void Update()
     {
 

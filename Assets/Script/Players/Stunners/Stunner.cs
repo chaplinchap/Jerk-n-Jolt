@@ -29,8 +29,10 @@ public class Stunner : MonoBehaviour
 
     protected void OnEnable()
     {
-            GetScripts();
-        isPenalty = false; 
+        Stun(.1f, 0, true);
+        GetScripts();
+        isPenalty = false;
+        
     }
 
     protected void Update()

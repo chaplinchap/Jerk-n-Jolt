@@ -86,7 +86,7 @@ public class Respawn : MonoBehaviour
         if (pushHealthScript.currentHealth > 0) {
             pusher.gameObject.SetActive(true);
             //TurnScripts(true, 0);
-            yield return null;
+            yield return new WaitForSeconds(.1f) ;
             TurnScripts(false, 0);
             yield return null; 
             TurnScripts(true, 0);
@@ -113,7 +113,7 @@ public class Respawn : MonoBehaviour
         if (pullHealthScript.currentHealth > 0) {
             puller.gameObject.SetActive(true);
             //TurnScripts(true, 1);
-            yield return null ;
+            yield return new WaitForSeconds(.1f) ;
             TurnScripts(false, 1);
             yield return null;
             TurnScripts(true, 1);

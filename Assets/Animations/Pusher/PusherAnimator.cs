@@ -36,6 +36,11 @@ public class PusherAnimator : MonoBehaviour
         stunScript = GetComponent<Stunner>();
     }
 
+    private void OnEnable()
+    {
+        AttackComplete();
+    }
+
     private void Update()
     {
 
