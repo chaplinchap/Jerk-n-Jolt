@@ -128,7 +128,6 @@ public class PlayerMovement : MonoBehaviour
         if(other.collider.CompareTag("Floor"))
         {
             Invoke("CheckFloor",.0f);
-            Debug.Log("hitting floor");
         }
     }
     private void CheckFloor()
@@ -137,7 +136,6 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded())
         {
             canJump = true; //when on ground allow player to jump
-            Debug.Log ("allowed to jump");
         }
     }
     private void FixedUpdate()
