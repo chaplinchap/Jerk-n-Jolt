@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2139752373159430432}
   m_Layer: 11
   m_Name: LandingParticalsTrigger
-  m_TagString: Floor
+  m_TagString: ParticleTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

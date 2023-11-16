@@ -10,9 +10,12 @@ public class LandingParticles : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Floor"))
+        if (collision.CompareTag("ParticleTrigger"))
         {
-            LandParticles();
+            if (rb.velocity.y <= 0)
+            {
+                LandParticles();   
+            }
         }
  
     }

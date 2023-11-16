@@ -16,6 +16,8 @@ TagManager:
   - Audio
   - DamageTrigger
   - Floor
+  - ConsumableManager
+  - ParticleTrigger
   layers:
   - Default
   - TransparentFX

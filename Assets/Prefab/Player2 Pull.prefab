@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landingParticles: {fileID: 2943464720851348033}
+  rb: {fileID: 0}
 --- !u!1 &7831007007408972477
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,12 +434,12 @@ MonoBehaviour:
   playerCollider: {fileID: 8152077003433105955}
   feet: {fileID: 7600740549158947554}
   dashParticles: {fileID: 6741647945959239358}
-  time: 0.3
+  time: 0.2
   speed: 160
   jumpingPower: 60
   movementX: 0
   fastFallSpeed: 10
-  turningPartical: 17.5
+  maxSpeed: 17.5
   jumpUp: 273
   moveRight: 275
   moveLeft: 276
@@ -665,6 +666,10 @@ PrefabInstance:
       value: Particles
       objectReference: {fileID: 0}
     - target: {fileID: 3159075810302272975, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3159075810302272975, guid: 256288c372196e245bb685db22266082, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -679,6 +684,38 @@ PrefabInstance:
     - target: {fileID: 3159075810302272975, guid: 256288c372196e245bb685db22266082, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.59309363
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.6696511
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.8018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0.56078434
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.6039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0.6784314
       objectReference: {fileID: 0}
     - target: {fileID: 7374542318190325776, guid: 256288c372196e245bb685db22266082, type: 3}
       propertyPath: m_LocalPosition.x

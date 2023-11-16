@@ -172,19 +172,18 @@ public class PlayerMovement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            
+            if (IsGrounded() && rb.velocity.x >= maxSpeed)
+            {
+                dashParticles.LandParticles();
+            }
+
+            if (IsGrounded() && rb.velocity.x <= -maxSpeed)
+            {
+                dashParticles.LandParticles();
+            }
         }
-
-
-        if (IsGrounded() && rb.velocity.x >= 17.5f)
-        {
-            dashParticles.LandParticles();
-        }
-
-        if (IsGrounded() && rb.velocity.x <= -17.5f)
-        {
-            dashParticles.LandParticles();
-        }
-
+        
     }
 
     private IEnumerator WaitTime()
