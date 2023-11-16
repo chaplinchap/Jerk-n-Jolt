@@ -26,6 +26,7 @@ public class ConsumableParentObject : MonoBehaviour
     public IEnumerator DurationPusher(ConsumableScriptableObject power, GameObject player, float time)
     {
         ConsumV4.currentConsumablesTracker--;
+        ConsumV4.spawnedItemPositions.RemoveAt(0);
         yield return new WaitForSeconds(time);  // This will yield for the duration of the powerup 
         power.DeApplyPusher(player);  // This will DeAppley the powerup from the Player which has taken it
         Destroy(gameObject); // This destroyes the Object that holds the powerup, such that is does not clog up in memory
@@ -35,6 +36,7 @@ public class ConsumableParentObject : MonoBehaviour
     public IEnumerator DurationPuller(ConsumableScriptableObject power, GameObject player, float time)
     {
         ConsumV4.currentConsumablesTracker--;
+        ConsumV4.spawnedItemPositions.RemoveAt(0);
         yield return new WaitForSeconds(time);  // This will yield for the duration of the powerup 
         power.DeApplyPuller(player);  // This will DeAppley the powerup from the Player which has taken it
         Destroy(gameObject); // This destroyes the Object that holds the powerup, such that is does not clog up in memory
@@ -48,6 +50,7 @@ public class ConsumableParentObject : MonoBehaviour
         yield return new WaitForSeconds(time);        
         Destroy(gameObject);
         ConsumV4.currentConsumablesTracker--;
+        ConsumV4.spawnedItemPositions.RemoveAt(0);
         //ConsumV4.removeSpawnlocation();
     }
 

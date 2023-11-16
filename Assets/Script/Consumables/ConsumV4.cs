@@ -21,7 +21,7 @@ public class ConsumV4 : MonoBehaviour
     
 
     private float nextSpawnTime;
-    [SerializeField] public List<Vector2> spawnedItemPositions = new List<Vector2>();
+    [SerializeField] public static List<Vector2> spawnedItemPositions = new List<Vector2>();
 
 
     private void Awake()

@@ -75,18 +75,20 @@ public class Pull : AbilityPower
 
     private void Update()
     {
+
+
+        if (upAbilityPress)
+        {
+            audioManager.PlaySFX(audioManager.pull);
+            //Invoke("ResetMaterial", flashTime);
+        }
+
         /*
         if (Input.GetKeyDown(pullOnPress))
         {
             hasPressedPull = true;
         }
-
-        if (Input.GetKeyUp(pullOnPress))
-        {
-            hasPressedPull = false;
-            audioManager.PlaySFX(audioManager.pull);
-            Invoke("ResetMaterial", flashTime);
-        }
+        
 
         if (Input.GetKeyUp(pullOnPress) && pullField.inField)
         {

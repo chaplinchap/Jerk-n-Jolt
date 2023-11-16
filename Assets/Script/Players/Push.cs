@@ -67,6 +67,14 @@ public class Push : AbilityPower
 
     private void Update()
     {
+
+
+        if (upAbilityPress) 
+        {
+            audioManager.PlaySFX(audioManager.push);
+            //Invoke("ResetMaterial", flashTime);
+        }
+
         /*
         if (Input.GetKeyDown(pushOnPress))
         {
@@ -85,12 +93,6 @@ public class Push : AbilityPower
             timeSinceLastPressed = Time.time;
         }
 
-        if (Input.GetKeyUp(pushOnPress)) 
-        {
-            hasPressedPush = false;
-            //audioManager.PlaySFX(audioManager.push);
-            Invoke("ResetMaterial", flashTime);
-        }
 
         if (Input.GetKeyUp(pushOnPress) && pushField.inField)
         {
