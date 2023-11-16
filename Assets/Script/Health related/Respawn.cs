@@ -85,7 +85,7 @@ public class Respawn : MonoBehaviour
         // If player has more health it will spawn
         if (pushHealthScript.currentHealth > 0) {
             pusher.gameObject.SetActive(true);
-            TurnScripts(true, 0);
+            //TurnScripts(true, 0);
             yield return null;
             TurnScripts(false, 0);
             yield return null; 
@@ -112,8 +112,8 @@ public class Respawn : MonoBehaviour
         // If player has more health it will spawn
         if (pullHealthScript.currentHealth > 0) {
             puller.gameObject.SetActive(true);
-            TurnScripts(true, 1);
-            yield return null;
+            //TurnScripts(true, 1);
+            yield return null ;
             TurnScripts(false, 1);
             yield return null;
             TurnScripts(true, 1);

@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable() 
     {
-        movementX = 0;
+        //movementX = 0;
     }
 
     

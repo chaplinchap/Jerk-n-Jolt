@@ -29,7 +29,8 @@ public class Stunner : MonoBehaviour
 
     protected void OnEnable()
     {
-            GetScripts();   
+            GetScripts();
+        isPenalty = false; 
     }
 
     protected void Update()
