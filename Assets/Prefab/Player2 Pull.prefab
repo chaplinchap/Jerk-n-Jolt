@@ -432,11 +432,13 @@ MonoBehaviour:
   rb: {fileID: 8386127129370546744}
   playerCollider: {fileID: 8152077003433105955}
   feet: {fileID: 7600740549158947554}
+  dashParticles: {fileID: 6741647945959239358}
   time: 0.3
   speed: 160
   jumpingPower: 60
   movementX: 0
   fastFallSpeed: 10
+  turningPartical: 17.5
   jumpUp: 273
   moveRight: 275
   moveLeft: 276

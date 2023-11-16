@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public BoxCollider2D playerCollider;    
     public BoxCollider2D feet;
+    public LandingParticles dashParticles; 
 
     public float time = 0.25f;
 
@@ -18,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public int movementX = 0;
     public float fastFallSpeed = 35;
 
+    public float turningPartical = 17.5f;
+
     public KeyCode jumpUp; 
     public KeyCode moveRight;
     public KeyCode moveLeft;
@@ -25,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode fastFall;
 
     [SerializeField] private LayerMask platformSurface;
+
+    
 
     private bool isFacingRight = true;
     private bool lastPressedRight = false;
@@ -43,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
+        dashParticles = gameObject.GetComponent<LandingParticles>();
         rb = GetComponent<Rigidbody2D>();
     }
     
@@ -169,6 +175,18 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+
+
+        if (IsGrounded() && rb.velocity.x >= turningPartical)
+        {
+            dashParticles.LandParticles();
+        }
+
+        if (IsGrounded() && rb.velocity.x <= -turningPartical)
+        {
+            dashParticles.LandParticles();
+        }
+
     }
 
     private IEnumerator WaitTime()

@@ -6,6 +6,7 @@ using UnityEngine;
 public class LandingParticles : MonoBehaviour
 {
     public ParticleSystem landingParticles;
+    public Rigidbody2D rb;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,7 +16,7 @@ public class LandingParticles : MonoBehaviour
         }
  
     }
-    void LandParticles()
+    public void LandParticles()
     {
         landingParticles.Play();
     }
