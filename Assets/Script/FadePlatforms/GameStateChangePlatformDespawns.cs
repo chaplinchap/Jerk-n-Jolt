@@ -11,7 +11,7 @@ public class GameStateChangePlatformDespawns : MonoBehaviour
 
     private IEnumerator startGameStateChange;
 
-     private bool canAttachPlayer = true;
+     //private bool canAttachPlayer = true;
 
 
     // Start is called before the first frame update

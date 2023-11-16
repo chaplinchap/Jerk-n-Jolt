@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
+using Cinemachine;
 
 public class UIManager : MonoBehaviour
 {
@@ -21,6 +23,25 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI text;
 
 
+    //Animations!!
+    [Header("Animations")]
+    public Animator float1_Animation;
+    public Animator float2_Animation;
+    public Animator winnerText_Animation;
+    public Animator GameIsOverButton1_Animation;
+    public Animator GameIsOverButton2_Animation;
+
+    public CinemachineVirtualCamera virtualCamera;
+
+    private float targetMinOrthoSize = 8f;  // Set your target minimum orthographic size here
+    private float targetMaxOrthoSize = 8f;  // Set your target maximum orthographic size here
+    private float zoomDuration = 150f;         // Set the duration of the zoom
+
+    private float initialMinOrthoSize;
+    private float initialMaxOrthoSize;
+    
+
+
     private void Awake()
     {
         player1 = GameObject.Find("Player1 Push"); // Find Player 1 . Used to check when game is over to see which player is left
@@ -31,7 +52,10 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.SetActive(false); //ensure GameOVerPanel is not loaded on start
         PauseMenu.SetActive(false); //ensure pause menu is not loaded on start
+        Invoke ("ShowHealthbar",1);
     }
+
+   
 
     private void LateUpdate()
     {
@@ -54,6 +78,7 @@ public class UIManager : MonoBehaviour
         
         if (gameIsOver == true) {
             GameOverSequence();
+            Animations();
                 if (Input.GetKeyDown(KeyCode.Return)){                   
                     SceneManager.LoadScene(sceneToLoad);
                     Debug.Log("Game is over!");
@@ -125,5 +150,58 @@ public class UIManager : MonoBehaviour
     public void GoBackButton() // When clicking button
     {   
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1); //Goes back to MainMenu
+    }
+
+    //============Animations================
+    void Animations()
+    {
+        float1_Animation.SetTrigger("FloatOut");
+        float2_Animation.SetTrigger("FloatOut");
+        winnerText_Animation.SetTrigger("WinnerText_FloatIn");
+        StartCoroutine (AnimationsDelay());
+
+        // Camera
+        CinemachineFramingTransposer framingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+
+        initialMinOrthoSize = framingTransposer.m_MinimumOrthoSize;
+        initialMaxOrthoSize = framingTransposer.m_MaximumOrthoSize;
+
+         StartCoroutine(SmoothZoomCoroutine(framingTransposer));
+            
+    }
+
+     void ShowHealthbar()
+    {
+        float1_Animation.SetTrigger("FloatIn");
+        float2_Animation.SetTrigger("FloatIn");
+    }
+
+    IEnumerator AnimationsDelay()
+    {
+        yield return new WaitForSeconds(1);
+        GameIsOverButton1_Animation.SetTrigger("ButtonFloatIn");       
+        yield return new WaitForSeconds(1);
+        GameIsOverButton2_Animation.SetTrigger("ButtonFloatIn");
+    }
+
+     IEnumerator SmoothZoomCoroutine(CinemachineFramingTransposer framingTransposer)
+    {
+        float startTime = Time.time;
+        float endTime = startTime + zoomDuration;
+
+        while (Time.time < endTime)
+        {
+            float progress = (Time.time - startTime) / zoomDuration;
+
+            
+            float newMinOrthoSize = Mathf.Lerp(initialMinOrthoSize, targetMinOrthoSize, progress);
+            float newMaxOrthoSize = Mathf.Lerp(initialMaxOrthoSize, targetMaxOrthoSize, progress);
+
+            
+            framingTransposer.m_MinimumOrthoSize = newMinOrthoSize;
+            framingTransposer.m_MaximumOrthoSize = newMaxOrthoSize;
+
+            yield return null;
+    }
     }
 }
