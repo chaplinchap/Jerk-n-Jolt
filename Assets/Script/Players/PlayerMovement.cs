@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public BoxCollider2D playerCollider;    
     public BoxCollider2D feet;
+    public LandingParticles dashParticles;
 
     public float time = 0.25f;
 
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        LandingParticles dashParticles = gameObject.GetComponent<LandingParticles>();
     }
     // Update is called once per frame
     void Update()
@@ -64,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 movementX = -1;
             }
-
         }
 
         else if (Input.GetKey(moveRight))
@@ -124,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
          else if (movementX == -1) 
         { 
             rb.AddForce(Vector2.left * speed, ForceMode2D.Force);
-            movementX = 0;           
+            movementX = 0;
         }
     }
 
@@ -146,6 +147,16 @@ public class PlayerMovement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            
+            if (IsGrounded() && rb.velocity.x >= 17.5)
+            {
+                dashParticles.LandParticles();
+            }
+            
+            if (IsGrounded() && rb.velocity.x <= -17.5)
+            {
+                dashParticles.LandParticles();
+            }
         }
     }
 

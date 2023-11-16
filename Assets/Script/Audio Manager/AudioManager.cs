@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip death;
     public AudioClip respawn;
     public AudioClip collectible;
+    public AudioClip charging;
 
     void Start()
     {

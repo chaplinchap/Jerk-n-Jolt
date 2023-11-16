@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landingParticles: {fileID: 6214895317200089975}
+  rb: {fileID: 3969561338719803279}
 --- !u!1 &1675015520253059547
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +221,8 @@ MonoBehaviour:
   rb: {fileID: 3969561338719803279}
   playerCollider: {fileID: 4613569147380446184}
   feet: {fileID: 52689546230113494}
-  time: 0.3
+  dashParticles: {fileID: 0}
+  time: 0.2
   speed: 160
   jumpingPower: 60
   movementX: 0
@@ -262,6 +264,7 @@ MonoBehaviour:
   audioCoolDown: 0.3
   puller: {fileID: 0}
   flashTime: 0.075
+  chargeSound: 0
 --- !u!114 &6291614743756611388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,6 +492,70 @@ PrefabInstance:
     - target: {fileID: 3159075810302272975, guid: 256288c372196e245bb685db22266082, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: lengthInSec
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: autoRandomSeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0.56078434
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.6039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979378559678408044, guid: 256288c372196e245bb685db22266082, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0.6784314
       objectReference: {fileID: 0}
     - target: {fileID: 7374542318190325776, guid: 256288c372196e245bb685db22266082, type: 3}
       propertyPath: m_LocalPosition.x

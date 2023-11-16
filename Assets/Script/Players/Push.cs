@@ -181,6 +181,7 @@ public class Push : MonoBehaviour
             ThePush(normalPush);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
+            CameraShake.Instance.ShakeCamera(3f, .3f);
         }
 
         if (ifSuccesChargeTime && pushField.inField)
@@ -212,6 +213,7 @@ public class Push : MonoBehaviour
             slowMotion.DoSlowmotion();
             //freeze.Freeze();
             SetPitch();
+            CameraShake.Instance.ShakeCamera(10f, .5f);
         }
         else if (Input.GetKeyUp(pushOnPress) && pushField.inField)
         {
@@ -223,6 +225,10 @@ public class Push : MonoBehaviour
             if (chargeTrackingTimer > 0.5f)
             {
                 isChargingReal = true;
+                if (chargeTrackingTimer > minChargingTime && chargeTrackingTimer < 2.03f)
+                {
+                    audioManager.PlaySFX(audioManager.charging);
+                }
             }
             if (chargeTrackingTimer > maxChargeingTime)
             {

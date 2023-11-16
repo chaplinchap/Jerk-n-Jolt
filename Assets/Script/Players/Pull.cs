@@ -201,6 +201,7 @@ public class Pull : MonoBehaviour
             ThePull(normalPull);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
+            CameraShake.Instance.ShakeCamera(3f, .3f);
         }
 
         if (ifSuccesChargeTime && pullField.inField)
@@ -233,6 +234,7 @@ public class Pull : MonoBehaviour
             slowMotion.DoSlowmotion();
             //freeze.Freeze();
             SetPitch();
+            CameraShake.Instance.ShakeCamera(10f, .5f);
         }
         else if (Input.GetKeyUp(pullOnPress) && pullField.inField) 
         {
