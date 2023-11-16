@@ -82,28 +82,27 @@ public class PlayerMovement : MonoBehaviour
             movementX = -1;
         }
        
-        if (IsGrounded())
-        {
-            canJump = true; //when on ground allow player to jump
-        }
-
         if (!IsGrounded() && Input.GetKey(fastFall))
         {
             rb.AddForce(Vector2.down * fastFallSpeed, ForceMode2D.Force);
+            Debug.Log("Fast fall");
         }
         
-        if (Input.GetKeyDown(jumpUp))
+        if (Input.GetKey(jumpUp))
         {
-            if (IsGrounded())
+            if (IsGrounded() && canJump)
             {
-                rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
-                Invoke(nameof(anotherJump), 0.1f); //Calls for a boolean statement to be false. Needs a delay otherwise it just gonna check for ground and check true right away             
-                //anotherJump(); // Cannot jump again
+                rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse); 
+                anotherJump(); // Cannot jump again
 
             }
-            else if (canJump)
+        }
+
+        if (Input.GetKeyDown(jumpUp))
+        {
+            if (canJump && !IsGrounded())
             {
-                rb.AddForce(Vector2.up * jumpingPower * 1.3f, ForceMode2D.Impulse); //jumping force +added a bit more power, for the jump to look okay
+                rb.AddForce(Vector2.up * jumpingPower * 1.4f, ForceMode2D.Impulse); //jumping force +added a bit more power, for the jump to look okay
                 anotherJump(); // Cannot jump again
 
             }
@@ -116,6 +115,24 @@ public class PlayerMovement : MonoBehaviour
         }
         
         Flip();
+    }
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        //If the player actually hits the platform allow it to check for the surface of the platform
+        if(other.collider.CompareTag("Floor"))
+        {
+            Invoke("CheckFloor",.0f);
+            Debug.Log("hitting floor");
+        }
+    }
+    private void CheckFloor()
+    {
+        //If the player hits the platform it now will check for the area to jump.
+        if (IsGrounded())
+        {
+            canJump = true; //when on ground allow player to jump
+            Debug.Log ("allowed to jump");
+        }
     }
     private void FixedUpdate()
     {
