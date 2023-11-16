@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landingParticles: {fileID: 6214895317200089975}
-  rb: {fileID: 0}
+  rb: {fileID: 3969561338719803279}
 --- !u!1 &1675015520253059547
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   speed: 160
   jumpingPower: 60
   movementX: 0
-  fastFallSpeed: 10
+  fastFallSpeed: 35
   maxSpeed: 17.5
   jumpUp: 119
   moveRight: 100
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b8e42aa85bd164b8b3880095dca6e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashingPower: 100
+  dashingPower: 75
   duration: 2
 --- !u!114 &3346434135170326449
 MonoBehaviour:
