@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Fast fall");
         }
         
-        if (Input.GetKey(jumpUp))
+        if (Input.GetKeyDown(jumpUp))
         {
             if (IsGrounded() && canJump)
             {

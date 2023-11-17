@@ -7,11 +7,11 @@ public class Vibration : MonoBehaviour
     public float wiggleAmount = 0.5f; // Adjust this value to control the intensity of the wiggle
     public float wiggleSpeed = 1f;   // Adjust this value to control the speed of the wiggle
 
-    Vector3 originalPosition;
+    //Vector3 originalPosition;
 
     void Start()
     {
-        originalPosition = transform.position;
+        //originalPosition = transform.position;
     }
 
     void Update()
@@ -25,6 +25,7 @@ public class Vibration : MonoBehaviour
         float wiggle = Mathf.Sin(Time.time * wiggleSpeed) * wiggleAmount;
 
         // Apply the random offsets to the text's position
-        transform.position = originalPosition + new Vector3(offsetX, offsetY, offsetZ) + new Vector3(wiggle, 0f, 0f);
+        //transform.position = originalPosition + new Vector3(offsetX, offsetY, offsetZ) + new Vector3(wiggle, 0f, 0f);
+        transform.position = gameObject.transform.position + new Vector3(wiggle, 0f, 0f);
     }
 }
