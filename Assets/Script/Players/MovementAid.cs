@@ -22,6 +22,15 @@ public class MovementAid : MonoBehaviour
     }
 
 
+    protected void OnEnable()
+    {
+
+        timeSinceLastTapLeft = 0;
+        timeSinceLastTapRight = 0;
+
+    }
+
+
     float timeSinceLastTapLeft;
     float timeSinceLastTapRight;
     bool isDashing = false; 

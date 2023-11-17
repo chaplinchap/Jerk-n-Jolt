@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformTriggerFade : MonoBehaviour
+public class Last3PlatformsFadeOnSD : MonoBehaviour
 {
 
     public PlatformScriptableObject platformScriptableObject;
@@ -14,14 +13,17 @@ public class PlatformTriggerFade : MonoBehaviour
     [SerializeField] private bool offPlatformFade = false;
     [SerializeField] private bool platformDespawned = false;
 
+    public GameObject suddenDeathManager;
+    private DeathGameChange suddenDeath;
+
     private IEnumerator despawnCoroutine;
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
 
-        if (collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
+
+        if (collision.gameObject.CompareTag("Puller") && suddenDeath.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && suddenDeath.suddenDeathTriggered)
         {
             Debug.Log("Enter Happens");
             onPlatformFade = true;
@@ -42,11 +44,11 @@ public class PlatformTriggerFade : MonoBehaviour
 
     }
 
-   
+
     public void OnCollisionExit2D(Collision2D collision)
     {
 
-        if (collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
+        if (collision.gameObject.CompareTag("Puller") && suddenDeath.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && suddenDeath.suddenDeathTriggered)
         {
             Debug.Log("Exit Happens");
             offPlatformFade = true;
@@ -55,7 +57,7 @@ public class PlatformTriggerFade : MonoBehaviour
 
             if (offPlatformFade && !onPlatformFade && !platformDespawned)
             {
-                Debug.Log("Stops Despawn routine");             
+                Debug.Log("Stops Despawn routine");
                 StartCoroutine(CancelDespawn(gameObject, cancelFadeTime));
                 offPlatformFade = false;
                 onPlatformFade = false;
@@ -69,7 +71,7 @@ public class PlatformTriggerFade : MonoBehaviour
 
     private void Start()
     {
-       
+        suddenDeath = suddenDeathManager.GetComponent<DeathGameChange>();
     }
 
     void Update()
@@ -87,40 +89,40 @@ public class PlatformTriggerFade : MonoBehaviour
 
     }
 
-    
+
 
 
     public IEnumerator StartDespawn(GameObject target, float time)
     {
-        for(int i = 0; i <= 4; i++)
+        for (int i = 0; i <= 4; i++)
         {
             yield return new WaitForSeconds(time);
             platformScriptableObject.Fade(target);
         }
-        
+
         Debug.Log("Despawning Platform");
         yield return new WaitForSeconds(time);
         platformScriptableObject.Despawn(target);
         platformDespawned = true;
-              
+
 
     }
 
-    public IEnumerator CancelDespawn (GameObject target, float time)
+    public IEnumerator CancelDespawn(GameObject target, float time)
     {
         StopCoroutine(despawnCoroutine);
         Debug.Log("CancelDespawn Starts");
         yield return new WaitForSeconds(time);
         platformScriptableObject.CancelDespawn(target);
-        
-       
+
+
     }
 
     public IEnumerator Respawn(GameObject target, float time)
     {
         Debug.Log("Respawns Platform");
         yield return new WaitForSeconds(time * 2);
-        platformScriptableObject.Spawn(target);     
+        platformScriptableObject.Spawn(target);
 
     }
 }
