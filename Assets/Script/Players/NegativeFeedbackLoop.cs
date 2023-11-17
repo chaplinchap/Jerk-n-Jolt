@@ -56,13 +56,13 @@ public class NegativeFeedbackLoop : MonoBehaviour
         float force = 1;
         try
         {
-            force = pullScript.pullForce;
+            force = pullScript.abilityPower;
             //Debug.Log("It works "+force);
         }
         catch { }
 
         try {
-            force = pushScript.pushForce;
+            force = pushScript.abilityPower;
             //Debug.Log("Nice try Catch");
         }
         catch { }
@@ -96,14 +96,14 @@ public class NegativeFeedbackLoop : MonoBehaviour
 
         try
         {
-            pullScript.pullForce = force;
+            pullScript.abilityPower = force;
             //Debug.Log("It works "+force);
         }
         catch { }
 
         try
         {
-            pushScript.pushForce = force;
+            pushScript.abilityPower = force;
             //Debug.Log("Nice try Catch");
         }
         catch { }

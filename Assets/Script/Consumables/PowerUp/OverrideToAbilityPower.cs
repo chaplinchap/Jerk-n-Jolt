@@ -19,7 +19,7 @@ public class OverrideToAbilityPower : ConsumableScriptableObject
     {
 
         // startingPowerPush = target.GetComponent<Push>().pushForce;
-        target.GetComponent<Push>().pushForce *= amountPower;
+        target.GetComponent<Push>().abilityPower *= amountPower;
 
         
     }
@@ -27,17 +27,17 @@ public class OverrideToAbilityPower : ConsumableScriptableObject
     public override void ApplyPuller(GameObject target)
     {
         //startingPowerPull = target.GetComponent<Pull>().pullForce;
-        target.GetComponent<Pull>().pullForce *= amountPower;
+        target.GetComponent<Pull>().abilityPower *= amountPower;
     }
 
     public override void DeApplyPusher(GameObject target)
     {
-        target.GetComponent<Push>().pushForce = startingPowerPush;
+        target.GetComponent<Push>().abilityPower = startingPowerPush;
     }
 
     public override void DeApplyPuller(GameObject target)
     {
-        target.GetComponent<Pull>().pullForce = startingPowerPull;
+        target.GetComponent<Pull>().abilityPower = startingPowerPull;
     }
 }
 
