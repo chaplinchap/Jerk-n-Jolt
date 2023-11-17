@@ -38,7 +38,7 @@ public class OverrideToHeart : ConsumableScriptableObject
 
         if (rollDice == 1)
         {
-            target.GetComponent<Push>().pushForce /= amountPowerReduced;
+            target.GetComponent<Push>().abilityPowerForce /= amountPowerReduced;
             Debug.Log("Ability force was reduced");
         }
 
@@ -68,7 +68,7 @@ public class OverrideToHeart : ConsumableScriptableObject
         */
         if (rollDice == 1)
         {
-            target.GetComponent<Pull>().pullForce /= amountPowerReduced;
+            target.GetComponent<Pull>().abilityPowerForce /= amountPowerReduced;
         }
 
         if (rollDice == 2)
@@ -84,7 +84,7 @@ public class OverrideToHeart : ConsumableScriptableObject
 
     public override void DeApplyPusher(GameObject target)
     {
-            target.GetComponent<Push>().pushForce = startingPowerPush;      
+            target.GetComponent<Push>().abilityPowerForce = startingPowerPush;      
             target.GetComponent<PlayerMovement>().speed = startingMoveSpeedPush;
             target.GetComponent<Rigidbody2D>().sharedMaterial.friction = startingFrictionPush;           
 
@@ -92,7 +92,7 @@ public class OverrideToHeart : ConsumableScriptableObject
 
     public override void DeApplyPuller(GameObject target)
     {
-            target.GetComponent<Pull>().pullForce = startingPowerPull;
+            target.GetComponent<Pull>().abilityPowerForce = startingPowerPull;
             target.GetComponent<PlayerMovement>().speed = startingMoveSpeedPull;
             target.GetComponent<Rigidbody2D>().sharedMaterial.friction = startingFrictionPull;
     }

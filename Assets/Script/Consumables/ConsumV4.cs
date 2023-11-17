@@ -8,8 +8,8 @@ public class ConsumV4 : MonoBehaviour
     public List<Rect> spawnAreas = new List<Rect>();
     public GameObject suddenDeathObject;
     private DeathGameChange suddenDeathScript;
-    public float minSpawnDelay = 2f;  // Change as needed
-    public float maxSpawnDelay = 5f;  // Change as needed
+    public float minSpawnDelay = 20f;  // Change as needed
+    public float maxSpawnDelay = 30f;  // Change as needed
     private int maxSpawnAttempts = 250; // Maximum attempts to find a valid position
     private float minDistanceBetweenItems = 1f; // Distance between itemPrefabs
 

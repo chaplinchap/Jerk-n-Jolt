@@ -12,7 +12,7 @@ public class Push : AbilityPower
     private bool timeWait = false; //Used for GameStartCoolDown
 
     //Push
-    public float pushForce = 100;
+    //public float abilityPower;
     //public KeyCode pushOnPress;
     private bool hasPressedPush = false;
 
@@ -61,7 +61,7 @@ public class Push : AbilityPower
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         movement = GetComponent<PlayerMovement>();
-
+        abilityPowerForce = base.abilityPowerForce;
     }
 
 
@@ -138,7 +138,7 @@ public class Push : AbilityPower
 
     private void ThePush(float extraForce) 
     {
-        rigidbodyPuller.AddForce(VectorBetween(thePuller).normalized * pushForce * extraForce, ForceMode2D.Impulse);
+        rigidbodyPuller.AddForce(VectorBetween(thePuller).normalized * abilityPowerForce * extraForce, ForceMode2D.Impulse);
         //hasPressedPush = false;
     }
 

@@ -8,8 +8,7 @@ public class NegativeFeedbackLoop : MonoBehaviour
     public float increaseMultiplier = 2f; 
 
     private HealthV2 healthScript;
-    private Pull pullScript;
-    private Push pushScript;
+    private AbilityPower abilityPowerScript;
 
     private float startingForce;
     private float startingHealth;
@@ -17,20 +16,9 @@ public class NegativeFeedbackLoop : MonoBehaviour
     void Start()
     {
         healthScript = GetComponent<HealthV2>();
-
-
-        try
-        {
-            pullScript = GetComponent<Pull>();
-        }
-        catch { }
-
-        try
-        {
-            pushScript = GetComponent<Push>();
-        }
-        catch { }
-
+        
+        abilityPowerScript = GetComponent<AbilityPower>();
+        
         startingForce = GetForce();
         startingHealth = GetHealth();
     }
@@ -53,21 +41,7 @@ public class NegativeFeedbackLoop : MonoBehaviour
 
     public float GetForce() 
     {
-        float force = 1;
-        try
-        {
-            force = pullScript.pullForce;
-            //Debug.Log("It works "+force);
-        }
-        catch { }
-
-        try {
-            force = pushScript.pushForce;
-            //Debug.Log("Nice try Catch");
-        }
-        catch { }
-
-        return force;
+        return abilityPowerScript.abilityPowerForce;
     }
 
 
@@ -94,20 +68,8 @@ public class NegativeFeedbackLoop : MonoBehaviour
         }
 
 
-        try
-        {
-            pullScript.pullForce = force;
-            //Debug.Log("It works "+force);
-        }
-        catch { }
-
-        try
-        {
-            pushScript.pushForce = force;
-            //Debug.Log("Nice try Catch");
-        }
-        catch { }
-
+        abilityPowerScript.abilityPowerForce = force;
+            
     }
 
 
