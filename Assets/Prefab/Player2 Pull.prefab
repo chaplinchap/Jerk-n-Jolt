@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityPress: 109
-  pullForce: 35
+  abilityPowerForce: 35
   extraForce: 2
   pusherLayer:
     serializedVersion: 2

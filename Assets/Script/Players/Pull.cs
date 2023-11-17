@@ -68,7 +68,7 @@ public class Pull : AbilityPower
         chargeTrackingTimer = 0;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
-        abilityPower = base.abilityPower;
+        abilityPowerForce = base.abilityPowerForce;
         movement = GetComponent<PlayerMovement>();
     }
 
@@ -143,7 +143,7 @@ public class Pull : AbilityPower
 
     private void ThePull(float extraForce) 
     {
-        rigidbodyPusher.AddForce(-VectorBetween(thePusher) * abilityPower * extraForce, ForceMode2D.Impulse);
+        rigidbodyPusher.AddForce(-VectorBetween(thePusher) * abilityPowerForce * extraForce, ForceMode2D.Impulse);
         hasPressedPull = false;
         boxColliderPusher.gameObject.layer = pushLayer;
         StartCoroutine(ChangeLayer());

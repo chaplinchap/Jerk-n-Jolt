@@ -8,7 +8,7 @@ public class AbilityPower : MonoBehaviour
 
 
     [SerializeField] private KeyCode abilityPress;
-    [SerializeField] public float abilityPower;
+    [SerializeField] public float abilityPowerForce;
 
 
     protected bool downAbilityPress;

@@ -61,7 +61,7 @@ public class Push : AbilityPower
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         movement = GetComponent<PlayerMovement>();
-        abilityPower = base.abilityPower;
+        abilityPowerForce = base.abilityPowerForce;
     }
 
 
@@ -138,7 +138,7 @@ public class Push : AbilityPower
 
     private void ThePush(float extraForce) 
     {
-        rigidbodyPuller.AddForce(VectorBetween(thePuller).normalized * abilityPower * extraForce, ForceMode2D.Impulse);
+        rigidbodyPuller.AddForce(VectorBetween(thePuller).normalized * abilityPowerForce * extraForce, ForceMode2D.Impulse);
         //hasPressedPush = false;
     }
 

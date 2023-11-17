@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityPress: 32
-  pushForce: 100
+  abilityPowerForce: 100
   chargeTrackingTimer: 0
   minChargingTime: 2
   ifFailedChargeTime: 0
