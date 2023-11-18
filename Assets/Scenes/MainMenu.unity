@@ -360,7 +360,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleWipe: {fileID: 1613520991}
-  transitionTime: 1
   MainMenu: {fileID: 563739119}
   Options: {fileID: 238869385}
   Credit: {fileID: 1832030114}
