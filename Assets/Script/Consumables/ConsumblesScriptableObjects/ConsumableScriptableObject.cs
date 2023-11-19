@@ -11,10 +11,9 @@ using UnityEngine;
 
 public abstract class ConsumableScriptableObject : ScriptableObject
 {
-    public abstract void ApplyPuller(GameObject target);
-    public abstract void DeApplyPuller(GameObject target);
 
 
-    public abstract void ApplyPusher(GameObject target);
-    public abstract void DeApplyPusher(GameObject target);
+
+    public abstract void Apply(GameObject target);
+    public abstract void DeApply(GameObject target);
 }

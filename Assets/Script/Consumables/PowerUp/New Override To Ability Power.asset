@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e3767728a4e35469b046d60a6ef42c, type: 3}
   m_Name: New Override To Ability Power
   m_EditorClassIdentifier: 
-  startingPowerPush: 100
-  startingPowerPull: 35
+  startingPower: 0
   amountPower: 2
