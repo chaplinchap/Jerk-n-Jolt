@@ -15,8 +15,8 @@ public class TriggerApplyHeart : ConsumableParentObject
 
 
     private float timeStampOnAwake;
-    private float timeToDespawn = 5f;
-    private float timeCoroutineDespawn = 3f;
+    private float timeToDespawn = 8f;
+    private float timeCoroutineDespawn = 0f;
     private bool isDespawned = false;
 
   
@@ -31,11 +31,10 @@ public class TriggerApplyHeart : ConsumableParentObject
 
     private void Update()
     {
-        if (Time.time - timeStampOnAwake > timeToDespawn && !isDespawned)
+        if (Time.time - timeStampOnAwake > timeToDespawn && !isDespawned && !triggerOnce)
         {
             isDespawned = true;
             StartCoroutine(DespawnConsumable(timeCoroutineDespawn));
-            
         }
     }
 

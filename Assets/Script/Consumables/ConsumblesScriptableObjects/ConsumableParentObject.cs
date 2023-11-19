@@ -36,11 +36,11 @@ public class ConsumableParentObject : MonoBehaviour
  
     public IEnumerator DespawnConsumable(float time)
     {
-       
-        yield return new WaitForSeconds(time);        
-        Destroy(gameObject);
         ConsumV4.currentConsumablesTracker--;
         ConsumV4.spawnedItemPositions.RemoveAt(0);
+        yield return new WaitForSeconds(time);        
+        Destroy(gameObject);
+       
       
     }
 

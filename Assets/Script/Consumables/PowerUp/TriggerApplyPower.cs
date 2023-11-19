@@ -12,7 +12,7 @@ public class TriggerApplyPower : ConsumableParentObject
     
 
     private float timeStampOnAwake;
-    private float timeToDespawn = 5f;
+    private float timeToDespawn = 8f;
     private float timeCoroutineDespawn = 0f;
     private bool isDespawned = false;
 
@@ -45,20 +45,12 @@ public class TriggerApplyPower : ConsumableParentObject
             triggerOnce = true;
              
            TurnOffConsumable();
-           StartCoroutine(Buff(collision.gameObject, time));
+           powerUp.Apply(collision.gameObject);
+           StartCoroutine(Durationbuff(powerUp, collision.gameObject, time));
                 
         }
 
     }
 
 
-    private IEnumerator Buff (GameObject player, float time)
-    {
-        ConsumV4.currentConsumablesTracker--;
-
-        powerUp.Apply(player);
-        yield return new WaitForSeconds(time);
-        powerUp.DeApply(player);
-        Destroy(this.gameObject);
-    }
 }
