@@ -47,7 +47,7 @@ public class TriggerApplyHeart : ConsumableParentObject
     {
        
 
-        if (collision.CompareTag("Pusher") && !triggerOnce ^ collision.CompareTag("Puller") && !triggerOnce)
+        if (collision.CompareTag("Pusher") && !triggerOnce || collision.CompareTag("Puller") && !triggerOnce)
 
         {
                 triggerOnce = true;

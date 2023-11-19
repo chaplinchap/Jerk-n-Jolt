@@ -33,7 +33,6 @@ public class ConsumableParentObject : MonoBehaviour
        
     }
 
-
  
     public IEnumerator DespawnConsumable(float time)
     {

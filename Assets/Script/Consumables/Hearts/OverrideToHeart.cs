@@ -22,16 +22,20 @@ public class OverrideToHeart : ConsumableScriptableObject
 
     public override void Apply(GameObject target)
     {
+        /*
         rollDice = Random.Range(1, 4);
         Debug.Log("the dice roll was: " + rollDice);
-
+        */
+        
         target.GetComponent<HealthV2>().GiveHP(hp);
         
-        startingFriction = target.GetComponent<Rigidbody2D>().sharedMaterial.friction;
-        startingMoveSpeed = target.GetComponent<PlayerMovement>().speed;
+        // startingFriction = target.GetComponent<Rigidbody2D>().sharedMaterial.friction;
+        // startingMoveSpeed = target.GetComponent<PlayerMovement>().speed;
         startingPower = target.GetComponent<AbilityPower>().abilityPowerForce;
-        
 
+        target.GetComponent<AbilityPower>().abilityPowerForce /= amountPowerReduced;
+
+        /*
         if (rollDice == 1)
         {
             target.GetComponent<Push>().abilityPowerForce /= amountPowerReduced;
@@ -49,6 +53,7 @@ public class OverrideToHeart : ConsumableScriptableObject
             target.GetComponent<Rigidbody2D>().sharedMaterial.friction /= amountFrictionReduced;
             Debug.Log("Friction was reduced");
         }
+        */
 
     }
 
@@ -56,8 +61,8 @@ public class OverrideToHeart : ConsumableScriptableObject
     public override void DeApply(GameObject target)
     {
             target.GetComponent<AbilityPower>().abilityPowerForce = startingPower;      
-            target.GetComponent<PlayerMovement>().speed = startingMoveSpeed;
-            target.GetComponent<Rigidbody2D>().sharedMaterial.friction = startingFriction;           
+            // target.GetComponent<PlayerMovement>().speed = startingMoveSpeed;
+            // target.GetComponent<Rigidbody2D>().sharedMaterial.friction = startingFriction;           
 
     }
 

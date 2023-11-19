@@ -39,18 +39,25 @@ public class TriggerApplyPower : ConsumableParentObject
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if(collision.CompareTag("Pusher") && !triggerOnce ^ collision.CompareTag("Puller") && !triggerOnce)
+        if(collision.CompareTag("Pusher") && !triggerOnce || collision.CompareTag("Puller") && !triggerOnce)
 
         {
             triggerOnce = true;
              
-                TurnOffConsumable();
-                StartCoroutine(Durationbuff(powerUp, collision.gameObject, time));
-                powerUp.Apply(collision.gameObject);
-                        
-
-          
+           TurnOffConsumable();
+           StartCoroutine(Buff(collision.gameObject, time));
+                
         }
-        
+
+    }
+
+
+    private IEnumerator Buff (GameObject player, float time)
+    {
+        powerUp.Apply(player);
+        yield return new WaitForSeconds(time);
+        powerUp.DeApply(player);
+        yield return new WaitForSeconds(time);
+        Destroy(this.gameObject);
     }
 }

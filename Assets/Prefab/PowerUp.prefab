@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7177215637584480369}
   - component: {fileID: 7495084003797070120}
   - component: {fileID: 8041207810217431012}
-  - component: {fileID: -8719212648555447196}
+  - component: {fileID: -729309496557562985}
   m_Layer: 0
   m_Name: PowerUp
   m_TagString: Consumables
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &-8719212648555447196
+--- !u!114 &-729309496557562985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
