@@ -16,6 +16,8 @@ public class MenuManager : MonoBehaviour
     public GameObject Credit;
     public GameObject Lore;
 
+    [SerializeField] private CanvasGroup keyBindMenu;
+
     private void Start()
     {
         // Initialize by setting the active page to the main menu.
@@ -56,5 +58,11 @@ public class MenuManager : MonoBehaviour
         newPage.SetActive(true); //Activate the new page
 
         activePage = newPage; // the now active page is now considered the activePage
+    }
+
+      public void showKeyBinds()
+    {
+        keyBindMenu.alpha = keyBindMenu.alpha > 0 ? 0 : 1;
+        keyBindMenu.blocksRaycasts = keyBindMenu.blocksRaycasts == true ? false : true;
     }
 }

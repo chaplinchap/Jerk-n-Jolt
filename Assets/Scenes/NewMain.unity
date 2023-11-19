@@ -540,6 +540,8 @@ MonoBehaviour:
   playerHealth: {fileID: 1449906324}
   totalHealthbar: {fileID: 233638143}
   currentHealthbar: {fileID: 1505044388}
+  permanentShake: 0
+  shakeAmount: 10
 --- !u!95 &318452311
 Animator:
   serializedVersion: 5
@@ -2021,6 +2023,8 @@ MonoBehaviour:
   playerHealth: {fileID: 1388173226}
   totalHealthbar: {fileID: 342192313}
   currentHealthbar: {fileID: 729454170}
+  permanentShake: 0
+  shakeAmount: 10
 --- !u!95 &775111226
 Animator:
   serializedVersion: 5
@@ -5883,6 +5887,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2840529185926110316, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
+      propertyPath: healthbar
+      value: 
+      objectReference: {fileID: 318452310}
     - target: {fileID: 3527094187740927622, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: chargebar
       value: 
@@ -6026,6 +6034,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6291614743756611388, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: healthbar
+      value: 
+      objectReference: {fileID: 775111225}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6197,11 +6209,11 @@ PrefabInstance:
       objectReference: {fileID: 6536721504088083773, guid: d5ee713a78f4ebb43bfd058ab851e004, type: 3}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxSpawnDelay
-      value: 15
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: minSpawnDelay
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxConsumables

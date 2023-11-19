@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         if (!IsGrounded() && Input.GetKey(fastFall))
         {
             rb.AddForce(Vector2.down * fastFallSpeed, ForceMode2D.Force);
-            Debug.Log("Fast fall");
+            //Debug.Log("Fast fall");
         }
         
         if (Input.GetKeyDown(jumpUp))
