@@ -13,7 +13,7 @@ public class TriggerApplyPower : ConsumableParentObject
 
     private float timeStampOnAwake;
     private float timeToDespawn = 5f;
-    private float timeCoroutineDespawn = 3f;
+    private float timeCoroutineDespawn = 0f;
     private bool isDespawned = false;
 
     private void Awake()
@@ -26,7 +26,7 @@ public class TriggerApplyPower : ConsumableParentObject
 
     private void Update()
     {
-        if(Time.time - timeStampOnAwake  > timeToDespawn && !isDespawned) 
+        if(Time.time - timeStampOnAwake  > timeToDespawn && !isDespawned && !triggerOnce) 
         {
             isDespawned = true;
             StartCoroutine(DespawnConsumable(timeCoroutineDespawn));
@@ -54,10 +54,11 @@ public class TriggerApplyPower : ConsumableParentObject
 
     private IEnumerator Buff (GameObject player, float time)
     {
+        ConsumV4.currentConsumablesTracker--;
+
         powerUp.Apply(player);
         yield return new WaitForSeconds(time);
         powerUp.DeApply(player);
-        yield return new WaitForSeconds(time);
         Destroy(this.gameObject);
     }
 }
