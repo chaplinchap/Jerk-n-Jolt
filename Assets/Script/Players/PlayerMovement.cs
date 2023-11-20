@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode moveRight;
     public KeyCode moveLeft;
     public KeyCode throughButton;
-    public KeyCode fastFall;
 
     [SerializeField] private LayerMask platformSurface;
 
@@ -54,73 +53,11 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(moveRight))
-        {
-            lastPressedRight = true;
-        }
 
-        if (Input.GetKeyDown(moveLeft))
-        {
-            lastPressedRight = false;
-        }
-        
-       if (Input.GetKey(moveRight) && Input.GetKey(moveLeft))
-        {
-            if (lastPressedRight)
-            {
-                movementX = 1;
-            }
-
-            else
-            {
-                movementX = -1;
-            }
-
-        }
-
-        else if (Input.GetKey(moveRight))
-        {
-            movementX = 1;
-        }
-
-        else if (Input.GetKey(moveLeft))
-        {
-            movementX = -1;
-        }
-       
-        if (!IsGrounded() && Input.GetKey(fastFall))
-        {
-            rb.AddForce(Vector2.down * fastFallSpeed, ForceMode2D.Force);
-            Debug.Log("Fast fall");
-        }
-        
-        if (Input.GetKeyDown(jumpUp))
-        {
-            if (IsGrounded() && canJump)
-            {
-                rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse); 
-                anotherJump(); // Cannot jump again
-
-            }
-        }
-
-        if (Input.GetKeyDown(jumpUp))
-        {
-            if (canJump && !IsGrounded())
-            {
-                rb.AddForce(Vector2.up * jumpingPower * 1.4f, ForceMode2D.Impulse); //jumping force +added a bit more power, for the jump to look okay
-                anotherJump(); // Cannot jump again
-
-            }
-        }
-        
-        if (Input.GetKeyDown(throughButton) && IsGrounded())
-        {
-            playerCollider.gameObject.layer = throughGround;
-            StartCoroutine(WaitTime());
-        }
+        KeyInputs();
         
         Flip();
+
     }
     private void OnCollisionStay2D(Collision2D other)
     {
@@ -191,6 +128,78 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(time);
         playerCollider.gameObject.layer = defaultLayer;
     }
+
+
+    private void KeyInputs() 
+    {
+        if (Input.GetKeyDown(moveRight))
+        {
+            lastPressedRight = true;
+        }
+
+        if (Input.GetKeyDown(moveLeft))
+        {
+            lastPressedRight = false;
+        }
+
+        if (Input.GetKey(moveRight) && Input.GetKey(moveLeft))
+        {
+            if (lastPressedRight)
+            {
+                movementX = 1;
+            }
+
+            else
+            {
+                movementX = -1;
+            }
+
+        }
+
+        else if (Input.GetKey(moveRight))
+        {
+            movementX = 1;
+        }
+
+        else if (Input.GetKey(moveLeft))
+        {
+            movementX = -1;
+        }
+
+        if (!IsGrounded() && Input.GetKey(throughButton))
+        {
+            rb.AddForce(Vector2.down * fastFallSpeed, ForceMode2D.Force);
+            Debug.Log("Fast fall");
+        }
+
+
+        if (Input.GetKeyDown(throughButton) && IsGrounded())
+        {
+            playerCollider.gameObject.layer = throughGround;
+            StartCoroutine(WaitTime());
+        }
+
+        if (Input.GetKeyDown(jumpUp))
+        {
+            if (IsGrounded() && canJump)
+            {
+                rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
+                anotherJump(); // Cannot jump again
+
+            }
+        }
+
+        if (Input.GetKeyDown(jumpUp))
+        {
+            if (canJump && !IsGrounded())
+            {
+                rb.AddForce(Vector2.up * jumpingPower * 1.4f, ForceMode2D.Impulse); //jumping force +added a bit more power, for the jump to look okay
+                anotherJump(); // Cannot jump again
+
+            }
+        }
+    }
+
 
 
     public int GetMovementX() { return movementX; }

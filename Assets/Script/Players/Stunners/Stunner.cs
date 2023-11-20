@@ -11,76 +11,82 @@ public class Stunner : MonoBehaviour
     protected AbilityPower abilityPower;
     protected StunbarScript stunbarScript;
 
+    [SerializeField] private float slowerTimeStunDivider = 2f;
+    [SerializeField] private float penaltyMultiplier;
     [SerializeField] protected float stunTime;
-    [SerializeField] protected float timeToStun;
+    //[SerializeField] protected float timeToStun;
 
     private float startingSpeed;
+    private float penaltySpeed;
     private float duration;
+    
+    public float time = 0;
 
     private float stunTimer;
 
-    private bool isStunned; 
+    public bool isStunned;
+    public bool isPenalty = false;
 
     protected void Awake()
     {
         GetScripts();
         startingSpeed = playerMovement.speed;
+        penaltySpeed = playerMovement.speed/penaltyMultiplier;
+        
     }
 
     protected void OnEnable()
     {
         Stun(.1f, 0, true);
-        GetScripts();
+        isStunned = false;
         isPenalty = false;
-        
+        playerMovement.speed = startingSpeed;
     }
 
     protected void Update()
     {
-        Stun(timeToStun, stunTime, abilityPower.HasPressedAbility());
-        stunbarScript.UpdateStunBar(GetTime(), timeToStun);
+        Stun(abilityPower.maxChargeingTime, stunTime, abilityPower.HasPressedAbility());
+        stunbarScript.UpdateStunBar(GetTime(), abilityPower.maxChargeingTime);
     }
 
 
-    float time = 0;
-    public void Slower(float penalty, float duration)
-    {
-
-        time += Time.deltaTime;
-        Debug.Log(time);
-
-        if (time > duration)
-        {
-            isPenalty = false;
-            //playerMovement.speed /= penalty;
-        }
-    }
-
-    bool isPenalty = false;
     protected void Stun(float timeToStun, float duration, bool isKeyPressed)
     {
 
-        if (isPenalty)
+        if (isStunned)
         {
             return;
         }
+
+ 
 
         else if (isKeyPressed)
         {
             time += Time.deltaTime;
 
             //Debug.Log(time);
-
-            if (time > timeToStun)
-            {
-                isPenalty = true;
-                StartCoroutine(Stun(duration));
-                time = 0;
-                return;
-            }
         }
         else if (!isKeyPressed)
         {
+            time = 0;
+        }
+
+       if (time > timeToStun / slowerTimeStunDivider)
+       {
+            isPenalty = true;
+       }
+
+        if (time < timeToStun / slowerTimeStunDivider)
+        {
+            isPenalty = false;
+        }
+
+        Slow(); 
+
+        if (time > timeToStun)
+        {
+            //isPenalty = true;
+            StartCoroutine(Stun(duration));
             time = 0;
         }
 
@@ -108,7 +114,6 @@ public class Stunner : MonoBehaviour
         abilityPower = GetComponent<AbilityPower>();
     }
 
-
     protected virtual void TurnScripts(bool turn)
     {
         playerMovement.enabled = turn;
@@ -118,7 +123,23 @@ public class Stunner : MonoBehaviour
      
     }
 
+    private void Slow() 
+    {
+        if (isPenalty)
+        {
+            playerMovement.speed = penaltySpeed;
+        }
+
+        if(!isPenalty)
+        {
+            playerMovement.speed = startingSpeed;
+        }
+
+    }
+
     public bool IsStunned() { return isStunned; }
+
+    public bool IsPenalty() { return isPenalty; }
 
     protected float GetTime() { return time; }
 

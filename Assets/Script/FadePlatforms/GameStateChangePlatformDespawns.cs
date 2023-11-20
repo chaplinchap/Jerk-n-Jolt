@@ -30,7 +30,6 @@ public class GameStateChangePlatformDespawns : MonoBehaviour
 
     public IEnumerator startCountDown(GameObject target, float time)
     {
-        Debug.Log("CountDown starts");
         
         yield return new WaitForSeconds(time);
         Debug.Log("Destroying platform starts");

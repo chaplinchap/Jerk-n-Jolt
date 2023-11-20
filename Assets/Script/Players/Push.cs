@@ -18,10 +18,8 @@ public class Push : AbilityPower
 
     //Charge
     public float chargeTrackingTimer;
-    public float minChargingTime = 2f;
     public bool ifFailedChargeTime;
     public bool ifSuccesChargeTime;
-    public float maxChargeingTime = 4;
     public float speedReducerMultiplier = 0.75f;
 
 

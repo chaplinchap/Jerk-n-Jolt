@@ -10,6 +10,7 @@ public class Respawn : MonoBehaviour
     private StunbarScript[] stunbarScripts = new StunbarScript[2];
     private AbilityPower[] abilityPowers = new AbilityPower[2];
     private Stunner[] stunners = new Stunner[2];
+    private AnimationsParent[] animationsParents = new AnimationsParent[2];
 
         
 
@@ -90,7 +91,7 @@ public class Respawn : MonoBehaviour
             TurnScripts(false, 0);
             yield return null; 
             TurnScripts(true, 0);
-            Debug.Log("Player Spawns");
+
             audioManager.PlaySFX(audioManager.respawn);
             PusherRespawnParticles();
         }
@@ -146,6 +147,8 @@ public class Respawn : MonoBehaviour
         stunbarScripts[i] = player.GetComponentInChildren<StunbarScript>();
         abilityPowers[i] = player.GetComponent<AbilityPower>();
         stunners[i] = player.GetComponent<Stunner>();
+        //animationsParents[i] = player.GetComponent<AnimationsParent>();
+
     }
 
 
@@ -156,6 +159,7 @@ public class Respawn : MonoBehaviour
         stunbarScripts[i].enabled = turn;
         abilityPowers[i].enabled = turn;
         stunners[i].enabled = turn;
+        //animationsParents[i].enabled = turn;
 
     }
 

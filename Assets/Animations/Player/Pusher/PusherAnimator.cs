@@ -3,19 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PusherAnimator : MonoBehaviour
+public class PusherAnimator : AnimationsParent
 {
-
-    private Animator animator;
-    private string currentState;
-    private PlayerMovement move;
-    private Push push;
-    private Stunner stunScript;
-
-
-    bool isAttacking = false;
-    bool isAttackFinished = true;
-
     const string idle = "PusherIdle";
     const string running = "PusherRunning";
     const string jumping = "PusherJump";
@@ -26,23 +15,24 @@ public class PusherAnimator : MonoBehaviour
     const string jumpingAttack = "PusherJumpAttack";
     const string falling = "PusherFalling";
     const string stun = "PusherStun";
+    const string runningChargePenalty = "PusherPenaltyCharge";
+    const string dashing = "PusherDashing";
+
+    const string spawning = "PusherJump";
 
 
-    void Start()
+    protected override void OnEnable()
     {
-        animator = GetComponentInChildren<Animator>();
-        move = GetComponent<PlayerMovement>();
-        push = GetComponent<Push>();
-        stunScript = GetComponent<Stunner>();
-    }
+        StartCoroutine(Respawn(.4f)); 
+        base.OnEnable();
 
-    private void OnEnable()
-    {
-        AttackComplete();
     }
 
     private void Update()
     {
+        if (isRespawing) {
+            ChangeAnimationState(spawning);
+            return; }
 
         if (stunScript.IsStunned())
         {
@@ -51,12 +41,17 @@ public class PusherAnimator : MonoBehaviour
             return;
         }
 
-        if (!push.HasPressedAbility() && isAttacking)
+        if (dashScript.IsDashing()) { 
+            ChangeAnimationState(dashing);
+       
+        }
+
+        if (!abilityPowerScript.HasPressedAbility() && isAttacking)
         {
             isAttackFinished = false;
 
 
-            if (!move.IsGrounded())
+            if (!movementScript.IsGrounded())
             {
                 ChangeAnimationState(jumpingAttack);
 
@@ -71,7 +66,7 @@ public class PusherAnimator : MonoBehaviour
             Invoke("AttackComplete", 0.2f);
         }
 
-        if (push.HasPressedAbility())
+        if (abilityPowerScript.HasPressedAbility())
         {
             isAttacking = true;
         }
@@ -81,14 +76,20 @@ public class PusherAnimator : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (stunScript.IsStunned()) { return; }
+        if (isRespawing) { return; }
 
-        if (isAttacking && isAttackFinished && move.IsGrounded()) {
+        if (stunScript.IsStunned() || dashScript.IsDashing()) { return; }
 
-            if (move.GetMovementX() !=0)
+        if (isAttacking && isAttackFinished && movementScript.IsGrounded()) {
+
+            if (movementScript.GetMovementX() !=0)
             {
 
-                ChangeAnimationState(runningCharge);
+                if (stunScript.IsPenalty()) { 
+                    ChangeAnimationState(runningChargePenalty);
+                }
+                else
+                    ChangeAnimationState(runningCharge);
 
             }
             else
@@ -99,22 +100,22 @@ public class PusherAnimator : MonoBehaviour
         
         }
 
-        if (move.IsGrounded() && !isAttacking)
+        if (movementScript.IsGrounded() && !isAttacking)
         {
 
-            if (move.GetMovementX() != 0)
+            if (movementScript.GetMovementX() != 0)
             {
                 ChangeAnimationState(running);
             }
 
-            else if (move.GetMovementX() == 0 && !push.HasPressedAbility())
+            else if (movementScript.GetMovementX() == 0 && !abilityPowerScript.HasPressedAbility())
             {
                 ChangeAnimationState(idle);
             }
         }
 
 
-        if (!move.IsGrounded() && isAttackFinished)
+        if (!movementScript.IsGrounded() && isAttackFinished)
         {
 
             if (isAttacking)
@@ -129,7 +130,7 @@ public class PusherAnimator : MonoBehaviour
         }
 
         /*
-        if (move.rb.velocity.y > 0.1f && isAttackFinished) {
+        if (movementScript.rb.velocity.y > 0.1f && isAttackFinished) {
 
             ChangeAnimationState(falling);
         
@@ -139,24 +140,5 @@ public class PusherAnimator : MonoBehaviour
     }
 
 
-
-
-
-    // METHODS \\
-
-    public void ChangeAnimationState(string newState) 
-    {
-        if (currentState == newState) return;
-
-        animator.Play(newState);
-
-        currentState = newState;
-    }
-
-
-    void AttackComplete() { 
-        isAttacking = false;
-        isAttackFinished = true;
-    }
 
 }

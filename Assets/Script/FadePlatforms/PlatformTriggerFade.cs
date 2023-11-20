@@ -22,13 +22,13 @@ public class PlatformTriggerFade : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
         {
-            Debug.Log("Enter Happens");
+
             onPlatformFade = true;
             offPlatformFade = false;
 
             if (onPlatformFade && !offPlatformFade && !platformDespawned)
             {
-                Debug.Log("starts Despawn");
+
                 despawnCoroutine = StartDespawn(gameObject, durationTime);
                 StartCoroutine(despawnCoroutine);
                 onPlatformFade = false;
@@ -46,14 +46,12 @@ public class PlatformTriggerFade : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
         {
-            Debug.Log("Exit Happens");
             offPlatformFade = true;
             onPlatformFade = false;
 
 
             if (offPlatformFade && !onPlatformFade && !platformDespawned)
-            {
-                Debug.Log("Stops Despawn routine");             
+            {           
                 StartCoroutine(CancelDespawn(gameObject, cancelFadeTime));
                 offPlatformFade = false;
                 onPlatformFade = false;
@@ -108,7 +106,7 @@ public class PlatformTriggerFade : MonoBehaviour
     public IEnumerator CancelDespawn (GameObject target, float time)
     {
         StopCoroutine(despawnCoroutine);
-        Debug.Log("CancelDespawn Starts");
+ 
         yield return new WaitForSeconds(time);
         platformScriptableObject.CancelDespawn(target);
         

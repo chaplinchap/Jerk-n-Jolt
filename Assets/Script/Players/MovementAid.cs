@@ -14,60 +14,32 @@ public class MovementAid : MonoBehaviour
 
     [SerializeField] private float dashingPower = 10f;
     [SerializeField] private float duration = 2;
+    [SerializeField] private float dashingBuffer = .3f;
 
-    void Start() 
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
     }
 
+    void OnEnable() 
+    {
+        isDashing = false;
+        canDash = true;
+    }
 
-    float timeSinceLastTapLeft;
-    float timeSinceLastTapRight;
-    bool isDashing = false; 
+
+    private float timeSinceLastTapLeft;
+    private float timeSinceLastTapRight;
+    public bool isDashing = false; 
+    public bool canDash = true;
 
     protected void Dashing() 
     {
-        if (Input.GetKeyDown(playerMovement.moveLeft))
-        {
 
-            float timeBetween = Time.time - timeSinceLastTapLeft;
+        DashTimer(Vector2.left, playerMovement.moveLeft);
 
-
-            if (timeBetween <= DOUBLE_TAP_TIME && !isDashing)
-            {
-                isDashing = true;
-                rb.AddForce(Vector2.left * dashingPower, ForceMode2D.Impulse);
-                StartCoroutine(Cooldown(duration));
-
-                CameraShake.Instance.ShakeCamera(CameraShakeValues.dashingIntensity, CameraShakeValues.dashingDuration);
-
-
-            }
-           
-            timeSinceLastTapLeft = Time.time;
-        }
-
-        if (Input.GetKeyDown(playerMovement.moveRight))
-        {
-
-            float timeBetween = Time.time - timeSinceLastTapRight;
-
-
-            if (timeBetween <= DOUBLE_TAP_TIME && !isDashing)
-            {
-                isDashing = true;
-                rb.AddForce(Vector2.right * dashingPower, ForceMode2D.Impulse);
-                StartCoroutine(Cooldown(duration));
-
-                CameraShake.Instance.ShakeCamera(CameraShakeValues.dashingIntensity, CameraShakeValues.dashingDuration);
-
-
-            }
-           
-            timeSinceLastTapRight = Time.time;
-        }
-
+        DashTimer(Vector2.right, playerMovement.moveRight);
 
     }
 
@@ -75,35 +47,51 @@ public class MovementAid : MonoBehaviour
     protected void JumpDashing() 
     {
 
-        if (Input.GetKeyDown(playerMovement.jumpUp))
+        DashTimer(Vector2.up, playerMovement.jumpUp);
+
+    }
+
+
+    private void DashDirection(Vector2 direction) 
+    {
+        canDash = false;
+        isDashing = true;
+        rb.AddForce(direction * dashingPower, ForceMode2D.Impulse);
+        StartCoroutine(Cooldown(duration));
+
+        CameraShake.Instance.ShakeCamera(CameraShakeValues.dashingIntensity, CameraShakeValues.dashingDuration);
+    }
+
+
+    private void DashTimer(Vector2 direction, KeyCode inputKey) 
+    {
+        if (Input.GetKeyDown(inputKey))
         {
-            float timeBetween = Time.time - timeSinceLastTap;
 
-            if (timeBetween <= DOUBLE_TAP_TIME && !isDashing)
+            float timeBetween = Time.time - timeSinceLastTapLeft;
+
+
+            if (timeBetween <= DOUBLE_TAP_TIME && canDash)
             {
-                isDashing = true;
-                rb.AddForce(Vector2.up * dashingPower, ForceMode2D.Impulse);
-                StartCoroutine(Cooldown(duration));
-
-                Debug.Log("Work)");
-
-                CameraShake.Instance.ShakeCamera(CameraShakeValues.dashingIntensity, CameraShakeValues.dashingDuration);
+                DashDirection(direction);
 
 
             }
-            
-             timeSinceLastTap = Time.time;
+
+            timeSinceLastTapLeft = Time.time;
         }
 
     }
 
-
-
-
     private IEnumerator Cooldown(float duration) 
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(dashingBuffer);
         isDashing = false; 
+        yield return new WaitForSeconds(duration - dashingBuffer);
+        canDash = true;
 
     }
+
+
+    public bool IsDashing() { return isDashing; }
 }

@@ -16,6 +16,9 @@ public class AbilityPower : MonoBehaviour
     protected bool upAbilityPress;
     private bool hasPressedAbility;
 
+    public float minChargingTime = 2f;
+    public float maxChargeingTime = 4;
+
 
     private float timeSinceLastPressedUp = 0f;
     private float timeSinceLastPressedDown = 0f;

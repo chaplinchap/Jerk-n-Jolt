@@ -444,7 +444,6 @@ MonoBehaviour:
   moveRight: 275
   moveLeft: 276
   throughButton: 274
-  fastFall: 274
   platformSurface:
     serializedVersion: 2
     m_Bits: 2048
@@ -462,13 +461,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityPress: 109
   abilityPowerForce: 35
+  minChargingTime: 2
+  maxChargeingTime: 4
   extraForce: 2
   pusherLayer:
     serializedVersion: 2
     m_Bits: 256
   chargeTrackingTimer: 0
-  minChargingTime: 2
-  maxChargeingTime: 4
   speedReducerMultiplier: 0.75
   slowMotion: {fileID: 0}
   freeze: {fileID: 0}
@@ -508,8 +507,6 @@ MonoBehaviour:
   - {fileID: 8535957501582002034}
   line: {fileID: 115911409125121561}
   lineRenderer: {fileID: 8460213468245997565}
-  isAttacking: 0
-  isAttackFinished: 1
 --- !u!114 &2094154324210754525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,8 +532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be26ab780a038d04f9c0bbddc06ff8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowerTimeStunDivider: 2
+  penaltyMultiplier: 1.8
   stunTime: 2
-  timeToStun: 4
 --- !u!114 &6176417150370209270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,6 +549,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashingPower: 100
   duration: 2
+  dashingBuffer: 0.3
+  isDashing: 0
+  canDash: 1
 --- !u!1 &8320437807093494604
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7514330123275776924, guid: e5575d8e425f96b41923cb476e1fc196, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.18799952
+      value: 0.1879995
       objectReference: {fileID: 0}
     - target: {fileID: 7514330123275776924, guid: e5575d8e425f96b41923cb476e1fc196, type: 3}
       propertyPath: m_LocalRotation.w
