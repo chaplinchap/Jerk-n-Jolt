@@ -37,9 +37,37 @@ public class MovementAid : MonoBehaviour
     protected void Dashing() 
     {
 
-        DashTimer(Vector2.left, playerMovement.moveLeft);
+        if (Input.GetKeyDown(playerMovement.moveLeft))
+        {
 
-        DashTimer(Vector2.right, playerMovement.moveRight);
+            float timeBetween = Time.time - timeSinceLastTapLeft;
+
+
+            if (timeBetween <= DOUBLE_TAP_TIME && canDash)
+            {
+                DashDirection(Vector2.left);
+
+
+            }
+
+            timeSinceLastTapLeft = Time.time;
+        }
+
+        if (Input.GetKeyDown(playerMovement.moveRight))
+        {
+
+            float timeBetween = Time.time - timeSinceLastTapRight;
+
+
+            if (timeBetween <= DOUBLE_TAP_TIME && canDash)
+            {
+                DashDirection(Vector2.right);
+
+
+            }
+
+            timeSinceLastTapRight = Time.time;
+        }
 
     }
 
@@ -87,6 +115,7 @@ public class MovementAid : MonoBehaviour
     {
         yield return new WaitForSeconds(dashingBuffer);
         isDashing = false; 
+
         yield return new WaitForSeconds(duration - dashingBuffer);
         canDash = true;
 

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,7 +9,7 @@ public class AnimationsParent : MonoBehaviour
 {
 
     protected Animator animator;
-    protected string currentState;
+    protected int currentState;
     protected PlayerMovement movementScript;
     protected AbilityPower abilityPowerScript;
     protected Stunner stunScript;
@@ -15,8 +17,11 @@ public class AnimationsParent : MonoBehaviour
 
     protected bool isAttacking = false;
     protected bool isAttackFinished = true;
-    protected bool isRespawing = false; 
+    protected bool isRespawing = false;
 
+
+
+    [SerializeField] private float respawnDuration = .3f;
 
     void Start()
     {
@@ -25,21 +30,22 @@ public class AnimationsParent : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+        currentState = 0;
         AttackComplete();
-        Debug.Log("Animation Enable");
+        StartCoroutine(Respawn(respawnDuration));
+        //Debug.Log("Animation Enable");
     }
 
 
     // METHODS \\
 
-    public void ChangeAnimationState(string newState)
+    public void ChangeAnimationState(int newState)
     {
         if (currentState == newState) return;
-
-        animator.Play(newState);
-
+        animator.CrossFade(newState, 0.05f, 0);
         currentState = newState;
     }
+
 
 
     protected virtual void GetScripts()
@@ -61,7 +67,13 @@ public class AnimationsParent : MonoBehaviour
     protected IEnumerator Respawn(float duration)
     {
         isRespawing = true;
+        //Debug.Log("isRespawning: " + isRespawing);
         yield return new WaitForSeconds(duration);
         isRespawing = false;
+        //Debug.Log("isRespawning: "+isRespawing);
     }
+
+    
+
+
 }

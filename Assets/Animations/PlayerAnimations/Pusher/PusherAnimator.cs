@@ -2,38 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.XR;
 
 public class PusherAnimator : AnimationsParent
 {
-    const string idle = "PusherIdle";
-    const string running = "PusherRunning";
-    const string jumping = "PusherJump";
-    const string charge = "PusherCharging";
-    const string attack = "PusherAttack";
-    const string runningCharge = "PusherRunningCharge";
-    const string jumpingCharge = "PusherJumpCharge";
-    const string jumpingAttack = "PusherJumpAttack";
-    const string falling = "PusherFalling";
-    const string stun = "PusherStun";
-    const string runningChargePenalty = "PusherPenaltyCharge";
-    const string dashing = "PusherDashing";
+    private readonly int idle = Animator.StringToHash("PusherIdle");
+    private readonly int jumping = Animator.StringToHash("PusherJump");
+    private readonly int running = Animator.StringToHash("PusherRunning");
+    private readonly int charge = Animator.StringToHash("PusherCharging");
+    private readonly int attack = Animator.StringToHash("PusherAttack");
+    private readonly int runningCharge = Animator.StringToHash("PusherRunningCharge");
+    private readonly int jumpingCharge = Animator.StringToHash("PusherJumpCharge");
+    private readonly int jumpingAttack = Animator.StringToHash("PusherJumpAttack");
+    private readonly int falling = Animator.StringToHash("PusherFalling");
+    private readonly int stun = Animator.StringToHash("PusherStun");
+    private readonly int dashing = Animator.StringToHash("PusherDashing");
+    private readonly int runningChargePenalty = Animator.StringToHash("PusherPenaltyCharge");
 
-    const string spawning = "PusherJump";
+    private readonly int spawning = Animator.StringToHash("PusherSpawning");
 
 
-    protected override void OnEnable()
-    {
-        StartCoroutine(Respawn(.4f)); 
-        base.OnEnable();
-
-    }
 
     private void Update()
     {
-        if (isRespawing) {
-            ChangeAnimationState(spawning);
-            return; }
 
+        // The Respawing Animation
+        // This takes priority over other animations
+        if (isRespawing) {
+            //Debug.Log("Spawining Animation");
+            ChangeAnimationState(spawning);
+        }
+
+        // Stun Animation 
         if (stunScript.IsStunned())
         {
             ChangeAnimationState(stun);
@@ -41,11 +43,13 @@ public class PusherAnimator : AnimationsParent
             return;
         }
 
+        // Dash Animation
         if (dashScript.IsDashing()) { 
             ChangeAnimationState(dashing);
        
         }
 
+        // Charging Animation
         if (!abilityPowerScript.HasPressedAbility() && isAttacking)
         {
             isAttackFinished = false;
@@ -66,6 +70,7 @@ public class PusherAnimator : AnimationsParent
             Invoke("AttackComplete", 0.2f);
         }
 
+        // Setting the boolean of isAttacking when the attack button is pressed
         if (abilityPowerScript.HasPressedAbility())
         {
             isAttacking = true;
@@ -76,10 +81,17 @@ public class PusherAnimator : AnimationsParent
 
     private void FixedUpdate()
     {
-        if (isRespawing) { return; }
 
+        // Making sure that no other animation plays when respawing
+        if (isRespawing) {
+            //Debug.Log("Animation FixedUpdate");
+            return; }
+
+        // Making surue that no other animiation plays upon stunning or dashing
         if (stunScript.IsStunned() || dashScript.IsDashing()) { return; }
 
+
+        // Sets the Animation for what charging animation should be played.
         if (isAttacking && isAttackFinished && movementScript.IsGrounded()) {
 
             if (movementScript.GetMovementX() !=0)
@@ -100,25 +112,27 @@ public class PusherAnimator : AnimationsParent
         
         }
 
+        // Grounded Animation
         if (movementScript.IsGrounded() && !isAttacking)
         {
 
-            if (movementScript.GetMovementX() != 0)
+            
+            if (movementScript.GetMovementX() != 0) // if player is moving
             {
                 ChangeAnimationState(running);
             }
 
-            else if (movementScript.GetMovementX() == 0 && !abilityPowerScript.HasPressedAbility())
+            else if (movementScript.GetMovementX() == 0 && !abilityPowerScript.HasPressedAbility()) // if player is not moving and not charging
             {
                 ChangeAnimationState(idle);
             }
         }
 
-
+        // Player jump
         if (!movementScript.IsGrounded() && isAttackFinished)
         {
 
-            if (isAttacking)
+            if (isAttacking) // if player is charging while jumping
             {
                 ChangeAnimationState(jumpingCharge);
             }
@@ -135,10 +149,9 @@ public class PusherAnimator : AnimationsParent
             ChangeAnimationState(falling);
         
         }
-         */
+        */
+         
 
     }
-
-
 
 }

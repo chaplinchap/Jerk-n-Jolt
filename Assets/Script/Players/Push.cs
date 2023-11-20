@@ -59,7 +59,6 @@ public class Push : AbilityPower
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         movement = GetComponent<PlayerMovement>();
-        abilityPowerForce = base.abilityPowerForce;
     }
 
 

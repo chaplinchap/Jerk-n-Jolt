@@ -20,12 +20,12 @@ public class Stunner : MonoBehaviour
     private float penaltySpeed;
     private float duration;
     
-    public float time = 0;
+    private float time = 0;
 
     private float stunTimer;
 
-    public bool isStunned;
-    public bool isPenalty = false;
+    private bool isStunned;
+    private bool isPenalty = false;
 
     protected void Awake()
     {

@@ -65,8 +65,6 @@ public class Pull : AbilityPower
         boxColliderPusher = thePusher.GetComponent<BoxCollider2D>();
         chargeTrackingTimer = 0;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-
-        abilityPowerForce = base.abilityPowerForce;
         movement = GetComponent<PlayerMovement>();
     }
 
@@ -211,5 +209,7 @@ public class Pull : AbilityPower
         }
 
     }
+
+
 
 }

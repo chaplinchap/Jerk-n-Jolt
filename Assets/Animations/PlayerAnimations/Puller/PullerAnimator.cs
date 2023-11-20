@@ -2,44 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PullerAnimator : AnimationsParent
 {
     [SerializeField] private Transform[] points;
     [SerializeField] private LineController line;
     [SerializeField] protected GameObject lineRenderer;
 
-    const string idle = "PullerIdle";
-    const string running = "PullerRunning";
-    const string jumping = "PullerJumping";
-    const string charge = "PullerCharge";
-    const string attack = "PullerAttack";
-    const string runningCharge = "PullerRunningCharge";
-    const string jumpingCharge = "PullerJumpCharge";
-    const string jumpingAttack = "PullerJumpAttack";
-    const string falling = "PullerFalling";
-    const string stun = "PullerStun";
-    const string runningChargePenalty = "PullerPenaltyCharge";
-    const string dashing = "PullerDashing";
+    private readonly int idle = Animator.StringToHash("PullerIdle");
+    private readonly int running = Animator.StringToHash("PullerRunning");
+    private readonly int jumping = Animator.StringToHash("PullerJumping");
+    private readonly int charge = Animator.StringToHash("PullerCharge");
+    private readonly int attack = Animator.StringToHash("PullerAttack");
+    private readonly int runningCharge = Animator.StringToHash("PullerRunningCharge");
+    private readonly int jumpingCharge = Animator.StringToHash("PullerJumpCharge");
+    private readonly int jumpingAttack = Animator.StringToHash("PullerJumpAttack");
+    private readonly int dashing = Animator.StringToHash("PullerDashing");
+    private readonly int falling = Animator.StringToHash("PullerFalling");
+    private readonly int stun = Animator.StringToHash("PullerStun");
+    private readonly int runningChargePenalty = Animator.StringToHash("PullerPenaltyCharge");
+    private readonly int spawning = Animator.StringToHash("PullerSpawning");
 
-
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-
-    }
+    
 
     private void Update()
     {
+
+        if (isRespawing) 
+        {
+            ChangeAnimationState(spawning);
+            return; 
+        }
 
         if (stunScript.IsStunned())
         {
             Stunned();
         }
 
+
         if (dashScript.IsDashing()) { 
             ChangeAnimationState(dashing);
-        
+            lineRenderer.SetActive(false);
         }
 
 
@@ -68,6 +71,7 @@ public class PullerAnimator : AnimationsParent
 
     private void FixedUpdate()
     {
+        if (isRespawing) { return; }
 
         if (stunScript.IsStunned() || dashScript.IsDashing()) { return; }
 
@@ -125,6 +129,7 @@ public class PullerAnimator : AnimationsParent
             }
         }
 
+        
         /*
         if (movementScript.rb.velocity.y > 0.1f && isAttackFinished) {
 
@@ -136,6 +141,7 @@ public class PullerAnimator : AnimationsParent
     }
 
 
+    
 
 
 
@@ -161,3 +167,4 @@ public class PullerAnimator : AnimationsParent
     }
 
 }
+ 
