@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
 
-    [Header("Audio Clip")]
+    [Header("Audio Clip")] 
     public AudioClip background;
     public AudioClip jump;
     public AudioClip push;
@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip death;
     public AudioClip respawn;
     public AudioClip collectible;
+    public AudioClip countDown;
 
     void Start()
     {
@@ -28,7 +29,6 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
-
     }
    
 }
