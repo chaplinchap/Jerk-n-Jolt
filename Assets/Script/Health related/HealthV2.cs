@@ -17,6 +17,7 @@ public class HealthV2 : MonoBehaviour
     public void TakeDamage(float damage) //When taken damage
     {
         //Current health will take x damage (damage is decided in the TakeDamage-Script)   
+        CameraShake.Instance.ShakeCamera(CameraShakeValues.deathIntensity, CameraShakeValues.deathDuration);
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
         healthbar.ShakeObject();
     }
