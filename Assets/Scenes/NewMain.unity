@@ -1204,8 +1204,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6218380128302007168, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 580399542}
   m_SourcePrefab: {fileID: 100100000, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
+--- !u!1 &483744365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6218380128302007168, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
+  m_PrefabInstance: {fileID: 483744364}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &520365620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8268484747344192969, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
@@ -1354,6 +1362,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8268484747344192969, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
   m_PrefabInstance: {fileID: 483744364}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &580399542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483744365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72b53766dc2c5440a90d29650c3496c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
+  durationTime: 0.5
+  cancelFadeTime: 1
+  onPlatformFade: 0
+  offPlatformFade: 0
+  platformDespawned: 0
+  suddenDeathManager: {fileID: 759642863}
 --- !u!1001 &589770868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3791,8 +3818,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6218380128302007168, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1318434284}
   m_SourcePrefab: {fileID: 100100000, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
+--- !u!1 &1318434283 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6218380128302007168, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
+  m_PrefabInstance: {fileID: 1318434282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1318434284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318434283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72b53766dc2c5440a90d29650c3496c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
+  durationTime: 0.5
+  cancelFadeTime: 1
+  onPlatformFade: 0
+  offPlatformFade: 0
+  platformDespawned: 0
+  suddenDeathManager: {fileID: 759642863}
 --- !u!1 &1388173218 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1675015520253059547, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
@@ -4428,8 +4482,35 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 1407637159253530271, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6218380128302007168, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1718784014}
   m_SourcePrefab: {fileID: 100100000, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
+--- !u!1 &1718784013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6218380128302007168, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
+  m_PrefabInstance: {fileID: 1718784012}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1718784014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718784013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72b53766dc2c5440a90d29650c3496c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
+  durationTime: 0.5
+  cancelFadeTime: 1
+  onPlatformFade: 0
+  offPlatformFade: 0
+  platformDespawned: 0
+  suddenDeathManager: {fileID: 759642863}
 --- !u!1 &1726534131
 GameObject:
   m_ObjectHideFlags: 0
@@ -6154,11 +6235,11 @@ PrefabInstance:
       objectReference: {fileID: 6536721504088083773, guid: d5ee713a78f4ebb43bfd058ab851e004, type: 3}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxSpawnDelay
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: minSpawnDelay
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxConsumables
@@ -6191,11 +6272,11 @@ PrefabInstance:
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: itemPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 584269336279805221, guid: 01b773f1902d503449c649512b9b2b0d, type: 3}
+      objectReference: {fileID: 6536721504088083773, guid: d5ee713a78f4ebb43bfd058ab851e004, type: 3}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: itemPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 584269336279805221, guid: 01b773f1902d503449c649512b9b2b0d, type: 3}
+      objectReference: {fileID: 6536721504088083773, guid: d5ee713a78f4ebb43bfd058ab851e004, type: 3}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: itemPrefabs.Array.data[4]
       value: 

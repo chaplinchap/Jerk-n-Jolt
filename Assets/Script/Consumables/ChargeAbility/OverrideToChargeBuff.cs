@@ -16,26 +16,20 @@ public class OverrideToChargeBuff : ConsumableScriptableObject
     public float amountMinTime = 2;
     public float amountMaxTime = 1.5f;
 
-    public override void ApplyPusher(GameObject target)
+    public override void Apply(GameObject target)
     {
+
+       
         target.GetComponent<Push>().minChargingTime /= amountMinTime;
         target.GetComponent<Push>().maxChargeingTime *= amountMaxTime;
 
-    }
-
-    public override void ApplyPuller(GameObject target)
-    {
-        target.GetComponent<Pull>().minChargingTime /= amountMinTime;
+        target.GetComponent<Pull>().minChargingTime *= amountMinTime;
         target.GetComponent<Pull>().maxChargeingTime *= amountMaxTime;
+
     }
 
-    public override void DeApplyPusher(GameObject target)
-    {
-        target.GetComponent<Push>().minChargingTime = startingMinChargingTime;
-        target.GetComponent<Push>().maxChargeingTime = startingMaxChargingTime;
-    }
 
-    public override void DeApplyPuller(GameObject target)
+    public override void DeApply(GameObject target)
     {
         target.GetComponent<Pull>().minChargingTime = startingMinChargingTime;
         target.GetComponent<Pull>().maxChargeingTime = startingMaxChargingTime;

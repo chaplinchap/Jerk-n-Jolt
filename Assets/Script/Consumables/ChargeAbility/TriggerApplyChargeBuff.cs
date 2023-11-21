@@ -41,27 +41,14 @@ public class TriggerApplyChargeBuff : ConsumableParentObject
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Pusher") && !triggerOnce || collision.CompareTag("Puller") && !triggerOnce)
+        if (collision.CompareTag("Pusher") && !triggerOnce ^ collision.CompareTag("Puller") && !triggerOnce)
 
         {
-
-
             triggerOnce = true;
-            if (collision.CompareTag("Pusher"))
-            {
-                TurnOffConsumable();
-                charge.ApplyPusher(collision.gameObject);
-                StartCoroutine(DurationPusher(charge, collision.gameObject, time));
-
-            }
-
-            else if (collision.CompareTag("Puller"))
-            {
-                TurnOffConsumable();
-                charge.ApplyPuller(collision.gameObject);
-                StartCoroutine(DurationPuller(charge, collision.gameObject, time));
-
-            }
+          
+            TurnOffConsumable();
+            charge.Apply(collision.gameObject);
+            StartCoroutine(Durationbuff(charge, collision.gameObject, time));
         }
 
 

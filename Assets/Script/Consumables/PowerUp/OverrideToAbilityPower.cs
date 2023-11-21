@@ -8,36 +8,27 @@ using UnityEngine;
 public class OverrideToAbilityPower : ConsumableScriptableObject
 // Start is called before the first frame update
 {
-    public float startingPowerPush = 100;
-    public float startingPowerPull = 35;
+    
+    public float startingPower;
 
     public float amountPower = 2;
 
 
 
-    public override void ApplyPusher(GameObject target)
+    public override void Apply(GameObject target)
     {
 
-        // startingPowerPush = target.GetComponent<Push>().pushForce;
-        target.GetComponent<Push>().abilityPowerForce *= amountPower;
-
+        startingPower = target.GetComponent<AbilityPower>().abilityPowerForce;
+        target.GetComponent<AbilityPower>().abilityPowerForce *= amountPower;
         
     }
 
-    public override void ApplyPuller(GameObject target)
-    {
-        //startingPowerPull = target.GetComponent<Pull>().pullForce;
-        target.GetComponent<Pull>().abilityPowerForce *= amountPower;
-    }
+ 
 
-    public override void DeApplyPusher(GameObject target)
+    public override void DeApply(GameObject target)
     {
-        target.GetComponent<Push>().abilityPowerForce = startingPowerPush;
-    }
-
-    public override void DeApplyPuller(GameObject target)
-    {
-        target.GetComponent<Pull>().abilityPowerForce = startingPowerPull;
+        target.GetComponent<AbilityPower>().abilityPowerForce = startingPower;
+        // target.GetComponent<AbilityPower>().abilityPowerForce /= amountPower;
     }
 }
 

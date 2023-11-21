@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8322292689543037640}
   - component: {fileID: 4660012722033760404}
   - component: {fileID: 553766685379592354}
-  - component: {fileID: -4553525283105780059}
+  - component: {fileID: 2759651764851012874}
   m_Layer: 0
   m_Name: ChargeBuff
   m_TagString: Untagged
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &-4553525283105780059
+--- !u!114 &2759651764851012874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

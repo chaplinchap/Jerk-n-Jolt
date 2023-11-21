@@ -12,8 +12,8 @@ public class TriggerApplyPower : ConsumableParentObject
     
 
     private float timeStampOnAwake;
-    private float timeToDespawn = 5f;
-    private float timeCoroutineDespawn = 3f;
+    private float timeToDespawn = 8f;
+    private float timeCoroutineDespawn = 0f;
     private bool isDespawned = false;
 
     private void Awake()
@@ -26,7 +26,7 @@ public class TriggerApplyPower : ConsumableParentObject
 
     private void Update()
     {
-        if(Time.time - timeStampOnAwake  > timeToDespawn && !isDespawned) 
+        if(Time.time - timeStampOnAwake  > timeToDespawn && !isDespawned && !triggerOnce) 
         {
             isDespawned = true;
             StartCoroutine(DespawnConsumable(timeCoroutineDespawn));
@@ -43,22 +43,14 @@ public class TriggerApplyPower : ConsumableParentObject
 
         {
             triggerOnce = true;
-            if(collision.CompareTag("Pusher"))
-            {
+             
+           TurnOffConsumable();
+           powerUp.Apply(collision.gameObject);
+           StartCoroutine(Durationbuff(powerUp, collision.gameObject, time));
                 
-                TurnOffConsumable();
-                powerUp.ApplyPusher(collision.gameObject);
-                StartCoroutine(DurationPusher(powerUp, collision.gameObject, time));
-            }
-
-            else if(collision.CompareTag("Puller"))
-            {
-
-                TurnOffConsumable();
-                powerUp.ApplyPuller(collision.gameObject);
-                StartCoroutine(DurationPuller(powerUp, collision.gameObject, time));
-            }
         }
-        
+
     }
+
+
 }
