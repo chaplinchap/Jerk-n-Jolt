@@ -28,8 +28,6 @@ public class TriggerApplyHeart : ConsumableParentObject
 
     }
 
-
-
     private void Update()
     {
         if (Time.time - timeStampOnAwake > timeToDespawn && !isDespawned)
