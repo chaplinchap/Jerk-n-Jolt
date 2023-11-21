@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
     {
          return Physics2D.BoxCast(feet.bounds.center, feet.bounds.size, 0f, Vector2.down, 0.01f, platformSurface);
     }
-
+    [SerializeField] private GameObject chargebar;
     private void Flip()
     {
         if (isFacingRight && movementX < 0f || !isFacingRight && movementX > 0f)
@@ -109,6 +109,11 @@ public class PlayerMovement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+
+            //Chargebar will flip
+            Vector3 chargebarScale = chargebar.transform.localScale;
+            chargebarScale.x *= -1f;
+            chargebar.transform.localScale = chargebarScale;
             
             if (IsGrounded() && rb.velocity.x >= maxSpeed)
             {

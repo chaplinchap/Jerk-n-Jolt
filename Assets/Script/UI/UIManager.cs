@@ -202,6 +202,6 @@ public class UIManager : MonoBehaviour
             framingTransposer.m_MaximumOrthoSize = newMaxOrthoSize;
 
             yield return null;
-    }
+        }
     }
 }
