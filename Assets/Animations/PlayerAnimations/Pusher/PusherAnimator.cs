@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using UnityEngine.InputSystem.EnhancedTouch;
-using UnityEngine.XR;
 
 public class PusherAnimator : AnimationsParent
 {
@@ -23,8 +20,54 @@ public class PusherAnimator : AnimationsParent
 
     private readonly int spawning = Animator.StringToHash("PusherSpawning");
 
+    private float lockStateTimer;
+    
 
 
+
+    protected override void Update() 
+    {
+        base.Update();
+
+        int state = GetState();
+
+        ChangeAnimationState(state);
+    
+    }
+
+
+    private int GetState()
+    {
+        if (Time.time < lockStateTimer) return currentState;
+
+        
+        if (isRespawing) return LockState(spawning, GetRespawnDuration()+0.1f);
+        if (stunScript.IsStunned()) return Stun(); 
+        if (abilityPowerScript.IsHit()) return LockState(falling, abilityPowerScript.GetHitDuration());
+        if (dashScript.IsDashing()) return dashing;
+
+        if (isAttacking) return movementScript.IsGrounded() ? LockState(attack, attackDuration) : LockState(jumpingAttack, attackDuration) ;
+        if (!movementScript.IsGrounded()) return isCharging ? jumpingCharge : jumping;
+
+        if (isCharging) return movementScript.GetMovementX() == 0 ? charge : (stunScript.IsPenalty() == true ? runningChargePenalty : runningCharge);
+
+        if (movementScript.GetMovementX() != 0) return running;
+
+        return idle ;
+
+        int LockState(int state, float time)
+        {
+            lockStateTimer = Time.time + time;
+            return state;
+        }
+    }
+
+    private int Stun(){
+        AttackComplete();
+        return stun; }
+
+    /*
+     
     private void Update()
     {
 
@@ -33,6 +76,11 @@ public class PusherAnimator : AnimationsParent
         if (isRespawing) {
             //Debug.Log("Spawining Animation");
             ChangeAnimationState(spawning);
+        }
+
+        if (abilityPowerScript.IsHit()) 
+        {
+            ChangeAnimationState(falling);
         }
 
         // Stun Animation 
@@ -88,7 +136,7 @@ public class PusherAnimator : AnimationsParent
             return; }
 
         // Making surue that no other animiation plays upon stunning or dashing
-        if (stunScript.IsStunned() || dashScript.IsDashing()) { return; }
+        if (stunScript.IsStunned() || dashScript.IsDashing() || abilityPowerScript.IsHit()) { return; }
 
 
         // Sets the Animation for what charging animation should be played.
@@ -149,9 +197,10 @@ public class PusherAnimator : AnimationsParent
             ChangeAnimationState(falling);
         
         }
-        */
+       
          
 
     }
+    */
 
 }

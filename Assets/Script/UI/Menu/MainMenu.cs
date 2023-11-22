@@ -17,7 +17,8 @@ public class MainMenu : MonoBehaviour
     }
     public void Quit()
     {
-        UnityEditor.EditorApplication.isPlaying = false; //closes the unity runner
+        //UnityEditor.EditorApplication.isPlaying = false; //closes the unity runner
+        //UnityEditor.Build. = false; //closes the unity runner
         Application.Quit(); //closes the game
     }
     public void ButtonClick()

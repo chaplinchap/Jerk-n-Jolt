@@ -11,6 +11,7 @@ public class Pull : AbilityPower
     private BoxCollider2D boxColliderPusher;
     private PlayerMovement movement;
     private bool timeWait = false; //Used for GameStartCoolDown
+    private AbilityPower PushScript;
 
     //Pull
     private float time = 0.15f;
@@ -66,6 +67,7 @@ public class Pull : AbilityPower
         chargeTrackingTimer = 0;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         movement = GetComponent<PlayerMovement>();
+        PushScript = thePusher.GetComponent<AbilityPower>();
     }
 
 
@@ -161,7 +163,7 @@ public class Pull : AbilityPower
             ThePull(normalPull);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
-
+            StartCoroutine(PushScript.SetIsHit());
             CameraShake.Instance.ShakeCamera(CameraShakeValues.normalAbilityIntensity, CameraShakeValues.normalAbilityDuration);
         }
 
@@ -170,6 +172,7 @@ public class Pull : AbilityPower
             ThePull(chargedPull);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
+            StartCoroutine(PushScript.SetIsHit());
 
             CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity, CameraShakeValues.chargedAbilityDuration);
         }

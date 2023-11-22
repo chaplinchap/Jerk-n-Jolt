@@ -240,6 +240,7 @@ MonoBehaviour:
   platformSurface:
     serializedVersion: 2
     m_Bits: 2048
+  chargebar: {fileID: 8639835804436063404}
 --- !u!114 &1545128923084080689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +257,8 @@ MonoBehaviour:
   abilityPowerForce: 100
   minChargingTime: 2
   maxChargeingTime: 4
+  isHit: 0
+  hitDuration: 0.25
   chargeTrackingTimer: 0
   ifFailedChargeTime: 0
   ifSuccesChargeTime: 0
@@ -282,6 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   currentHealth: 3
+  healthbar: {fileID: 0}
 --- !u!114 &1919701950871859034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b493685ba6210499080cc16512fd92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnDuration: 0.3
 --- !u!114 &3944283588468354252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,6 +565,7 @@ GameObject:
   - component: {fileID: 1215634738525074025}
   - component: {fileID: 7415344138922846933}
   - component: {fileID: 2420644577153654539}
+  - component: {fileID: 8776976572170848025}
   m_Layer: 5
   m_Name: StunbarCanvas
   m_TagString: Untagged
@@ -650,6 +656,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8776976572170848025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8639835804436063404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51908aaae66a88b469b3803f76919d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeAmount: 0
+  coroutineRunning: 0
+  abilityPressed: 32
 --- !u!1001 &1206164502680036387
 PrefabInstance:
   m_ObjectHideFlags: 0

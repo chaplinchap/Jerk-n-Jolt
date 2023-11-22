@@ -19,7 +19,7 @@ public class Stunner : MonoBehaviour
     private float startingSpeed;
     private float penaltySpeed;
     private float duration;
-    
+
     private float time = 0;
 
     private float stunTimer;
@@ -31,8 +31,8 @@ public class Stunner : MonoBehaviour
     {
         GetScripts();
         startingSpeed = playerMovement.speed;
-        penaltySpeed = playerMovement.speed/penaltyMultiplier;
-        
+        penaltySpeed = playerMovement.speed / penaltyMultiplier;
+
     }
 
     protected void OnEnable()
@@ -47,6 +47,11 @@ public class Stunner : MonoBehaviour
     {
         Stun(abilityPower.maxChargeingTime, stunTime, abilityPower.HasPressedAbility());
         stunbarScript.UpdateStunBar(GetTime(), abilityPower.maxChargeingTime);
+
+        if (abilityPower.IsHit()) {
+            StartCoroutine(HitStun(abilityPower.GetHitDuration()));
+        }
+
     }
 
 
@@ -58,7 +63,7 @@ public class Stunner : MonoBehaviour
             return;
         }
 
- 
+
 
         else if (isKeyPressed)
         {
@@ -71,17 +76,17 @@ public class Stunner : MonoBehaviour
             time = 0;
         }
 
-       if (time > timeToStun / slowerTimeStunDivider)
-       {
+        if (time > timeToStun / slowerTimeStunDivider)
+        {
             isPenalty = true;
-       }
+        }
 
         if (time < timeToStun / slowerTimeStunDivider)
         {
             isPenalty = false;
         }
 
-        Slow(); 
+        Slow();
 
         if (time > timeToStun)
         {
@@ -120,21 +125,28 @@ public class Stunner : MonoBehaviour
         movementAid.enabled = turn;
         stunbarScript.enabled = turn;
         abilityPower.enabled = turn;
-     
+
     }
 
-    private void Slow() 
+    private void Slow()
     {
         if (isPenalty)
         {
             playerMovement.speed = penaltySpeed;
         }
 
-        if(!isPenalty)
+        if (!isPenalty)
         {
             playerMovement.speed = startingSpeed;
         }
 
+    }
+
+    public IEnumerator HitStun(float duration) 
+    {
+        TurnScripts(false);
+        yield return new WaitForSeconds(duration);
+        TurnScripts(true);
     }
 
     public bool IsStunned() { return isStunned; }

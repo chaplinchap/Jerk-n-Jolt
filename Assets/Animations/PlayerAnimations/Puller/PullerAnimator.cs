@@ -25,13 +25,18 @@ public class PullerAnimator : AnimationsParent
 
     
 
-    private void Update()
+    protected override void Update()
     {
 
         if (isRespawing) 
         {
             ChangeAnimationState(spawning);
             return; 
+        }
+
+        if (abilityPowerScript.IsHit()) {
+
+            ChangeAnimationState(falling);
         }
 
         if (stunScript.IsStunned())
@@ -47,10 +52,10 @@ public class PullerAnimator : AnimationsParent
 
 
 
-        if (!abilityPowerScript.HasPressedAbility() && isAttacking)
+        if (!abilityPowerScript.HasPressedAbility() && isCharging)
         {
             lineRenderer.SetActive(false);
-            isAttackFinished = false;
+            isAttacking = false;
 
 
 
@@ -62,7 +67,7 @@ public class PullerAnimator : AnimationsParent
 
             //lineRenderer.SetActive(true);
 
-            isAttacking = true;
+            isCharging = true;
         }
 
 
@@ -73,9 +78,9 @@ public class PullerAnimator : AnimationsParent
     {
         if (isRespawing) { return; }
 
-        if (stunScript.IsStunned() || dashScript.IsDashing()) { return; }
+        if (stunScript.IsStunned() || dashScript.IsDashing() || abilityPowerScript.IsHit()) { return; }
 
-        if (isAttacking && isAttackFinished && movementScript.IsGrounded())
+        if (isCharging && isAttacking && movementScript.IsGrounded())
         {
 
             if (movementScript.GetMovementX() != 0)
@@ -99,7 +104,7 @@ public class PullerAnimator : AnimationsParent
 
         }
 
-        if (movementScript.IsGrounded() && !isAttacking)
+        if (movementScript.IsGrounded() && !isCharging)
         {
 
             if (movementScript.GetMovementX() != 0)
@@ -114,10 +119,10 @@ public class PullerAnimator : AnimationsParent
         }
 
 
-        if (!movementScript.IsGrounded() && isAttackFinished)
+        if (!movementScript.IsGrounded() && isAttacking)
         {
 
-            if (isAttacking)
+            if (isCharging)
             {
                 ChangeAnimationState(jumpingCharge);
                 lineRenderer.SetActive(true);
@@ -161,7 +166,7 @@ public class PullerAnimator : AnimationsParent
     private void Stunned()
     {
         ChangeAnimationState(stun);
-        AttackComplete();
+        //AttackComplete();
         lineRenderer.SetActive(false);
         return;
     }

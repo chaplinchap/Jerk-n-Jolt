@@ -15,13 +15,15 @@ public class AnimationsParent : MonoBehaviour
     protected Stunner stunScript;
     protected MovementAid dashScript;
 
+    protected bool isCharging = false;
     protected bool isAttacking = false;
-    protected bool isAttackFinished = true;
     protected bool isRespawing = false;
 
 
 
+
     [SerializeField] private float respawnDuration = .3f;
+    [SerializeField] protected float attackDuration = .3f;
 
     void Start()
     {
@@ -31,9 +33,20 @@ public class AnimationsParent : MonoBehaviour
     protected virtual void OnEnable()
     {
         currentState = 0;
-        AttackComplete();
+        isCharging = false;
+        isAttacking = false;
+        //AttackComplete();
         StartCoroutine(Respawn(respawnDuration));
         //Debug.Log("Animation Enable");
+    }
+
+    protected virtual void Update()
+    {
+  
+
+        if (abilityPowerScript.HasPressedAbility()) isCharging = true;
+        else if (isCharging) StartCoroutine(AttackComplete(attackDuration));
+
     }
 
 
@@ -42,7 +55,7 @@ public class AnimationsParent : MonoBehaviour
     public void ChangeAnimationState(int newState)
     {
         if (currentState == newState) return;
-        animator.CrossFade(newState, 0.05f, 0);
+        animator.CrossFade(newState, 0f, 0);
         currentState = newState;
     }
 
@@ -57,11 +70,20 @@ public class AnimationsParent : MonoBehaviour
         dashScript = GetComponent<MovementAid>();
     }
 
-
-    protected void AttackComplete()
+    protected void AttackComplete() 
     {
+        isCharging = false;
         isAttacking = false;
-        isAttackFinished = true;
+    
+    }
+
+
+    protected IEnumerator AttackComplete(float duration)
+    {
+        isCharging = false; 
+        isAttacking = true;
+        yield return new WaitForSeconds(duration) ;
+        isAttacking = false;
     }
 
     protected IEnumerator Respawn(float duration)
@@ -73,6 +95,7 @@ public class AnimationsParent : MonoBehaviour
         //Debug.Log("isRespawning: "+isRespawing);
     }
 
+    protected float GetRespawnDuration() { return respawnDuration; }
     
 
 

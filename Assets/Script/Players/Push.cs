@@ -10,6 +10,7 @@ public class Push : AbilityPower
     private FieldTrigger pushField;
     private PlayerMovement movement;
     private bool timeWait = false; //Used for GameStartCoolDown
+    private AbilityPower PullScript;
 
     //Push
     //public float abilityPower;
@@ -57,6 +58,8 @@ public class Push : AbilityPower
         rigidbodyPuller = thePuller.GetComponent<Rigidbody2D>();
         pushField = gameObject.GetComponentInChildren<FieldTrigger>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        PullScript = thePuller.GetComponent<AbilityPower>();
+
 
         movement = GetComponent<PlayerMovement>();
     }
@@ -157,6 +160,7 @@ public class Push : AbilityPower
             ThePush(normalPush);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
+            StartCoroutine(PullScript.SetIsHit());
             CameraShake.Instance.ShakeCamera(CameraShakeValues.normalAbilityIntensity, CameraShakeValues.normalAbilityDuration);
         }
 
@@ -165,7 +169,7 @@ public class Push : AbilityPower
             ThePush(chargedPush);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
-
+            StartCoroutine(PullScript.SetIsHit());
             CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity, CameraShakeValues.chargedAbilityDuration);
         }
 

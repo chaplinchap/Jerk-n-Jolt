@@ -65,7 +65,7 @@ public class Healthbar : MonoBehaviour
 
         // Apply the random offsets to the targets position
         transform.position = originalPosition + new Vector3(offsetX, offsetY, offsetZ) + new Vector3(shake, 0f, 0f);
-        Debug.Log("Shake!!!!");
+        //Debug.Log("Shake!!!!");
         yield return new WaitForSeconds(1);
         startShake = false;
         if (!permanentShake)

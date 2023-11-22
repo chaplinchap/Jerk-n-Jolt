@@ -11,6 +11,8 @@ public class AbilityPower : MonoBehaviour
     [SerializeField] public float abilityPowerForce;
 
 
+
+
     protected bool downAbilityPress;
     protected bool isAbilityPress;
     protected bool upAbilityPress;
@@ -24,6 +26,8 @@ public class AbilityPower : MonoBehaviour
     private float timeSinceLastPressedDown = 0f;
 
     [SerializeField] private static float deadTimeBetweenPress = .2f;
+    [SerializeField] private bool isHit = false;
+    [SerializeField] private float hitDuration = .2f;
 
 
     private void OnEnable()
@@ -137,6 +141,16 @@ public class AbilityPower : MonoBehaviour
         return result;
     }
 
+    public IEnumerator SetIsHit()
+    {
+        isHit = true;
+        yield return new WaitForSeconds(GetHitDuration());
+        isHit = false ;
+    }
+
+    public bool IsHit() { return isHit; }
+
+    public float GetHitDuration() { return hitDuration; }
     /*
 
 protected void Timer() 
