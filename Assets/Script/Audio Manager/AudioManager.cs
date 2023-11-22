@@ -15,9 +15,14 @@ public class AudioManager : MonoBehaviour
     public AudioClip jump;
     public AudioClip push;
     public AudioClip pull;
+    public AudioClip hit;
+    public AudioClip dash;
+    public AudioClip charge;
+    public AudioClip powerUP;
+    public AudioClip powerUPRanOut;
+    public AudioClip heartUP;
     public AudioClip death;
     public AudioClip respawn;
-    public AudioClip collectible;
     public AudioClip countDown;
 
     void Start()

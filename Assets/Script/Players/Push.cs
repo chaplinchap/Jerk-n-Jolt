@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public class Push : AbilityPower
 {
+    public ParticleSystem chargingParticles;
     private GameObject thePuller;
     private Rigidbody2D rigidbodyPuller;
     private FieldTrigger pushField;
@@ -206,4 +209,11 @@ public class Push : AbilityPower
         
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PowerUP"))
+        { 
+            chargingParticles.Play();
+        }
+    }
 }

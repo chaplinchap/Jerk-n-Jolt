@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject player1; // Used to check for players left when game is over
     public TextMeshProUGUI text;
+    public GameObject cameraAnchor;
+
 
 
     //Animations!!
@@ -32,7 +34,7 @@ public class UIManager : MonoBehaviour
     public Animator GameIsOverButton2_Animation;
 
     public CinemachineVirtualCamera virtualCamera;
-
+    
     private float targetMinOrthoSize = 8f;  // Set your target minimum orthographic size here
     private float targetMaxOrthoSize = 8f;  // Set your target maximum orthographic size here
     private float zoomDuration = 150f;         // Set the duration of the zoom
@@ -73,6 +75,7 @@ public class UIManager : MonoBehaviour
 
         if (deadPlayer) {
             gameIsOver = true;
+            Destroy(cameraAnchor);
         }
    
         
