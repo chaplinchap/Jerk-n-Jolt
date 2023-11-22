@@ -448,6 +448,7 @@ MonoBehaviour:
   platformSurface:
     serializedVersion: 2
     m_Bits: 2048
+  chargebar: {fileID: 0}
 --- !u!114 &847568949796497890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,6 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   currentHealth: 3
+  healthbar: {fileID: 0}
 --- !u!114 &1593877366679419715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c55f718c9225d45b4fedc547ac56e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnDuration: 0.3
   points:
   - {fileID: 4265842877458152515}
   - {fileID: 8535957501582002034}
