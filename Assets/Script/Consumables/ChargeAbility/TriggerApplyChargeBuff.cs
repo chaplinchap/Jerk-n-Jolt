@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TriggerApplyChargeBuff : ConsumableParentObject
 { 
-
+    /*
 
     public ConsumableScriptableObject charge;
 
@@ -53,4 +53,5 @@ public class TriggerApplyChargeBuff : ConsumableParentObject
 
 
     }
+    */
 }

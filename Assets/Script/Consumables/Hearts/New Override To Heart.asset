@@ -13,6 +13,3 @@ MonoBehaviour:
   m_Name: New Override To Heart
   m_EditorClassIdentifier: 
   hp: 1
-  startingPower: 0
-  startingMoveSpeed: 0
-  startingFriction: 0

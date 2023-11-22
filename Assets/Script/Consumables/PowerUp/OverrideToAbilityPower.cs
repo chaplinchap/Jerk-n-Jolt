@@ -10,25 +10,23 @@ public class OverrideToAbilityPower : ConsumableScriptableObject
 {
     
     public float startingPower;
-
     public float amountPower = 2;
 
 
 
     public override void Apply(GameObject target)
     {
-
         startingPower = target.GetComponent<AbilityPower>().abilityPowerForce;
         target.GetComponent<AbilityPower>().abilityPowerForce *= amountPower;
-        
     }
 
  
 
     public override void DeApply(GameObject target)
     {
-        target.GetComponent<AbilityPower>().abilityPowerForce = startingPower;
-        // target.GetComponent<AbilityPower>().abilityPowerForce /= amountPower;
+         // target.GetComponent<AbilityPower>().abilityPowerForce = startingPower;
+         target.GetComponent<AbilityPower>().abilityPowerForce /= amountPower;
     }
+
 }
 

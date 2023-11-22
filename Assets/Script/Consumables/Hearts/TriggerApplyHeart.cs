@@ -9,7 +9,7 @@ public class TriggerApplyHeart : ConsumableParentObject
 
     public ConsumableScriptableObject hearts;
 
-    public float time = 5f;
+    public float time = 3f;
 
     private bool triggerOnce = false;
 
@@ -18,8 +18,16 @@ public class TriggerApplyHeart : ConsumableParentObject
     private float timeToDespawn = 8f;
     private float timeCoroutineDespawn = 0f;
     private bool isDespawned = false;
+   
 
-  
+    private GameObject pusher;
+    private GameObject puller;
+
+
+    private IEnumerator buffDurationPusher;
+    private IEnumerator buffDurationPuller;
+
+
 
     private void Awake()
     {
@@ -34,6 +42,22 @@ public class TriggerApplyHeart : ConsumableParentObject
             isDespawned = true;
             StartCoroutine(DespawnConsumable(timeCoroutineDespawn));
         }
+
+
+        if (Respawn.pullerIsDead)
+        {
+            StopCoroutine(buffDurationPuller);
+            hearts.DeApply(puller);
+            Destroy(this.gameObject);
+
+        }
+
+        if (Respawn.pusherIsDead)
+        {
+            StopCoroutine(buffDurationPusher);
+            hearts.DeApply(pusher);
+            Destroy(this.gameObject);
+        }
     }
 
 
@@ -47,13 +71,41 @@ public class TriggerApplyHeart : ConsumableParentObject
         if (collision.CompareTag("Pusher") && !triggerOnce || collision.CompareTag("Puller") && !triggerOnce)
 
         {
-                triggerOnce = true;
+
+            triggerOnce = true;
+            buffDurationPusher = DurationbuffPusher(hearts, collision.gameObject, time);
+            buffDurationPuller = DurationbuffPuller(hearts, collision.gameObject, time);
+            TurnOffConsumable();
+
+            if (collision.CompareTag("Pusher"))
+            {
+                pusher = collision.gameObject;                
+                hearts.Apply(pusher);
+                StartCoroutine(buffDurationPusher);
+            }
+
+            if (collision.CompareTag("Puller"))
+            {
+                puller = collision.gameObject;              
+                hearts.Apply(puller);
+                StartCoroutine(buffDurationPuller);
+            }
+
+
+
+            /*
+            triggerOnce = true;
             
                 TurnOffConsumable();
                 hearts.Apply(collision.gameObject);                
                 StartCoroutine(Durationbuff(hearts, collision.gameObject, time));
-       
+            */
+        
         }
+
+
+
+  
 
 
     }
