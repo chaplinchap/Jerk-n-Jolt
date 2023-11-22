@@ -195,7 +195,7 @@ public class Push : AbilityPower
         else if (upAbilityPress && chargeTrackingTimer > minChargingTime && pushField.inField)
         {
             ifSuccesChargeTime = true;
-            slowMotion.DoSlowmotion();
+            //slowMotion.DoSlowmotion();
             //freeze.Freeze();
             SetPitch();
         }

@@ -199,7 +199,7 @@ public class Pull : AbilityPower
         else if (upAbilityPress && chargeTrackingTimer > minChargingTime && pullField.inField)
         {
             ifSuccesChargeTime = true;
-            slowMotion.DoSlowmotion();
+            //slowMotion.DoSlowmotion();
             //freeze.Freeze();
             SetPitch();
         }
