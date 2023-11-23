@@ -20,7 +20,12 @@ public class MainMenu : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false; //closes the unity runner
         Application.Quit(); //closes the game
     }
-    public void ButtonClick()
+
+    public void Tutorial() // When clicking on tutorial button
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +2); //Goes to the tutorial
+    }
+    public void ButtonSFXSound()
     {
         audioManagerMainMenu.PlaySFX(audioManagerMainMenu.buttonClick);
     }

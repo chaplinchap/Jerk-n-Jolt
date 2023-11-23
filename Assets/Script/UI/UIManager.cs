@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void Update()
      {
 
         if (deadPlayer) {
@@ -184,10 +184,15 @@ public class UIManager : MonoBehaviour
         GameIsOverButton2_Animation.SetTrigger("ButtonFloatIn");
     }
 
+    
+
      IEnumerator SmoothZoomCoroutine(CinemachineFramingTransposer framingTransposer)
     {
         float startTime = Time.time;
         float endTime = startTime + zoomDuration;
+        RemoveLastTargetFromGroup();
+
+
 
         while (Time.time < endTime)
         {
@@ -201,7 +206,23 @@ public class UIManager : MonoBehaviour
             framingTransposer.m_MinimumOrthoSize = newMinOrthoSize;
             framingTransposer.m_MaximumOrthoSize = newMaxOrthoSize;
 
+            
+
             yield return null;
         }
     }
+
+    public CinemachineTargetGroup targetGroup;
+    private bool removeOnce;
+    void RemoveLastTargetFromGroup()
+    {
+        if (removeOnce == false)
+        {
+            List<CinemachineTargetGroup.Target> targetList = new List<CinemachineTargetGroup.Target>(targetGroup.m_Targets);
+            targetList.RemoveAt(targetList.Count - 1);
+            targetGroup.m_Targets = targetList.ToArray();
+            removeOnce = true;
+        }
+    }
+
 }
