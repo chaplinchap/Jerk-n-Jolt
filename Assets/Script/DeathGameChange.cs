@@ -18,8 +18,8 @@ public class DeathGameChange : MonoBehaviour
     [SerializeField] private Image Pull_totalHealthbar; //UI of players current healthbar (foreground)
     
 
-    [Header(" SuddenDeath Settings")]
-    public static float SuddenDeathTimer = 90; // deside when sudden Death change to happen
+    [Header("SuddenDeath Settings")]
+    public static float SuddenDeathTimer = 10; // deside when sudden Death change to happen
     public bool suddenDeathTriggered = false;
     
 

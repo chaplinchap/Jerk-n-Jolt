@@ -193,7 +193,6 @@ public class UIManager : MonoBehaviour
     {
         float startTime = Time.time;
         float endTime = startTime + zoomDuration;
-        RemoveLastTargetFromGroup();
 
 
 
@@ -214,18 +213,4 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
     }
-
-    public CinemachineTargetGroup targetGroup;
-    private bool removeOnce;
-    void RemoveLastTargetFromGroup()
-    {
-        if (removeOnce == false)
-        {
-            List<CinemachineTargetGroup.Target> targetList = new List<CinemachineTargetGroup.Target>(targetGroup.m_Targets);
-            targetList.RemoveAt(targetList.Count - 1);
-            targetGroup.m_Targets = targetList.ToArray();
-            removeOnce = true;
-        }
-    }
-
 }
