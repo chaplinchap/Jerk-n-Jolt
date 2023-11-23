@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 
 public class Stunner : MonoBehaviour
 {
-
+    AudioManager audioManager;
     private PlayerMovement playerMovement;
     private MovementAid movementAid;
     protected AbilityPower abilityPower;
@@ -26,6 +27,12 @@ public class Stunner : MonoBehaviour
 
     private bool isStunned;
     private bool isPenalty = false;
+    private bool chargeReady;
+
+    public void Start()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     protected void Awake()
     {
@@ -127,19 +134,32 @@ public class Stunner : MonoBehaviour
         abilityPower.enabled = turn;
 
     }
-
-    private void Slow()
+    
+    
+    private void Slow() 
     {
         if (isPenalty)
         {
             playerMovement.speed = penaltySpeed;
+            chargeReady = true;
+            //PlayChargeAudio();
         }
 
         if (!isPenalty)
         {
             playerMovement.speed = startingSpeed;
+            chargeReady = false;
         }
 
+    }
+
+    public void PlayChargeAudio()
+    {
+        if (chargeReady)
+        {
+            audioManager.PlaySFX(audioManager.charge);
+            chargeReady = false;
+        }
     }
 
     public IEnumerator HitStun(float duration) 

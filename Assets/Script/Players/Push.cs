@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public class Push : AbilityPower
 {
+    public ParticleSystem powerUPParticles;
+    public ParticleSystem powerUPEndParticles;
     private GameObject thePuller;
     private Rigidbody2D rigidbodyPuller;
     private FieldTrigger pushField;
@@ -67,12 +71,10 @@ public class Push : AbilityPower
 
     private void Update()
     {
-
-
-        if (upAbilityPress) 
+        
+        if (upAbilityPress && !ifSuccesChargeTime)
         {
             audioManager.PlaySFX(audioManager.push);
-            //Invoke("ResetMaterial", flashTime);
         }
 
         /*
@@ -169,6 +171,8 @@ public class Push : AbilityPower
             ThePush(chargedPush);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
+            audioManager.PlaySFX(audioManager.chargePush);
+
             StartCoroutine(PullScript.SetIsHit());
             CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity, CameraShakeValues.chargedAbilityDuration);
         }
@@ -199,7 +203,7 @@ public class Push : AbilityPower
         else if (upAbilityPress && chargeTrackingTimer > minChargingTime && pushField.inField)
         {
             ifSuccesChargeTime = true;
-            slowMotion.DoSlowmotion();
+            //slowMotion.DoSlowmotion();
             //freeze.Freeze();
             SetPitch();
         }
@@ -210,4 +214,17 @@ public class Push : AbilityPower
         
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PowerUP"))
+        { 
+            powerUPParticles.Play();
+            Invoke("PowerUPRanOut", 5f);
+        }
+    }
+    public void PowerUPRanOut()
+    {
+        powerUPEndParticles.Play();
+    }
+    
 }

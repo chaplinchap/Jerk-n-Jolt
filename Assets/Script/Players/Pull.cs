@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 
 public class Pull : AbilityPower
 {
+    public ParticleSystem powerUPParticles;
+    public ParticleSystem powerUPEndParticles;
     private GameObject thePusher;
     private Rigidbody2D rigidbodyPusher;
     private FieldTrigger pullField;
@@ -15,9 +17,10 @@ public class Pull : AbilityPower
 
     //Pull
     private float time = 0.15f;
+
     //public float abilityPower;
     //public KeyCode pullOnPress;
-    private bool hasPressedPull = false; 
+    private bool hasPressedPull = false;
     public float extraForce = 1f;
     public LayerMask pusherLayer;
     private int defaultLayer = 0;
@@ -47,7 +50,7 @@ public class Pull : AbilityPower
     public GameObject pusher;
     public float flashTime = 0.075f;
 
-    
+
 
 
     public void SetPitch()
@@ -87,7 +90,7 @@ public class Pull : AbilityPower
         {
             hasPressedPull = true;
         }
-        
+
 
         if (Input.GetKeyUp(pullOnPress) && pullField.inField)
         {
@@ -105,41 +108,42 @@ public class Pull : AbilityPower
 
         Timer();
 
-        
+
     }
 
     void ResetMaterial()
     {
         //pusher.GetComponent<SpriteRenderer>().enabled = true;
     }
-    
+
     private void FixedUpdate()
     {
 
-        Invoke("waitForTime",3);
+        Invoke("waitForTime", 3);
         if (timeWait)
         {
-            ChargePulling(1f , extraForce);
+            ChargePulling(1f, extraForce);
         }
-        
+
     }
+
     private void waitForTime()
     {
         timeWait = true;
     }
-    
-    
-    
-    
-        // METHODS //
+
+
+
+
+    // METHODS //
 
     IEnumerator ChangeLayer()
-    {   
+    {
         yield return new WaitForSeconds(time);
         boxColliderPusher.gameObject.layer = defaultLayer;
     }
 
-    private void ThePull(float extraForce) 
+    private void ThePull(float extraForce)
     {
         rigidbodyPusher.AddForce(-VectorBetween(thePusher) * abilityPowerForce * extraForce, ForceMode2D.Impulse);
         hasPressedPull = false;
@@ -174,11 +178,12 @@ public class Pull : AbilityPower
             ifSuccesChargeTime = false;
             StartCoroutine(PushScript.SetIsHit());
 
-            CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity, CameraShakeValues.chargedAbilityDuration);
+            CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity,
+                CameraShakeValues.chargedAbilityDuration);
         }
     }
 
-    
+
     private void Timer()
     {
         if (downAbilityPress)
@@ -202,7 +207,7 @@ public class Pull : AbilityPower
         else if (upAbilityPress && chargeTrackingTimer > minChargingTime && pullField.inField)
         {
             ifSuccesChargeTime = true;
-            slowMotion.DoSlowmotion();
+            //slowMotion.DoSlowmotion();
             //freeze.Freeze();
             SetPitch();
         }
@@ -213,6 +218,17 @@ public class Pull : AbilityPower
 
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PowerUP"))
+        {
+            powerUPParticles.Play();
+            Invoke("PowerUPRanOut", 5f);
+        }
+    }
 
-
+    public void PowerUPRanOut()
+    {
+        powerUPEndParticles.Play();
+    }
 }

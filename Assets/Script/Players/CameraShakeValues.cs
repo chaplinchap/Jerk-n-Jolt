@@ -20,6 +20,12 @@ public static class CameraShakeValues
     // DASHING \\
     public static readonly float dashingIntensity = 5f;
     public static readonly float dashingDuration = .1f;
+    
+    
+    // POWERUP RAN OUT \\
+    public static readonly float powerUPIntensity = 18f;
+    public static readonly float powerUPDuration = .2f;
+    
 
 
 }

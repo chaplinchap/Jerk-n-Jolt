@@ -18,6 +18,8 @@ TagManager:
   - Floor
   - ConsumableManager
   - ParticleTrigger
+  - PowerUP
+  - PowerUpEndParticle
   layers:
   - Default
   - TransparentFX

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,13 @@ public class TriggerApplyPower : ConsumableParentObject
     private float timeToDespawn = 8f;
     private float timeCoroutineDespawn = 0f;
     private bool isDespawned = false;
+    AudioManager audioManager;
+
+
+    public void Start()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     private void Awake()
     {
@@ -22,15 +30,12 @@ public class TriggerApplyPower : ConsumableParentObject
         
     }
 
-    
-
     private void Update()
     {
         if(Time.time - timeStampOnAwake  > timeToDespawn && !isDespawned && !triggerOnce) 
         {
             isDespawned = true;
             StartCoroutine(DespawnConsumable(timeCoroutineDespawn));
-        
         }
     }
 
@@ -40,17 +45,22 @@ public class TriggerApplyPower : ConsumableParentObject
     {
 
         if(collision.CompareTag("Pusher") && !triggerOnce || collision.CompareTag("Puller") && !triggerOnce)
-
         {
             triggerOnce = true;
-             
-           TurnOffConsumable();
-           powerUp.Apply(collision.gameObject);
-           StartCoroutine(Durationbuff(powerUp, collision.gameObject, time));
-                
+            TurnOffConsumable();
+            powerUp.Apply(collision.gameObject);
+            StartCoroutine(Durationbuff(powerUp, collision.gameObject, time));
+            audioManager.PlaySFX(audioManager.powerUP);
+            Invoke("PowerUPRanOut", time);
+            if (collision.CompareTag(("Pusher"))) ;
         }
 
     }
 
-
+    public void PowerUPRanOut()
+    {
+        audioManager.PlaySFX(audioManager.powerUPRanOut);   
+        CameraShake.Instance.ShakeCamera(CameraShakeValues.powerUPIntensity, CameraShakeValues.powerUPDuration);
+    }
+    
 }

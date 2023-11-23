@@ -48,7 +48,6 @@ public class TriggerApplyHeart : ConsumableParentObject
 
         {
                 triggerOnce = true;
-            
                 TurnOffConsumable();
                 hearts.Apply(collision.gameObject);                
                 StartCoroutine(Durationbuff(hearts, collision.gameObject, time));
