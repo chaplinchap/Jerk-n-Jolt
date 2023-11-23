@@ -6,7 +6,7 @@ public class GameStateChangePlatformDespawns : MonoBehaviour
 {
 
     [SerializeField] PlatformScriptableObject platformScriptableObject;
-    private float gamestateChangeTimer = 120f;
+    private float gamestateChangeTimer;
    
 
     private IEnumerator startGameStateChange;
@@ -17,6 +17,7 @@ public class GameStateChangePlatformDespawns : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gamestateChangeTimer = DeathGameChange.SuddenDeathTimer;
        startGameStateChange = startCountDown(gameObject, gamestateChangeTimer);
        StartCoroutine(startGameStateChange);
     }

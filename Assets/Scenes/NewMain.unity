@@ -2506,7 +2506,6 @@ MonoBehaviour:
   Puller: {fileID: 1449906316}
   Pul_healthScript: {fileID: 1449906324}
   Pull_totalHealthbar: {fileID: 233638143}
-  SuddenDeathTimer: 10
   suddenDeathTriggered: 0
 --- !u!4 &759642865
 Transform:
@@ -2542,7 +2541,7 @@ MonoBehaviour:
   sliderFill:
   - {fileID: 1190009970}
   - {fileID: 894358104}
-  sliderTimer: 10
+  sliderTimer: 90
   stopTimer: 0
   manager: {fileID: 1836267741}
   endAnimation: 1
@@ -10362,8 +10361,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.20451, y: 0.20451, z: 0.20451}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1360605304}
+  m_Children: []
   m_Father: {fileID: 1317568580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -12727,6 +12725,10 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 318452310}
+    - target: {fileID: 3527094187740927622, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
+      propertyPath: time
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7831007007408972477, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: m_Name
       value: Player2 Pull
@@ -12748,6 +12750,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 761251209570154705, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: time
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1545128923084080689, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: puller
       value: 
@@ -12840,6 +12846,10 @@ PrefabInstance:
     - target: {fileID: 5725731760217337183, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_TagString
       value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292766695016044924, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: offPlatformFade
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7748005987508325142, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_LocalScale.x

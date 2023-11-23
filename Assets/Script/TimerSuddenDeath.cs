@@ -18,10 +18,14 @@ public class TimerSuddenDeath : MonoBehaviour
     [Header("Animations")]
     public Animator SuddenDeath_animation;
 
+    private float startTimer = 3f;
 
     // Start is called before the first frame update
     void Start()
     {
+        sliderTimer = DeathGameChange.SuddenDeathTimer;
+        sliderTimer -= startTimer + 0.3f;
+
         foreach (Slider slider in timerSlider)
         {
             slider.maxValue = sliderTimer;
@@ -30,7 +34,7 @@ public class TimerSuddenDeath : MonoBehaviour
         
         //StartTimer();
         Invoke ("StartAnimation",2);
-        Invoke ("StartTimer",3);
+        Invoke ("StartTimer", startTimer);
 
         //Text_SuddenDeath.enabled = false;
         SetTextAlpha(0f);
@@ -72,6 +76,7 @@ public class TimerSuddenDeath : MonoBehaviour
 
     IEnumerator StartTheTimerTicker()
     {
+
         while (stopTimer == false)
         {
             sliderTimer -= Time.deltaTime;
