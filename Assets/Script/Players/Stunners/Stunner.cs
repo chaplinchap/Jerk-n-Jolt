@@ -157,6 +157,7 @@ public class Stunner : MonoBehaviour
         if (chargeReady)
         {
             audioManager.PlaySFX(audioManager.charge);
+            chargeReady = false;
         }
     }
 
