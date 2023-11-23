@@ -7,7 +7,8 @@ using UnityEngine.Audio;
 
 public class Push : AbilityPower
 {
-    public ParticleSystem chargingParticles;
+    public ParticleSystem powerUPParticles;
+    public ParticleSystem powerUPEndParticles;
     private GameObject thePuller;
     private Rigidbody2D rigidbodyPuller;
     private FieldTrigger pushField;
@@ -67,12 +68,10 @@ public class Push : AbilityPower
 
     private void Update()
     {
-
-
-        if (upAbilityPress) 
+        
+        if (upAbilityPress && !ifSuccesChargeTime)
         {
             audioManager.PlaySFX(audioManager.push);
-            //Invoke("ResetMaterial", flashTime);
         }
 
         /*
@@ -168,6 +167,7 @@ public class Push : AbilityPower
             ThePush(chargedPush);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
+            audioManager.PlaySFX(audioManager.chargePush);
 
             CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity, CameraShakeValues.chargedAbilityDuration);
         }
@@ -213,7 +213,13 @@ public class Push : AbilityPower
     {
         if (collision.CompareTag("PowerUP"))
         { 
-            chargingParticles.Play();
+            powerUPParticles.Play();
+            Invoke("PowerUPRanOut", 5f);
         }
     }
+    public void PowerUPRanOut()
+    {
+        powerUPEndParticles.Play();
+    }
+    
 }

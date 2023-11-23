@@ -19,7 +19,6 @@ public class TriggerApplyPower : ConsumableParentObject
     AudioManager audioManager;
 
 
-
     public void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -52,9 +51,16 @@ public class TriggerApplyPower : ConsumableParentObject
             powerUp.Apply(collision.gameObject);
             StartCoroutine(Durationbuff(powerUp, collision.gameObject, time));
             audioManager.PlaySFX(audioManager.powerUP);
-            
+            Invoke("PowerUPRanOut", time);
+            if (collision.CompareTag(("Pusher"))) ;
         }
 
+    }
+
+    public void PowerUPRanOut()
+    {
+        audioManager.PlaySFX(audioManager.powerUPRanOut);   
+        CameraShake.Instance.ShakeCamera(CameraShakeValues.powerUPIntensity, CameraShakeValues.powerUPDuration);
     }
     
 }

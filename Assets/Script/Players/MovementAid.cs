@@ -11,15 +11,18 @@ public class MovementAid : MonoBehaviour
 
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
+    public ParticleSystem dashParticles;
 
     [SerializeField] private float dashingPower = 10f;
     [SerializeField] private float duration = 2;
     [SerializeField] private float dashingBuffer = .3f;
-
+    private AudioManager audioManager;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void OnEnable() 
@@ -88,6 +91,9 @@ public class MovementAid : MonoBehaviour
         StartCoroutine(Cooldown(duration));
 
         CameraShake.Instance.ShakeCamera(CameraShakeValues.dashingIntensity, CameraShakeValues.dashingDuration);
+
+        audioManager.PlaySFX(audioManager.dash);
+        dashParticles.Play();
     }
 
 
