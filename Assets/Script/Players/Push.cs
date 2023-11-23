@@ -16,6 +16,9 @@ public class Push : AbilityPower
     private bool timeWait = false; //Used for GameStartCoolDown
     private AbilityPower PullScript;
 
+    private IEnumerator powerupParticle;
+
+
     //Push
     //public float abilityPower;
     //public KeyCode pushOnPress;
@@ -71,7 +74,10 @@ public class Push : AbilityPower
 
     private void Update()
     {
-        
+
+        if (Respawn.pusherIsDead)
+        { StopCoroutine(powerupParticle); }
+
         if (upAbilityPress && !ifSuccesChargeTime)
         {
             audioManager.PlaySFX(audioManager.push);
@@ -216,15 +222,21 @@ public class Push : AbilityPower
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        powerupParticle = PowerUpParticles();
+
         if (collision.CompareTag("PowerUP"))
-        { 
-            powerUPParticles.Play();
-            Invoke("PowerUPRanOut", 5f);
+        {
+            StartCoroutine(powerupParticle);
         }
     }
-    public void PowerUPRanOut()
+
+    public IEnumerator PowerUpParticles()
     {
+        powerUPParticles.Play();
+        yield return new WaitForSeconds(5f);
         powerUPEndParticles.Play();
+
     }
-    
+
+
 }

@@ -23,7 +23,7 @@ public class ConsumableParentObject : MonoBehaviour
      * For more infomation on the class go to the PowerUpEffect to read more.
      */
 
-    public IEnumerator Durationbuff(ConsumableScriptableObject power, GameObject player, float time)
+    public IEnumerator DurationbuffPusher(ConsumableScriptableObject power, GameObject player, float time)
     {
         ConsumV4.currentConsumablesTracker--;
         ConsumV4.spawnedItemPositions.RemoveAt(0);
@@ -33,7 +33,17 @@ public class ConsumableParentObject : MonoBehaviour
        
     }
 
- 
+    public IEnumerator DurationbuffPuller(ConsumableScriptableObject power, GameObject player, float time)
+    {
+        ConsumV4.currentConsumablesTracker--;
+        ConsumV4.spawnedItemPositions.RemoveAt(0);
+        yield return new WaitForSeconds(time);  // This will yield for the duration of the powerup 
+        power.DeApply(player);  // This will DeAppley the powerup from the Player which has taken it
+        Destroy(gameObject); // This destroyes the Object that holds the powerup, such that is does not clog up in memory
+
+    }
+
+
     public IEnumerator DespawnConsumable(float time)
     {
         ConsumV4.currentConsumablesTracker--;

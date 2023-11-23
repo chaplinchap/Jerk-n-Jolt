@@ -12,7 +12,8 @@ public class Respawn : MonoBehaviour
     private Stunner[] stunners = new Stunner[2];
     private AnimationsParent[] animationsParents = new AnimationsParent[2];
 
-        
+    public static bool pusherIsDead = false;
+    public static bool pullerIsDead = false;
 
 
     public List<GameObject> randomSpawnPoints = new List<GameObject>();
@@ -52,17 +53,21 @@ public class Respawn : MonoBehaviour
         if (collision.gameObject.CompareTag("Pusher"))
         {
            
+            pusherIsDead = true;
             pusher.gameObject.SetActive(false);
             StartCoroutine(RespawnPusher());   
             Debug.Log("Player has fallen out");
+           
         }
 
         //Puller player repspawn
         if (collision.gameObject.CompareTag("Puller"))
         {
+            pullerIsDead = true;
             puller.gameObject.SetActive(false);
             StartCoroutine(RespawnPuller());   
             Debug.Log("Player has fallen out");
+            
         }
 
     }
@@ -82,6 +87,7 @@ public class Respawn : MonoBehaviour
         
         yield return new WaitForSeconds(respawnDelay);
         Spawn(pusher, selectedSpawnPoint);
+        pusherIsDead = false;
 
         // If player has more health it will spawn
         if (pushHealthScript.currentHealth > 0) {
@@ -109,10 +115,12 @@ public class Respawn : MonoBehaviour
 
         yield return new WaitForSeconds(respawnDelay);
         Spawn(puller, selectedSpawnPoint);
-        
+        pullerIsDead = false;
+
         // If player has more health it will spawn
         if (pullHealthScript.currentHealth > 0) {
             puller.gameObject.SetActive(true);
+           
             //TurnScripts(true, 1);
             yield return new WaitForSeconds(.1f) ;
             TurnScripts(false, 1);

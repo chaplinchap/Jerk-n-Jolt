@@ -8,15 +8,16 @@ public class OverrideToHeart : ConsumableScriptableObject
 {
 
     [SerializeField] private float hp = 1;
-    private int rollDice;
+    // private int rollDice;
+   
 
-    private float amountPowerReduced = 2;
-    private float amountSpeedReduced = 1.4f;
-    private float amountFrictionReduced = 20;
+     // private float amountPowerReduced = 2;
+    // private float amountSpeedReduced = 1.4f;
+     //private float amountFrictionReduced = 20;
 
-    public float startingPower;    
-    public float startingMoveSpeed;
-    public float startingFriction;
+    // public float startingPower;    
+    // public float startingMoveSpeed;
+    // public float startingFriction;
 
     
 
@@ -29,11 +30,13 @@ public class OverrideToHeart : ConsumableScriptableObject
         
         target.GetComponent<HealthV2>().GiveHP(hp);
         
-        // startingFriction = target.GetComponent<Rigidbody2D>().sharedMaterial.friction;
-        // startingMoveSpeed = target.GetComponent<PlayerMovement>().speed;
-        startingPower = target.GetComponent<AbilityPower>().abilityPowerForce;
+        // target.GetComponent<AbilityPower>().abilityPowerForce /= amountPowerReduced;
 
-        target.GetComponent<AbilityPower>().abilityPowerForce /= amountPowerReduced;
+        //startingFriction = target.GetComponent<Rigidbody2D>().sharedMaterial.friction;
+        //startingMoveSpeed = target.GetComponent<PlayerMovement>().speed;
+        // startingPower = target.GetComponent<AbilityPower>().abilityPowerForce;
+
+
 
         /*
         if (rollDice == 1)
@@ -60,11 +63,15 @@ public class OverrideToHeart : ConsumableScriptableObject
    
     public override void DeApply(GameObject target)
     {
-            target.GetComponent<AbilityPower>().abilityPowerForce = startingPower;      
+            
+            // target.GetComponent<AbilityPower>().abilityPowerForce *= amountPowerReduced;      
             // target.GetComponent<PlayerMovement>().speed = startingMoveSpeed;
             // target.GetComponent<Rigidbody2D>().sharedMaterial.friction = startingFriction;           
-
     }
 
+    private IEnumerator WaitTime (float time)
+    {
+        yield return new WaitForSeconds(time);
+    }
  
 }

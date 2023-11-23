@@ -51,6 +51,8 @@ public class Pull : AbilityPower
     public float flashTime = 0.075f;
 
 
+    private IEnumerator powerupParticle;
+
 
 
     public void SetPitch()
@@ -77,6 +79,9 @@ public class Pull : AbilityPower
 
     private void Update()
     {
+
+        if (Respawn.pullerIsDead) 
+        { StopCoroutine(powerupParticle); }
 
 
         if (upAbilityPress)
@@ -220,15 +225,19 @@ public class Pull : AbilityPower
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        powerupParticle = PowerUpParticles();
+
         if (collision.CompareTag("PowerUP"))
         {
-            powerUPParticles.Play();
-            Invoke("PowerUPRanOut", 5f);
+            StartCoroutine(powerupParticle);
         }
     }
 
-    public void PowerUPRanOut()
+    public IEnumerator PowerUpParticles()
     {
+        powerUPParticles.Play();
+        yield return new WaitForSeconds(5f);
         powerUPEndParticles.Play();
+
     }
 }

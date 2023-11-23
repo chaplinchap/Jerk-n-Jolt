@@ -151,6 +151,8 @@ public class AbilityPower : MonoBehaviour
     public bool IsHit() { return isHit; }
 
     public float GetHitDuration() { return hitDuration; }
+
+
     /*
 
 protected void Timer() 
