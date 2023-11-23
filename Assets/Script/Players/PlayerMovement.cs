@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable() 
     {
-        //movementX = 0;
+        movementX = 0;
     }
 
     
@@ -78,17 +78,18 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (movementX == 1) 
+        if (movementX == 1)
         {
             rb.AddForce(Vector2.right * speed, ForceMode2D.Force);
-            movementX = 0;            
+            //movementX = 0;            
         }
-         
-         else if (movementX == -1) 
-        { 
+
+        else if (movementX == -1)
+        {
             rb.AddForce(Vector2.left * speed, ForceMode2D.Force);
-            movementX = 0;           
+            //movementX = 0;           
         }
+
     }
 
 
@@ -137,6 +138,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void KeyInputs() 
     {
+
+        if (Input.GetKeyUp(moveRight) || Input.GetKeyUp(moveLeft)) movementX = 0;
+
         if (Input.GetKeyDown(moveRight))
         {
             lastPressedRight = true;

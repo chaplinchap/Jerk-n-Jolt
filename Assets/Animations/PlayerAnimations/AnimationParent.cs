@@ -55,7 +55,7 @@ public class AnimationsParent : MonoBehaviour
     public void ChangeAnimationState(int newState)
     {
         if (currentState == newState) return;
-        animator.CrossFade(newState, 0f, 0);
+        animator.CrossFade(newState, 0.05f, 0);
         currentState = newState;
     }
 

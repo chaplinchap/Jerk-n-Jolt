@@ -21,39 +21,45 @@ public class PusherAnimator : AnimationsParent
     private readonly int spawning = Animator.StringToHash("PusherSpawning");
 
     private float lockStateTimer;
-    
 
 
+    private int state;
 
-    protected override void Update() 
+    protected override void Update()
     {
+
+        Debug.Log(movementScript.GetMovementX());
+
         base.Update();
 
-        int state = GetState();
+        state = GetState();
 
         ChangeAnimationState(state);
-    
     }
 
+
+    private void FixedUpdate()
+    {
+        
+    }
 
     private int GetState()
     {
         if (Time.time < lockStateTimer) return currentState;
 
-        
-        if (isRespawing) return LockState(spawning, GetRespawnDuration()+0.1f);
-        if (stunScript.IsStunned()) return Stun(); 
+
+        if (isRespawing) return LockState(spawning, GetRespawnDuration() + 0.1f);
+        if (stunScript.IsStunned()) return Stun();
         if (abilityPowerScript.IsHit()) return LockState(falling, abilityPowerScript.GetHitDuration());
+        if (isAttacking) return movementScript.IsGrounded() ? LockState(attack, attackDuration + 0.1f) : LockState(jumpingAttack, attackDuration + 0.1f);
         if (dashScript.IsDashing()) return dashing;
 
-        if (isAttacking) return movementScript.IsGrounded() ? LockState(attack, attackDuration) : LockState(jumpingAttack, attackDuration) ;
         if (!movementScript.IsGrounded()) return isCharging ? jumpingCharge : jumping;
 
-        if (isCharging) return movementScript.GetMovementX() == 0 ? charge : (stunScript.IsPenalty() == true ? runningChargePenalty : runningCharge);
+        if (isCharging) return movementScript.GetMovementX() == 0 ? charge : (stunScript.IsPenalty() == true ? LockState(runningChargePenalty, 0.1f) : LockState(runningCharge, 0.1f));
 
-        if (movementScript.GetMovementX() != 0) return running;
-
-        return idle ;
+        return movementScript.GetMovementX() == 0 ? idle : LockState(running,0.1f); 
+            
 
         int LockState(int state, float time)
         {
@@ -64,7 +70,8 @@ public class PusherAnimator : AnimationsParent
 
     private int Stun(){
         AttackComplete();
-        return stun; }
+        return stun; 
+    }
 
     /*
      

@@ -13,18 +13,110 @@ public class PullerAnimator : AnimationsParent
     private readonly int running = Animator.StringToHash("PullerRunning");
     private readonly int jumping = Animator.StringToHash("PullerJumping");
     private readonly int charge = Animator.StringToHash("PullerCharge");
-    private readonly int attack = Animator.StringToHash("PullerAttack");
+    //private readonly int attack = Animator.StringToHash("PullerAttack");
     private readonly int runningCharge = Animator.StringToHash("PullerRunningCharge");
     private readonly int jumpingCharge = Animator.StringToHash("PullerJumpCharge");
-    private readonly int jumpingAttack = Animator.StringToHash("PullerJumpAttack");
+    //private readonly int jumpingAttack = Animator.StringToHash("PullerJumpAttack");
     private readonly int dashing = Animator.StringToHash("PullerDashing");
     private readonly int falling = Animator.StringToHash("PullerFalling");
     private readonly int stun = Animator.StringToHash("PullerStun");
     private readonly int runningChargePenalty = Animator.StringToHash("PullerPenaltyCharge");
     private readonly int spawning = Animator.StringToHash("PullerSpawning");
 
-    
 
+    private int state;
+    private float lockStateTimer; 
+
+    protected override void Update()
+    {
+        base.Update();
+
+        state = GetState();
+
+        ChangeAnimationState(state);
+    }
+
+
+    private void FixedUpdate()
+    {
+
+    }
+
+    private int GetState()
+    {
+        if (Time.time < lockStateTimer) return currentState;
+
+
+        if (isRespawing) return LockState(spawning, GetRespawnDuration() + 0.1f);
+        if (stunScript.IsStunned()) return Stun();
+        if (abilityPowerScript.IsHit()) return LockState(falling, abilityPowerScript.GetHitDuration());
+        if (isAttacking) return movementScript.IsGrounded() ? LockState(Attack(), 0) : LockState(JumpingAttack(), 0);
+        if (dashScript.IsDashing()) return dashing;
+
+        if (!movementScript.IsGrounded()) return isCharging ? JumpingCharge() : jumping;
+
+        if (isCharging) return movementScript.GetMovementX() == 0 ? Charge() : (stunScript.IsPenalty() == true ? LockState(RunningChargePenalty(), 0.1f) : LockState(RunningCharge(), 0.1f));
+
+        return movementScript.GetMovementX() == 0 ? idle : LockState(running, 0.1f);
+
+
+        int LockState(int state, float time)
+        {
+            lockStateTimer = Time.time + time;
+            return state;
+        }
+    }
+
+    private int Stun()
+    {
+        AttackComplete();
+        lineRenderer.SetActive(false);
+        return stun;
+    }
+
+    private int Attack() 
+    {
+        lineRenderer.SetActive(false);
+        return 0;
+    
+    }
+
+
+    private int JumpingAttack() 
+    {
+        lineRenderer.SetActive(false);
+        return 0;
+    }
+
+    private int JumpingCharge() 
+    {
+        lineRenderer.SetActive(true);
+        return jumpingCharge;
+    }
+
+    private int Charge() 
+    {
+        lineRenderer.SetActive(true);
+        return charge;
+    
+    }
+
+    private int RunningCharge() {
+
+        lineRenderer.SetActive(true);
+        return runningCharge;
+
+    }
+
+
+    private int RunningChargePenalty() 
+    {
+        lineRenderer.SetActive(true);
+        return runningChargePenalty;
+    }
+
+
+    /*
     protected override void Update()
     {
 
@@ -141,12 +233,13 @@ public class PullerAnimator : AnimationsParent
             ChangeAnimationState(falling);
         
         }
-         */
+        
 
     }
 
+     */
 
-    
+
 
 
 
