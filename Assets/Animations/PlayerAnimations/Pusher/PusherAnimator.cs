@@ -28,8 +28,6 @@ public class PusherAnimator : AnimationsParent
     protected override void Update()
     {
 
-        Debug.Log(movementScript.GetMovementX());
-
         base.Update();
 
         state = GetState();
