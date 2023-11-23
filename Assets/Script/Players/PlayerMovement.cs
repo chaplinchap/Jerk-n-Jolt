@@ -67,6 +67,14 @@ public class PlayerMovement : MonoBehaviour
             Invoke("CheckFloor",.0f);
         }
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Floor"))
+        {
+            Invoke("CheckFloor", .0f);
+        }
+    }
     private void CheckFloor()
     {
         //If the player hits the platform it now will check for the area to jump.
