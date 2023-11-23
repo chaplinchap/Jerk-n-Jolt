@@ -139,7 +139,8 @@ public class PlayerMovement : MonoBehaviour
     private void KeyInputs() 
     {
 
-        if (Input.GetKeyUp(moveRight) || Input.GetKeyUp(moveLeft)) movementX = 0;
+        if (Input.GetKeyUp(moveRight) || Input.GetKeyUp(moveLeft))
+             movementX = 0;
 
         if (Input.GetKeyDown(moveRight))
         {
