@@ -35,6 +35,9 @@ public class DeathGameChange : MonoBehaviour
 
         suddenDeathTriggered = true;
 
+        CameraShake.Instance.ShakeCamera(CameraShakeValues.suddenDeathIntensity, CameraShakeValues.suddenDeathDuration);
+        CameraShake.Instance.ShakeCamera(CameraShakeValues.suddenAfterDeathIntensity, CameraShakeValues.suddenAfterDeathDuration);
+
         // Set players current health to 1
         Pul_healthScript.currentHealth = 1; 
         Push_healthScript.currentHealth = 1;

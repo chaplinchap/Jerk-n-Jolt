@@ -25,7 +25,13 @@ public static class CameraShakeValues
     // POWERUP RAN OUT \\
     public static readonly float powerUPIntensity = 18f;
     public static readonly float powerUPDuration = .2f;
-    
+
+    public static readonly float suddenDeathIntensity = 100f;
+    public static readonly float suddenDeathDuration = .5f;
+    public static readonly float suddenAfterDeathIntensity = 5f;
+    public static readonly float suddenAfterDeathDuration = 7f;
+
+
 
 
 }

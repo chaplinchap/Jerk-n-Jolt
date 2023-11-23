@@ -54,22 +54,31 @@ public class TriggerApplyPower : ConsumableParentObject
         
         }
 
-        if (Respawn.pullerIsDead)
+        try
         {
-            StopCoroutine(buffDurationPuller);
-            StopCoroutine(powerUpParticlesPuller);
-            powerUp.DeApply(puller);
-            Destroy(this.gameObject);
+            if (Respawn.pullerIsDead)
+            {
 
+                StopCoroutine(buffDurationPuller);
+                StopCoroutine(powerUpParticlesPuller);
+                powerUp.DeApply(puller);
+                Destroy(this.gameObject);
+
+            }
         }
+        catch { }
 
-        if (Respawn.pusherIsDead)
+        try
         {
-            StopCoroutine(buffDurationPusher);
-            StopCoroutine(powerUpParticlesPusher);
-            powerUp.DeApply(pusher);
-            Destroy(this.gameObject);
+            if (Respawn.pusherIsDead)
+            {
+                StopCoroutine(buffDurationPusher);
+                StopCoroutine(powerUpParticlesPusher);
+                powerUp.DeApply(pusher);
+                Destroy(this.gameObject);
+            }
         }
+        catch { }
 
 
     }
