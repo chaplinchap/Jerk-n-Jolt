@@ -5084,10 +5084,10 @@ MonoBehaviour:
   abilityPowerForce: 100
   minChargingTime: 2
   maxChargeingTime: 4
-  powerUPParticles: {fileID: 6240413498075205578}
-  powerUPEndParticles: {fileID: 7016364293492553793}
   isHit: 0
   hitDuration: 0.25
+  powerUPParticles: {fileID: 6240413498075205578}
+  powerUPEndParticles: {fileID: 7016364293492553793}
   chargeTrackingTimer: 0
   ifFailedChargeTime: 0
   ifSuccesChargeTime: 0
@@ -5128,6 +5128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnDuration: 0.3
+  attackDuration: 0.3
 --- !u!114 &3944283588468354252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15352,6 +15353,14 @@ PrefabInstance:
     - target: {fileID: 2801454933509258414, guid: efcd5c3ba6ba3a7428c609c2bc3658a3, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.358
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796908001255532216, guid: efcd5c3ba6ba3a7428c609c2bc3658a3, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2282354
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796908001255532216, guid: efcd5c3ba6ba3a7428c609c2bc3658a3, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8943405
       objectReference: {fileID: 0}
     - target: {fileID: 4984373237145742084, guid: efcd5c3ba6ba3a7428c609c2bc3658a3, type: 3}
       propertyPath: m_Name
