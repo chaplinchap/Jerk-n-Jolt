@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class DeathGameChange : MonoBehaviour
 {
+
+    private IEnumerator suddenDeathNumerator;
+
     //Varibles declared
     [Header("Pusher Settings")]
     public GameObject Pusher;
@@ -20,13 +23,23 @@ public class DeathGameChange : MonoBehaviour
 
     [Header("SuddenDeath Settings")]
     public static float SuddenDeathTimer = 10; // deside when sudden Death change to happen
-    public bool suddenDeathTriggered = false;
+    public static bool suddenDeathTriggered = false;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SuddenDeath());
+        suddenDeathNumerator = SuddenDeath();
+        StartCoroutine(suddenDeathNumerator);
+        suddenDeathTriggered = false;
+    }
+
+    private void Update()
+    {
+        if(Pul_healthScript.currentHealth < 1 || Push_healthScript.currentHealth < 1 )
+        {
+            StopCoroutine(suddenDeathNumerator);
+        }
     }
 
     private IEnumerator SuddenDeath()

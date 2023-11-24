@@ -58,6 +58,14 @@ public class TriggerApplyHeart : ConsumableParentObject
             hearts.DeApply(pusher);
             Destroy(this.gameObject);
         }
+
+        if (DeathGameChange.suddenDeathTriggered)
+        {
+            Destroy(this.gameObject);
+        }
+
+
+
     }
 
 

@@ -80,6 +80,11 @@ public class TriggerApplyPower : ConsumableParentObject
         }
         catch { }
 
+        if (DeathGameChange.suddenDeathTriggered)
+        {
+            Destroy(this.gameObject);
+        }
+
 
     }
 

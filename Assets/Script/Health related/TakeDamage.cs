@@ -13,7 +13,7 @@ public class TakeDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) //Trigger on collision
     {
-        Debug.Log("Hit damage!");
+        
         if(collision.CompareTag("Pusher") || collision.CompareTag("Puller")) //When one of the player is hit 
         {
             audioManager.PlaySFX(audioManager.death);

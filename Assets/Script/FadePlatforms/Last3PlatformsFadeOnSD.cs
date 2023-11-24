@@ -13,8 +13,8 @@ public class Last3PlatformsFadeOnSD : MonoBehaviour
     [SerializeField] private bool offPlatformFade = false;
     [SerializeField] private bool platformDespawned = false;
 
-    public GameObject suddenDeathManager;
-    private DeathGameChange suddenDeath;
+    // public GameObject suddenDeathManager;
+    // private DeathGameChange suddenDeath;
 
     private IEnumerator despawnCoroutine;
 
@@ -23,7 +23,7 @@ public class Last3PlatformsFadeOnSD : MonoBehaviour
     {
 
 
-        if (collision.gameObject.CompareTag("Puller") && suddenDeath.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && suddenDeath.suddenDeathTriggered)
+        if (collision.gameObject.CompareTag("Puller") && DeathGameChange.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && DeathGameChange.suddenDeathTriggered)
         {
             Debug.Log("Enter Happens");
             onPlatformFade = true;
@@ -48,7 +48,7 @@ public class Last3PlatformsFadeOnSD : MonoBehaviour
     public void OnCollisionExit2D(Collision2D collision)
     {
 
-        if (collision.gameObject.CompareTag("Puller") && suddenDeath.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && suddenDeath.suddenDeathTriggered)
+        if (collision.gameObject.CompareTag("Puller") && DeathGameChange.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && DeathGameChange.suddenDeathTriggered)
         {
             Debug.Log("Exit Happens");
             offPlatformFade = true;
@@ -71,7 +71,7 @@ public class Last3PlatformsFadeOnSD : MonoBehaviour
 
     private void Start()
     {
-        suddenDeath = suddenDeathManager.GetComponent<DeathGameChange>();
+       // suddenDeath = suddenDeathManager.GetComponent<DeathGameChange>();
     }
 
     void Update()
@@ -114,8 +114,6 @@ public class Last3PlatformsFadeOnSD : MonoBehaviour
         Debug.Log("CancelDespawn Starts");
         yield return new WaitForSeconds(time);
         platformScriptableObject.CancelDespawn(target);
-
-
     }
 
     public IEnumerator Respawn(GameObject target, float time)
@@ -123,6 +121,5 @@ public class Last3PlatformsFadeOnSD : MonoBehaviour
         Debug.Log("Respawns Platform");
         yield return new WaitForSeconds(time * 2);
         platformScriptableObject.Spawn(target);
-
     }
 }

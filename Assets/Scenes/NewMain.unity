@@ -859,15 +859,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 5cab1e3282a81104087ff67c0c23dbb4, type: 3}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.b
-      value: 0.038554624
+      value: 0.12941177
       objectReference: {fileID: 0}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.g
-      value: 0.20115916
+      value: 0.5254902
       objectReference: {fileID: 0}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.r
-      value: 0.3584906
+      value: 0.8862746
       objectReference: {fileID: 0}
     - target: {fileID: 8366793539177865294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Size.x
@@ -1441,15 +1441,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 5cab1e3282a81104087ff67c0c23dbb4, type: 3}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.b
-      value: 0.038554624
+      value: 0.12967247
       objectReference: {fileID: 0}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.g
-      value: 0.20115916
+      value: 0.512906
       objectReference: {fileID: 0}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.r
-      value: 0.3584906
+      value: 0.8867924
       objectReference: {fileID: 0}
     - target: {fileID: 8366793539177865294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Size.x
@@ -1880,7 +1880,6 @@ MonoBehaviour:
   onPlatformFade: 0
   offPlatformFade: 0
   platformDespawned: 0
-  suddenDeathManager: {fileID: 759642863}
 --- !u!1001 &589770868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1959,15 +1958,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 5cab1e3282a81104087ff67c0c23dbb4, type: 3}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.b
-      value: 0.6698113
+      value: 0.12941177
       objectReference: {fileID: 0}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.g
-      value: 0.5270025
+      value: 0.52156866
       objectReference: {fileID: 0}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.r
-      value: 0.5709437
+      value: 0.8862746
       objectReference: {fileID: 0}
     - target: {fileID: 8366793539177865294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Size.x
@@ -2526,7 +2525,6 @@ MonoBehaviour:
   Puller: {fileID: 1449906316}
   Pul_healthScript: {fileID: 1449906324}
   Pull_totalHealthbar: {fileID: 233638143}
-  suddenDeathTriggered: 0
 --- !u!4 &759642865
 Transform:
   m_ObjectHideFlags: 0
@@ -2994,15 +2992,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 5cab1e3282a81104087ff67c0c23dbb4, type: 3}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.b
-      value: 0.5566038
+      value: 0.12941177
       objectReference: {fileID: 0}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.g
-      value: 0.43238908
+      value: 0.5058824
       objectReference: {fileID: 0}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.r
-      value: 0.10186896
+      value: 0.76470596
       objectReference: {fileID: 0}
     - target: {fileID: 8366793539177865294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Size.x
@@ -9446,15 +9444,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 5cab1e3282a81104087ff67c0c23dbb4, type: 3}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.b
-      value: 0.038554624
+      value: 0.13333334
       objectReference: {fileID: 0}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.g
-      value: 0.20115916
+      value: 0.52156866
       objectReference: {fileID: 0}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.r
-      value: 0.3584906
+      value: 0.8862746
       objectReference: {fileID: 0}
     - target: {fileID: 8366793539177865294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Size.x
@@ -9625,15 +9623,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 5cab1e3282a81104087ff67c0c23dbb4, type: 3}
     - target: {fileID: 8262742662217261946, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
       propertyPath: m_Color.b
-      value: 0.69803923
+      value: 0.1764706
       objectReference: {fileID: 0}
     - target: {fileID: 8262742662217261946, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
       propertyPath: m_Color.g
-      value: 0.17254902
+      value: 0.3803922
       objectReference: {fileID: 0}
     - target: {fileID: 8262742662217261946, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
       propertyPath: m_Color.r
-      value: 0.18608174
+      value: 0.69803923
       objectReference: {fileID: 0}
     - target: {fileID: 8268484747344192969, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
       propertyPath: m_LocalScale.x
@@ -10135,7 +10133,6 @@ MonoBehaviour:
   onPlatformFade: 0
   offPlatformFade: 0
   platformDespawned: 0
-  suddenDeathManager: {fileID: 759642863}
 --- !u!198 &1333521742 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 285681615326648918, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
@@ -10957,7 +10954,6 @@ MonoBehaviour:
   onPlatformFade: 0
   offPlatformFade: 0
   platformDespawned: 0
-  suddenDeathManager: {fileID: 759642863}
 --- !u!1 &1726534131
 GameObject:
   m_ObjectHideFlags: 0
@@ -12957,15 +12953,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 5cab1e3282a81104087ff67c0c23dbb4, type: 3}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.12941177
       objectReference: {fileID: 0}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.g
-      value: 0.7687787
+      value: 0.5176471
       objectReference: {fileID: 0}
     - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Color.r
-      value: 0.135849
+      value: 0.8862746
       objectReference: {fileID: 0}
     - target: {fileID: 8366793539177865294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Size.x
@@ -13372,11 +13368,11 @@ PrefabInstance:
       objectReference: {fileID: 6536721504088083773, guid: d5ee713a78f4ebb43bfd058ab851e004, type: 3}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxSpawnDelay
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: minSpawnDelay
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: suddenDeathObject
