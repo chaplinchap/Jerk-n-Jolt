@@ -69,9 +69,5 @@ public class OverrideToHeart : ConsumableScriptableObject
             // target.GetComponent<Rigidbody2D>().sharedMaterial.friction = startingFriction;           
     }
 
-    private IEnumerator WaitTime (float time)
-    {
-        yield return new WaitForSeconds(time);
-    }
- 
+
 }

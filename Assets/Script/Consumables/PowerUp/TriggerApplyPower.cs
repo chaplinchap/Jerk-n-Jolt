@@ -7,14 +7,14 @@ using UnityEngine;
 public class TriggerApplyPower : ConsumableParentObject
 {
 
-    public float time = 5f; // Duration of the power up.  
+    public float time = 7f; // Duration of the power up.  
 
     public ConsumableScriptableObject powerUp;
     private bool triggerOnce = false;
     
 
     private float timeStampOnAwake;
-    private float timeToDespawn = 8f;
+    private float timeToDespawn = 11f;
     private float timeCoroutineDespawn = 0f;
     private bool isDespawned = false;
 

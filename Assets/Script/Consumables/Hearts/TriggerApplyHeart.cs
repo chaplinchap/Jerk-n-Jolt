@@ -15,7 +15,7 @@ public class TriggerApplyHeart : ConsumableParentObject
 
 
     private float timeStampOnAwake;
-    private float timeToDespawn = 8f;
+    private float timeToDespawn = 11f;
     private float timeCoroutineDespawn = 0f;
     private bool isDespawned = false;
    
@@ -27,12 +27,18 @@ public class TriggerApplyHeart : ConsumableParentObject
     private IEnumerator buffDurationPusher;
     private IEnumerator buffDurationPuller;
 
+    AudioManager audioManager;
 
 
     private void Awake()
     {
         timeStampOnAwake = Time.time;        
 
+    }
+
+    private void Start()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -79,6 +85,7 @@ public class TriggerApplyHeart : ConsumableParentObject
         if (collision.CompareTag("Pusher") && !triggerOnce || collision.CompareTag("Puller") && !triggerOnce)
 
         {
+            audioManager.PlaySFX(audioManager.heartUP);
 
             triggerOnce = true;
             buffDurationPusher = DurationbuffPusher(hearts, collision.gameObject, time);

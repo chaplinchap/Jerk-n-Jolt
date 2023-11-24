@@ -176,6 +176,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: da396a16a7f24f64cbb0054f5a56b46a, type: 3}
     - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
+      propertyPath: heartUP
+      value: 
+      objectReference: {fileID: 8300000, guid: 0e75213bfb087d843a31f6641439aa38, type: 3}
+    - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
       propertyPath: powerUP
       value: 
       objectReference: {fileID: 8300000, guid: 78419f98379502c4dbfb2774bc94e7c1, type: 3}
