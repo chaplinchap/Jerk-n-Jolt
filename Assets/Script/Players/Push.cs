@@ -126,16 +126,7 @@ public class Push : AbilityPower
     
     private void FixedUpdate()
     {
-        Invoke("waitForTime",3);
-        if (timeWait)
-        {
-            ChargePush(1f, extraForce);
-        }
-        
-    }
-    private void waitForTime()
-    {
-        timeWait = true;
+            ChargePush(1f, extraForce);    
     }
      
 

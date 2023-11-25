@@ -8,6 +8,9 @@ public class TimerSuddenDeath : MonoBehaviour
 {
     public List<Slider> timerSlider;
     public List<Image> sliderFill;
+
+    //public Image sliderfill1;
+
     public float sliderTimer;
     public bool stopTimer;
     public UIManager manager;
@@ -91,8 +94,19 @@ public class TimerSuddenDeath : MonoBehaviour
             {
                 foreach(Slider slider in timerSlider)
                 {
-                    slider.value = sliderTimer;                                                       
+                    slider.value = sliderTimer;
+                    //sliderfill1.color = gradient.Evaluate(slider.value/100);
+                    
+                    foreach(Image sliderColor in sliderFill)
+                    {
+                    //slider.value = sliderTimer; 
+                    //sliderColor.color = Color.Lerp(Color.green, Color.red, slider.value/90);
+                    sliderColor.color = gradient.Evaluate(slider.value/DeathGameChange.SuddenDeathTimer);
+                        
+                    }
                 }
+
+                
                 
             }
         }        

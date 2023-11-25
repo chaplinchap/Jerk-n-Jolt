@@ -21,14 +21,31 @@ public class SceneLoader : MonoBehaviour
 
     //public void LoadSceness()
     //{
-     //   StartCoroutine (LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-   // }
+    //   StartCoroutine (LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    // }
 
-    IEnumerator LoadLevel (int levelIndex)
+    public void PlayGame()
     {
-        transition.SetTrigger("Start");
+        StartCoroutine (LoadLevel());
+    }
+
+    public void GoMenu()
+    {
+        StartCoroutine (LoadMenu());
+    }
+
+    IEnumerator LoadLevel ()
+    {
+        transition.SetTrigger("FadeBlack");
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(levelIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+    }
+
+    IEnumerator LoadMenu ()
+    {
+        transition.SetTrigger("FadeBlack");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
     }
 
 }

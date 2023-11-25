@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
 
     public List<HealthV2> playersHealth = new List<HealthV2>(); //reference to Health script
     public ScoreManager scoreManager; //reference to the ScoreManager
+    public SceneLoader sceneLoader;
 
     public GameObject player1; // Used to check for players left when game is over
     public TextMeshProUGUI text;
@@ -152,7 +153,8 @@ public class UIManager : MonoBehaviour
 
     public void GoBackButton() // When clicking button
     {   
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1); //Goes back to MainMenu
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1); //Goes back to MainMenu
+        sceneLoader.GoMenu();
     }
 
     //============Animations================

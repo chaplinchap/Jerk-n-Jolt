@@ -12,7 +12,7 @@ public class Pull : AbilityPower
     private FieldTrigger pullField;
     private BoxCollider2D boxColliderPusher;
     private PlayerMovement movement;
-    private bool timeWait = false; //Used for GameStartCoolDown
+    //private bool timeWait = false; //Used for GameStartCoolDown
     private AbilityPower PushScript;
 
     //Pull
@@ -123,18 +123,7 @@ public class Pull : AbilityPower
 
     private void FixedUpdate()
     {
-
-        Invoke("waitForTime", 3);
-        if (timeWait)
-        {
             ChargePulling(1f, extraForce);
-        }
-
-    }
-
-    private void waitForTime()
-    {
-        timeWait = true;
     }
 
 

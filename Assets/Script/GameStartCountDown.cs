@@ -5,10 +5,16 @@ using UnityEngine;
 public class GameStartCountDown : MonoBehaviour
 {
     public float timeRemaining = 3; //How long to wait for game to start
-    public GameObject puller; 
-    public GameObject pusher;
-    public TextMeshProUGUI countDownText;
+
+    [Header("Puller")]
+    public GameObject puller;
     
+    [Header("Pusher")]
+    public GameObject pusher;
+
+
+    [Header("Other Stuff")]
+    public TextMeshProUGUI countDownText;  
     public Animator countDown_Animation;
 
 
@@ -18,6 +24,13 @@ public class GameStartCountDown : MonoBehaviour
         //On start set player movement to false so they cant move
         puller.GetComponent<PlayerMovement>().enabled = false; 
         pusher.GetComponent<PlayerMovement>().enabled = false;
+
+        puller.GetComponent<Pull>().enabled = false; 
+        pusher.GetComponent<Push>().enabled = false;
+
+        puller.GetComponent<Dash>().enabled = false; 
+        pusher.GetComponent<Dash>().enabled = false;
+
         StartCoroutine (CountDownText()); //Start a coundown
     }
 
@@ -37,6 +50,13 @@ public class GameStartCountDown : MonoBehaviour
         countDown_Animation.SetTrigger("Flop");
         puller.GetComponent<PlayerMovement>().enabled = true;
         pusher.GetComponent<PlayerMovement>().enabled = true;
+
+        puller.GetComponent<Pull>().enabled = true; 
+        pusher.GetComponent<Push>().enabled = true;
+
+        puller.GetComponent<Dash>().enabled = true; 
+        pusher.GetComponent<Dash>().enabled = true;
+
         StartCoroutine (RemoveText());
         //Invoke (nameof (removeText), 1);//Fight text will stay for 2 second before being set to false
 

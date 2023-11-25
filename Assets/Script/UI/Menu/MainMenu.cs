@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     //Audiosystem
     MainMenuAudio audioManagerMainMenu;
+    public SceneLoader sceneLoader;
     
     public void Start()
     {
@@ -13,7 +14,9 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1); //Goes to the gameplay
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1); //Goes to the gameplay
+        sceneLoader.PlayGame();
+
     }
     public void Quit()
     {
