@@ -8,6 +8,7 @@ public class PlatformDisapear : PlatformScriptableObject
 {
 
     public Color startingColor;
+    private Color suddenDeathColor = new Color(226, 132, 33, 255);
  
     
 
@@ -58,5 +59,10 @@ public class PlatformDisapear : PlatformScriptableObject
     {
         
         
+    }
+
+    public override void ChangeColor(GameObject target)
+    {
+        target.GetComponent<SpriteRenderer>().color = suddenDeathColor;
     }
 }

@@ -16,6 +16,8 @@ public class Last3PlatformsFadeOnSD : MonoBehaviour
     // public GameObject suddenDeathManager;
     // private DeathGameChange suddenDeath;
 
+    private bool suddenDeathColorChangeTriggered = false;
+
     private IEnumerator despawnCoroutine;
 
 
@@ -77,6 +79,12 @@ public class Last3PlatformsFadeOnSD : MonoBehaviour
     void Update()
     {
 
+        if(DeathGameChange.suddenDeathTriggered && !suddenDeathColorChangeTriggered)
+        {
+            suddenDeathColorChangeTriggered = true;
+            StartCoroutine(ChangeColor(gameObject));
+        }
+
 
         if (platformDespawned)
         {
@@ -121,5 +129,11 @@ public class Last3PlatformsFadeOnSD : MonoBehaviour
         Debug.Log("Respawns Platform");
         yield return new WaitForSeconds(time * 2);
         platformScriptableObject.Spawn(target);
+    }
+
+    public IEnumerator ChangeColor (GameObject target)
+    {
+        yield return new WaitForSeconds(0f);
+        platformScriptableObject.ChangeColor(target);
     }
 }

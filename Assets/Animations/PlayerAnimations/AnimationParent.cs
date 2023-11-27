@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.Processors;
 
 public class AnimationsParent : MonoBehaviour
 {
@@ -36,14 +37,13 @@ public class AnimationsParent : MonoBehaviour
         isCharging = false;
         isAttacking = false;
         //AttackComplete();
-        StartCoroutine(Respawn(respawnDuration));
+        StartCoroutine(Respawner(respawnDuration));
         //Debug.Log("Animation Enable");
     }
 
     protected virtual void Update()
     {
-  
-
+        
         if (abilityPowerScript.HasPressedAbility()) isCharging = true;
         else if (isCharging) StartCoroutine(AttackComplete(attackDuration));
 
@@ -86,7 +86,7 @@ public class AnimationsParent : MonoBehaviour
         isAttacking = false;
     }
 
-    protected IEnumerator Respawn(float duration)
+    protected IEnumerator Respawner(float duration)
     {
         isRespawing = true;
         //Debug.Log("isRespawning: " + isRespawing);

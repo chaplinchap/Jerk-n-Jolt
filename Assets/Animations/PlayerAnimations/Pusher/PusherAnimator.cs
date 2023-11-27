@@ -17,6 +17,7 @@ public class PusherAnimator : AnimationsParent
     private readonly int stun = Animator.StringToHash("PusherStun");
     private readonly int dashing = Animator.StringToHash("PusherDashing");
     private readonly int runningChargePenalty = Animator.StringToHash("PusherPenaltyCharge");
+    private readonly int death = Animator.StringToHash("PuskerDeath");
 
     private readonly int spawning = Animator.StringToHash("PusherSpawning");
 
@@ -45,6 +46,7 @@ public class PusherAnimator : AnimationsParent
     {
         if (Time.time < lockStateTimer) return currentState;
 
+        if (Respawn.pusherIsDead) return death;
 
         if (isRespawing) return LockState(spawning, GetRespawnDuration() + 0.1f);
         if (stunScript.IsStunned()) return Stun();

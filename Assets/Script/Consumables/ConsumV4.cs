@@ -41,7 +41,7 @@ public class ConsumV4 : MonoBehaviour
     {
 
 
-        if (Time.time >= nextSpawnTime && currentConsumablesTracker < maxConsumables && !DeathGameChange.suddenDeathTriggered)
+        if (Time.time >= nextSpawnTime && currentConsumablesTracker < maxConsumables && !DeathGameChange.suddenDeathTriggered && !UIManager.staticGameOver)
         {
            
 

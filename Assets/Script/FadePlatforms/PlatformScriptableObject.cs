@@ -15,4 +15,6 @@ public abstract class PlatformScriptableObject : ScriptableObject
 
     public abstract void Destroy(GameObject target);
 
+    public abstract void ChangeColor(GameObject target);
+
 }
