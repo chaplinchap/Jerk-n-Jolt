@@ -7,7 +7,7 @@ public class AbilityPower : MonoBehaviour
 {
 
 
-    [SerializeField] private KeyCode abilityPress;
+    [SerializeField] public KeyCode abilityPress;
     [SerializeField] public float abilityPowerForce;
 
 
@@ -145,12 +145,18 @@ public class AbilityPower : MonoBehaviour
     {
         isHit = true;
         yield return new WaitForSeconds(GetHitDuration());
-        isHit = false ;
+        isHit = false;
     }
 
-    public bool IsHit() { return isHit; }
+    public bool IsHit()
+    {
+        return isHit;
+    }
 
-    public float GetHitDuration() { return hitDuration; }
+    public float GetHitDuration()
+    {
+        return hitDuration;
+    }
 
 
     /*

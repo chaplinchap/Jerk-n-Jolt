@@ -18,8 +18,8 @@ public class MovementAid : MonoBehaviour
     [SerializeField] private float duration = 2;
     [SerializeField] private float dashingBuffer = .3f;
     private AudioManager audioManager;
-
-
+    public AudioSource audioSourceDash;
+    
     [SerializeField] private float dashTime = 1f;
 
     void Start()
@@ -97,7 +97,8 @@ public class MovementAid : MonoBehaviour
 
         CameraShake.Instance.ShakeCamera(CameraShakeValues.dashingIntensity, CameraShakeValues.dashingDuration);
 
-        audioManager.PlaySFX(audioManager.dash);
+        //audioManager.PlaySFX(audioManager.dash);
+        DashSound();
         dashParticles.Play();
     }
 
@@ -133,8 +134,13 @@ public class MovementAid : MonoBehaviour
     }
 
 
-    public bool IsDashing() { return isDashing; }
-
     public bool CanDash() { return canDash; }
+    void DashSound()
+    {
+        audioSourceDash.pitch = UnityEngine.Random.Range(1f, 1.5f);
+        audioSourceDash.volume = 0.40f;
+        audioSourceDash.Play();
+    }
+    public bool IsDashing() { return isDashing; }
 
 }

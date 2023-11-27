@@ -4432,7 +4432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 626443242}
   SFXSource: {fileID: 1350912765}
-  mainMenuBackground: {fileID: 8300000, guid: 880326a59846a4e0694215a1ed462c7e, type: 3}
+  mainMenuBackground: {fileID: 8300000, guid: 6f4c123e81833dc47960c71f652621e0, type: 3}
   buttonClick: {fileID: 8300000, guid: cf7dec43ae6a66a48aaf1ea287f5b675, type: 3}
   transition: {fileID: 0}
 --- !u!4 &1377568776

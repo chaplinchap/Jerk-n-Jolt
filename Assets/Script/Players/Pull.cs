@@ -2,11 +2,13 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 public class Pull : AbilityPower
 {
     public ParticleSystem powerUPParticles;
     public ParticleSystem powerUPEndParticles;
+    public ParticleSystem chargedUpParticles;
     private GameObject thePusher;
     private Rigidbody2D rigidbodyPusher;
     private FieldTrigger pullField;
@@ -34,33 +36,36 @@ public class Pull : AbilityPower
 
 
     //SlowMotion
-    public SlowMotion slowMotion;
+    //public SlowMotion slowMotion;
 
     // Freezer
-    public Freezer freeze;
-
+    //public Freezer freeze;
+    
     //Audiosystem
-    AudioManager audioManager;
-    public AudioMixer audioMixer;
-    public float pitchValue;
-    private float timeBox;
-    public float audioCoolDown;
+    [Header("Audio")]
+    private AudioManager audioManager;
+    public AudioSource audioSourceChargedUp;
+    //private AudioMixer audioMixer;
+    //private float pitchValue;
+    //private float timeBox;
+    //private float audioCoolDown;
+
 
     //Flash
-    public GameObject pusher;
-    public float flashTime = 0.075f;
+    //public GameObject pusher;
+    //public float flashTime = 0.075f;
 
 
     private IEnumerator powerupParticle;
 
 
 
-    public void SetPitch()
+    /*public void SetPitch()
     {
         audioMixer.SetFloat("ExposedPitch", pitchValue);
         Debug.Log("Pitch Value: " + pitchValue);
         timeBox = Time.time;
-    }
+    }*/
 
 
     void Start()
@@ -80,14 +85,16 @@ public class Pull : AbilityPower
     private void Update()
     {
 
-        if (Respawn.pullerIsDead) 
-        { StopCoroutine(powerupParticle); }
-
-
-        if (upAbilityPress)
+        if (Respawn.pullerIsDead)
         {
-            audioManager.PlaySFX(audioManager.pull);
-            //Invoke("ResetMaterial", flashTime);
+            StopCoroutine(powerupParticle);
+        }
+
+
+        if (upAbilityPress && !ifSuccesChargeTime && !pullField.inField)
+        {
+            audioManager.PlaySFX(audioManager.airPull);
+            
         }
 
         /*
@@ -173,6 +180,7 @@ public class Pull : AbilityPower
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
             StartCoroutine(PushScript.SetIsHit());
+            audioManager.PlaySFX(audioManager.pull);
             CameraShake.Instance.ShakeCamera(CameraShakeValues.normalAbilityIntensity, CameraShakeValues.normalAbilityDuration);
         }
 
@@ -181,10 +189,10 @@ public class Pull : AbilityPower
             ThePull(chargedPull);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
-            StartCoroutine(PushScript.SetIsHit());
+            audioManager.PlaySFX(audioManager.chargePull);
 
-            CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity,
-                CameraShakeValues.chargedAbilityDuration);
+            StartCoroutine(PushScript.SetIsHit());
+            CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity, CameraShakeValues.chargedAbilityDuration);
         }
     }
 
@@ -206,6 +214,19 @@ public class Pull : AbilityPower
                 ifSuccesChargeTime = false;
                 return;
             }
+            
+            if (chargeTrackingTimer > minChargingTime)
+            {
+                if (Input.GetKey(abilityPress))
+                {
+                    chargedUpParticles.Play();
+                }
+
+                if (!audioSourceChargedUp.isPlaying)
+                {
+                    ChargeUpSound();
+                }
+            }
 
             chargeTrackingTimer += Time.deltaTime;
         }
@@ -214,7 +235,7 @@ public class Pull : AbilityPower
             ifSuccesChargeTime = true;
             //slowMotion.DoSlowmotion();
             //freeze.Freeze();
-            SetPitch();
+            //SetPitch();
         }
         else if (upAbilityPress && pullField.inField)
         {
@@ -239,5 +260,11 @@ public class Pull : AbilityPower
         yield return new WaitForSeconds(5f);
         powerUPEndParticles.Play();
 
+    }
+    
+    void ChargeUpSound()
+    {
+        audioSourceChargedUp.pitch = UnityEngine.Random.Range(1f, 1.5f);
+        audioSourceChargedUp.Play();
     }
 }

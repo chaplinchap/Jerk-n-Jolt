@@ -1,9 +1,12 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class PlayerMovement : MonoBehaviour
 {
+    private AudioManager audioManager;
+    public AudioSource audioSourceJump;
     public Rigidbody2D rb;
     public BoxCollider2D playerCollider;    
     public BoxCollider2D feet;
@@ -49,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     {
         LandingParticles dashParticles = gameObject.GetComponent<LandingParticles>();
         rb = GetComponent<Rigidbody2D>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     
     void Update()
@@ -203,7 +207,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
                 anotherJump(); // Cannot jump again
-
+                //audioManager.PlaySFX(audioManager.jump);          Old jump sound
+                JumpSound();
             }
         }
 
@@ -213,13 +218,23 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddForce(Vector2.up * jumpingPower * 1.4f, ForceMode2D.Impulse); //jumping force +added a bit more power, for the jump to look okay
                 anotherJump(); // Cannot jump again
-
+                //audioManager.PlaySFX(audioManager.jump);          Old jump sound
+                JumpSound();
             }
         }
     }
 
+    public int GetMovementX()
+    {
+        return movementX;
+    }
+    
+    void JumpSound()
+    {
+        audioSourceJump.pitch = Random.Range(1f, 1.5f);
+        audioSourceJump.volume = 0.40f;
+        audioSourceJump.Play();
+    }
 
-
-    public int GetMovementX() { return movementX; }
 
 }
