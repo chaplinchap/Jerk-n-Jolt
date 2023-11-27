@@ -52,17 +52,25 @@ public class TriggerApplyHeart : ConsumableParentObject
 
         if (Respawn.pullerIsDead)
         {
-            StopCoroutine(buffDurationPuller);
-            hearts.DeApply(puller);
-            Destroy(this.gameObject);
 
+            try
+            {
+                StopCoroutine(buffDurationPuller);
+                hearts.DeApply(puller);
+                Destroy(this.gameObject);
+            }
+            catch { }
         }
 
         if (Respawn.pusherIsDead)
         {
-            StopCoroutine(buffDurationPusher);
-            hearts.DeApply(pusher);
-            Destroy(this.gameObject);
+            try
+            {
+                StopCoroutine(buffDurationPusher);
+                hearts.DeApply(pusher);
+                Destroy(this.gameObject);
+            }
+            catch { }
         }
 
         if (DeathGameChange.suddenDeathTriggered)
