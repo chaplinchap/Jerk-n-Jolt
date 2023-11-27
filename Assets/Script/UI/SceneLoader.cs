@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,25 +9,31 @@ public class SceneLoader : MonoBehaviour
     public float transitionTime = 1f;
 
 
-    // Update is called once per frame
-    void Update()
+    public void PlayGame()
     {
-        //if (Input.GetKeyDown(KeyCode.Space)) 
-          //  {
-            //    LoadScene();
-            //}
+        StartCoroutine (LoadLevel());
     }
 
-    //public void LoadSceness()
-    //{
-     //   StartCoroutine (LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-   // }
-
-    IEnumerator LoadLevel (int levelIndex)
+    public void GoMenu()
     {
-        transition.SetTrigger("Start");
+        StartCoroutine (LoadMenu());
+    }
+
+    IEnumerator LoadLevel ()
+    {
+        transition.SetTrigger("FadeBlack");
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(levelIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+    }
+
+    IEnumerator LoadMenu ()
+    {
+        Debug.Log("called");
+        transition.SetTrigger("FadeBlack");
+        Debug.Log("called?");
+        yield return new WaitForSecondsRealtime(transitionTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+        Debug.Log("done");
     }
 
 }

@@ -578,8 +578,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 142326036}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 654409772}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
@@ -2456,6 +2456,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640578822}
   m_CullTransparentMesh: 1
+--- !u!114 &654409772 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9037688733575161603, guid: e05e9e0e86bfdac4c9fd4a3824a3f01c, type: 3}
+  m_PrefabInstance: {fileID: 1655856950819943291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38221d0716941f4bbf36c16409a66a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &790628281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,7 +2613,7 @@ GameObject:
   - component: {fileID: 818636830}
   - component: {fileID: 818636829}
   m_Layer: 5
-  m_Name: Credit
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2647,7 +2658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Credit
+  m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e433615d51f03348ab2aeb88d430861, type: 2}
   m_sharedMaterial: {fileID: -4459952937858122559, guid: 4e433615d51f03348ab2aeb88d430861, type: 2}

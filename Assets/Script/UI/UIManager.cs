@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject PauseMenu;
+    public SceneLoader SceneLoader;
 
     public string sceneToLoad;
     public bool gameIsOver = false;
@@ -157,7 +158,7 @@ public class UIManager : MonoBehaviour
 
     public void GoBackButton() // When clicking button
     {   
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1); //Goes back to MainMenu
+        SceneLoader.GoMenu();
     }
 
     //============Animations================
