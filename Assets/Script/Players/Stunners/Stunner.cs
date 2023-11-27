@@ -55,7 +55,7 @@ public class Stunner : MonoBehaviour
         Stun(abilityPower.maxChargeingTime, stunTime, abilityPower.HasPressedAbility());
         stunbarScript.UpdateStunBar(GetTime(), abilityPower.maxChargeingTime);
 
-        if (abilityPower.IsHit()) {
+        if (abilityPower.IsHit() && !isStunned) {
             StartCoroutine(HitStun(abilityPower.GetHitDuration()));
         }
 
@@ -65,7 +65,7 @@ public class Stunner : MonoBehaviour
     protected void Stun(float timeToStun, float duration, bool isKeyPressed)
     {
 
-        if (isStunned)
+        if (isStunned || abilityPower.IsHit())
         {
             return;
         }

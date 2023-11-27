@@ -33,7 +33,10 @@ public class CameraShake : MonoBehaviour
 
     public void ShakeCamera(float intensity, float time) 
     {
-        CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+        if (CameraShakeSuddenDeath.Instance.IsSuddenDeath()) return;
+
+        cinemachineBasicMultiChannelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
 
@@ -47,7 +50,7 @@ public class CameraShake : MonoBehaviour
         if (shakeTime > 0f) {
             shakeTime -= Time.deltaTime;
 
-                CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+                cinemachineBasicMultiChannelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
                 cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(startingIntensity, 0f, 1-(shakeTime / shakeTimeTotal));
 

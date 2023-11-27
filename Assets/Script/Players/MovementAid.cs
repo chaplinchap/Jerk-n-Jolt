@@ -11,18 +11,23 @@ public class MovementAid : MonoBehaviour
 
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
+    private DashBarScript dashBarScript;
     public ParticleSystem dashParticles;
 
     [SerializeField] private float dashingPower = 10f;
     [SerializeField] private float duration = 2;
     [SerializeField] private float dashingBuffer = .3f;
     private AudioManager audioManager;
-    
+
+
+    [SerializeField] private float dashTime = 1f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        dashBarScript = GetComponent<DashBarScript>();
     }
 
     void OnEnable() 
@@ -34,8 +39,8 @@ public class MovementAid : MonoBehaviour
 
     private float timeSinceLastTapLeft;
     private float timeSinceLastTapRight;
-    public bool isDashing = false; 
-    public bool canDash = true;
+    private bool isDashing = false; 
+    private bool canDash = true;
 
     protected void Dashing() 
     {
@@ -129,4 +134,7 @@ public class MovementAid : MonoBehaviour
 
 
     public bool IsDashing() { return isDashing; }
+
+    public bool CanDash() { return canDash; }
+
 }
