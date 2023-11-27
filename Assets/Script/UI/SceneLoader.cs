@@ -28,12 +28,9 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator LoadMenu ()
     {
-        Debug.Log("called");
         transition.SetTrigger("FadeBlack");
-        Debug.Log("called?");
         yield return new WaitForSecondsRealtime(transitionTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
-        Debug.Log("done");
     }
 
 }
