@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public BoxCollider2D playerCollider;    
     public BoxCollider2D feet;
-    public LandingParticles dashParticles; 
+    public LandingParticles dashParticles;
+
 
     public float time = 0.25f;
 

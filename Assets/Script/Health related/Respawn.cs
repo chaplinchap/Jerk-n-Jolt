@@ -55,7 +55,7 @@ public class Respawn : MonoBehaviour
         {
            
             pusherIsDead = true;
-            pusher.gameObject.SetActive(false);
+            pusher.gameObject.SetActive(false);       //Flyt den her ind under RespawnPusher
             //StartCoroutine(DeathAnimationPusher());
             StartCoroutine(RespawnPusher());   
             Debug.Log("Player has fallen out");
@@ -67,7 +67,7 @@ public class Respawn : MonoBehaviour
         {
             pullerIsDead = true;
             puller.gameObject.SetActive(false);
-            //StartCoroutine(DeathAnimationPuller());
+            //StartCoroutine(DeathAnimationPuller());q
             StartCoroutine(RespawnPuller());   
             Debug.Log("Player has fallen out");
             
