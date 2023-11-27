@@ -71,6 +71,11 @@ public class Healthbar : MonoBehaviour
 
     IEnumerator ShakeShake()
     {
+        if (!permanentShake)
+        {
+            transform.position = originalPosition;
+        }
+
         // Generate random offsets for each axis
         float offsetX = Random.Range(-shakeAmount, shakeAmount);
         float offsetY = Random.Range(-shakeAmount, shakeAmount);
@@ -84,10 +89,5 @@ public class Healthbar : MonoBehaviour
         //Debug.Log("Shake!!!!");
         yield return new WaitForSeconds(1);
         startShake = false;
-        if (!permanentShake)
-        {
-            //transform.position = originalPosition;
-        }
-
     }
 }
