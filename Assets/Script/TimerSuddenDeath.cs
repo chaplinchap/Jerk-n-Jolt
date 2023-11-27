@@ -8,6 +8,9 @@ public class TimerSuddenDeath : MonoBehaviour
 {
     public List<Slider> timerSlider;
     public List<Image> sliderFill;
+
+    //public Image sliderfill1;
+
     public float sliderTimer;
     public bool stopTimer;
     public UIManager manager;
@@ -31,10 +34,10 @@ public class TimerSuddenDeath : MonoBehaviour
             slider.maxValue = sliderTimer;
             slider.value = sliderTimer;
         }
-        
+
         //StartTimer();
-        Invoke ("StartAnimation",2);
-        Invoke ("StartTimer", startTimer);
+        Invoke("StartAnimation", 2);
+        Invoke("StartTimer", startTimer);
 
         //Text_SuddenDeath.enabled = false;
         SetTextAlpha(0f);
@@ -48,7 +51,7 @@ public class TimerSuddenDeath : MonoBehaviour
 
     void EndAnimation()
     {
-        SuddenDeath_animation.SetTrigger("End");   
+        SuddenDeath_animation.SetTrigger("End");
     }
 
     // Update is called once per frame
@@ -56,15 +59,15 @@ public class TimerSuddenDeath : MonoBehaviour
     {
         if (manager.gameIsOver && endAnimation) // If game is over
         {
-            Invoke ("EndAnimation",1); // Small delay before starting animation  
+            Invoke("EndAnimation", 1); // Small delay before starting animation  
             endAnimation = false; // So it wont repeat
             Text_SuddenDeath.enabled = false;
         }
 
         if (stopTimer && endAnimation) // If timer has been stopped 
         {
-            Invoke ("EndAnimation",1); // Small delay before starting animation  
-            StartCoroutine (SuddenDeathMessage());
+            Invoke("EndAnimation", 1); // Small delay before starting animation  
+            StartCoroutine(SuddenDeathMessage());
             endAnimation = false; // So it wont repeat
         }
     }
@@ -89,13 +92,24 @@ public class TimerSuddenDeath : MonoBehaviour
 
             if (stopTimer == false)
             {
-                foreach(Slider slider in timerSlider)
+                foreach (Slider slider in timerSlider)
                 {
-                    slider.value = sliderTimer;                                                       
+                    slider.value = sliderTimer;
+                    //sliderfill1.color = gradient.Evaluate(slider.value/100);
+
+                    foreach (Image sliderColor in sliderFill)
+                    {
+                        //slider.value = sliderTimer; 
+                        //sliderColor.color = Color.Lerp(Color.green, Color.red, slider.value/90);
+                        sliderColor.color = gradient.Evaluate(slider.value / DeathGameChange.SuddenDeathTimer);
+
+                    }
                 }
-                
+
+
+
             }
-        }        
+        }
     }
 
     IEnumerator SuddenDeathMessage()
@@ -105,7 +119,7 @@ public class TimerSuddenDeath : MonoBehaviour
 
         while (ongoingTime < duration)
         {
-            float alpha = Mathf.Lerp(0,1, ongoingTime / duration);
+            float alpha = Mathf.Lerp(0, 1, ongoingTime / duration);
             SetTextAlpha(alpha);
             ongoingTime += Time.deltaTime;
             yield return null;
@@ -113,19 +127,19 @@ public class TimerSuddenDeath : MonoBehaviour
 
         SetTextAlpha(1);
 
-        yield return new WaitForSeconds (2);
+        yield return new WaitForSeconds(2);
 
         ongoingTime = 0;
 
         while (ongoingTime < duration)
         {
-            float alpha = Mathf.Lerp(1,0, ongoingTime / duration);
+            float alpha = Mathf.Lerp(1, 0, ongoingTime / duration);
             SetTextAlpha(alpha);
             ongoingTime += Time.deltaTime;
             yield return null;
         }
 
-        SetTextAlpha(0);       
+        SetTextAlpha(0);
     }
 
     void SetTextAlpha(float alpha)
