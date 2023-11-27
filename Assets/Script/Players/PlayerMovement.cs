@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable() 
     {
         movementX = 0;
+
     }
 
     
@@ -53,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         LandingParticles dashParticles = gameObject.GetComponent<LandingParticles>();
         rb = GetComponent<Rigidbody2D>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
     }
     
     void Update()

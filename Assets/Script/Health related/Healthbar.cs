@@ -47,6 +47,11 @@ public class Healthbar : MonoBehaviour
 
         }
 
+        if (playerHealth.currentHealth > 1)
+        {
+            shakeOneLastTime = false;
+        }
+
         if (permanentShake)
         {
             permanentShake = false;
@@ -81,7 +86,7 @@ public class Healthbar : MonoBehaviour
         startShake = false;
         if (!permanentShake)
         {
-            transform.position = originalPosition;
+            //transform.position = originalPosition;
         }
 
     }

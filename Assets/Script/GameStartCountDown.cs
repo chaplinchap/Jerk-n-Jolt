@@ -5,10 +5,16 @@ using UnityEngine;
 public class GameStartCountDown : MonoBehaviour
 {
     public float timeRemaining = 3; //How long to wait for game to start
-    public GameObject puller; 
+
+    [Header("Puller")]
+    public GameObject puller;
+
+    [Header("Pusher")]
     public GameObject pusher;
+
+
+    [Header("Other Stuff")]
     public TextMeshProUGUI countDownText;
-    
     public Animator countDown_Animation;
 
 
@@ -16,9 +22,16 @@ public class GameStartCountDown : MonoBehaviour
     private void Start()
     {
         //On start set player movement to false so they cant move
-        puller.GetComponent<PlayerMovement>().enabled = false; 
+        puller.GetComponent<PlayerMovement>().enabled = false;
         pusher.GetComponent<PlayerMovement>().enabled = false;
-        StartCoroutine (CountDownText()); //Start a coundown
+
+        puller.GetComponent<Pull>().enabled = false;
+        pusher.GetComponent<Push>().enabled = false;
+
+        puller.GetComponent<Dash>().enabled = false;
+        pusher.GetComponent<Dash>().enabled = false;
+
+        StartCoroutine(CountDownText()); //Start a coundown
     }
 
     IEnumerator CountDownText()
@@ -28,7 +41,7 @@ public class GameStartCountDown : MonoBehaviour
         {
             countDownText.text = timeRemaining.ToString(); //Updates the text
             countDown_Animation.SetTrigger("Flop");
-            yield return new WaitForSeconds(1);            
+            yield return new WaitForSeconds(1);
             timeRemaining--;
         }
 
@@ -37,7 +50,14 @@ public class GameStartCountDown : MonoBehaviour
         countDown_Animation.SetTrigger("Flop");
         puller.GetComponent<PlayerMovement>().enabled = true;
         pusher.GetComponent<PlayerMovement>().enabled = true;
-        StartCoroutine (RemoveText());
+
+        puller.GetComponent<Pull>().enabled = true;
+        pusher.GetComponent<Push>().enabled = true;
+
+        puller.GetComponent<Dash>().enabled = true;
+        pusher.GetComponent<Dash>().enabled = true;
+
+        StartCoroutine(RemoveText());
         //Invoke (nameof (removeText), 1);//Fight text will stay for 2 second before being set to false
 
     }
@@ -49,9 +69,9 @@ public class GameStartCountDown : MonoBehaviour
     }*/
     private IEnumerator RemoveText()
     {
-        yield return new WaitForSeconds(1);       
+        yield return new WaitForSeconds(1);
         countDown_Animation.SetTrigger("FloatOut");
         yield return new WaitForSeconds(1);
-        countDownText.gameObject.SetActive(false); 
+        countDownText.gameObject.SetActive(false);
     }
 }
