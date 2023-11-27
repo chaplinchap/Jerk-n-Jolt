@@ -11,6 +11,7 @@ public class Healthbar : MonoBehaviour
 
     private bool startShake;
     public bool permanentShake;
+    private bool shakeOneLastTime;
     public float shakeAmount = 10f;
     private float shakeSpeed = 0.1f;
     Vector3 originalPosition;
@@ -36,9 +37,14 @@ public class Healthbar : MonoBehaviour
 
         if (playerHealth.currentHealth == 1)
         {
-            shakeAmount = 2f;
-            StartCoroutine(ShakeShake());
-            permanentShake = true;
+            Invoke("OneMoreShake", 1);
+            if (shakeOneLastTime)
+            {
+                shakeAmount = 2f;
+                StartCoroutine(ShakeShake());
+                permanentShake = true;
+            }
+
         }
 
         if (permanentShake)
@@ -46,6 +52,11 @@ public class Healthbar : MonoBehaviour
             permanentShake = false;
             shakeAmount = 10f;
         }
+    }
+
+    void OneMoreShake()
+    {
+        shakeOneLastTime = true;
     }
 
     public void ShakeObject()
