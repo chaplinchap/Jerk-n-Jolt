@@ -6,10 +6,10 @@ public static class CameraShakeValues
 {
 
     // PLAYERS \\
-    public static readonly float normalAbilityIntensity = 3f;
+    public static readonly float normalAbilityIntensity = 8f;
     public static readonly float normalAbilityDuration = .2f;
-    public static readonly float chargedAbilityIntensity = 8f;
-    public static readonly float chargedAbilityDuration = .3f;
+    public static readonly float chargedAbilityIntensity = 24f;
+    public static readonly float chargedAbilityDuration = .4f;
 
 
     // DEATH \\

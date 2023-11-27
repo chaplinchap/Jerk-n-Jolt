@@ -50,21 +50,24 @@ public class Respawn : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Pusher respawn
         if (collision.gameObject.CompareTag("Pusher"))
         {
            
             pusherIsDead = true;
             pusher.gameObject.SetActive(false);
+            //StartCoroutine(DeathAnimationPusher());
             StartCoroutine(RespawnPusher());   
             Debug.Log("Player has fallen out");
            
         }
 
-        //Puller player repspawn
+        //Puller respawn
         if (collision.gameObject.CompareTag("Puller"))
         {
             pullerIsDead = true;
             puller.gameObject.SetActive(false);
+            //StartCoroutine(DeathAnimationPuller());
             StartCoroutine(RespawnPuller());   
             Debug.Log("Player has fallen out");
             
@@ -169,6 +172,18 @@ public class Respawn : MonoBehaviour
         stunners[i].enabled = turn;
         //animationsParents[i].enabled = turn;
 
+    }
+
+    IEnumerator DeathAnimationPusher()
+    {
+        yield return new WaitForSeconds(2f);
+        pusher.gameObject.SetActive(false);
+    }
+    
+    IEnumerator DeathAnimationPuller()
+    {
+        yield return new WaitForSeconds(2f);
+        
     }
 
 }

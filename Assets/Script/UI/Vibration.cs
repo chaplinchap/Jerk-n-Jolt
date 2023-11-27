@@ -6,7 +6,7 @@ public class Vibration : MonoBehaviour
     public float shakeAmount = 0f; 
     private float shakeSpeed = 1f;
     public bool coroutineRunning = false;
-
+    
     Vector3 originalPosition;
     [SerializeField] private KeyCode abilityPressed = KeyCode.Space;
 

@@ -153,15 +153,6 @@ public class Stunner : MonoBehaviour
 
     }
 
-    public void PlayChargeAudio()
-    {
-        if (chargeReady)
-        {
-            audioManager.PlaySFX(audioManager.charge);
-            chargeReady = false;
-        }
-    }
-
     public IEnumerator HitStun(float duration) 
     {
         TurnScripts(false);

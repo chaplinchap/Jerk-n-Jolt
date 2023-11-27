@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class Push : AbilityPower
 {
     public ParticleSystem powerUPParticles;
     public ParticleSystem powerUPEndParticles;
+    public ParticleSystem chargedUpParticles;
     private GameObject thePuller;
     private Rigidbody2D rigidbodyPuller;
     private FieldTrigger pushField;
@@ -34,30 +37,35 @@ public class Push : AbilityPower
     public float extraForce = 1;
 
     // Slowmotion
-    public SlowMotion slowMotion;
+    //public SlowMotion slowMotion;
 
     // Freezer
-    public Freezer freeze;
+    //public Freezer freeze;
 
     // Audiosystem
-    AudioManager audioManager;
-    public AudioMixer audioMixer;
-    public float pitchValue;
-    private float timeBox;
-    public float audioCoolDown;
-
+    [Header("Audio")]
+    private AudioManager audioManager;
+    public AudioSource audioSourceChargedUp;
+    public AudioSource audioSourcePushSounds;
+    public AudioClip[] pushSounds;
+    public AudioSource audioSourceAirPushSounds;
+    public AudioClip[] airPushSounds;
+    //private AudioMixer audioMixer;
+    //private float pitchValue;
+    //private float timeBox;
+    //private float audioCoolDown;
+    
     //Flash
-    public GameObject puller;
-    public float flashTime = 0.075f;
+    //public GameObject puller;
+    //public float flashTime = 0.075f;
 
-
-
-    public void SetPitch()
+    
+    /*public void SetPitch()
     {
         audioMixer.SetFloat("ExposedPitch", pitchValue);
         Debug.Log("Pitch Value: " + pitchValue);
         timeBox = Time.time;
-    }
+    }*/
 
     void Start()
     {
@@ -76,11 +84,13 @@ public class Push : AbilityPower
     {
 
         if (Respawn.pusherIsDead)
-        { StopCoroutine(powerupParticle); }
-
-        if (upAbilityPress && !ifSuccesChargeTime)
         {
-            audioManager.PlaySFX(audioManager.push);
+            StopCoroutine(powerupParticle);
+        }
+
+        if (upAbilityPress && !ifSuccesChargeTime && !pushField.inField)
+        {
+            AirPushSounds();
         }
 
         /*
@@ -161,14 +171,14 @@ public class Push : AbilityPower
 
     public void ChargePush(float normalPush, float chargedPush)
     {
-
-
         if (ifFailedChargeTime && pushField.inField)
         {
             ThePush(normalPush);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
             StartCoroutine(PullScript.SetIsHit());
+            //audioManager.PlaySFX(audioManager.push);
+            PushSounds();
             CameraShake.Instance.ShakeCamera(CameraShakeValues.normalAbilityIntensity, CameraShakeValues.normalAbilityDuration);
         }
 
@@ -184,7 +194,7 @@ public class Push : AbilityPower
         }
 
     }
-
+    
     private void Timer()
     {
         if (downAbilityPress)
@@ -193,7 +203,8 @@ public class Push : AbilityPower
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
         }
-        else if (isAbilityPress)
+        
+        else if (isAbilityPress)  
         {
             if (chargeTrackingTimer > maxChargeingTime)
             {
@@ -204,6 +215,19 @@ public class Push : AbilityPower
                 return;
             }
 
+            if (chargeTrackingTimer > minChargingTime)
+            {
+                if (Input.GetKey(abilityPress))
+                {
+                    chargedUpParticles.Play();
+                }
+
+                if (!audioSourceChargedUp.isPlaying)
+                {
+                    ChargeUpSound();
+                }
+            }
+
             chargeTrackingTimer += Time.deltaTime;
         }
         else if (upAbilityPress && chargeTrackingTimer > minChargingTime && pushField.inField)
@@ -211,7 +235,7 @@ public class Push : AbilityPower
             ifSuccesChargeTime = true;
             //slowMotion.DoSlowmotion();
             //freeze.Freeze();
-            SetPitch();
+            //SetPitch();
         }
         else if (upAbilityPress && pushField.inField)
         {
@@ -238,5 +262,24 @@ public class Push : AbilityPower
 
     }
 
+    void ChargeUpSound()
+    {
+        audioSourceChargedUp.pitch = UnityEngine.Random.Range(1f, 1.5f);
+        audioSourceChargedUp.Play();
+    }
 
+    void PushSounds()
+    {
+        AudioClip clip = pushSounds[UnityEngine.Random.Range(0, pushSounds.Length)];
+        audioSourcePushSounds.PlayOneShot(clip);
+    }
+
+    void AirPushSounds()
+    {
+        AudioClip clip = airPushSounds[UnityEngine.Random.Range(0, airPushSounds.Length)];
+        audioSourceAirPushSounds.pitch = Random.Range(1f, 1.5f);
+        audioSourceAirPushSounds.volume = (2f);
+        audioSourceAirPushSounds.PlayOneShot(clip);
+    }
+    
 }
