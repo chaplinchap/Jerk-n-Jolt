@@ -204,12 +204,10 @@ public class Pull : AbilityPower
                 return;
             }
             
-            if (chargeTrackingTimer > minChargingTime)
+            else if (chargeTrackingTimer > minChargingTime)
             {
-                if (Input.GetKey(abilityPress))
-                {
                     chargedUpParticles.Play();
-                }
+                
 
                 if (!audioSourceChargedUp.isPlaying)
                 {

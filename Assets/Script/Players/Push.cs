@@ -16,6 +16,7 @@ public class Push : AbilityPower
     private Rigidbody2D rigidbodyPuller;
     private FieldTrigger pushField;
     private PlayerMovement movement;
+    private bool timeWait = false; //Used for GameStartCoolDown
     private AbilityPower PullScript;
 
     private IEnumerator powerupParticle;
@@ -135,7 +136,7 @@ public class Push : AbilityPower
     
     private void FixedUpdate()
     {
-        ChargePush(1f, extraForce);  
+       ChargePush(1f, extraForce);  
     }
 
 
