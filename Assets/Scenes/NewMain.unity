@@ -6899,9 +6899,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 453790264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b388ede63c42cf04cb605b555f0343b6, type: 3}
+  m_Script: {fileID: 11500000, guid: d91b09359eb2c57478d1cb3396c85510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
 --- !u!4 &1808138116 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7748005987508325142, guid: e6c32039061febc438e251c76dd8b513, type: 3}
@@ -7485,9 +7486,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1760760185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b388ede63c42cf04cb605b555f0343b6, type: 3}
+  m_Script: {fileID: 11500000, guid: d91b09359eb2c57478d1cb3396c85510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
 --- !u!212 &1996340472 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6966583533196595515, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
@@ -7522,9 +7524,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 230709155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b388ede63c42cf04cb605b555f0343b6, type: 3}
+  m_Script: {fileID: 11500000, guid: d91b09359eb2c57478d1cb3396c85510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
 --- !u!212 &2022124415 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5868300684807866523, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
@@ -7676,7 +7679,7 @@ PrefabInstance:
       addedObject: {fileID: 2052788776}
     - targetCorrespondingSourceObject: {fileID: 6218380128302007168, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2052788780}
+      addedObject: {fileID: 2052788784}
   m_SourcePrefab: {fileID: 100100000, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
 --- !u!4 &2052788772 stripped
 Transform:
@@ -7697,7 +7700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 8
   speed: 1
---- !u!114 &2052788780
+--- !u!114 &2052788784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7706,9 +7709,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1934344076}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b388ede63c42cf04cb605b555f0343b6, type: 3}
+  m_Script: {fileID: 11500000, guid: d91b09359eb2c57478d1cb3396c85510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
 --- !u!82 &2083235314 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3452636236243422369, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
