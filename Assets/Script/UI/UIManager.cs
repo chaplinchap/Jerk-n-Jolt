@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public bool deadPlayer = false;
     private bool onPause;
 
+    public static bool staticGameOver = false;
+
     public List<HealthV2> playersHealth = new List<HealthV2>(); //reference to Health script
     public ScoreManager scoreManager; //reference to the ScoreManager
 
@@ -47,11 +49,13 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         player1 = GameObject.Find("Player1 Push"); // Find Player 1 . Used to check when game is over to see which player is left
+        staticGameOver = false;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        
         gameOverPanel.SetActive(false); //ensure GameOVerPanel is not loaded on start
         PauseMenu.SetActive(false); //ensure pause menu is not loaded on start
         Invoke ("ShowHealthbar",1);
@@ -75,6 +79,7 @@ public class UIManager : MonoBehaviour
 
         if (deadPlayer) {
             gameIsOver = true;
+            staticGameOver = true;
             Destroy(cameraAnchor);
         }
    

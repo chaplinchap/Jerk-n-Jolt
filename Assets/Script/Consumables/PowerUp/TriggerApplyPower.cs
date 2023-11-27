@@ -80,7 +80,7 @@ public class TriggerApplyPower : ConsumableParentObject
         }
         catch { }
 
-        if (DeathGameChange.suddenDeathTriggered)
+        if (DeathGameChange.suddenDeathTriggered || UIManager.staticGameOver)
         {
             Destroy(this.gameObject);
         }

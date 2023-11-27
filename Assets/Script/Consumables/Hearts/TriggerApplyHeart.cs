@@ -65,7 +65,7 @@ public class TriggerApplyHeart : ConsumableParentObject
             Destroy(this.gameObject);
         }
 
-        if (DeathGameChange.suddenDeathTriggered)
+        if (DeathGameChange.suddenDeathTriggered || UIManager.staticGameOver)
         {
             Destroy(this.gameObject);
         }
