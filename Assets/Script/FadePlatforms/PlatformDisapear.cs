@@ -59,4 +59,9 @@ public class PlatformDisapear : PlatformScriptableObject
         
         
     }
+
+    public override void ChangeColor(GameObject target)
+    {
+        target.GetComponent<SpriteRenderer>().color = new Color(226, 133, 33, 255);
+    }
 }
