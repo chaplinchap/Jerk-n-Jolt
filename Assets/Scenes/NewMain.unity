@@ -1821,8 +1821,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72b53766dc2c5440a90d29650c3496c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformScriptableObject: {fileID: 11400000, guid: ef43ba55ebccd8b4094e9a37a2e7d4e1, type: 2}
-  durationTime: 0.5
+  platformScriptableObject: {fileID: 11400000, guid: e271a6f04f874d74399208ed4c78d44f, type: 2}
+  durationTime: 0.25
   cancelFadeTime: 1
   onPlatformFade: 0
   offPlatformFade: 0
@@ -1915,6 +1915,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.86666673
       objectReference: {fileID: 0}
+    - target: {fileID: 7751493035515170213, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8113372473937683509, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_ColliderMask.m_Bits
       value: 5111
@@ -5462,8 +5466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72b53766dc2c5440a90d29650c3496c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformScriptableObject: {fileID: 11400000, guid: ef43ba55ebccd8b4094e9a37a2e7d4e1, type: 2}
-  durationTime: 0.5
+  platformScriptableObject: {fileID: 11400000, guid: e271a6f04f874d74399208ed4c78d44f, type: 2}
+  durationTime: 0.25
   cancelFadeTime: 1
   onPlatformFade: 0
   offPlatformFade: 0
@@ -6433,8 +6437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72b53766dc2c5440a90d29650c3496c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformScriptableObject: {fileID: 11400000, guid: ef43ba55ebccd8b4094e9a37a2e7d4e1, type: 2}
-  durationTime: 0.5
+  platformScriptableObject: {fileID: 11400000, guid: e271a6f04f874d74399208ed4c78d44f, type: 2}
+  durationTime: 0.25
   cancelFadeTime: 1
   onPlatformFade: 0
   offPlatformFade: 0
@@ -6931,7 +6935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91b09359eb2c57478d1cb3396c85510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
+  platformScriptableObject: {fileID: 11400000, guid: e271a6f04f874d74399208ed4c78d44f, type: 2}
 --- !u!4 &1808138116 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7748005987508325142, guid: e6c32039061febc438e251c76dd8b513, type: 3}
@@ -7519,7 +7523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91b09359eb2c57478d1cb3396c85510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
+  platformScriptableObject: {fileID: 11400000, guid: e271a6f04f874d74399208ed4c78d44f, type: 2}
 --- !u!212 &1996340472 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6966583533196595515, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
@@ -7557,7 +7561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91b09359eb2c57478d1cb3396c85510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
+  platformScriptableObject: {fileID: 11400000, guid: e271a6f04f874d74399208ed4c78d44f, type: 2}
 --- !u!212 &2022124415 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5868300684807866523, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
@@ -7742,7 +7746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91b09359eb2c57478d1cb3396c85510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
+  platformScriptableObject: {fileID: 11400000, guid: e271a6f04f874d74399208ed4c78d44f, type: 2}
 --- !u!82 &2083235314 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3452636236243422369, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}

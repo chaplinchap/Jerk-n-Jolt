@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f578d60e684f494081ab34d40f84acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
-  durationTime: 0.5
+  platformScriptableObject: {fileID: 11400000, guid: e271a6f04f874d74399208ed4c78d44f, type: 2}
+  durationTime: 0.25
   cancelFadeTime: 1
   onPlatformFade: 0
   offPlatformFade: 0
@@ -131,4 +131,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91b09359eb2c57478d1cb3396c85510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformScriptableObject: {fileID: 11400000, guid: 11e121b353c7bc44c84e5ce51aa518c3, type: 2}
+  platformScriptableObject: {fileID: 11400000, guid: e271a6f04f874d74399208ed4c78d44f, type: 2}

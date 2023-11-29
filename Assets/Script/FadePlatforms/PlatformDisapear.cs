@@ -8,7 +8,7 @@ public class PlatformDisapear : PlatformScriptableObject
 {
 
     public Color startingColor;
-    private Color suddenDeathColor = new Color(226, 132, 33, 255);
+     Color suddenDeathColor;
  
     
 
@@ -36,9 +36,18 @@ public class PlatformDisapear : PlatformScriptableObject
     public override void Fade(GameObject target)
     {
         Color fadeColor = target.GetComponent<SpriteRenderer>().color;
-        fadeColor.a /= 1.15f;
+      //  fadeColor.a /= 1.15f;
+      fadeColor.a = 0.55f;
         target.GetComponent<SpriteRenderer>().color = fadeColor;
     }
+
+    public override void Blink(GameObject target)
+    {
+        Color blinkColor = target.GetComponent<SpriteRenderer>().color;
+        blinkColor.a = 0.95f;
+        target.GetComponent<SpriteRenderer>().color = blinkColor;
+    }
+
 
     public override void Spawn(GameObject target)
     {
@@ -55,14 +64,18 @@ public class PlatformDisapear : PlatformScriptableObject
         target.SetActive(false);
     }
 
-    public void Start()
+    public override void ChangeAlpha(GameObject target)
     {
-        
-        
+        Color AlphaColor = target.GetComponent<SpriteRenderer>().color;
+        AlphaColor.a = 0.1f;
+        target.GetComponent<SpriteRenderer>().color = AlphaColor;
     }
+
 
     public override void ChangeColor(GameObject target)
     {
+        Color suddenDeathColor = target.GetComponent<SpriteRenderer>().color;
+        suddenDeathColor = new Color(221, 116, 38, 1f);
         target.GetComponent<SpriteRenderer>().color = suddenDeathColor;
     }
 }

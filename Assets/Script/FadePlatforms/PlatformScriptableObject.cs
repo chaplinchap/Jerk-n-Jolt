@@ -17,4 +17,8 @@ public abstract class PlatformScriptableObject : ScriptableObject
 
     public abstract void ChangeColor(GameObject target);
 
+    public abstract void Blink(GameObject target);
+
+    public abstract void ChangeAlpha(GameObject target);
+
 }
