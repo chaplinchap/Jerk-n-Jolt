@@ -15,6 +15,9 @@ public class Respawn : MonoBehaviour
     public static bool pusherIsDead = false;
     public static bool pullerIsDead = false;
 
+    private Ghost pusherGhost;
+    private Ghost pullerGhost;
+    
 
     public List<GameObject> randomSpawnPoints = new List<GameObject>();
 
@@ -41,6 +44,8 @@ public class Respawn : MonoBehaviour
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        pusherGhost = pusher.GetComponent<Ghost>();
+        pullerGhost = puller.GetComponent<Ghost>();
 
         GetScripts(pusher, 0);
         GetScripts(puller, 1);
@@ -90,6 +95,7 @@ public class Respawn : MonoBehaviour
         
         yield return new WaitForSeconds(respawnDelay);
         Spawn(pusher, selectedSpawnPoint);
+        pusherGhost.isGhost = true;
         pusherIsDead = false;
 
         // If player has more health it will spawn
@@ -118,6 +124,7 @@ public class Respawn : MonoBehaviour
 
         yield return new WaitForSeconds(respawnDelay);
         Spawn(puller, selectedSpawnPoint);
+        pullerGhost.isGhost = true;
         pullerIsDead = false;
 
         // If player has more health it will spawn

@@ -9,12 +9,14 @@ public class Ghost : MonoBehaviour
     private Color startColor; 
     private Color ghostColor;
     [SerializeField] private float ghostAlpha = 0.4f;
-    [SerializeField] private bool isGhost = false;
+    public bool isGhost = false;
     [SerializeField] private float ghostDuration = 3.0f;
-    private bool canTurnGhost;
+    // private bool canTurnGhost;
 
 
-    private BoxCollider2D playerCollider; 
+    private BoxCollider2D playerCollider;
+    private BoxCollider2D otherPlayerCollider;
+    public GameObject otherPlayer;
 
     private int defaultLayer = 0;
     private int ghostLayer = 12;
@@ -23,7 +25,8 @@ public class Ghost : MonoBehaviour
     void Start() {
 
         playerCollider = GetComponent<BoxCollider2D>();
-        
+        otherPlayerCollider = otherPlayer.GetComponent<BoxCollider2D>();
+
         startColor = playerSprites[0].color;
         ghostColor = playerSprites[0].color;
         ghostColor.a = ghostAlpha;
@@ -41,12 +44,14 @@ public class Ghost : MonoBehaviour
 
     public IEnumerator TurnGhost(float duration) 
     {
-        canTurnGhost = false;
+       // canTurnGhost = false;
         TurnGhostState(ghostColor, ghostLayer);
+        otherPlayerCollider.gameObject.layer = ghostLayer;
         yield return new WaitForSeconds(duration);
         TurnGhostState(startColor, defaultLayer);
+        otherPlayerCollider.gameObject.layer = defaultLayer;
         isGhost = false;
-        canTurnGhost = true;
+     //   canTurnGhost = true;
         
     }
 
