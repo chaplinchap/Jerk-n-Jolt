@@ -13,6 +13,9 @@ public class Last3PlatformsFadeOnSD : MonoBehaviour
     [SerializeField] private bool offPlatformFade = false;
     [SerializeField] private bool platformDespawned = false;
 
+
+    private bool suddenDeathColorChangeTriggered = false;
+
     // public GameObject suddenDeathManager;
     // private DeathGameChange suddenDeath;
 
@@ -71,12 +74,17 @@ public class Last3PlatformsFadeOnSD : MonoBehaviour
 
     private void Start()
     {
-       // suddenDeath = suddenDeathManager.GetComponent<DeathGameChange>();
+        // suddenDeath = suddenDeathManager.GetComponent<DeathGameChange>();
+        
     }
 
     void Update()
     {
-
+        if (DeathGameChange.suddenDeathTriggered && !suddenDeathColorChangeTriggered)
+        {
+            suddenDeathColorChangeTriggered = true;
+            StartCoroutine(ChangeColor(gameObject));
+        }
 
         if (platformDespawned)
         {
@@ -121,5 +129,11 @@ public class Last3PlatformsFadeOnSD : MonoBehaviour
         Debug.Log("Respawns Platform");
         yield return new WaitForSeconds(time * 2);
         platformScriptableObject.Spawn(target);
+    }
+
+    public IEnumerator ChangeColor (GameObject target)
+    {
+        yield return new WaitForSeconds(0f);
+        platformScriptableObject.ChangeColor(target);
     }
 }
