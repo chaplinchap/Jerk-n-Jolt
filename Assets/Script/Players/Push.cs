@@ -16,7 +16,6 @@ public class Push : AbilityPower
     private Rigidbody2D rigidbodyPuller;
     private FieldTrigger pushField;
     private PlayerMovement movement;
-    private bool timeWait = false; //Used for GameStartCoolDown
     private AbilityPower PullScript;
 
     private IEnumerator powerupParticle;

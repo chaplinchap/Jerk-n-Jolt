@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI text;
     public GameObject cameraAnchor;
 
+    public GameObject options; // Used to show the options to change if you want to reset score
+
 
 
     //Animations!!
@@ -33,6 +35,7 @@ public class UIManager : MonoBehaviour
     public Animator float1_Animation;
     public Animator float2_Animation;
     public Animator winnerText_Animation;
+    public Animator options_Animation;
     public Animator GameIsOverButton1_Animation;
     public Animator GameIsOverButton2_Animation;
 
@@ -161,12 +164,18 @@ public class UIManager : MonoBehaviour
         SceneLoader.GoMenu();
     }
 
+    public void Options()
+    {
+            options.SetActive(!options.activeSelf);
+    }
+
     //============Animations================
     void Animations()
     {
         float1_Animation.SetTrigger("FloatOut");
         float2_Animation.SetTrigger("FloatOut");
         winnerText_Animation.SetTrigger("WinnerText_FloatIn");
+        options_Animation.SetTrigger("WinnerText_FloatIn");
         StartCoroutine (AnimationsDelay());
 
         // Camera
@@ -184,6 +193,8 @@ public class UIManager : MonoBehaviour
         float1_Animation.SetTrigger("FloatIn");
         float2_Animation.SetTrigger("FloatIn");
     }
+
+    
 
     IEnumerator AnimationsDelay()
     {
