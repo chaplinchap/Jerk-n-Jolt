@@ -6,10 +6,10 @@ public static class CameraShakeValues
 {
 
     // PLAYERS \\
-    public static readonly float normalAbilityIntensity = 8f;
-    public static readonly float normalAbilityDuration = .2f;
-    public static readonly float chargedAbilityIntensity = 24f;
-    public static readonly float chargedAbilityDuration = .4f;
+    public static readonly float normalAbilityIntensity = 10f;
+    public static readonly float normalAbilityDuration = .3f;
+    public static readonly float chargedAbilityIntensity = 32f;
+    public static readonly float chargedAbilityDuration = .5f;
 
 
     // DEATH \\
@@ -25,6 +25,8 @@ public static class CameraShakeValues
     // POWERUP RAN OUT \\
     public static readonly float powerUPIntensity = 18f;
     public static readonly float powerUPDuration = .2f;
+    public static readonly float powerUPEndIntensity = 30f;
+    public static readonly float powerUPEndDuration = .5f;  
 
     public static readonly float suddenDeathIntensity = 100f;
     public static readonly float suddenDeathDuration = .5f;

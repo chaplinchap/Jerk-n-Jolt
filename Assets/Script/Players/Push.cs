@@ -17,10 +17,10 @@ public class Push : AbilityPower
     private FieldTrigger pushField;
     private PlayerMovement movement;
     private AbilityPower PullScript;
+    private Stunner stun;
 
     private IEnumerator powerupParticle;
-
-
+    
     //Push
     //public float abilityPower;
     //public KeyCode pushOnPress;
@@ -34,20 +34,20 @@ public class Push : AbilityPower
 
 
     public float extraForce = 1;
-
-    // Slowmotion
+    
+    //Slowmotion
     //public SlowMotion slowMotion;
 
-    // Freezer
+    //Freezer
     //public Freezer freeze;
 
-    // Audiosystem
+    //Audiosystem
     [Header("Audio")]
     private AudioManager audioManager;
     public AudioSource audioSourceChargedUp;
     public AudioSource audioSourcePushSounds;
-    public AudioClip[] pushSounds;
     public AudioSource audioSourceAirPushSounds;
+    public AudioClip[] pushSounds;
     public AudioClip[] airPushSounds;
     //private AudioMixer audioMixer;
     //private float pitchValue;
@@ -76,9 +76,13 @@ public class Push : AbilityPower
         pushField = gameObject.GetComponentInChildren<FieldTrigger>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         PullScript = thePuller.GetComponent<AbilityPower>();
-
-
+        
         movement = GetComponent<PlayerMovement>();
+        
+        var emission = chargedUpParticles.emission;
+        emission.rateOverTime = 100f;
+
+        stun = GetComponent<Stunner>();
     }
 
 
@@ -134,16 +138,45 @@ public class Push : AbilityPower
     {
         //puller.GetComponent<SpriteRenderer>().enabled = true;
     }
-
     
     private void FixedUpdate()
     {
        ChargePush(1f, extraForce);  
+       
+       if (chargeTrackingTimer > minChargingTime)
+       {
+           if (Input.GetKey(abilityPress))
+           {
+               if (!audioSourceChargedUp.isPlaying)
+               {
+                   ChargeUpSound();
+               }
+               chargedUpParticles.Play();
+               var emission = chargedUpParticles.emission;
+               emission.rateOverTime = 100;
+               StartCoroutine(ChargedUpParticles());
+           } 
+           if (Input.GetKeyUp(abilityPress) || stun.IsStunned())
+           {
+               audioSourceChargedUp.Stop();
+               chargeTrackingTimer = 0;
+               StopCoroutine(ChargedUpParticles());
+               var emission = chargedUpParticles.emission;
+               emission.rateOverTime = 100f;
+           }
+       } else 
+       {
+           var emission = chargedUpParticles.emission;
+           emission.rateOverTime = 100f;
+       }
     }
-
-
-   
-
+    
+    IEnumerator ChargedUpParticles()
+    {
+        yield return new WaitForSeconds(1.3f);
+        var emission = chargedUpParticles.emission;
+        emission.rateOverTime = 300;
+    }
         // METHODS //   
 
 
@@ -199,19 +232,17 @@ public class Push : AbilityPower
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
         }
-        
         else if (isAbilityPress)  
         {
             if (chargeTrackingTimer > maxChargeingTime)
             {
-              
                 chargeTrackingTimer = 0;
                 ifFailedChargeTime = false;
                 ifSuccesChargeTime = false;
                 return;
             }
 
-            if (chargeTrackingTimer > minChargingTime)
+            /*if (chargeTrackingTimer > minChargingTime)
             {
                 if (Input.GetKey(abilityPress))
                 {
@@ -222,7 +253,7 @@ public class Push : AbilityPower
                 {
                     ChargeUpSound();
                 }
-            }
+            }*/
 
             chargeTrackingTimer += Time.deltaTime;
         }
@@ -255,7 +286,7 @@ public class Push : AbilityPower
         powerUPParticles.Play();
         yield return new WaitForSeconds(5f);
         powerUPEndParticles.Play();
-
+        CameraShake.Instance.ShakeCamera(CameraShakeValues.powerUPEndIntensity, CameraShakeValues.powerUPEndDuration);
     }
 
     void ChargeUpSound()
@@ -273,7 +304,7 @@ public class Push : AbilityPower
     void AirPushSounds()
     {
         AudioClip clip = airPushSounds[UnityEngine.Random.Range(0, airPushSounds.Length)];
-        audioSourceAirPushSounds.pitch = Random.Range(1f, 1.5f);
+        audioSourceAirPushSounds.pitch = Random.Range(0.8f, 0.9f);
         audioSourceAirPushSounds.volume = (2f);
         audioSourceAirPushSounds.PlayOneShot(clip);
     }
