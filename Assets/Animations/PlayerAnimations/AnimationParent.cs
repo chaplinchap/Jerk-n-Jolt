@@ -15,6 +15,7 @@ public class AnimationsParent : MonoBehaviour
     protected AbilityPower abilityPowerScript;
     protected Stunner stunScript;
     protected MovementAid dashScript;
+    //protected UIManager UImanager;
 
     protected bool isCharging = false;
     protected bool isAttacking = false;
@@ -68,6 +69,7 @@ public class AnimationsParent : MonoBehaviour
         abilityPowerScript = GetComponent<AbilityPower>();
         stunScript = GetComponent<Stunner>();
         dashScript = GetComponent<MovementAid>();
+        //UImanager = GetComponent<UIManager>();
     }
 
     protected void AttackComplete() 
