@@ -8,7 +8,7 @@ public class PlatformDisapear : PlatformScriptableObject
 {
 
     public Color startingColor;
-     Color suddenDeathColor;
+    [SerializeField] Color suddenDeathColor;
  
     
 
@@ -74,8 +74,8 @@ public class PlatformDisapear : PlatformScriptableObject
 
     public override void ChangeColor(GameObject target)
     {
-        Color suddenDeathColor = target.GetComponent<SpriteRenderer>().color;
-        suddenDeathColor = new Color(221, 116, 38, 1f);
+        // Color suddenDeathColor = target.GetComponent<SpriteRenderer>().color;
+        //suddenDeathColor = new Color(221, 116, 38, 1f);
         target.GetComponent<SpriteRenderer>().color = suddenDeathColor;
     }
 }

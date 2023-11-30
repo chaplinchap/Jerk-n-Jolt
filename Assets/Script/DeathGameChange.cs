@@ -25,7 +25,7 @@ public class DeathGameChange : MonoBehaviour
     
 
     [Header("SuddenDeath Settings")]
-    public static float SuddenDeathTimer = 90; // deside when sudden Death change to happen
+    public static float SuddenDeathTimer = 15; // deside when sudden Death change to happen
     public static bool suddenDeathTriggered = false;
     
     
