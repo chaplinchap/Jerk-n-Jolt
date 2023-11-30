@@ -13,7 +13,10 @@ public class Ghost : MonoBehaviour
     [SerializeField] private float ghostDuration = 3.0f;
     // private bool canTurnGhost;
 
+    private bool ghostIsTriggeredOnce = false;
 
+
+    private IEnumerator turnGhostRoutine;
     private BoxCollider2D playerCollider;
     private BoxCollider2D otherPlayerCollider;
     public GameObject otherPlayer;
@@ -22,7 +25,8 @@ public class Ghost : MonoBehaviour
     private int ghostLayer = 12;
 
 
-    void Start() {
+   public void Start() 
+    {
 
         playerCollider = GetComponent<BoxCollider2D>();
         otherPlayerCollider = otherPlayer.GetComponent<BoxCollider2D>();
@@ -30,29 +34,35 @@ public class Ghost : MonoBehaviour
         startColor = playerSprites[0].color;
         ghostColor = playerSprites[0].color;
         ghostColor.a = ghostAlpha;
-    
+        
+
     }
 
     private void Update()
     {
-        if (isGhost) 
+        if (isGhost && !ghostIsTriggeredOnce)
         {
-            StartCoroutine(TurnGhost(ghostDuration));
+            turnGhostRoutine = TurnGhost(ghostDuration);
+            ghostIsTriggeredOnce = true;
+            StartCoroutine(turnGhostRoutine);
         }
+        /*
         else
-            StopCoroutine(TurnGhost(ghostDuration));
+            StopCoroutine(turnGhostRoutine);
+        */
     }
 
     public IEnumerator TurnGhost(float duration) 
     {
-       // canTurnGhost = false;
+      
         TurnGhostState(ghostColor, ghostLayer);
-        otherPlayerCollider.gameObject.layer = ghostLayer;
+        otherPlayerCollider.gameObject.layer = ghostLayer;     
         yield return new WaitForSeconds(duration);
         TurnGhostState(startColor, defaultLayer);
         otherPlayerCollider.gameObject.layer = defaultLayer;
         isGhost = false;
-     //   canTurnGhost = true;
+        ghostIsTriggeredOnce = false;
+   
         
     }
 

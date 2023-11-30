@@ -10,12 +10,14 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public BoxCollider2D playerCollider;    
     public BoxCollider2D feet;
-    public LandingParticles dashParticles; 
+    public LandingParticles dashParticles;
+    private Ghost ghostScript;
 
     public float time = 0.25f;
 
     private LayerMask throughGround = 10;
     private LayerMask defaultLayer = 0;
+    private LayerMask ghostLayer = 12;
 
     public float speed = 8f;
     public float jumpingPower = 8f;
@@ -54,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
         LandingParticles dashParticles = gameObject.GetComponent<LandingParticles>();
         rb = GetComponent<Rigidbody2D>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+       ghostScript = gameObject.GetComponent<Ghost>();
 
     }
     
@@ -197,11 +201,20 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(throughButton) && IsGrounded())
+        if (Input.GetKeyDown(throughButton) && IsGrounded() && !ghostScript.isGhost)
         {
             playerCollider.gameObject.layer = throughGround;
             StartCoroutine(WaitTime());
         }
+
+        
+        if (Input.GetKeyDown(throughButton) && IsGrounded() && ghostScript.isGhost)
+        {
+            Debug.Log("Ghost can go through");
+            playerCollider.gameObject.layer = throughGround;
+            StartCoroutine(WaitTimeGhost(time));
+        }
+        
 
         if (Input.GetKeyDown(jumpUp))
         {
@@ -226,6 +239,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private IEnumerator WaitTimeGhost(float timeGhost)
+    {
+        yield return new WaitForSeconds(timeGhost);
+        playerCollider.gameObject.layer = ghostLayer;
+    }
+    
     public int GetMovementX()
     {
         return movementX;
