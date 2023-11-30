@@ -5,7 +5,8 @@ using UnityEngine;
 public class TakeDamage : MonoBehaviour
 {
     [SerializeField] private float damage = 1; //Input how much damage to take
-    public AudioClip[] deathSounds;
+    public AudioClip[] pusherDeathSounds;
+    public AudioClip[] pullerDeathSounds;
     private AudioSource audioSource;
     //private AudioManager audioManager;
 
@@ -16,26 +17,35 @@ public class TakeDamage : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    int test;
-
     private void OnTriggerEnter2D(Collider2D collision) //Trigger on collision
     {
-        
-        if(collision.CompareTag("Pusher") || collision.CompareTag("Puller")) //When one of the player is hit 
+        if (collision.CompareTag("Pusher"))
         {
-            DeathSounds();
+            PusherDeathSounds();
             collision.GetComponent<HealthV2>().TakeDamage(damage); //The hit player takes damage
             CameraShake.Instance.ShakeCamera(CameraShakeValues.deathIntensity, CameraShakeValues.deathDuration);
-        }   
+        }
+        if(collision.CompareTag("Puller")) //When one of the player is hit 
+        {
+            PullerDeathSounds();
+            collision.GetComponent<HealthV2>().TakeDamage(damage); //The hit player takes damage
+            CameraShake.Instance.ShakeCamera(CameraShakeValues.deathIntensity, CameraShakeValues.deathDuration);
+        }  
     }
 
-    void DeathSounds()
+    void PusherDeathSounds()
     {
-        AudioClip clip = deathSounds[Random.Range(0, deathSounds.Length)];
-        audioSource.pitch = Random.Range(0.7f, 0.8f);
+        AudioClip clip = pusherDeathSounds[Random.Range(0, pusherDeathSounds.Length)];
+        audioSource.pitch = Random.Range(0.8f, 0.9f);
         audioSource.PlayOneShot(clip);
     }
 
+    void PullerDeathSounds()
+    {
+        AudioClip clip = pullerDeathSounds[Random.Range(0, pullerDeathSounds.Length)];
+        audioSource.pitch = Random.Range(1.1f, 1.3f);
+        audioSource.PlayOneShot(clip);
+    }
 
 }           
             

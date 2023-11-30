@@ -15,6 +15,7 @@ public class Pull : AbilityPower
     private BoxCollider2D boxColliderPusher;
     private PlayerMovement movement;
     private AbilityPower PushScript;
+    private Stunner stun;
 
     //Pull
     private float time = 0.15f;
@@ -44,6 +45,10 @@ public class Pull : AbilityPower
     [Header("Audio")]
     private AudioManager audioManager;
     public AudioSource audioSourceChargedUp;
+    public AudioSource audioSourcePullSounds;
+    public AudioSource audioSourceAirPullSounds;
+    public AudioClip[] pullSounds;
+    public AudioClip[] airPullSounds;
     //private AudioMixer audioMixer;
     //private float pitchValue;
     //private float timeBox;
@@ -77,6 +82,7 @@ public class Pull : AbilityPower
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         movement = GetComponent<PlayerMovement>();
         PushScript = thePusher.GetComponent<AbilityPower>();
+        stun = GetComponent<Stunner>();
     }
 
 
@@ -92,8 +98,8 @@ public class Pull : AbilityPower
 
         if (upAbilityPress && !ifSuccesChargeTime && !pullField.inField)
         {
-            audioManager.PlaySFX(audioManager.airPull);
-            
+            //audioManager.PlaySFX(audioManager.airPull);
+            AirPullSounds();
         }
 
         /*
@@ -130,8 +136,57 @@ public class Pull : AbilityPower
     private void FixedUpdate()
     {
         ChargePulling(1f, extraForce);
-    }
+       /* if (chargeTrackingTimer > minChargingTime)
+        {
+            if (Input.GetKey(abilityPress))
+            {
+                if (!audioSourceChargedUp.isPlaying)
+                {
+                    ChargeUpSound();
+                }
+                chargedUpParticles.Play();
+            }
 
+            if (Input.GetKeyUp(abilityPress))
+            {
+                audioSourceChargedUp.Stop();
+                chargeTrackingTimer = 0;
+            }
+        }*/
+        
+        if (chargeTrackingTimer > minChargingTime)
+        {
+            if (Input.GetKey(abilityPress))
+            {
+                if (!audioSourceChargedUp.isPlaying)
+                {
+                    ChargeUpSound();
+                }
+                chargedUpParticles.Play();
+                var emission = chargedUpParticles.emission;
+                emission.rateOverTime = 100;
+                StartCoroutine(ChargedUpParticles());
+            } 
+            if (Input.GetKeyUp(abilityPress) || stun.IsStunned())
+            {
+                audioSourceChargedUp.Stop();
+                chargeTrackingTimer = 0;
+                StopCoroutine(ChargedUpParticles());
+                var emission = chargedUpParticles.emission;
+                emission.rateOverTime = 100f;
+            }
+        } else 
+        {
+            var emission = chargedUpParticles.emission;
+            emission.rateOverTime = 100f;
+        }
+    }
+    IEnumerator ChargedUpParticles()
+    {
+        yield return new WaitForSeconds(1.3f);
+        var emission = chargedUpParticles.emission;
+        emission.rateOverTime = 300;
+    }
 
 
 
@@ -169,7 +224,8 @@ public class Pull : AbilityPower
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
             StartCoroutine(PushScript.SetIsHit());
-            audioManager.PlaySFX(audioManager.pull);
+            //audioManager.PlaySFX(audioManager.pull);
+            PullSounds();
             CameraShake.Instance.ShakeCamera(CameraShakeValues.normalAbilityIntensity, CameraShakeValues.normalAbilityDuration);
         }
 
@@ -204,16 +260,17 @@ public class Pull : AbilityPower
                 return;
             }
             
-            else if (chargeTrackingTimer > minChargingTime)
+            /*if (chargeTrackingTimer > minChargingTime)
             {
-                    chargedUpParticles.Play();
+                    
+                chargedUpParticles.Play();
                 
 
                 if (!audioSourceChargedUp.isPlaying)
                 {
                     ChargeUpSound();
                 }
-            }
+            }*/
 
             chargeTrackingTimer += Time.deltaTime;
         }
@@ -246,12 +303,26 @@ public class Pull : AbilityPower
         powerUPParticles.Play();
         yield return new WaitForSeconds(5f);
         powerUPEndParticles.Play();
-
+        CameraShake.Instance.ShakeCamera(CameraShakeValues.powerUPEndIntensity, CameraShakeValues.powerUPEndDuration);
     }
     
     void ChargeUpSound()
     {
         audioSourceChargedUp.pitch = UnityEngine.Random.Range(1f, 1.5f);
         audioSourceChargedUp.Play();
+    }
+    
+    void PullSounds()
+    {
+        AudioClip clip = pullSounds[UnityEngine.Random.Range(0, pullSounds.Length)];
+        audioSourcePullSounds.PlayOneShot(clip);
+    }
+
+    void AirPullSounds()
+    {
+        AudioClip clip = airPullSounds[UnityEngine.Random.Range(0, airPullSounds.Length)];
+        audioSourceAirPullSounds.pitch = Random.Range(0.8f, 0.9f);
+        audioSourceAirPullSounds.volume = (2f);
+        audioSourceAirPullSounds.PlayOneShot(clip);
     }
 }

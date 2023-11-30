@@ -7,6 +7,9 @@ public class DeathGameChange : MonoBehaviour
 
     private IEnumerator suddenDeathNumerator;
 
+    public ParticleSystem damageParticles;
+    public AudioManager audioManager;
+    
     //Varibles declared
     [Header("Pusher Settings")]
     public GameObject Pusher;
@@ -22,8 +25,10 @@ public class DeathGameChange : MonoBehaviour
     
 
     [Header("SuddenDeath Settings")]
-    public static float SuddenDeathTimer = 20; // deside when sudden Death change to happen
+    public static float SuddenDeathTimer = 90; // deside when sudden Death change to happen
     public static bool suddenDeathTriggered = false;
+    
+    
     
 
     // Start is called before the first frame update
@@ -32,6 +37,14 @@ public class DeathGameChange : MonoBehaviour
         suddenDeathNumerator = SuddenDeath();
         StartCoroutine(suddenDeathNumerator);
         suddenDeathTriggered = false;
+
+        //Sets the DamageTriggerParticles' Rate over Time start value
+        var emissionRate = damageParticles.emission;
+        emissionRate.rateOverTime = 60;
+
+        //Sets the DamageTriggerParticles' Speed Modifer start value
+        var speedModifying = damageParticles.velocityOverLifetime;
+        speedModifying.speedModifier = 0.8f;
     }
 
     private void Update()
@@ -63,6 +76,18 @@ public class DeathGameChange : MonoBehaviour
         Push_totalHealthbar.fillAmount = 0.0865f; // 1/12 = 0.0833 allowing only 1 totalHearth showing. little higher since else it wouldnt show whole heart
         Pull_totalHealthbar.fillAmount = 0.0865f;
         Debug.Log("Sudden Death!");
+        
+        //Changes the DamageTriggerParticles' Rate over Time
+        var emission = damageParticles.emission;
+        emission.rateOverTime = 140;
+        
+        //Changes the DamageTriggerParticles' Speed Modifer
+        var speedModifying = damageParticles.velocityOverLifetime;
+        speedModifying.speedModifier = 1.2f;
+        
+        audioManager.StopOldBackground();
+        audioManager.StartSuddenDeathMusic();
+        
     }
 
 }
