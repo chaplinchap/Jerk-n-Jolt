@@ -6713,6 +6713,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6233422998513018790, guid: b5a9d50bedd137d42bed75c095f370bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6501102529685730784, guid: b5a9d50bedd137d42bed75c095f370bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.509367

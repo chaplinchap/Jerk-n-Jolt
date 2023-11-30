@@ -49,6 +49,7 @@ public class PullerAnimator : AnimationsParent
     {
         if (Time.time < lockStateTimer) return currentState;
 
+        //if (WhenGameIsOverBool!!!) return LockState(WinAnim(), 2f);
 
         if (isRespawing) return LockState(spawning, GetRespawnDuration() + 0.1f);
         if (stunScript.IsStunned()) return Stun();
