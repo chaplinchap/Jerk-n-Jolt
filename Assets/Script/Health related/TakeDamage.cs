@@ -35,6 +35,10 @@ public class TakeDamage : MonoBehaviour
         {
             PullerDeathSounds();
             collision.GetComponent<HealthV2>().TakeDamage(damage); //The hit player takes damage
+
+            Vector3 deathPoint = collision.transform.position;
+            Instantiate(DeathCircle, deathPoint, Quaternion.Euler(0, 0, Random.Range(0f, 360f)));
+
             CameraShake.Instance.ShakeCamera(CameraShakeValues.deathIntensity, CameraShakeValues.deathDuration);
         }  
     }
