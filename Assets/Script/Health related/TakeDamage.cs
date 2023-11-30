@@ -53,7 +53,7 @@ public class TakeDamage : MonoBehaviour
     void PullerDeathSounds()
     {
         AudioClip clip = pullerDeathSounds[Random.Range(0, pullerDeathSounds.Length)];
-        audioSource.pitch = Random.Range(1.1f, 1.3f);
+        audioSource.pitch = Random.Range(1.2f, 1.4f);
         audioSource.PlayOneShot(clip);
     }
 

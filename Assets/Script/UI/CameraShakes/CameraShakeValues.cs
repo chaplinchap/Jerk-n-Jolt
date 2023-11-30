@@ -31,7 +31,7 @@ public static class CameraShakeValues
     public static readonly float suddenDeathIntensity = 100f;
     public static readonly float suddenDeathDuration = .5f;
     public static readonly float suddenAfterDeathIntensity = 5f;
-    public static readonly float suddenAfterDeathDuration = 7f;
+    public static readonly float suddenAfterDeathDuration = 9f;
 
 
 

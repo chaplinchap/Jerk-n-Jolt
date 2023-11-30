@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +26,7 @@ public class DeathGameChange : MonoBehaviour
     
 
     [Header("SuddenDeath Settings")]
-    public static float SuddenDeathTimer = 15; // deside when sudden Death change to happen
+    public static float SuddenDeathTimer = 90; // deside when sudden Death change to happen
     public static bool suddenDeathTriggered = false;
     
     
@@ -85,6 +86,7 @@ public class DeathGameChange : MonoBehaviour
         var speedModifying = damageParticles.velocityOverLifetime;
         speedModifying.speedModifier = 1.2f;
         
+        audioManager.PlaySFX(audioManager.suddenDeathSound);
         audioManager.StopOldBackground();
         audioManager.StartSuddenDeathMusic();
         

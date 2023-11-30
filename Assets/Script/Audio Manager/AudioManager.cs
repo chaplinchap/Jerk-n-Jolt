@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip respawn;
     public AudioClip countDown;
     public AudioClip suddenDeathMusic;
+    public AudioClip suddenDeathSound;
 
     void Start()
     {

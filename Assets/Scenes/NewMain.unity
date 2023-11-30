@@ -152,9 +152,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
+      propertyPath: heartUP
+      value: 
+      objectReference: {fileID: 8300000, guid: 1a9cb1c1283ea3e46a1f28bb3100cb7e, type: 3}
+    - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
       propertyPath: suddenDeathMusic
       value: 
       objectReference: {fileID: 8300000, guid: 07914a5554ae8b74fb11e0664b3b8dd0, type: 3}
+    - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
+      propertyPath: suddenDeathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: eb517f59a3a28e2429cafe9d06f7da8d, type: 3}
     - target: {fileID: 4544540692550397746, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7212,11 +7220,11 @@ MonoBehaviour:
   player1: {fileID: 1388173218}
   text: {fileID: 1101449635}
   cameraAnchor: {fileID: 2123937491}
-  options: {fileID: 0}
+  options: {fileID: 1466747023}
   float1_Animation: {fileID: 775111226}
   float2_Animation: {fileID: 318452311}
   winnerText_Animation: {fileID: 1101449637}
-  options_Animation: {fileID: 0}
+  options_Animation: {fileID: 1588685675}
   GameIsOverButton1_Animation: {fileID: 1195812518}
   GameIsOverButton2_Animation: {fileID: 1100201347}
   virtualCamera: {fileID: 1388336575}
@@ -9000,7 +9008,7 @@ PrefabInstance:
       objectReference: {fileID: 1529921312702772813, guid: 69f237fbe08bc3e4386e7698869e389f, type: 3}
     - target: {fileID: 8295961827963234806, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: pullerDeathSounds.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8295961827963234806, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: pusherDeathSounds.Array.size
@@ -9009,7 +9017,7 @@ PrefabInstance:
     - target: {fileID: 8295961827963234806, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: pullerDeathSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 309e88c302e11894bbf421c8ee1cecb1, type: 3}
+      objectReference: {fileID: 8300000, guid: ea84a4653dc47b648a4fb318da16a86b, type: 3}
     - target: {fileID: 8295961827963234806, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: pullerDeathSounds.Array.data[1]
       value: 
