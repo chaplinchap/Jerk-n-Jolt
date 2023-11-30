@@ -38,8 +38,9 @@ public class Ghost : MonoBehaviour
         if (isGhost) 
         {
             StartCoroutine(TurnGhost(ghostDuration));
-            
         }
+        else
+            StopCoroutine(TurnGhost(ghostDuration));
     }
 
     public IEnumerator TurnGhost(float duration) 

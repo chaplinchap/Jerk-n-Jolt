@@ -9,6 +9,8 @@ public class TakeDamage : MonoBehaviour
     private AudioSource audioSource;
     //private AudioManager audioManager;
 
+    [SerializeField] private GameObject DeathCircle;
+
 
     private void Awake()
     {
@@ -20,13 +22,21 @@ public class TakeDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) //Trigger on collision
     {
-        
-        if(collision.CompareTag("Pusher") || collision.CompareTag("Puller")) //When one of the player is hit 
+
+        if (collision.CompareTag("Pusher") || collision.CompareTag("Puller")) //When one of the player is hit 
         {
             DeathSounds();
             collision.GetComponent<HealthV2>().TakeDamage(damage); //The hit player takes damage
+            
+            Vector3 deathPoint = collision.transform.position;
+            Instantiate(DeathCircle, deathPoint, Quaternion.Euler(0, 0, Random.Range(0f, 360f)));
+            
             CameraShake.Instance.ShakeCamera(CameraShakeValues.deathIntensity, CameraShakeValues.deathDuration);
-        }   
+        }
+
+
+
+
     }
 
     void DeathSounds()

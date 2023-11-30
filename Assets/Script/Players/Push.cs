@@ -54,12 +54,15 @@ public class Push : AbilityPower
     //private float pitchValue;
     //private float timeBox;
     //private float audioCoolDown;
-    
+
     //Flash
     //public GameObject puller;
     //public float flashTime = 0.075f;
 
-    
+    [SerializeField] private GameObject hitCircle;
+    [SerializeField] private GameObject chargeCircle;
+
+
     /*public void SetPitch()
     {
         audioMixer.SetFloat("ExposedPitch", pitchValue);
@@ -170,6 +173,8 @@ public class Push : AbilityPower
             StartCoroutine(PullScript.SetIsHit());
             //audioManager.PlaySFX(audioManager.push);
             PushSounds();
+
+            Instantiate(hitCircle, thePuller.transform.position, Quaternion.Euler(0,0,Random.Range(0f, 360f)));
             CameraShake.Instance.ShakeCamera(CameraShakeValues.normalAbilityIntensity, CameraShakeValues.normalAbilityDuration);
         }
 
@@ -179,8 +184,9 @@ public class Push : AbilityPower
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
             audioManager.PlaySFX(audioManager.chargePush);
-
             StartCoroutine(PullScript.SetIsHit());
+
+            Instantiate(chargeCircle, thePuller.transform.position, Quaternion.identity);
             CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity, CameraShakeValues.chargedAbilityDuration);
         }
 

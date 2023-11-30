@@ -57,6 +57,10 @@ public class Pull : AbilityPower
 
     private IEnumerator powerupParticle;
 
+    [SerializeField] private GameObject hitCircle;
+    [SerializeField] private GameObject chargeCircle;
+    
+
 
 
     /*public void SetPitch()
@@ -170,6 +174,10 @@ public class Pull : AbilityPower
             ifSuccesChargeTime = false;
             StartCoroutine(PushScript.SetIsHit());
             audioManager.PlaySFX(audioManager.pull);
+
+
+            Instantiate(hitCircle, thePusher.transform.position, Quaternion.Euler(0, 0, Random.Range(0f, 360f)));
+
             CameraShake.Instance.ShakeCamera(CameraShakeValues.normalAbilityIntensity, CameraShakeValues.normalAbilityDuration);
         }
 
@@ -178,9 +186,11 @@ public class Pull : AbilityPower
             ThePull(chargedPull);
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
+            StartCoroutine(PushScript.SetIsHit());
             audioManager.PlaySFX(audioManager.chargePull);
 
-            StartCoroutine(PushScript.SetIsHit());
+            Instantiate(chargeCircle, thePusher.transform.position, Quaternion.identity);
+
             CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity, CameraShakeValues.chargedAbilityDuration);
         }
     }

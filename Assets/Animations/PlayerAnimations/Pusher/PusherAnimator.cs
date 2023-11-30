@@ -13,13 +13,17 @@ public class PusherAnimator : AnimationsParent
     private readonly int runningCharge = Animator.StringToHash("PusherRunningCharge");
     private readonly int jumpingCharge = Animator.StringToHash("PusherJumpCharge");
     private readonly int jumpingAttack = Animator.StringToHash("PusherJumpAttack");
-    private readonly int falling = Animator.StringToHash("PusherFalling");
     private readonly int stun = Animator.StringToHash("PusherStun");
     private readonly int dashing = Animator.StringToHash("PusherDashing");
     private readonly int runningChargePenalty = Animator.StringToHash("PusherPenaltyCharge");
-    private readonly int death = Animator.StringToHash("PuskerDeath");
-
+    private readonly int death = Animator.StringToHash("PusherDeath");
     private readonly int spawning = Animator.StringToHash("PusherSpawning");
+    private readonly int hit = Animator.StringToHash("PusherFalling");
+    private readonly int hit2 = Animator.StringToHash("PusherHit");
+    private readonly int win1 = Animator.StringToHash("PusherWin");
+    private readonly int win2 = Animator.StringToHash("PusherWin2");
+
+
 
     private float lockStateTimer;
 
@@ -50,7 +54,7 @@ public class PusherAnimator : AnimationsParent
 
         if (isRespawing) return LockState(spawning, GetRespawnDuration() + 0.1f);
         if (stunScript.IsStunned()) return Stun();
-        if (abilityPowerScript.IsHit()) return LockState(falling, abilityPowerScript.GetHitDuration());
+        if (abilityPowerScript.IsHit()) return LockState(HitAnim(), abilityPowerScript.GetHitDuration() + 0.1f);
         if (isAttacking) return movementScript.IsGrounded() ? LockState(attack, attackDuration + 0.1f) : LockState(jumpingAttack, attackDuration + 0.1f);
         if (dashScript.IsDashing()) return dashing;
 
@@ -65,6 +69,45 @@ public class PusherAnimator : AnimationsParent
         {
             lockStateTimer = Time.time + time;
             return state;
+        }
+    }
+
+
+    private int HitAnim()
+    {
+
+        int random = Random.Range(0, 2);
+
+        switch (random)
+        {
+
+            case 0:
+                return hit;
+
+            case 1:
+                return hit2;
+
+            default:
+                return 0;
+        }
+    }
+
+    private int WinAnim()
+    {
+
+        int random = Random.Range(0, 2);
+
+        switch (random)
+        {
+
+            case 0:
+                return win1;
+
+            case 1:
+                return win2;
+
+            default:
+                return 0;
         }
     }
 
