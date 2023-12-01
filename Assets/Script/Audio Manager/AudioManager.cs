@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource suddenDeathMusicSource;
 
     [Header("Audio Clip")] 
-    public AudioClip background;
+    public AudioClip[] background;
     public AudioClip chargePush;
     public AudioClip chargePull;
     public AudioClip powerUP;
@@ -26,8 +26,8 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        musicSource.clip = background;
-        musicSource.Play();
+        AudioClip clip = background[UnityEngine.Random.Range(0, background.Length)];
+        musicSource.PlayOneShot(clip);
 
         countDownSource.clip = countDown;
         countDownSource.Play();
