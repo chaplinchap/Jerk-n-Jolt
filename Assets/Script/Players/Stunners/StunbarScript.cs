@@ -10,10 +10,10 @@ public class StunbarScript : MonoBehaviour
 
     private float fill = 0f; 
 
-    private void Start() 
+    private void Start()
     {
+        GetComponent<StunbarScript>().enabled = true;
         StunImage = GetComponent<Image>();
-
         UpdateGradiantAmount(); 
     }
 
