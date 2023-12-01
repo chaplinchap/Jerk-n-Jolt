@@ -93,6 +93,7 @@ public class Pull : AbilityPower
 
     private void Update()
     {
+        hasPressedAbilityInGhostPuller = PressAbilityDown();
 
         if (Respawn.pullerIsDead)
         {

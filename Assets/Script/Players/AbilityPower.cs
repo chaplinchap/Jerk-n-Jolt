@@ -18,6 +18,9 @@ public class AbilityPower : MonoBehaviour
     protected bool upAbilityPress;
     private bool hasPressedAbility;
 
+    public static bool hasPressedAbilityInGhostPusher;
+    public static bool hasPressedAbilityInGhostPuller;
+
     public float minChargingTime = 2f;
     public float maxChargeingTime = 4;
 
@@ -41,13 +44,13 @@ public class AbilityPower : MonoBehaviour
         hasPressedAbility = false;
     }
 
-
+   
 
     protected void KeyInputs() 
     {
         downAbilityPress = PressAbilityDown();
 
-        isAbilityPress = PressAbility();
+        isAbilityPress = PressAbilityHold();
       
         upAbilityPress = PressAbilityUp();
 
@@ -71,7 +74,7 @@ public class AbilityPower : MonoBehaviour
         return result;
     }
 
-    public bool PressAbility() {
+    public bool PressAbilityHold() {
 
         bool result;
         
@@ -136,6 +139,7 @@ public class AbilityPower : MonoBehaviour
         else if (isAbilityPress)
         {
             result = true;
+            
         }
 
         return result;

@@ -88,6 +88,7 @@ public class Push : AbilityPower
 
     private void Update()
     {
+        hasPressedAbilityInGhostPusher = PressAbilityDown();
 
         if (Respawn.pusherIsDead)
         {
@@ -98,6 +99,8 @@ public class Push : AbilityPower
         {
             AirPushSounds();
         }
+
+       
 
         /*
         if (Input.GetKeyDown(pushOnPress))
@@ -141,6 +144,9 @@ public class Push : AbilityPower
     
     private void FixedUpdate()
     {
+
+
+
        ChargePush(1f, extraForce);  
        
        if (chargeTrackingTimer > minChargingTime)

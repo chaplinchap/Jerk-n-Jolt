@@ -63,7 +63,7 @@ public class Respawn : MonoBehaviour
             pusher.gameObject.SetActive(false);
             //StartCoroutine(DeathAnimationPusher());
             StartCoroutine(RespawnPusher());   
-            Debug.Log("Player has fallen out");
+           
            
         }
 
@@ -74,7 +74,7 @@ public class Respawn : MonoBehaviour
             puller.gameObject.SetActive(false);
             //StartCoroutine(DeathAnimationPuller());
             StartCoroutine(RespawnPuller());   
-            Debug.Log("Player has fallen out");
+            
             
         }
 
@@ -95,7 +95,7 @@ public class Respawn : MonoBehaviour
         
         yield return new WaitForSeconds(respawnDelay);
         Spawn(pusher, selectedSpawnPoint);
-        pusherGhost.isGhost = true;
+        pusherGhost.isGhostPusher = true;
         pusherIsDead = false;
 
         // If player has more health it will spawn
@@ -113,7 +113,7 @@ public class Respawn : MonoBehaviour
         
         // If player has no more health left it will not spawn
         else {
-            Debug.Log("The player is dead and will not spawn");
+            
         }
     }
 
@@ -124,7 +124,7 @@ public class Respawn : MonoBehaviour
 
         yield return new WaitForSeconds(respawnDelay);
         Spawn(puller, selectedSpawnPoint);
-        pullerGhost.isGhost = true;
+        pullerGhost.isGhostPuller = true;
         pullerIsDead = false;
 
         // If player has more health it will spawn
@@ -136,14 +136,14 @@ public class Respawn : MonoBehaviour
             TurnScripts(false, 1);
             yield return null;
             TurnScripts(true, 1);
-            Debug.Log("Player Spawns");
+            
             audioManager.PlaySFX(audioManager.respawn);
             PullerRespawnParticles();
         }
 
         // If player has no more health left it will not spawn
         else {
-            Debug.Log("The player is dead and will not spawn");
+            
         }  
     }
 

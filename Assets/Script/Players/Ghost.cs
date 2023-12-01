@@ -9,7 +9,9 @@ public class Ghost : MonoBehaviour
     private Color startColor; 
     private Color ghostColor;
     [SerializeField] private float ghostAlpha = 0.4f;
-    public bool isGhost = false;
+    public bool isGhostPusher = false;
+    public bool isGhostPuller = false;
+
     [SerializeField] private float ghostDuration = 3.0f;
     // private bool canTurnGhost;
 
@@ -40,7 +42,7 @@ public class Ghost : MonoBehaviour
 
     private void Update()
     {
-        if (isGhost && !ghostIsTriggeredOnce)
+        if (isGhostPusher && !ghostIsTriggeredOnce || isGhostPuller && !ghostIsTriggeredOnce)
         {
             turnGhostRoutine = TurnGhost(ghostDuration);
             ghostIsTriggeredOnce = true;
@@ -50,6 +52,24 @@ public class Ghost : MonoBehaviour
         else
             StopCoroutine(turnGhostRoutine);
         */
+
+        if(AbilityPower.hasPressedAbilityInGhostPusher && isGhostPusher)
+        {
+            Debug.Log("Stop ghost mode");
+            isGhostPusher = false;
+            StopCoroutine(turnGhostRoutine);
+            TurnGhostState(startColor, defaultLayer);
+            otherPlayerCollider.gameObject.layer = defaultLayer;
+        }
+
+        if (AbilityPower.hasPressedAbilityInGhostPuller && isGhostPuller)
+        {
+            Debug.Log("Stop ghost mode");
+            isGhostPusher = false;
+            StopCoroutine(turnGhostRoutine);
+            TurnGhostState(startColor, defaultLayer);
+            otherPlayerCollider.gameObject.layer = defaultLayer;
+        }
     }
 
     public IEnumerator TurnGhost(float duration) 
@@ -60,7 +80,8 @@ public class Ghost : MonoBehaviour
         yield return new WaitForSeconds(duration);
         TurnGhostState(startColor, defaultLayer);
         otherPlayerCollider.gameObject.layer = defaultLayer;
-        isGhost = false;
+        isGhostPusher = false;
+        isGhostPuller = false;
         ghostIsTriggeredOnce = false;
    
         

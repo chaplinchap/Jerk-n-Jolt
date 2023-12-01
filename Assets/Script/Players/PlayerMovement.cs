@@ -197,20 +197,20 @@ public class PlayerMovement : MonoBehaviour
         if (!IsGrounded() && Input.GetKey(throughButton))
         {
             rb.AddForce(Vector2.down * fastFallSpeed, ForceMode2D.Force);
-            Debug.Log("Fast fall");
+            
         }
 
 
-        if (Input.GetKeyDown(throughButton) && IsGrounded() && !ghostScript.isGhost)
+        if (PlayerCanIgnoreCollision())
         {
             playerCollider.gameObject.layer = throughGround;
             StartCoroutine(WaitTime());
         }
 
         
-        if (Input.GetKeyDown(throughButton) && IsGrounded() && ghostScript.isGhost)
+        if (GhostCanIgnoreCollision())
         {
-            Debug.Log("Ghost can go through");
+          
             playerCollider.gameObject.layer = throughGround;
             StartCoroutine(WaitTimeGhost(time));
         }
@@ -237,6 +237,48 @@ public class PlayerMovement : MonoBehaviour
                 JumpSound();
             }
         }
+    }
+
+    public bool GhostCanIgnoreCollision ()
+    {
+        bool result;
+
+        if (Input.GetKeyDown(throughButton) && IsGrounded() && ghostScript.isGhostPusher)
+        {
+            result = true;
+        }
+
+        if(Input.GetKeyDown(throughButton) && IsGrounded() && ghostScript.isGhostPuller)
+        {
+            result = true;
+        }
+
+        else
+        {
+            result = false;
+        }
+        return result;
+    }
+
+    public bool PlayerCanIgnoreCollision()
+    {
+        bool result;
+
+        if (Input.GetKeyDown(throughButton) && IsGrounded() && !ghostScript.isGhostPusher)
+        {
+            result = true;
+        }
+
+        if (Input.GetKeyDown(throughButton) && IsGrounded() && !ghostScript.isGhostPuller)
+        {
+            result = true;
+        }
+
+        else
+        {
+            result = false;
+        }
+        return result;
     }
 
     private IEnumerator WaitTimeGhost(float timeGhost)
