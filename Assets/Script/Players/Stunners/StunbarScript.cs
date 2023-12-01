@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,12 @@ public class StunbarScript : MonoBehaviour
     private void Start()
     {
         GetComponent<StunbarScript>().enabled = true;
-        StunImage = GetComponent<Image>();
         UpdateGradiantAmount(); 
+    }
+
+    private void Awake()
+    {
+        StunImage = GetComponent<Image>();
     }
 
     public void UpdateStunBar(float chargeTime, float timeTillStun) {
