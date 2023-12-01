@@ -9181,6 +9181,10 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 5.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2723409690841433133, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5725731760217337183, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Name
       value: FadingFloor
@@ -9715,7 +9719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[0].y
-      value: 15.5
+      value: 15.8
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[1].x
@@ -9723,7 +9727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[1].y
-      value: 15.5
+      value: 15.8
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[2].x
@@ -9731,7 +9735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[2].y
-      value: 1.5
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[3].x
@@ -9739,7 +9743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[3].y
-      value: 1.5
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[4].x
@@ -9747,7 +9751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[4].y
-      value: -12.5
+      value: -12.2
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[5].x
@@ -9755,7 +9759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[5].y
-      value: -12.5
+      value: -12.2
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: spawnAreas.Array.data[6].x

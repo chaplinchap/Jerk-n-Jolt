@@ -13,14 +13,14 @@ public class Ghost : MonoBehaviour
     public bool isGhostPuller = false;
 
     [SerializeField] private float ghostDuration = 3.0f;
-    // private bool canTurnGhost;
+    
 
     private bool ghostIsTriggeredOnce = false;
 
 
     private IEnumerator turnGhostRoutine;
     private BoxCollider2D playerCollider;
-    private BoxCollider2D otherPlayerCollider;
+   // private BoxCollider2D otherPlayerCollider;
     public GameObject otherPlayer;
 
     private int defaultLayer = 0;
@@ -31,7 +31,7 @@ public class Ghost : MonoBehaviour
     {
 
         playerCollider = GetComponent<BoxCollider2D>();
-        otherPlayerCollider = otherPlayer.GetComponent<BoxCollider2D>();
+       // otherPlayerCollider = otherPlayer.GetComponent<BoxCollider2D>();
 
         startColor = playerSprites[0].color;
         ghostColor = playerSprites[0].color;
@@ -59,7 +59,7 @@ public class Ghost : MonoBehaviour
             isGhostPusher = false;
             StopCoroutine(turnGhostRoutine);
             TurnGhostState(startColor, defaultLayer);
-            otherPlayerCollider.gameObject.layer = defaultLayer;
+           // otherPlayerCollider.gameObject.layer = defaultLayer;
         }
 
         if (AbilityPower.hasPressedAbilityInGhostPuller && isGhostPuller)
@@ -68,7 +68,7 @@ public class Ghost : MonoBehaviour
             isGhostPusher = false;
             StopCoroutine(turnGhostRoutine);
             TurnGhostState(startColor, defaultLayer);
-            otherPlayerCollider.gameObject.layer = defaultLayer;
+          //  otherPlayerCollider.gameObject.layer = defaultLayer;
         }
     }
 
@@ -76,10 +76,10 @@ public class Ghost : MonoBehaviour
     {
       
         TurnGhostState(ghostColor, ghostLayer);
-        otherPlayerCollider.gameObject.layer = ghostLayer;     
+       // otherPlayerCollider.gameObject.layer = ghostLayer;     
         yield return new WaitForSeconds(duration);
         TurnGhostState(startColor, defaultLayer);
-        otherPlayerCollider.gameObject.layer = defaultLayer;
+       // otherPlayerCollider.gameObject.layer = defaultLayer;
         isGhostPusher = false;
         isGhostPuller = false;
         ghostIsTriggeredOnce = false;
