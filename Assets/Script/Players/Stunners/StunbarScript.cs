@@ -13,7 +13,6 @@ public class StunbarScript : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<StunbarScript>().enabled = true;
         UpdateGradiantAmount(); 
     }
 
