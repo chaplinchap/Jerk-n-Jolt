@@ -47,7 +47,7 @@ public class AbilityPower : MonoBehaviour
     {
         downAbilityPress = PressAbilityDown();
 
-        isAbilityPress = PressAbility();
+        isAbilityPress = PressAbilityHold();
       
         upAbilityPress = PressAbilityUp();
 
@@ -71,7 +71,7 @@ public class AbilityPower : MonoBehaviour
         return result;
     }
 
-    public bool PressAbility() {
+    public bool PressAbilityHold() {
 
         bool result;
         
