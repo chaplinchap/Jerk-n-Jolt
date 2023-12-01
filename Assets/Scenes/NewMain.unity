@@ -8785,7 +8785,7 @@ PrefabInstance:
       objectReference: {fileID: 8182474207030087591, guid: fe1be3976af23e34fadd3f00eb4cf8f9, type: 3}
     - target: {fileID: 847568949796497890, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: abilityPress
-      value: 256
+      value: 109
       objectReference: {fileID: 0}
     - target: {fileID: 847568949796497890, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: chargeCircle
@@ -8869,15 +8869,15 @@ PrefabInstance:
       objectReference: {fileID: 318452310}
     - target: {fileID: 3527094187740927622, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: jumpUp
-      value: 264
+      value: 273
       objectReference: {fileID: 0}
     - target: {fileID: 3527094187740927622, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: moveLeft
-      value: 260
+      value: 276
       objectReference: {fileID: 0}
     - target: {fileID: 3527094187740927622, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: moveRight
-      value: 262
+      value: 275
       objectReference: {fileID: 0}
     - target: {fileID: 3527094187740927622, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: fastFallSpeed
@@ -8885,7 +8885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3527094187740927622, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: throughButton
-      value: 261
+      value: 274
       objectReference: {fileID: 0}
     - target: {fileID: 3527094187740927622, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: audioSourceJump
