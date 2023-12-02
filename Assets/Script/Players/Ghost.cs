@@ -11,7 +11,7 @@ public class Ghost : MonoBehaviour
     [SerializeField] private float ghostAlpha = 0.4f;
     public bool isGhostPusher = false;
     public bool isGhostPuller = false;
-  //  public float minGhostTime = 1;
+    public float minGhostDuration = 1.5f;
 
     [SerializeField] private float ghostDuration = 3.0f;
 
@@ -21,6 +21,7 @@ public class Ghost : MonoBehaviour
 
 
     private IEnumerator turnGhostRoutine;
+    private IEnumerator minGhostRoutine;
     private BoxCollider2D playerCollider;
    // private BoxCollider2D otherPlayerCollider;
     public GameObject otherPlayer;
@@ -47,7 +48,9 @@ public class Ghost : MonoBehaviour
         if (isGhostPusher && !ghostIsTriggeredOnce || isGhostPuller && !ghostIsTriggeredOnce)
         {
             turnGhostRoutine = TurnGhost(ghostDuration);
+            minGhostRoutine = MinGhostDuration(minGhostDuration);
             ghostIsTriggeredOnce = true;
+            StartCoroutine(minGhostRoutine);
             StartCoroutine(turnGhostRoutine);
          
         }
@@ -56,24 +59,28 @@ public class Ghost : MonoBehaviour
             StopCoroutine(turnGhostRoutine);
         */
 
-        if(AbilityPower.hasPressedAbilityInGhostPusher && isGhostPusher)
+        if(AbilityPower.hasPressedAbilityInGhostPusher && isGhostPusher && canExitGhost)
         {
             Debug.Log("Stop ghost mode");
             isGhostPusher = false;
             StopCoroutine(turnGhostRoutine);
             TurnGhostState(startColor, defaultLayer);
             ghostIsTriggeredOnce = false;
+
+            canExitGhost = false;
             
            // otherPlayerCollider.gameObject.layer = defaultLayer;
         }
 
-        if (AbilityPower.hasPressedAbilityInGhostPuller && isGhostPuller)
+        if (AbilityPower.hasPressedAbilityInGhostPuller && isGhostPuller && canExitGhost)
         {
             Debug.Log("Stop ghost mode");
             isGhostPuller = false;
             StopCoroutine(turnGhostRoutine);
             TurnGhostState(startColor, defaultLayer);
             ghostIsTriggeredOnce = false;
+
+            canExitGhost = false;
             
           //  otherPlayerCollider.gameObject.layer = defaultLayer;
         }
@@ -84,16 +91,22 @@ public class Ghost : MonoBehaviour
       
         TurnGhostState(ghostColor, ghostLayer);       
        // otherPlayerCollider.gameObject.layer = ghostLayer;     
-        yield return new WaitForSeconds(duration );
+        yield return new WaitForSeconds(duration);
         TurnGhostState(startColor, defaultLayer);
        // otherPlayerCollider.gameObject.layer = defaultLayer;
         isGhostPusher = false;
         isGhostPuller = false;
         ghostIsTriggeredOnce = false;
-   
-        
+        canExitGhost = false;
     }
 
+  
+
+    private IEnumerator MinGhostDuration (float minDuration)
+    {
+        yield return new WaitForSeconds(minDuration);
+        canExitGhost = true;
+    }
  
     private void TurnGhostState(Color color, int layer) 
     {
