@@ -11,10 +11,12 @@ public class Ghost : MonoBehaviour
     [SerializeField] private float ghostAlpha = 0.4f;
     public bool isGhostPusher = false;
     public bool isGhostPuller = false;
+  //  public float minGhostTime = 1;
 
     [SerializeField] private float ghostDuration = 3.0f;
-    
 
+
+    public bool canExitGhost = false;
     private bool ghostIsTriggeredOnce = false;
 
 
@@ -47,6 +49,7 @@ public class Ghost : MonoBehaviour
             turnGhostRoutine = TurnGhost(ghostDuration);
             ghostIsTriggeredOnce = true;
             StartCoroutine(turnGhostRoutine);
+         
         }
         /*
         else
@@ -59,15 +62,19 @@ public class Ghost : MonoBehaviour
             isGhostPusher = false;
             StopCoroutine(turnGhostRoutine);
             TurnGhostState(startColor, defaultLayer);
+            ghostIsTriggeredOnce = false;
+            
            // otherPlayerCollider.gameObject.layer = defaultLayer;
         }
 
         if (AbilityPower.hasPressedAbilityInGhostPuller && isGhostPuller)
         {
             Debug.Log("Stop ghost mode");
-            isGhostPusher = false;
+            isGhostPuller = false;
             StopCoroutine(turnGhostRoutine);
             TurnGhostState(startColor, defaultLayer);
+            ghostIsTriggeredOnce = false;
+            
           //  otherPlayerCollider.gameObject.layer = defaultLayer;
         }
     }
@@ -75,9 +82,9 @@ public class Ghost : MonoBehaviour
     public IEnumerator TurnGhost(float duration) 
     {
       
-        TurnGhostState(ghostColor, ghostLayer);
+        TurnGhostState(ghostColor, ghostLayer);       
        // otherPlayerCollider.gameObject.layer = ghostLayer;     
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(duration );
         TurnGhostState(startColor, defaultLayer);
        // otherPlayerCollider.gameObject.layer = defaultLayer;
         isGhostPusher = false;
@@ -87,7 +94,7 @@ public class Ghost : MonoBehaviour
         
     }
 
-
+ 
     private void TurnGhostState(Color color, int layer) 
     {
         
