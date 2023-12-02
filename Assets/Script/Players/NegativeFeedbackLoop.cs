@@ -13,6 +13,8 @@ public class NegativeFeedbackLoop : MonoBehaviour
     private float startingForce;
     private float startingHealth;
 
+    public static bool healthChanged;
+
     void Start()
     {
         healthScript = GetComponent<HealthV2>();
@@ -21,6 +23,7 @@ public class NegativeFeedbackLoop : MonoBehaviour
         
         startingForce = GetForce();
         startingHealth = GetHealth();
+
     }
 
     void Update()
@@ -28,10 +31,14 @@ public class NegativeFeedbackLoop : MonoBehaviour
         if (startingHealth != GetHealth()) {
 
             //CameraShake.Instance.ShakeCamera(10f, .5f);
-
-            SetForce();
+            healthChanged = true;
+            Invoke("SetForce", .5f);
             startingHealth = GetHealth();
+             
         }
+
+        else
+        { healthChanged = false; }
     }
 
 
