@@ -56,7 +56,7 @@ public class TriggerApplyPower : ConsumableParentObject
 
         try
         {
-            if (Respawn.pullerIsDead)
+            if (Respawn.pullerIsDead || NegativeFeedbackLoopPuller.healthChangedPuller)
             {
 
                 StopCoroutine(buffDurationPuller);
@@ -70,7 +70,7 @@ public class TriggerApplyPower : ConsumableParentObject
 
         try
         {
-            if (Respawn.pusherIsDead)
+            if (Respawn.pusherIsDead || NegativeFeedbackLoopPusher.healthChangedPusher)
             {
                 StopCoroutine(buffDurationPusher);
                 StopCoroutine(powerUpParticlesPusher);

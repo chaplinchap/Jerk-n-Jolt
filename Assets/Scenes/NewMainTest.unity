@@ -5702,6 +5702,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419a7c496c68f8e4a9bc53dad9c5c3f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1449906334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449906316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7443cb9611e2c8540a7e14ce2a287092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increaseMultiplier: 1.2
 --- !u!198 &1452673251 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 96842725083622579, guid: 4110c0065584b1646b21524508cf157e, type: 3}
@@ -8382,10 +8395,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2 Pull
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2094154324210754525, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7831007007408972477, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1449906334}
   m_SourcePrefab: {fileID: 100100000, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
 --- !u!1001 &2853931416465516403
 PrefabInstance:
@@ -9026,7 +9043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: minSpawnDelay
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: suddenDeathObject
