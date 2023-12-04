@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -5,9 +6,11 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    public List<TextMeshProUGUI> player1Score;
+    public List<TextMeshProUGUI> player2Score;
 
-    public TextMeshProUGUI player1Score;
-    public TextMeshProUGUI player2Score;
+    //public TextMeshProUGUI player1Score;
+    //public TextMeshProUGUI player2Score;
 
     public int playerScore1 = 0;
     public int playerScore2 = 0;
@@ -16,23 +19,24 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-
         playerScore1 = PlayerPrefs.GetInt("PlayerScore1", 0);
         playerScore2 = PlayerPrefs.GetInt("PlayerScore2", 0);
         UpdateScoreText();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UpdateScoreText()
     {
-        player1Score.text = "Pusher: " + playerScore1.ToString();
-        player2Score.text = "Puller: " + playerScore2.ToString();
+        //player1Score.text = "Pusher : " + playerScore1.ToString();
+        //player2Score.text = "Puller   : " + playerScore2.ToString();
+
+        foreach (var score in player1Score)
+        {
+            score.text = "Pusher : " + playerScore1.ToString();
+        }
+
+        foreach (var score in player2Score)
+        {
+            score.text = "Puller : " + playerScore2.ToString();
+        }
         PlayerPrefs.Save();
     }
 
