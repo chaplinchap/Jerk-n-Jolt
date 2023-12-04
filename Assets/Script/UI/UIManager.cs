@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 using Cinemachine;
+using Unity.VisualScripting.ReorderableList;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,18 +27,28 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI text;
     public GameObject cameraAnchor;
 
-    public GameObject options; // Used to show the options to change if you want to reset score
+    public GameObject options_Image; // Used to show the options to change if you want to reset score
 
 
 
     //Animations!!
     [Header("Animations")]
+
+
+    [Header("PauseMenu Animations")]
+    public Animator pauseOptions_Animation;
+    public Animator pauseMenu_Animation;
+
+    [Header("Game Is Over Animations")]
+    public Animator Options_Animation;
+    public Animator GameIsOver_Animation;
+    public Animator GameIsOverButton1_Animation;
+    public Animator GameIsOverButton2_Animation;
     public Animator float1_Animation;
     public Animator float2_Animation;
     public Animator winnerText_Animation;
-    public Animator options_Animation;
-    public Animator GameIsOverButton1_Animation;
-    public Animator GameIsOverButton2_Animation;
+    public Animator options_Animation; 
+    public Animator showHide_Options;
 
     public CinemachineVirtualCamera virtualCamera;
     
@@ -164,10 +175,13 @@ public class UIManager : MonoBehaviour
         SceneLoader.GoMenu();
     }
 
-    public void Options()
+    public void Quit()
     {
-            options.SetActive(!options.activeSelf);
+        //UnityEditor.EditorApplication.isPlaying = false; //closes the unity runner
+        Application.Quit(); //closes the game
     }
+
+    
 
     //============Animations================
     void Animations()
@@ -192,6 +206,75 @@ public class UIManager : MonoBehaviour
     {
         float1_Animation.SetTrigger("FloatIn");
         float2_Animation.SetTrigger("FloatIn");
+    }
+
+    private bool clickedOnce = true;
+    public void ShowHideOptions() // Click button to animate
+    {
+            //options.SetActive(!options.activeSelf);
+            if (clickedOnce)
+            {
+                clickedOnce = false;
+                showHide_Options.SetTrigger("Show");                
+            }
+            else if (!clickedOnce)
+            {
+                clickedOnce = true;
+                showHide_Options.SetTrigger("Hide");  
+            }
+    }
+
+     //public Animator Options_Animation;
+    //public Animator GameIsOver_Animation;
+
+    public void GameOverOptionsButton() //animate when clicking on options on the pause menu
+    {
+        StartCoroutine (GoToOptions_GameOver());
+    }
+
+    public void OptionsGoBackToGameOverButton() //animate when clicking back button on the options menu on pause menu
+    {
+        StartCoroutine (GoToGameOver());
+    }
+
+    public void OptionsOnPauseButton() //animate when clicking on options on the pause menu
+    {
+        StartCoroutine (GoToOptions());
+    }
+
+    public void OptionsGoBackButton() //animate when clicking back button on the options menu on pause menu
+    {
+        
+        StartCoroutine (GoToPause());
+    }
+    IEnumerator GoToOptions()
+    {
+        pauseMenu_Animation.SetTrigger("Hide");
+        Debug.Log("animation!");
+        yield return new WaitForSecondsRealtime (0.5f);
+        pauseOptions_Animation.SetTrigger("Show");
+    }
+
+    IEnumerator GoToPause()
+    {
+        pauseOptions_Animation.SetTrigger("Hide");
+        yield return new WaitForSecondsRealtime (0.5f);
+        pauseMenu_Animation.SetTrigger("Show");
+    }
+
+    IEnumerator GoToOptions_GameOver()
+    {
+        GameIsOver_Animation.SetTrigger("Hide");
+        Debug.Log("animation!");
+        yield return new WaitForSecondsRealtime (0.5f);
+        Options_Animation.SetTrigger("Show");
+    }
+
+    IEnumerator GoToGameOver()
+    {
+        Options_Animation.SetTrigger("Hide");
+        yield return new WaitForSecondsRealtime (0.5f);
+        GameIsOver_Animation.SetTrigger("Show");
     }
 
     

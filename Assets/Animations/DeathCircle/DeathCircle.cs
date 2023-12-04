@@ -6,6 +6,9 @@ public class DeathCircle : MonoBehaviour
 {
 
     private SpriteRenderer spriteRend;
+    private Sprite sprite; 
+
+    [SerializeField] private List<Sprite> sprites;
 
     [SerializeField] private int timesColorChange = 3;
     [SerializeField] private float changeRateColor = .15f;
@@ -24,8 +27,18 @@ public class DeathCircle : MonoBehaviour
     {
         spriteRend = GetComponent<SpriteRenderer>();
         DeathCircleAnimation();
+        
     }
 
+
+    private void ChangeSprite() 
+    {
+
+        int randomSprite = Random.Range(0, sprites.Count);
+
+        spriteRend.sprite = sprites[randomSprite];
+
+    }
 
     private IEnumerator TurnColor()
     {
@@ -55,7 +68,8 @@ public class DeathCircle : MonoBehaviour
 
 
     private void DeathCircleAnimation() {
-    
+
+        ChangeSprite();
         StartCoroutine(TurnColor());
         StartCoroutine(ChangeSize());
     }
