@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e097133fe2614f4bafc5dd705d28ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 59039c0d2a285814cbd1d866e8672068, type: 3}
   timesColorChange: 1
   changeRateColor: 0.1
   changeRateSize: 100

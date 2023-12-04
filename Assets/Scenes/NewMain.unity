@@ -9975,10 +9975,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2808390417285694909, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2808390417285694909, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: otherPlayer
       value: 
       objectReference: {fileID: 1388173218}
@@ -10241,7 +10237,7 @@ PrefabInstance:
       objectReference: {fileID: 1449906316}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: ghostDuration
-      value: 30
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: isGhostPuller
@@ -10249,7 +10245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: minGhostDuration
-      value: 15
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4613569147380446184, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
