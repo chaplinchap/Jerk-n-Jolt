@@ -26,7 +26,6 @@ public class DeathCircle : MonoBehaviour
     void Start()
     {
         spriteRend = GetComponent<SpriteRenderer>();
-        ChangeSprite();
         DeathCircleAnimation();
         
     }
