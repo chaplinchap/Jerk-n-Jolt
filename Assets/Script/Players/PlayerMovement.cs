@@ -248,7 +248,7 @@ public class PlayerMovement : MonoBehaviour
             result = true;
         }
 
-        if(Input.GetKeyDown(throughButton) && IsGrounded() && ghostScript.isGhostPuller)
+       else if(Input.GetKeyDown(throughButton) && IsGrounded() && ghostScript.isGhostPuller)
         {
             result = true;
         }
@@ -269,7 +269,7 @@ public class PlayerMovement : MonoBehaviour
             result = true;
         }
 
-        if (Input.GetKeyDown(throughButton) && IsGrounded() && !ghostScript.isGhostPuller)
+        else if (Input.GetKeyDown(throughButton) && IsGrounded() && !ghostScript.isGhostPuller)
         {
             result = true;
         }

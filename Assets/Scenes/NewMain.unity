@@ -8900,6 +8900,10 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 318452310}
+    - target: {fileID: 3120557144099067971, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 3527094187740927622, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: jumpUp
       value: 273
@@ -9064,6 +9068,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2 Pull
       objectReference: {fileID: 0}
+    - target: {fileID: 8152077003433105955, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2094154324210754525, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
     m_RemovedGameObjects: []
@@ -9125,13 +9133,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1 Push
       objectReference: {fileID: 0}
+    - target: {fileID: 1887471560437228212, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: otherPlayer
       value: 
       objectReference: {fileID: 1449906316}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: ghostDuration
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: isGhostPuller
@@ -9139,7 +9151,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: minGhostDuration
-      value: 1.5
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613569147380446184, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5443167318930251627, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: m_LocalScale.x
@@ -9541,9 +9557,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DamageTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 4154673249394897083, guid: 4110c0065584b1646b21524508cf157e, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4448906703030145969, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: m_Name
       value: DamageTriggerParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448906703030145969, guid: 4110c0065584b1646b21524508cf157e, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4621919849964388042, guid: 4110c0065584b1646b21524508cf157e, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 4096
       objectReference: {fileID: 0}
     - target: {fileID: 4857315706902823471, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: puller
