@@ -11,7 +11,6 @@ public class MainMenuAudio : MonoBehaviour
     [Header("Audio Clip")]
     public AudioClip mainMenuBackground;
     public AudioClip buttonClick;
-    public AudioClip transition;
 
     void Start()
     {
