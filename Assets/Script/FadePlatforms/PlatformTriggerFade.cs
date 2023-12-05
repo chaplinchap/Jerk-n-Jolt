@@ -8,7 +8,7 @@ public class PlatformTriggerFade : MonoBehaviour
 {
 
     public PlatformScriptableObject platformScriptableObject;
-    public float durationTime = 0.25f;
+    public float durationTime = 0.45f;
     public float respawnTime = 2f;
     public float cancelFadeTime = 1f;
 
@@ -89,7 +89,7 @@ public class PlatformTriggerFade : MonoBehaviour
 
     public IEnumerator StartDespawn(GameObject target, float time)
     {
-        for(int i = 0; i <= 3; i++)
+        for(int i = 0; i <= 2; i++)
         {
             
             yield return new WaitForSeconds(time);            

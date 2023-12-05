@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class VibrationFloor : MonoBehaviour
 {
-    public float shakeAmount = 0.25f; 
+    public float shakeAmount = 0f; 
     private float shakeSpeed = 1f;
 
 

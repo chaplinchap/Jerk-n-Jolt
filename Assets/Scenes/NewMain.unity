@@ -956,11 +956,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2004958728}
   m_SourcePrefab: {fileID: 100100000, guid: 7046499f955d54141a0a7e636840afe6, type: 3}
---- !u!1 &317581746 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5725731760217337183, guid: e6c32039061febc438e251c76dd8b513, type: 3}
-  m_PrefabInstance: {fileID: 4123782489440680557}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &318452308
 GameObject:
   m_ObjectHideFlags: 0
@@ -6840,19 +6835,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7748005987508325142, guid: e6c32039061febc438e251c76dd8b513, type: 3}
   m_PrefabInstance: {fileID: 4123782489440680557}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1459212822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317581746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7134758a06edf5f40834ac7a8df66d15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeAmount: 0.25
 --- !u!1 &1466747023
 GameObject:
   m_ObjectHideFlags: 0
@@ -10805,15 +10787,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9064790203115242014, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: shakeAmount
-      value: 0.25
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5725731760217337183, guid: e6c32039061febc438e251c76dd8b513, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1459212822}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6c32039061febc438e251c76dd8b513, type: 3}
 --- !u!1001 &4299126833439270422
 PrefabInstance:
