@@ -40,12 +40,13 @@ public class OoBArrowCanvas : MonoBehaviour
         //Debug.Log(positionY);
         //Debug.Log(parentRect.rect.height);
 
-
+        /*
         if (positionY > parentRect.rect.height) 
         {
             rectTransform.transform.position = new Vector3(transform.position.x, parentRect.rect.height , transform.position.z);
             return;
         }
+         */
 
         rectTransform.transform.position = new Vector3(transform.position.x, positionY, transform.position.z);
         //rectTransform.transform.position = new Vector3(transform.position.x, (speed * parentRect.rect.height - Camera.main.rect.height) * rb.transform.position.y + offSet, transform.position.z);
@@ -57,7 +58,7 @@ public class OoBArrowCanvas : MonoBehaviour
     {
         float positionX = (parentRect.rect.width / Camera.main.orthographicSize)/4f * rb.transform.position.x + parentRect.rect.width/2f - offSet;
 
-
+        /*
         if (positionX < -offSet)
         {
             rectTransform.transform.position = new Vector3(-offSet, transform.position.y, transform.position.z);
@@ -69,6 +70,7 @@ public class OoBArrowCanvas : MonoBehaviour
             rectTransform.transform.position = new Vector3(parentRect.rect.width - offSet, transform.position.y, transform.position.z);
             return;
         }
+         */
         
 
         rectTransform.transform.position = new Vector3(positionX, transform.position.y,  transform.position.z);

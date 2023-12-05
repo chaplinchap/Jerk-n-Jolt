@@ -173,4 +173,13 @@ public class SpawnOoBArrows : MonoBehaviour
 
     }
 
+
+    public bool IsOOBPusherX() { return isOOBPusherX; }
+    public bool IsOOBPusherY() { return isOOBPusherY; }
+    public bool IsOOBPullerX() { return isOOBPullerX; }
+    public bool IsOOBPullerY() { return isOOBPullerY; }
+
+
+
+
 }
