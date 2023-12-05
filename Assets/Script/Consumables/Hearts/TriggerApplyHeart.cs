@@ -22,6 +22,7 @@ public class TriggerApplyHeart : ConsumableParentObject
 
     private GameObject pusher;
     private GameObject puller;
+    private ParticleSystem particleSystem;
 
 
     private IEnumerator buffDurationPusher;
@@ -39,6 +40,7 @@ public class TriggerApplyHeart : ConsumableParentObject
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        particleSystem = GetComponent<ParticleSystem>();
     }
 
     private void Update()
@@ -81,10 +83,7 @@ public class TriggerApplyHeart : ConsumableParentObject
 
 
     }
-
-
-
-
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -99,6 +98,8 @@ public class TriggerApplyHeart : ConsumableParentObject
             buffDurationPusher = DurationbuffPusher(hearts, collision.gameObject, time);
             buffDurationPuller = DurationbuffPuller(hearts, collision.gameObject, time);
             TurnOffConsumable();
+            particleSystem.Stop();
+            
 
             if (collision.CompareTag("Pusher"))
             {

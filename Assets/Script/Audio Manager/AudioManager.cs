@@ -24,6 +24,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip suddenDeathMusic;
     public AudioClip suddenDeathSound;
     public AudioClip explosionSound;
+    public AudioClip consumableSpawn;
 
     void Start()
     {

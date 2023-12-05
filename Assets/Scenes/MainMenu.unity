@@ -4785,8 +4785,7 @@ MonoBehaviour:
   musicSource: {fileID: 626443242}
   SFXSource: {fileID: 1350912765}
   mainMenuBackground: {fileID: 8300000, guid: 274c63cc37d2ba149ad1cfb1c77099fa, type: 3}
-  buttonClick: {fileID: 8300000, guid: cf7dec43ae6a66a48aaf1ea287f5b675, type: 3}
-  transition: {fileID: 0}
+  buttonClick: {fileID: 8300000, guid: 9246f836e2f4e424cb3babce6826f0e1, type: 3}
 --- !u!4 &1377568776
 Transform:
   m_ObjectHideFlags: 0
@@ -5576,7 +5575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2304ff6e9c631334088402451733aedf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db4dbf572707d9940b5f418d818366e9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

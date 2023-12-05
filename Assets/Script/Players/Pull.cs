@@ -260,6 +260,7 @@ public class Pull : AbilityPower
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
         }
+        
         else if (isAbilityPress)
         {
             if (chargeTrackingTimer > maxChargeingTime)
@@ -295,7 +296,10 @@ public class Pull : AbilityPower
         {
             ifFailedChargeTime = true;
         }
-
+        else
+        {
+            chargeTrackingTimer = 0;
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
