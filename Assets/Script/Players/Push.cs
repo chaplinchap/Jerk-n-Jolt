@@ -215,8 +215,7 @@ public class Push : AbilityPower
             Instantiate(hitCircle, thePuller.transform.position, Quaternion.Euler(0,0,Random.Range(0f, 360f)));
             CameraShake.Instance.ShakeCamera(CameraShakeValues.normalAbilityIntensity, CameraShakeValues.normalAbilityDuration);
         }
-
-        if (ifSuccesChargeTime && pushField.inField)
+        else if (ifSuccesChargeTime && pushField.inField)
         {
             ThePush(chargedPush);
             ifFailedChargeTime = false;

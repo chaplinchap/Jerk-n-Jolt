@@ -5,14 +5,14 @@ using UnityEngine;
 public class ArrowManager : MonoBehaviour
 {
 
-    [SerializeField] private Rigidbody2D rbPuller;
-    [SerializeField] private Rigidbody2D rbPusher;
+    [SerializeField] private Rigidbody2D rb;
 
-    [SerializeField] private GameObject arrowPuller;
-    [SerializeField] private GameObject arrowPusher;
+    [SerializeField] private RectTransform parentRectTransform;
 
 
+    public Rigidbody2D GetRB(){ return rb; }  
 
+    public RectTransform GetParentRectTransform(){ return parentRectTransform; }
     
 
 
