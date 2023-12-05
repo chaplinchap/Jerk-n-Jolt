@@ -27,7 +27,7 @@ public class MovementAid : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        dashBarScript = GetComponent<DashBarScript>();
+        dashBarScript = GetComponentInChildren<DashBarScript>();
     }
 
     void OnEnable() 
@@ -36,6 +36,21 @@ public class MovementAid : MonoBehaviour
         canDash = true;
     }
 
+    float time = 0;
+    float t = 0;
+
+    protected virtual void Update() 
+    {
+        Debug.Log(t);
+
+        if (canDash) { return; }
+        else if (isDashing) { time = 0; t = 0; }
+        else if (!canDash) { time += Time.deltaTime; }
+
+
+        dashBarScript.UpdateDashBar(time, duration - dashingBuffer);
+
+    }
 
     private float timeSinceLastTapLeft;
     private float timeSinceLastTapRight;
@@ -142,5 +157,7 @@ public class MovementAid : MonoBehaviour
         audioSourceDash.Play();
     }
     public bool IsDashing() { return isDashing; }
+
+    public float TimeBetweenDash() { return duration - dashingBuffer; }
 
 }

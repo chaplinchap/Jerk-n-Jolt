@@ -11,6 +11,7 @@ public class StunbarScript : MonoBehaviour
 
     private float fill = 0f; 
 
+
     private void Start()
     {
         UpdateGradiantAmount(); 
@@ -34,4 +35,6 @@ public class StunbarScript : MonoBehaviour
     {
         StunImage.color = gradient.Evaluate(fill);
     }
+
+
 }

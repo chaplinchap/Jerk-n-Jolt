@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Dash : MovementAid
 {
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         Dashing();
     }
 }

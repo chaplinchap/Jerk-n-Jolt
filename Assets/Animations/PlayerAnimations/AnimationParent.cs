@@ -23,7 +23,6 @@ public class AnimationsParent : MonoBehaviour
 
 
 
-
     [SerializeField] private float respawnDuration = .3f;
     [SerializeField] protected float attackDuration = .3f;
 
@@ -44,9 +43,16 @@ public class AnimationsParent : MonoBehaviour
 
     protected virtual void Update()
     {
-        
-        if (abilityPowerScript.HasPressedAbility()) isCharging = true;
-        else if (isCharging) StartCoroutine(AttackComplete(attackDuration));
+
+
+        if (abilityPowerScript.HasPressedAbility()) isCharging = IsCharging();
+
+        else if (isCharging)
+        {
+            Debug.Log("Starts coroutine");
+            StartCoroutine(AttackComplete(attackDuration));
+        }
+
 
     }
 
@@ -98,7 +104,12 @@ public class AnimationsParent : MonoBehaviour
     }
 
     protected float GetRespawnDuration() { return respawnDuration; }
-    
+
+    private bool IsCharging() 
+    {
+        if (stunScript.IsStunned()) return false;
+        else return true;
+    }
 
 
 }

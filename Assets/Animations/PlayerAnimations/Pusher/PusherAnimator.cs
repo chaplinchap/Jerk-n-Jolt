@@ -113,6 +113,7 @@ public class PusherAnimator : AnimationsParent
 
     private int Stun(){
         AttackComplete();
+        isAttacking = false;
         return stun; 
     }
 
