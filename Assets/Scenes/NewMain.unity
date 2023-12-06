@@ -10787,7 +10787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9064790203115242014, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: shakeAmount
-      value: 0.1
+      value: 0.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
