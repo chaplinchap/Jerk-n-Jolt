@@ -17,6 +17,8 @@ public class Pull : AbilityPower
     private AbilityPower PushScript;
     private Stunner stun;
 
+    private IEnumerator powerupParticle;
+    
     //Pull
     private float time = 0.15f;
 
@@ -59,9 +61,6 @@ public class Pull : AbilityPower
     //public GameObject pusher;
     //public float flashTime = 0.075f;
 
-
-    private IEnumerator powerupParticle;
-
     [SerializeField] private GameObject hitCircle;
     [SerializeField] private GameObject chargeCircle;
     
@@ -99,14 +98,12 @@ public class Pull : AbilityPower
         {
             StopCoroutine(powerupParticle);
         }
-
-
+        
         if (upAbilityPress && !ifSuccesChargeTime && !pullField.inField)
         {
             //audioManager.PlaySFX(audioManager.airPull);
             AirPullSounds();
         }
-
         /*
         if (Input.GetKeyDown(pullOnPress))
         {
@@ -125,12 +122,8 @@ public class Pull : AbilityPower
         }
 
         */
-
         KeyInputs();
-
         Timer();
-
-
     }
 
     void ResetMaterial()
@@ -175,7 +168,8 @@ public class Pull : AbilityPower
             if (Input.GetKeyUp(abilityPress) || stun.IsStunned())
             {
                 audioSourceChargedUp.Stop();
-                chargeTrackingTimer = 0;
+                Invoke("ChargeTrackerTime", 0.1f);
+                //chargeTrackingTimer = 0;
                 StopCoroutine(ChargedUpParticles());
                 var emission = chargedUpParticles.emission;
                 emission.rateOverTime = 100f;
@@ -192,9 +186,6 @@ public class Pull : AbilityPower
         var emission = chargedUpParticles.emission;
         emission.rateOverTime = 300;
     }
-
-
-
 
     // METHODS //
 
@@ -233,7 +224,6 @@ public class Pull : AbilityPower
             PullSounds();
 
             Instantiate(hitCircle, thePusher.transform.position, Quaternion.Euler(0, 0, Random.Range(0f, 360f)));
-
             CameraShake.Instance.ShakeCamera(CameraShakeValues.normalAbilityIntensity, CameraShakeValues.normalAbilityDuration);
         }
 
@@ -246,7 +236,6 @@ public class Pull : AbilityPower
             audioManager.PlaySFX(audioManager.chargePull);
 
             Instantiate(chargeCircle, thePusher.transform.position, Quaternion.identity);
-
             CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity, CameraShakeValues.chargedAbilityDuration);
         }
     }
@@ -256,7 +245,8 @@ public class Pull : AbilityPower
     {
         if (downAbilityPress)
         {
-            chargeTrackingTimer = 0;
+            Invoke("ChargeTrackerTime", 0.1f);
+            //chargeTrackingTimer = 0;
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
         }
@@ -298,10 +288,15 @@ public class Pull : AbilityPower
         }
         else
         {
-            chargeTrackingTimer = 0;
+            Invoke("ChargeTrackerTime", 0.1f);
+            //chargeTrackingTimer = 0;
         }
     }
 
+    private void ChargeTrackerTime()
+    {
+        chargeTrackingTimer = 0;
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         powerupParticle = PowerUpParticles();

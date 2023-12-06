@@ -127,8 +127,7 @@ public class Push : AbilityPower
         emission.rateOverTime = 300;
     }
         // METHODS //   
-
-
+        
     private void ThePush(float extraForce) 
     {
         rigidbodyPuller.AddForce(VectorBetween(thePuller).normalized * abilityPowerForce * extraForce, ForceMode2D.Impulse);
