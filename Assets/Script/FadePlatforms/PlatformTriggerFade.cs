@@ -1,5 +1,4 @@
-
-//using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +7,12 @@ public class PlatformTriggerFade : MonoBehaviour
 {
 
     public PlatformScriptableObject platformScriptableObject;
-    public float durationTime = 0.45f;
-    public float respawnTime = 2f;
+    public float durationTime = 0.25f;
     public float cancelFadeTime = 1f;
 
-    public bool onPlatformFade = false;
-    public bool offPlatformFade = false;
-    private bool platformDespawned = false;
+    [SerializeField] private bool onPlatformFade = false;
+    [SerializeField] private bool offPlatformFade = false;
+    [SerializeField] private bool platformDespawned = false;
 
     private IEnumerator despawnCoroutine;
 
@@ -25,7 +23,7 @@ public class PlatformTriggerFade : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
         {
-
+           
             onPlatformFade = true;
             offPlatformFade = false;
 
@@ -57,7 +55,7 @@ public class PlatformTriggerFade : MonoBehaviour
 
             if (offPlatformFade && !onPlatformFade && !platformDespawned)
             {
-               
+                           
                 StartCoroutine(CancelDespawn(gameObject, cancelFadeTime));
                 offPlatformFade = false;
                 onPlatformFade = false;
@@ -67,7 +65,12 @@ public class PlatformTriggerFade : MonoBehaviour
 
     }
 
-   
+
+
+    private void Start()
+    {
+       
+    }
 
     void Update()
     {
@@ -75,7 +78,7 @@ public class PlatformTriggerFade : MonoBehaviour
 
         if (platformDespawned)
         {
-            StartCoroutine(Respawn(gameObject, respawnTime));
+            StartCoroutine(Respawn(gameObject, durationTime));
             platformDespawned = false;
             onPlatformFade = false;
             offPlatformFade = false;
@@ -89,15 +92,13 @@ public class PlatformTriggerFade : MonoBehaviour
 
     public IEnumerator StartDespawn(GameObject target, float time)
     {
-        for(int i = 0; i <= 2; i++)
+        for(int i = 0; i <= 3; i++)
         {
-            
-            yield return new WaitForSeconds(time);            
+            yield return new WaitForSeconds(time);
             platformScriptableObject.Fade(target);
-            yield return new WaitForSeconds(time);           
+            yield return new WaitForSeconds(time);
             platformScriptableObject.Blink(target);
             yield return new WaitForSeconds(time);
-         
 
 
         }
@@ -124,7 +125,7 @@ public class PlatformTriggerFade : MonoBehaviour
     public IEnumerator Respawn(GameObject target, float time)
     {
         Debug.Log("Respawns Platform");
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(time * 2);
         platformScriptableObject.Spawn(target);     
 
     }
