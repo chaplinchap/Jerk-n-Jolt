@@ -1,14 +1,17 @@
 
 //using System;
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformTriggerFade : MonoBehaviour
+public class SuddenDeathPlatformTriggerFade : MonoBehaviour
 {
 
     public PlatformScriptableObject platformScriptableObject;
-    public float durationTime = 0.45f;
+    private ParticleSystem particleSystem;
+    public float durationTime = 0.25f;
     public float respawnTime = 2f;
     public float cancelFadeTime = 1f;
 
@@ -18,14 +21,20 @@ public class PlatformTriggerFade : MonoBehaviour
 
     private IEnumerator despawnCoroutine;
 
+    private bool suddenDeathColorChangeTriggered = false;
+
+    private void Start()
+    {
+        particleSystem = GetComponentInChildren<ParticleSystem>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
 
-        if (collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
+        if (collision.gameObject.CompareTag("Puller") && DeathGameChange.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && DeathGameChange.suddenDeathTriggered)
         {
-
+            particleSystem.Play();
             onPlatformFade = true;
             offPlatformFade = false;
 
@@ -43,35 +52,31 @@ public class PlatformTriggerFade : MonoBehaviour
         }
 
     }
-
-   
+    
     public void OnCollisionExit2D(Collision2D collision)
     {
-
-        if (collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
+        if (collision.gameObject.CompareTag("Puller") && DeathGameChange.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && DeathGameChange.suddenDeathTriggered)
         {
-           
+            particleSystem.Stop();
             offPlatformFade = true;
             onPlatformFade = false;
 
-
             if (offPlatformFade && !onPlatformFade && !platformDespawned)
             {
-               
                 StartCoroutine(CancelDespawn(gameObject, cancelFadeTime));
                 offPlatformFade = false;
                 onPlatformFade = false;
             }
-
         }
-
     }
-
-   
 
     void Update()
     {
-
+        if (DeathGameChange.suddenDeathTriggered && !suddenDeathColorChangeTriggered)
+        {
+            suddenDeathColorChangeTriggered = true;
+            StartCoroutine(ChangeColor(gameObject));
+        }
 
         if (platformDespawned)
         {
@@ -80,16 +85,11 @@ public class PlatformTriggerFade : MonoBehaviour
             onPlatformFade = false;
             offPlatformFade = false;
         }
-
-
     }
-
     
-
-
     public IEnumerator StartDespawn(GameObject target, float time)
     {
-        for(int i = 0; i <= 2; i++)
+        for(int i = 0; i <= 3; i++)
         {
             
             yield return new WaitForSeconds(time);            
@@ -97,18 +97,14 @@ public class PlatformTriggerFade : MonoBehaviour
             yield return new WaitForSeconds(time);           
             platformScriptableObject.Blink(target);
             yield return new WaitForSeconds(time);
-         
-
-
+            
         }
         platformScriptableObject.ChangeAlpha(target);
         
-        Debug.Log("Despawning Platform");
         yield return new WaitForSeconds(time);
         platformScriptableObject.Despawn(target);
         platformDespawned = true;
-              
-
+        
     }
 
     public IEnumerator CancelDespawn (GameObject target, float time)
@@ -118,7 +114,6 @@ public class PlatformTriggerFade : MonoBehaviour
         yield return new WaitForSeconds(time);
         platformScriptableObject.CancelDespawn(target);
         
-       
     }
 
     public IEnumerator Respawn(GameObject target, float time)
@@ -127,5 +122,11 @@ public class PlatformTriggerFade : MonoBehaviour
         yield return new WaitForSeconds(time);
         platformScriptableObject.Spawn(target);     
 
+    }
+
+    public IEnumerator ChangeColor(GameObject target)
+    {
+        yield return new WaitForSeconds(0f);
+        platformScriptableObject.ChangeColor(target);
     }
 }
