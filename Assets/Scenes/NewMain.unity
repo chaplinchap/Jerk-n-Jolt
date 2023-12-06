@@ -10385,7 +10385,7 @@ PrefabInstance:
       objectReference: {fileID: 1449906316}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: ghostDuration
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: isGhostPuller
@@ -10393,7 +10393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: minGhostDuration
-      value: 1.5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4613569147380446184, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
@@ -11224,7 +11224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4621919849964388042, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
-      value: 4096
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4857315706902823471, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: puller

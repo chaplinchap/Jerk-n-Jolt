@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
+using UnityEngine.SceneManagement;
 
 public class ConsumV4 : MonoBehaviour
 {
@@ -34,17 +35,16 @@ public class ConsumV4 : MonoBehaviour
     {
         // consumableParent = consumbleParentObject.GetComponent<ConsumableParentObject>();
         nextSpawnTime = GetRandomSpawnTime();
-      // suddenDeathScript = suddenDeathObject.GetComponent<DeathGameChange>();
+        // suddenDeathScript = suddenDeathObject.GetComponent<DeathGameChange>()
     }
 
     void Update()
     {
 
-
-        if (Time.time >= nextSpawnTime && currentConsumablesTracker < maxConsumables && !DeathGameChange.suddenDeathTriggered && !UIManager.staticGameOver)
+        if (nextSpawnTime <= 0 && currentConsumablesTracker < maxConsumables && !DeathGameChange.suddenDeathTriggered && !UIManager.staticGameOver)
         {
-           
 
+            print("SPawn");
             // Choose a random spawn area and item prefab
             int randomSpawnAreaIndex = Random.Range(0, spawnAreas.Count);
             int randomItemPrefabIndex = Random.Range(0, itemPrefabs.Count);
@@ -92,10 +92,12 @@ public class ConsumV4 : MonoBehaviour
             currentConsumablesTracker++;
             
 
-
-
             // Set the next spawn time
-            nextSpawnTime = Time.time + GetRandomSpawnTime();
+            nextSpawnTime = GetRandomSpawnTime();
+        }
+        else
+        {
+            nextSpawnTime -= Time.deltaTime;
         }
     }
 
