@@ -5,6 +5,8 @@ using TMPro;
 using System.Collections;
 using Cinemachine;
 using Unity.VisualScripting.ReorderableList;
+using Unity.VisualScripting;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class UIManager : MonoBehaviour
     public string sceneToLoad;
     public bool gameIsOver = false;
     public bool deadPlayer = false;
+    private bool showGameOver; //works in correspond with gameIsOVer but have a small delay 
     private bool onPause;
 
     public static bool staticGameOver = false;
@@ -23,11 +26,14 @@ public class UIManager : MonoBehaviour
     public List<HealthV2> playersHealth = new List<HealthV2>(); //reference to Health script
     public ScoreManager scoreManager; //reference to the ScoreManager
 
-    public GameObject player1; // Used to check for players left when game is over
+    private GameObject player1; // Used to check for players left when game is over
+    private GameObject player2; // Used to check for players left when game is over
+    private HealthV2 player1Health;
+    private HealthV2 player2Health;
+
     public TextMeshProUGUI text;
     public GameObject cameraAnchor;
-
-    public GameObject options_Image; // Used to show the options to change if you want to reset score
+    public GameObject cameraAnchor_ShowDraw;
 
 
 
@@ -49,6 +55,7 @@ public class UIManager : MonoBehaviour
     public Animator winnerText_Animation;
     public Animator options_Animation; 
     public Animator showHide_Options;
+    public Animator Chinemachine_zoomInDraw;
 
     public CinemachineVirtualCamera virtualCamera;
     
@@ -64,13 +71,15 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         player1 = GameObject.Find("Player1 Push"); // Find Player 1 . Used to check when game is over to see which player is left
+        player2 = GameObject.Find("Player2 Pull"); // Find Player 1 . Used to check when game is over to see which player is left
         staticGameOver = false;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player1Health = player1.GetComponent<HealthV2>();
+        player2Health = player2.GetComponent<HealthV2>();
         gameOverPanel.SetActive(false); //ensure GameOVerPanel is not loaded on start
         PauseMenu.SetActive(false); //ensure pause menu is not loaded on start
         Invoke ("ShowHealthbar",1);
@@ -84,9 +93,9 @@ public class UIManager : MonoBehaviour
         {
             if (playerHealth.currentHealth <= 0) {
                 deadPlayer = true;
-                break; // No need to continue checking if one player is dead.
             }
         }
+
     }
 
     public void Update()
@@ -94,14 +103,24 @@ public class UIManager : MonoBehaviour
 
         if (deadPlayer) {
             gameIsOver = true;
-            staticGameOver = true;
-            Destroy(cameraAnchor);
+            
         }
    
-        
+        // Send a message that the game is over
         if (gameIsOver == true) {
-            GameOverSequence();
+            StartCoroutine(GameOverSequence());     
+        }
+
+        // Show GameOver UI
+        if (showGameOver == true) 
+            {
+            if (zoom == true)
+            {
+                ZoomToWinner();
+            }
+            staticGameOver = true;      
             Animations();
+            Destroy(cameraAnchor);  
                 if (Input.GetKeyDown(KeyCode.Return)){                   
                     SceneManager.LoadScene(sceneToLoad);
                     Debug.Log("Game is over!");
@@ -109,7 +128,7 @@ public class UIManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Escape)){
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1); //Goes back to MainMenu
                 }
-        }
+            }
 
         if (Input.GetKeyDown(KeyCode.Escape) && !gameIsOver) // Pauses game when pressing "Escape"
         {
@@ -134,29 +153,37 @@ public class UIManager : MonoBehaviour
         {
             onPause = true;
         }
+    private bool zoom;
 
-    private bool stopChecking = true;
-    public void GameOverSequence()
+    
+    IEnumerator GameOverSequence()
     {
+        yield return new WaitForSeconds(1);
+        if (!showGameOver)
         {
-        if (!stopChecking)
-        return; // Stops the code here if boolean is false
+            showGameOver = true;
+            if (player1Health.currentHealth == 0 && player2Health.currentHealth == 0) // If both players have 0 health 
+            {
+                cameraAnchor_ShowDraw.SetActive(true);
+                Chinemachine_zoomInDraw.SetTrigger("Draw");
+                text.text = "Draw";
+            }
 
-        gameOverPanel.SetActive(true);
-        if (player1.activeInHierarchy){ // If player 1 is still alive
-            text.text = "Player 1 Wins";
-            scoreManager.UpdateScores(1,0);
-            //player1Score.text = "Pusher: " + playerScore1.ToString();
-        }
-        else{ // If player 1 is not alive
-            text.text = "Player 2 Wins";
-            scoreManager.UpdateScores(0,1);
-            //player2Score.text = "Pusher: " + playerScore2.ToString();
-        }
-
-        //scoreManager.UpdateScoreText();
-        stopChecking = false;
-        }
+            else if (player1.activeInHierarchy) // If player 1 is still alive
+            {
+                text.text = "Player 1 Wins";
+                zoom = true;
+                scoreManager.UpdateScores(1,0);
+            }
+               
+            else if (player2.activeInHierarchy) // If player 2 is still alive
+            {
+                text.text = "Player 2 Wins";
+                zoom = true;
+                scoreManager.UpdateScores(0,1);
+            }
+            gameOverPanel.SetActive(true);
+        }  
     }
 
     //=============== <Buttons> ===============
@@ -186,20 +213,24 @@ public class UIManager : MonoBehaviour
     //============Animations================
     void Animations()
     {
+        Chinemachine_zoomInDraw.SetTrigger("Winner");
         float1_Animation.SetTrigger("FloatOut");
         float2_Animation.SetTrigger("FloatOut");
         winnerText_Animation.SetTrigger("WinnerText_FloatIn");
         options_Animation.SetTrigger("WinnerText_FloatIn");
         StartCoroutine (AnimationsDelay());
+    }
 
+    void ZoomToWinner()
+    {
+        
         // Camera
-        CinemachineFramingTransposer framingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        //CinemachineFramingTransposer framingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
 
-        initialMinOrthoSize = framingTransposer.m_MinimumOrthoSize;
-        initialMaxOrthoSize = framingTransposer.m_MaximumOrthoSize;
+        //initialMinOrthoSize = framingTransposer.m_MinimumOrthoSize;
+        //initialMaxOrthoSize = framingTransposer.m_MaximumOrthoSize;
 
-         StartCoroutine(SmoothZoomCoroutine(framingTransposer));
-            
+         //StartCoroutine(SmoothZoomCoroutine(framingTransposer));
     }
 
      void ShowHealthbar()
@@ -287,7 +318,7 @@ public class UIManager : MonoBehaviour
         GameIsOverButton2_Animation.SetTrigger("ButtonFloatIn");
     }
 
-    
+  /*  
 
      IEnumerator SmoothZoomCoroutine(CinemachineFramingTransposer framingTransposer)
     {
@@ -312,5 +343,5 @@ public class UIManager : MonoBehaviour
 
             yield return null;
         }
-    }
+    }*/
 }
