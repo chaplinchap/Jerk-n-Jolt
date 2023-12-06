@@ -1991,6 +1991,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392292237}
   m_CullTransparentMesh: 1
+--- !u!1 &395424306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2977566204947500839, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+  m_PrefabInstance: {fileID: 2853931416465516403}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &423483864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4925,6 +4930,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 527339705}
   m_SourcePrefab: {fileID: 100100000, guid: 583c4ba6a49f11e408b2e62d3c2d9e26, type: 3}
+--- !u!1 &1126056551 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2579352975826371630, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
+  m_PrefabInstance: {fileID: 2826552128795819710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1127448050
 GameObject:
   m_ObjectHideFlags: 0
@@ -10134,6 +10144,10 @@ PrefabInstance:
       propertyPath: minGhostDuration
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2808390417285694909, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
+      propertyPath: abilityGameObject
+      value: 
+      objectReference: {fileID: 1126056551}
     - target: {fileID: 2840529185926110316, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: healthbar
       value: 
@@ -10385,7 +10399,7 @@ PrefabInstance:
       objectReference: {fileID: 1449906316}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: ghostDuration
-      value: 30
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: isGhostPuller
@@ -10393,8 +10407,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: minGhostDuration
-      value: 15
+      value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2230447851914003981, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: abilityGameObject
+      value: 
+      objectReference: {fileID: 395424306}
     - target: {fileID: 4613569147380446184, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 0
