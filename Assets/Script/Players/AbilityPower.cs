@@ -27,9 +27,10 @@ public class AbilityPower : MonoBehaviour
 
     private float timeSinceLastPressedUp = 0f;
     private float timeSinceLastPressedDown = 0f;
+    
+    private bool isHit = false;
 
     [SerializeField] private static float deadTimeBetweenPress = .2f;
-    [SerializeField] private bool isHit = false;
     [SerializeField] private float hitDuration = .2f;
 
 

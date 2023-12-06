@@ -49,7 +49,7 @@ public class AnimationsParent : MonoBehaviour
 
         else if (isCharging)
         {
-            Debug.Log("Starts coroutine");
+           // Debug.Log("Starts coroutine");
             StartCoroutine(AttackComplete(attackDuration));
         }
 

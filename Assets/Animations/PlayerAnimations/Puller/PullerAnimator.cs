@@ -37,6 +37,7 @@ public class PullerAnimator : AnimationsParent
         state = GetState();
 
         ChangeAnimationState(state);
+
     }
 
 
@@ -74,6 +75,8 @@ public class PullerAnimator : AnimationsParent
 
     private int HitAnim() {
 
+        lineRenderer.SetActive(false);
+
         int random = Random.Range(0, 2);
 
         switch (random) {
@@ -91,6 +94,7 @@ public class PullerAnimator : AnimationsParent
 
     private int WinAnim()
     {
+        lineRenderer.SetActive(false);
 
         int random = Random.Range(0, 2);
 
@@ -155,132 +159,6 @@ public class PullerAnimator : AnimationsParent
         lineRenderer.SetActive(true);
         return runningChargePenalty;
     }
-
-
-    /*
-    protected override void Update()
-    {
-
-        if (isRespawing) 
-        {
-            ChangeAnimationState(spawning);
-            return; 
-        }
-
-        if (abilityPowerScript.IsHit()) {
-
-            ChangeAnimationState(falling);
-        }
-
-        if (stunScript.IsStunned())
-        {
-            Stunned();
-        }
-
-
-        if (dashScript.IsDashing()) { 
-            ChangeAnimationState(dashing);
-            lineRenderer.SetActive(false);
-        }
-
-
-
-        if (!abilityPowerScript.HasPressedAbility() && isCharging)
-        {
-            lineRenderer.SetActive(false);
-            isAttacking = false;
-
-
-
-            Invoke("AttackComplete", 0.1f);
-        }
-
-        if (abilityPowerScript.HasPressedAbility())
-        {
-
-            //lineRenderer.SetActive(true);
-
-            isCharging = true;
-        }
-
-
-    }
-
-
-    private void FixedUpdate()
-    {
-        if (isRespawing) { return; }
-
-        if (stunScript.IsStunned() || dashScript.IsDashing() || abilityPowerScript.IsHit()) { return; }
-
-        if (isCharging && isAttacking && movementScript.IsGrounded())
-        {
-
-            if (movementScript.GetMovementX() != 0)
-            {
-                lineRenderer.SetActive(true);
-
-                if (stunScript.IsPenalty()) {
-                    ChangeAnimationState(runningChargePenalty);
-                }
-                else
-                    ChangeAnimationState(runningCharge);
-
-            }
-            else
-            {
-                lineRenderer.SetActive(true);
-
-                ChangeAnimationState(charge);
-            }
-
-
-        }
-
-        if (movementScript.IsGrounded() && !isCharging)
-        {
-
-            if (movementScript.GetMovementX() != 0)
-            {
-                ChangeAnimationState(running);
-            }
-
-            else if (movementScript.GetMovementX() == 0 && !abilityPowerScript.HasPressedAbility())
-            {
-                ChangeAnimationState(idle);
-            }
-        }
-
-
-        if (!movementScript.IsGrounded() && isAttacking)
-        {
-
-            if (isCharging)
-            {
-                ChangeAnimationState(jumpingCharge);
-                lineRenderer.SetActive(true);
-            }
-            else
-            {
-                ChangeAnimationState(jumping);
-
-            }
-        }
-
-        
-        /*
-        if (movementScript.rb.velocity.y > 0.1f && isAttackFinished) {
-
-            ChangeAnimationState(falling);
-        
-        }
-        
-
-    }
-
-     */
-
-
 
 
 

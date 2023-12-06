@@ -121,7 +121,7 @@ public class Stunner : MonoBehaviour
     {
 
         playerMovement = GetComponent<PlayerMovement>();
-        movementAid = GetComponent<MovementAid>();
+        //movementAid = GetComponent<MovementAid>();
         stunbarScript = GetComponentInChildren<StunbarScript>();
         abilityPower = GetComponent<AbilityPower>();
     }
@@ -129,7 +129,7 @@ public class Stunner : MonoBehaviour
     protected virtual void TurnScripts(bool turn)
     {
         playerMovement.enabled = turn;
-        movementAid.enabled = turn;
+        //movementAid.enabled = turn;
         stunbarScript.enabled = turn;
         abilityPower.enabled = turn;
 

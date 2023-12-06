@@ -13,6 +13,8 @@ public class MovementAid : MonoBehaviour
     private PlayerMovement playerMovement;
     private DashBarScript dashBarScript;
     public ParticleSystem dashParticles;
+    private Stunner stunScript;
+    private AbilityPower abilityPowerScript;
 
     [SerializeField] private float dashingPower = 10f;
     [SerializeField] private float duration = 2;
@@ -28,6 +30,8 @@ public class MovementAid : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         dashBarScript = GetComponentInChildren<DashBarScript>();
+        stunScript = GetComponent<Stunner>();
+        abilityPowerScript = GetComponent<AbilityPower>();  
     }
 
     void OnEnable() 
@@ -41,10 +45,9 @@ public class MovementAid : MonoBehaviour
 
     protected virtual void Update() 
     {
-        Debug.Log(t);
 
         if (canDash) { return; }
-        else if (isDashing) { time = 0; t = 0; }
+        else if (isDashing) { time = 0; }
         else if (!canDash) { time += Time.deltaTime; }
 
 
@@ -59,6 +62,9 @@ public class MovementAid : MonoBehaviour
 
     protected void Dashing() 
     {
+
+        if (stunScript.IsStunned() || abilityPowerScript.IsHit()) return; 
+
 
         if (Input.GetKeyDown(playerMovement.moveLeft))
         {
