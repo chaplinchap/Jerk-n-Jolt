@@ -56,8 +56,10 @@ public class TakeDamageTUT : MonoBehaviour
 
                 audioManager.PlaySFX(audioManager.explosionSound);
             // PullerDeathSounds();
-              if (pullerHealth.currentHealth > 1)
-                  {collision.GetComponent<HealthV2>().TakeDamage(damage); } //The hit player takes damage
+                if (pullerHealth.currentHealth > 1)
+                {
+                collision.GetComponent<HealthV2>().TakeDamage(damage); 
+                } //The hit player takes damage
 
                 Vector3 deathPoint = collision.transform.position;
                 Instantiate(DeathCircle, deathPoint, Quaternion.Euler(0, 0, Random.Range(0f, 0f)));  //Before it was (0f, 360f)
