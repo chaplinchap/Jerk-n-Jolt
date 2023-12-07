@@ -6858,7 +6858,7 @@ PrefabInstance:
     - target: {fileID: 8295961827963234806, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: DeathCircle
       value: 
-      objectReference: {fileID: 1529921312702772813, guid: 69f237fbe08bc3e4386e7698869e389f, type: 3}
+      objectReference: {fileID: 310252869931104311, guid: 7758d4c2dd817b443945964b3d17ff33, type: 3}
     - target: {fileID: 8295961827963234806, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: pullerDeathSounds.Array.size
       value: 1
@@ -7743,7 +7743,7 @@ PrefabInstance:
     - target: {fileID: 8295961827963234806, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: DeathCircle
       value: 
-      objectReference: {fileID: 1529921312702772813, guid: 69f237fbe08bc3e4386e7698869e389f, type: 3}
+      objectReference: {fileID: 7846033741640077201, guid: b4a9fbe14ef80a242a6eb0227745bba3, type: 3}
     - target: {fileID: 8295961827963234806, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: pullerDeathSounds.Array.size
       value: 1
@@ -10714,6 +10714,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3527094187740927622, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
+      propertyPath: time
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527094187740927622, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: jumpUp
       value: 273
       objectReference: {fileID: 0}
@@ -10985,6 +10989,10 @@ PrefabInstance:
     - target: {fileID: 367788939465739780, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 761251209570154705, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: time
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 761251209570154705, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: jumpingPower
