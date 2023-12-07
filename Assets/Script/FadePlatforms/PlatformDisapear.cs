@@ -37,7 +37,7 @@ public class PlatformDisapear : PlatformScriptableObject
     {
         Color fadeColor = target.GetComponent<SpriteRenderer>().color;
       //  fadeColor.a /= 1.15f;
-      fadeColor.a = 0.55f;
+      fadeColor.a = 0.25f;
         target.GetComponent<SpriteRenderer>().color = fadeColor;
     }
 
@@ -51,11 +51,11 @@ public class PlatformDisapear : PlatformScriptableObject
 
     public override void Spawn(GameObject target)
     {
-
+        target.GetComponent<BoxCollider2D>().enabled = true;
         Color respawnColor = target.GetComponent<SpriteRenderer>().color;
         respawnColor.a = 1f;
         target.GetComponent<SpriteRenderer>().color = respawnColor;
-        target.GetComponent<BoxCollider2D>().enabled = true;
+       
 
     }
 

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
-using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class ConsumV4 : MonoBehaviour
 {
@@ -34,19 +34,17 @@ public class ConsumV4 : MonoBehaviour
     {
         // consumableParent = consumbleParentObject.GetComponent<ConsumableParentObject>();
         nextSpawnTime = GetRandomSpawnTime();
-      // suddenDeathScript = suddenDeathObject.GetComponent<DeathGameChange>();
+        // suddenDeathScript = suddenDeathObject.GetComponent<DeathGameChange>()
       audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Update()
     {
 
-
-        if (Time.time >= nextSpawnTime && currentConsumablesTracker < maxConsumables && !DeathGameChange.suddenDeathTriggered && !UIManager.staticGameOver)
+        if (nextSpawnTime <= 0 && currentConsumablesTracker < maxConsumables && !DeathGameChange.suddenDeathTriggered && !UIManager.staticGameOver)
         {
-           
 
-            Debug.Log("Item spawned");
+            print("SPawn");
             audioManager.PlaySFX(audioManager.consumableSpawn);
             // Choose a random spawn area and item prefab
             int randomSpawnAreaIndex = Random.Range(0, spawnAreas.Count);
@@ -92,8 +90,13 @@ public class ConsumV4 : MonoBehaviour
             
             currentConsumablesTracker++;
             
+
             // Set the next spawn time
-            nextSpawnTime = Time.time + GetRandomSpawnTime();
+            nextSpawnTime = GetRandomSpawnTime();
+        }
+        else
+        {
+            nextSpawnTime -= Time.deltaTime;
         }
     }
 

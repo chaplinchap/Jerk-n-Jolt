@@ -23,8 +23,10 @@ public class Ghost : MonoBehaviour
     private IEnumerator turnGhostRoutine;
     private IEnumerator minGhostRoutine;
     private BoxCollider2D playerCollider;
+    private BoxCollider2D abilityCollider;
+
    // private BoxCollider2D otherPlayerCollider;
-    public GameObject otherPlayer;
+    public GameObject abilityGameObject;
 
     private int defaultLayer = 0;
     private int ghostLayer = 12;
@@ -34,6 +36,7 @@ public class Ghost : MonoBehaviour
     {
 
         playerCollider = GetComponent<BoxCollider2D>();
+        abilityCollider = abilityGameObject.GetComponent<BoxCollider2D>();
        // otherPlayerCollider = otherPlayer.GetComponent<BoxCollider2D>();
 
         startColor = playerSprites[0].color;
@@ -66,7 +69,6 @@ public class Ghost : MonoBehaviour
             StopCoroutine(turnGhostRoutine);
             TurnGhostState(startColor, defaultLayer);
             ghostIsTriggeredOnce = false;
-
             canExitGhost = false;
             
            // otherPlayerCollider.gameObject.layer = defaultLayer;
@@ -89,11 +91,9 @@ public class Ghost : MonoBehaviour
     public IEnumerator TurnGhost(float duration) 
     {
       
-        TurnGhostState(ghostColor, ghostLayer);       
-       // otherPlayerCollider.gameObject.layer = ghostLayer;     
+        TurnGhostState(ghostColor, ghostLayer); 
         yield return new WaitForSeconds(duration);
         TurnGhostState(startColor, defaultLayer);
-       // otherPlayerCollider.gameObject.layer = defaultLayer;
         isGhostPusher = false;
         isGhostPuller = false;
         ghostIsTriggeredOnce = false;
@@ -111,7 +111,7 @@ public class Ghost : MonoBehaviour
     private void TurnGhostState(Color color, int layer) 
     {
         
-
+        abilityCollider.gameObject.layer = layer;
         playerCollider.gameObject.layer = layer; 
 
         for (int i = 0; i < playerSprites.Length; i++) 

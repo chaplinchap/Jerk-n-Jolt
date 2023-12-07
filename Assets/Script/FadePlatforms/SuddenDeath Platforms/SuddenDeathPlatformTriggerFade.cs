@@ -4,11 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformTriggerFade : MonoBehaviour
+public class SuddenDeathPlatformTriggerFade : MonoBehaviour
 {
 
     public PlatformScriptableObject platformScriptableObject;
-    public float durationTime = 0.45f;
+    public float durationTime = 0.25f;
     public float respawnTime = 2f;
     public float cancelFadeTime = 1f;
 
@@ -18,12 +18,14 @@ public class PlatformTriggerFade : MonoBehaviour
 
     private IEnumerator despawnCoroutine;
 
+    private bool suddenDeathColorChangeTriggered = false;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
 
-        if (collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
+        if (collision.gameObject.CompareTag("Puller") && DeathGameChange.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && DeathGameChange.suddenDeathTriggered)
         {
 
             onPlatformFade = true;
@@ -48,7 +50,7 @@ public class PlatformTriggerFade : MonoBehaviour
     public void OnCollisionExit2D(Collision2D collision)
     {
 
-        if (collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
+        if (collision.gameObject.CompareTag("Puller") && DeathGameChange.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && DeathGameChange.suddenDeathTriggered)
         {
            
             offPlatformFade = true;
@@ -71,7 +73,11 @@ public class PlatformTriggerFade : MonoBehaviour
 
     void Update()
     {
-
+        if (DeathGameChange.suddenDeathTriggered && !suddenDeathColorChangeTriggered)
+        {
+            suddenDeathColorChangeTriggered = true;
+            StartCoroutine(ChangeColor(gameObject));
+        }
 
         if (platformDespawned)
         {
@@ -89,7 +95,7 @@ public class PlatformTriggerFade : MonoBehaviour
 
     public IEnumerator StartDespawn(GameObject target, float time)
     {
-        for(int i = 0; i <= 2; i++)
+        for(int i = 0; i <= 3; i++)
         {
             
             yield return new WaitForSeconds(time);            
@@ -103,7 +109,7 @@ public class PlatformTriggerFade : MonoBehaviour
         }
         platformScriptableObject.ChangeAlpha(target);
         
-        Debug.Log("Despawning Platform");
+       
         yield return new WaitForSeconds(time);
         platformScriptableObject.Despawn(target);
         platformDespawned = true;
@@ -127,5 +133,11 @@ public class PlatformTriggerFade : MonoBehaviour
         yield return new WaitForSeconds(time);
         platformScriptableObject.Spawn(target);     
 
+    }
+
+    public IEnumerator ChangeColor(GameObject target)
+    {
+        yield return new WaitForSeconds(0f);
+        platformScriptableObject.ChangeColor(target);
     }
 }

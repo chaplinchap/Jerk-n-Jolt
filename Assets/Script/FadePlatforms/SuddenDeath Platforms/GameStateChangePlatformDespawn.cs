@@ -17,7 +17,7 @@ public class GameStateChangePlatformDespawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gamestateChangeTimer = DeathGameChange.SuddenDeathTimer;
+       gamestateChangeTimer = DeathGameChange.SuddenDeathTimer;
        startGameStateChange = startCountDown(gameObject, gamestateChangeTimer);
        StartCoroutine(startGameStateChange);
     }
