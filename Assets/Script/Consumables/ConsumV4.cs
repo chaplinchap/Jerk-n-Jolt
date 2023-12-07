@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
+using Random = UnityEngine.Random;
 
 public class ConsumV4 : MonoBehaviour
 {
@@ -15,11 +17,9 @@ public class ConsumV4 : MonoBehaviour
 
     public int maxConsumables = 3;
     public static int currentConsumablesTracker = 0;
+    public AudioManager audioManager;
 
- 
     
-    
-
     private float nextSpawnTime;
     [SerializeField] public static List<Vector2> spawnedItemPositions = new List<Vector2>();
 
@@ -35,6 +35,7 @@ public class ConsumV4 : MonoBehaviour
         // consumableParent = consumbleParentObject.GetComponent<ConsumableParentObject>();
         nextSpawnTime = GetRandomSpawnTime();
       // suddenDeathScript = suddenDeathObject.GetComponent<DeathGameChange>();
+      audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -45,6 +46,8 @@ public class ConsumV4 : MonoBehaviour
         {
            
 
+            Debug.Log("Item spawned");
+            audioManager.PlaySFX(audioManager.consumableSpawn);
             // Choose a random spawn area and item prefab
             int randomSpawnAreaIndex = Random.Range(0, spawnAreas.Count);
             int randomItemPrefabIndex = Random.Range(0, itemPrefabs.Count);
@@ -87,13 +90,8 @@ public class ConsumV4 : MonoBehaviour
             GameObject selectedItemPrefab = itemPrefabs[randomItemPrefabIndex];
             GameObject spawnObject = Instantiate(selectedItemPrefab, randomPosition, Quaternion.identity);
             
-              
-
             currentConsumablesTracker++;
             
-
-
-
             // Set the next spawn time
             nextSpawnTime = Time.time + GetRandomSpawnTime();
         }

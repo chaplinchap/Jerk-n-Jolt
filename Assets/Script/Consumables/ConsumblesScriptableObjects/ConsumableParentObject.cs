@@ -65,7 +65,6 @@ public class ConsumableParentObject : MonoBehaviour
 
     public void TurnOffConsumable()
     {
-       
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<Collider2D>().enabled = false;
     }

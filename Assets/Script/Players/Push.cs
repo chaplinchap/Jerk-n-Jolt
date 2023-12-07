@@ -35,11 +35,6 @@ public class Push : AbilityPower
 
     public float extraForce = 1;
     
-    //Slowmotion
-    //public SlowMotion slowMotion;
-
-    //Freezer
-    //public Freezer freeze;
 
     //Audiosystem
     [Header("Audio")]
@@ -49,25 +44,11 @@ public class Push : AbilityPower
     public AudioSource audioSourceAirPushSounds;
     public AudioClip[] pushSounds;
     public AudioClip[] airPushSounds;
-    //private AudioMixer audioMixer;
-    //private float pitchValue;
-    //private float timeBox;
-    //private float audioCoolDown;
-
-    //Flash
-    //public GameObject puller;
-    //public float flashTime = 0.075f;
+    
 
     [SerializeField] private GameObject hitCircle;
     [SerializeField] private GameObject chargeCircle;
-
-
-    /*public void SetPitch()
-    {
-        audioMixer.SetFloat("ExposedPitch", pitchValue);
-        Debug.Log("Pitch Value: " + pitchValue);
-        timeBox = Time.time;
-    }*/
+    
 
     void Start()
     {
@@ -100,54 +81,14 @@ public class Push : AbilityPower
             AirPushSounds();
         }
 
-       
-
-        /*
-        if (Input.GetKeyDown(pushOnPress))
-        {
-            float timeBetween = Time.time - timeSinceLastPressed;
-
-
-            if (timeBetween <= deadTimeBetweenPress)
-            {
-                hasPressedPush = false;
-
-            }
-            else {
-                hasPressedPush = true;
-            }
-
-            timeSinceLastPressed = Time.time;
-        }
-
-
-        if (Input.GetKeyUp(pushOnPress) && pushField.inField)
-        {
-            //puller.GetComponent<SpriteRenderer>().enabled = false;
-        }
-
-        if (Time.time - timeBox > audioCoolDown)
-        {
-            audioMixer.SetFloat("ExposedPitch", 1f);
-        }
-         */
-
         KeyInputs();
-
         Timer();
     }
 
-    void ResetMaterial()
-    {
-        //puller.GetComponent<SpriteRenderer>().enabled = true;
-    }
-    
     private void FixedUpdate()
     {
-
-
-
-       ChargePush(1f, extraForce);  
+        
+        ChargePush(1f, extraForce);  
        
        if (chargeTrackingTimer > minChargingTime)
        {
@@ -165,12 +106,14 @@ public class Push : AbilityPower
            if (Input.GetKeyUp(abilityPress) || stun.IsStunned())
            {
                audioSourceChargedUp.Stop();
-               chargeTrackingTimer = 0;
+               Invoke("ChargeTrackerTime", 0.1f);
+               //chargeTrackingTimer = 0;
                StopCoroutine(ChargedUpParticles());
                var emission = chargedUpParticles.emission;
                emission.rateOverTime = 100f;
            }
-       } else 
+       } 
+       else 
        {
            var emission = chargedUpParticles.emission;
            emission.rateOverTime = 100f;
@@ -184,8 +127,7 @@ public class Push : AbilityPower
         emission.rateOverTime = 300;
     }
         // METHODS //   
-
-
+        
     private void ThePush(float extraForce) 
     {
         rigidbodyPuller.AddForce(VectorBetween(thePuller).normalized * abilityPowerForce * extraForce, ForceMode2D.Impulse);
@@ -209,7 +151,6 @@ public class Push : AbilityPower
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
             StartCoroutine(PullScript.SetIsHit());
-            //audioManager.PlaySFX(audioManager.push);
             PushSounds();
 
             Instantiate(hitCircle, thePuller.transform.position, Quaternion.Euler(0,0,Random.Range(0f, 360f)));
@@ -228,52 +169,47 @@ public class Push : AbilityPower
         }
 
     }
-    
     private void Timer()
     {
         if (downAbilityPress)
         {
-            chargeTrackingTimer = 0;
+            Invoke("ChargeTrackerTime", 0.1f);
+            //chargeTrackingTimer = 0;
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
         }
+        
         else if (isAbilityPress)  
         {
             if (chargeTrackingTimer > maxChargeingTime)
             {
-                chargeTrackingTimer = 0;
+                Invoke("ChargeTrackerTime", 0.1f);
+                //chargeTrackingTimer = 0;
                 ifFailedChargeTime = false;
                 ifSuccesChargeTime = false;
                 return;
             }
-
-            /*if (chargeTrackingTimer > minChargingTime)
-            {
-                if (Input.GetKey(abilityPress))
-                {
-                    chargedUpParticles.Play();
-                }
-
-                if (!audioSourceChargedUp.isPlaying)
-                {
-                    ChargeUpSound();
-                }
-            }*/
-
             chargeTrackingTimer += Time.deltaTime;
+            
         }
-        else if (upAbilityPress && chargeTrackingTimer > minChargingTime && pushField.inField)
+        else if (upAbilityPress && pushField.inField && chargeTrackingTimer > minChargingTime) 
         {
             ifSuccesChargeTime = true;
-            //slowMotion.DoSlowmotion();
-            //freeze.Freeze();
-            //SetPitch();
         }
         else if (upAbilityPress && pushField.inField)
         {
             ifFailedChargeTime = true;
         }
-        
+        else
+        {
+            Invoke("ChargeTrackerTime", 0.1f);
+            //chargeTrackingTimer = 0;
+        }
+    }
+
+    private void ChargeTrackerTime()
+    {
+        chargeTrackingTimer = 0;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

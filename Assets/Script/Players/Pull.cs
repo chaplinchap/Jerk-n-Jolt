@@ -12,6 +12,8 @@ public class Pull : AbilityPower
     private PlayerMovement movement;
     private bool timeWait = false; //Used for GameStartCoolDown
 
+    private IEnumerator powerupParticle;
+    
     //Pull
     private float time = 0.15f;
     //public float abilityPower;
@@ -46,6 +48,8 @@ public class Pull : AbilityPower
     public GameObject pusher;
     public float flashTime = 0.075f;
 
+    [SerializeField] private GameObject hitCircle;
+    [SerializeField] private GameObject chargeCircle;
     
 
 
@@ -75,13 +79,16 @@ public class Pull : AbilityPower
     private void Update()
     {
 
-
-        if (upAbilityPress)
+        if (Respawn.pullerIsDead)
+        {
+            StopCoroutine(powerupParticle);
+        }
+        
+        if (upAbilityPress && !ifSuccesChargeTime && !pullField.inField)
         {
             //audioManager.PlaySFX(audioManager.pull);
             //Invoke("ResetMaterial", flashTime);
         }
-
         /*
         if (Input.GetKeyDown(pullOnPress))
         {
@@ -100,12 +107,8 @@ public class Pull : AbilityPower
         }
 
         */
-
         KeyInputs();
-
         Timer();
-
-        
     }
 
     void ResetMaterial()
@@ -119,7 +122,30 @@ public class Pull : AbilityPower
         Invoke("waitForTime",3);
         if (timeWait)
         {
-            ChargePulling(1f , extraForce);
+            if (Input.GetKey(abilityPress))
+            {
+                if (!audioSourceChargedUp.isPlaying)
+                {
+                    ChargeUpSound();
+                }
+                chargedUpParticles.Play();
+                var emission = chargedUpParticles.emission;
+                emission.rateOverTime = 100;
+                StartCoroutine(ChargedUpParticles());
+            } 
+            if (Input.GetKeyUp(abilityPress) || stun.IsStunned())
+            {
+                audioSourceChargedUp.Stop();
+                Invoke("ChargeTrackerTime", 0.1f);
+                //chargeTrackingTimer = 0;
+                StopCoroutine(ChargedUpParticles());
+                var emission = chargedUpParticles.emission;
+                emission.rateOverTime = 100f;
+            }
+        } else 
+        {
+            var emission = chargedUpParticles.emission;
+            emission.rateOverTime = 100f;
         }
         
     }
@@ -132,6 +158,8 @@ public class Pull : AbilityPower
     
     
         // METHODS //
+
+    // METHODS //
 
     IEnumerator ChangeLayer()
     {   
@@ -164,6 +192,7 @@ public class Pull : AbilityPower
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
 
+            Instantiate(hitCircle, thePusher.transform.position, Quaternion.Euler(0, 0, Random.Range(0f, 360f)));
             CameraShake.Instance.ShakeCamera(CameraShakeValues.normalAbilityIntensity, CameraShakeValues.normalAbilityDuration);
         }
 
@@ -173,6 +202,7 @@ public class Pull : AbilityPower
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
 
+            Instantiate(chargeCircle, thePusher.transform.position, Quaternion.identity);
             CameraShake.Instance.ShakeCamera(CameraShakeValues.chargedAbilityIntensity, CameraShakeValues.chargedAbilityDuration);
         }
     }
@@ -182,10 +212,12 @@ public class Pull : AbilityPower
     {
         if (downAbilityPress)
         {
-            chargeTrackingTimer = 0;
+            Invoke("ChargeTrackerTime", 0.1f);
+            //chargeTrackingTimer = 0;
             ifFailedChargeTime = false;
             ifSuccesChargeTime = false;
         }
+        
         else if (isAbilityPress)
         {
             if (chargeTrackingTimer > maxChargeingTime)
@@ -209,7 +241,52 @@ public class Pull : AbilityPower
         {
             ifFailedChargeTime = true;
         }
-
+        else
+        {
+            Invoke("ChargeTrackerTime", 0.1f);
+            //chargeTrackingTimer = 0;
+        }
     }
 
+    private void ChargeTrackerTime()
+    {
+        chargeTrackingTimer = 0;
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        powerupParticle = PowerUpParticles();
+
+        if (collision.CompareTag("PowerUP"))
+        {
+            StartCoroutine(powerupParticle);
+        }
+    }
+
+    public IEnumerator PowerUpParticles()
+    {
+        powerUPParticles.Play();
+        yield return new WaitForSeconds(5f);
+        powerUPEndParticles.Play();
+        CameraShake.Instance.ShakeCamera(CameraShakeValues.powerUPEndIntensity, CameraShakeValues.powerUPEndDuration);
+    }
+    
+    void ChargeUpSound()
+    {
+        audioSourceChargedUp.pitch = UnityEngine.Random.Range(1f, 1.5f);
+        audioSourceChargedUp.Play();
+    }
+    
+    void PullSounds()
+    {
+        AudioClip clip = pullSounds[UnityEngine.Random.Range(0, pullSounds.Length)];
+        audioSourcePullSounds.PlayOneShot(clip);
+    }
+
+    void AirPullSounds()
+    {
+        AudioClip clip = airPullSounds[UnityEngine.Random.Range(0, airPullSounds.Length)];
+        audioSourceAirPullSounds.pitch = Random.Range(0.8f, 0.9f);
+        audioSourceAirPullSounds.volume = (2f);
+        audioSourceAirPullSounds.PlayOneShot(clip);
+    }
 }

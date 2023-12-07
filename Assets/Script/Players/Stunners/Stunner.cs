@@ -39,7 +39,6 @@ public class Stunner : MonoBehaviour
         GetScripts();
         startingSpeed = playerMovement.speed;
         penaltySpeed = playerMovement.speed / penaltyMultiplier;
-
     }
 
     protected void OnEnable()
@@ -58,9 +57,7 @@ public class Stunner : MonoBehaviour
         if (abilityPower.IsHit() && !isStunned) {
             StartCoroutine(HitStun(abilityPower.GetHitDuration()));
         }
-
     }
-
 
     protected void Stun(float timeToStun, float duration, bool isKeyPressed)
     {
@@ -69,9 +66,7 @@ public class Stunner : MonoBehaviour
         {
             return;
         }
-
-
-
+        
         else if (isKeyPressed)
         {
             time += Time.deltaTime;
@@ -109,17 +104,18 @@ public class Stunner : MonoBehaviour
         isStunned = true;
         TurnScripts(false);
         CameraShake.Instance.ShakeCamera(5f, .5f);
+        audioManager.StartStunSound();
 
         yield return new WaitForSeconds(duration);
 
         isStunned = false;
         TurnScripts(true);
         isPenalty = false;
+        audioManager.StopStunSound();
     }
 
     protected virtual void GetScripts()
     {
-
         playerMovement = GetComponent<PlayerMovement>();
         //movementAid = GetComponent<MovementAid>();
         stunbarScript = GetComponentInChildren<StunbarScript>();
@@ -132,9 +128,7 @@ public class Stunner : MonoBehaviour
         //movementAid.enabled = turn;
         stunbarScript.enabled = turn;
         abilityPower.enabled = turn;
-
     }
-    
     
     private void Slow() 
     {
@@ -150,7 +144,6 @@ public class Stunner : MonoBehaviour
             playerMovement.speed = startingSpeed;
             chargeReady = false;
         }
-
     }
 
     public IEnumerator HitStun(float duration) 
@@ -160,10 +153,19 @@ public class Stunner : MonoBehaviour
         TurnScripts(true);
     }
 
-    public bool IsStunned() { return isStunned; }
+    public bool IsStunned()
+    {
+        return isStunned;
+    }
 
-    public bool IsPenalty() { return isPenalty; }
+    public bool IsPenalty()
+    {
+        return isPenalty;
+    }
 
-    protected float GetTime() { return time; }
+    protected float GetTime()
+    {
+        return time;
+    }
 
 }

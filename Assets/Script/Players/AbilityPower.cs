@@ -76,18 +76,17 @@ public class AbilityPower : MonoBehaviour
     }
 
     public bool PressAbilityHold() {
-
+        
         bool result;
         
         if (Input.GetKey(abilityPress))
         {
             result = true;
-        }
+        } 
         else
         {
             result = false;
-        }
-
+        }  
         return result;
     }
 
@@ -98,20 +97,18 @@ public class AbilityPower : MonoBehaviour
 
         if (Input.GetKeyUp(abilityPress))
         {
+            
             float timeBetween = Time.time - timeSinceLastPressedDown;
-
 
             if (timeBetween <= deadTimeBetweenPress)
             {
                 result = false;
-
             }
             else
             {
                 result = true;
                 hasPressedAbility = false; 
             }
-
             timeSinceLastPressedDown = Time.time;
         }
         else

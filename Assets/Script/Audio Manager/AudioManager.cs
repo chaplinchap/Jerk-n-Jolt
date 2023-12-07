@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource SFXSource;
     [SerializeField] private AudioSource countDownSource;
     [SerializeField] private AudioSource suddenDeathMusicSource;
+    [SerializeField] private AudioSource stunSoundSource;
 
     [Header("Audio Clip")] 
     public AudioClip[] background;
@@ -24,6 +25,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip suddenDeathMusic;
     public AudioClip suddenDeathSound;
     public AudioClip explosionSound;
+    public AudioClip consumableSpawn;
+    public AudioClip stun;
 
     void Start()
     {
@@ -34,13 +37,15 @@ public class AudioManager : MonoBehaviour
         countDownSource.Play();
 
         suddenDeathMusicSource.clip = suddenDeathMusic;
+
+        stunSoundSource.clip = stun;
     }
 
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
     }
-
+    
     public void StopOldBackground()
     {
         musicSource.Stop();
@@ -49,6 +54,15 @@ public class AudioManager : MonoBehaviour
     public void StartSuddenDeathMusic()
     {
         suddenDeathMusicSource.PlayOneShot(suddenDeathMusic);
+    }
+    public void StartStunSound()
+    {
+        stunSoundSource.Play();
+    }
+
+    public void StopStunSound()
+    {
+        stunSoundSource.Stop();
     }
    
 }

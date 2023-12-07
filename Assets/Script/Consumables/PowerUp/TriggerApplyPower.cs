@@ -20,8 +20,9 @@ public class TriggerApplyPower : ConsumableParentObject
 
     private GameObject pusher;
     private GameObject puller;
+    private ParticleSystem particleSystem;
 
-
+    
     private IEnumerator buffDurationPusher;
     private IEnumerator buffDurationPuller;
     private IEnumerator powerUpParticlesPuller;
@@ -34,6 +35,7 @@ public class TriggerApplyPower : ConsumableParentObject
     public void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        particleSystem = GetComponent<ParticleSystem>();
     }
 
     private void Awake()
@@ -84,11 +86,8 @@ public class TriggerApplyPower : ConsumableParentObject
         {
             Destroy(this.gameObject);
         }
-
-
+        
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -104,6 +103,7 @@ public class TriggerApplyPower : ConsumableParentObject
             powerUpParticlesPusher = PowerUPRanOut();
             powerUpParticlesPuller = PowerUPRanOut();
             TurnOffConsumable();
+            particleSystem.Stop();
 
             if(collision.CompareTag("Pusher"))
             {
