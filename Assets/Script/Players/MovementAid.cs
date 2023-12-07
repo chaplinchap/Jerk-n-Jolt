@@ -19,6 +19,9 @@ public class MovementAid : MonoBehaviour
     [SerializeField] private float dashingPower = 10f;
     [SerializeField] private float duration = 2;
     [SerializeField] private float dashingBuffer = .3f;
+
+    [SerializeField] protected KeyCode dashButton; 
+
     private AudioManager audioManager;
     public AudioSource audioSourceDash;
     
@@ -38,6 +41,7 @@ public class MovementAid : MonoBehaviour
     {
         isDashing = false;
         canDash = true;
+        dashBarScript.UpdateDashBar(1, 1);
     }
 
     float time = 0;
@@ -45,6 +49,8 @@ public class MovementAid : MonoBehaviour
 
     protected virtual void Update() 
     {
+
+        //if (Respawn.pusherIsDead || Respawn.pullerIsDead) { dashBarScript.UpdateDashBar(0,1); return; }
 
         if (canDash) { return; }
         else if (isDashing) { time = 0; }
@@ -59,6 +65,24 @@ public class MovementAid : MonoBehaviour
     private float timeSinceLastTapRight;
     private bool isDashing = false; 
     private bool canDash = true;
+
+
+    protected void ToggleDash() 
+    {
+
+        if (Input.GetKeyDown(dashButton) && Input.GetKey(playerMovement.moveLeft)){
+
+            DashDirection(Vector2.left);
+        
+        }
+
+        if (Input.GetKeyDown(dashButton) && Input.GetKey(playerMovement.moveRight)) 
+        {
+            DashDirection(Vector2.right);
+        }
+
+    }
+
 
     protected void Dashing() 
     {

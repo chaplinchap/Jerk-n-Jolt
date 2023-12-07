@@ -26,8 +26,6 @@ public class Pull : AbilityPower
     public float chargeTrackingTimer;
     private bool ifFailedChargeTime;
     private bool ifSuccesChargeTime;
-    public float minChargingTime = 2f;
-    public float maxChargeingTime = 4;
     public float speedReducerMultiplier = 0.75f;
 
 

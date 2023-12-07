@@ -27,7 +27,6 @@ public class DashBarScript : MonoBehaviour
     public void UpdateDashBar(float chargeTime, float timeTillDash)
     {
 
-        if (Respawn.pusherIsDead || Respawn.pullerIsDead) { fill = 0; return; }
 
         fill = chargeTime / timeTillDash;
 

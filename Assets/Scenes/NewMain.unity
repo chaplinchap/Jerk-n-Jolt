@@ -10898,6 +10898,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7860616756275976915, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: dashButton
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860616756275976915, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: audioSourceDash
       value: 
       objectReference: {fileID: 160561388}

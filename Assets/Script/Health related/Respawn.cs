@@ -161,7 +161,7 @@ public class Respawn : MonoBehaviour
     {
 
         playerMovements[i] = player.GetComponent<PlayerMovement>();
-        movementAids[i] = player.GetComponent<MovementAid>();
+        //movementAids[i] = player.GetComponent<MovementAid>();
         stunbarScripts[i] = player.GetComponentInChildren<StunbarScript>();
         abilityPowers[i] = player.GetComponent<AbilityPower>();
         stunners[i] = player.GetComponent<Stunner>();
@@ -173,7 +173,7 @@ public class Respawn : MonoBehaviour
     protected virtual void TurnScripts(bool turn, int i)
     {
         playerMovements[i].enabled = turn;
-        movementAids[i].enabled = turn;
+        //movementAids[i].enabled = turn;
         stunbarScripts[i].enabled = turn;
         abilityPowers[i].enabled = turn;
         stunners[i].enabled = turn;
