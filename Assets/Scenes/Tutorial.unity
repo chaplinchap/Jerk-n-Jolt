@@ -6036,6 +6036,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413670238}
   m_CullTransparentMesh: 1
+--- !u!1 &1415826308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4154673249394897083, guid: 4110c0065584b1646b21524508cf157e, type: 3}
+  m_PrefabInstance: {fileID: 7560673620836423867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1415826310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415826308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd84fb42bff4aa44b8adc7d5052202b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  pusherDeathSounds: []
+  pullerDeathSounds: []
+  pusherObject: {fileID: 1388173218}
+  pullerObject: {fileID: 1449906316}
+  DeathCircle: {fileID: 1529921312702772813, guid: 69f237fbe08bc3e4386e7698869e389f, type: 3}
 --- !u!1 &1427993045
 GameObject:
   m_ObjectHideFlags: 0
@@ -11047,10 +11070,14 @@ PrefabInstance:
       propertyPath: pusherDeathSounds.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 5a8adb7d39fd4e0448d879b91abe74df, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8295961827963234806, guid: 4110c0065584b1646b21524508cf157e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4154673249394897083, guid: 4110c0065584b1646b21524508cf157e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1415826310}
   m_SourcePrefab: {fileID: 100100000, guid: 4110c0065584b1646b21524508cf157e, type: 3}
 --- !u!1001 &8485991237538068401
 PrefabInstance:
