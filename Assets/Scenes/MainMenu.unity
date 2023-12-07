@@ -7710,7 +7710,7 @@ MonoBehaviour:
   musicSource: {fileID: 626443242}
   SFXSource: {fileID: 1350912765}
   mainMenuBackground: {fileID: 8300000, guid: 274c63cc37d2ba149ad1cfb1c77099fa, type: 3}
-  buttonClick: {fileID: 8300000, guid: cf7dec43ae6a66a48aaf1ea287f5b675, type: 3}
+  buttonClick: {fileID: 8300000, guid: 9246f836e2f4e424cb3babce6826f0e1, type: 3}
 --- !u!4 &1377568776
 Transform:
   m_ObjectHideFlags: 0
