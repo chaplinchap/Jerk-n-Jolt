@@ -5,6 +5,7 @@ public class SuddenDeathVibrationFloor : MonoBehaviour
 {
     public float shakeAmount = 0f; 
     private float shakeSpeed = 1f;
+    private ParticleSystem particleSystem;
 
     Vector3 originalPosition;
   
@@ -12,15 +13,9 @@ public class SuddenDeathVibrationFloor : MonoBehaviour
     void Start()
     {
         originalPosition = transform.localPosition;
-   
+        particleSystem = GetComponentInChildren<ParticleSystem>();
     }
-
-    void Update()
-    {
-
-
-    }
-
+    
     public void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Puller") && DeathGameChange.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && DeathGameChange.suddenDeathTriggered)
@@ -31,7 +26,6 @@ public class SuddenDeathVibrationFloor : MonoBehaviour
 
             shakeAmount = 0.25f;
             ShakeObject();
-
         }
     }
 
@@ -58,7 +52,7 @@ public class SuddenDeathVibrationFloor : MonoBehaviour
         float shake = Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;
 
         // Apply the random offsets to the targets position
-         transform.localPosition = originalPosition + new Vector3(offsetX, offsetY, offsetZ) + new Vector3(shake, 0f, 0f);
+        transform.localPosition = originalPosition + new Vector3(offsetX, offsetY, offsetZ) + new Vector3(shake, 0f, 0f);
     }
 
 

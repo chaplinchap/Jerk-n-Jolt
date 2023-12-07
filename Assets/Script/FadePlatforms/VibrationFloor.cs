@@ -5,9 +5,8 @@ public class VibrationFloor : MonoBehaviour
 {
     public float shakeAmount = 0f; 
     private float shakeSpeed = 1f;
-
-
-
+    private ParticleSystem particleSystem;
+    private AudioManager audioManager;
     
 
     Vector3 originalPosition;
@@ -16,13 +15,8 @@ public class VibrationFloor : MonoBehaviour
     void Start()
     {
         originalPosition = transform.localPosition;
-   
-    }
-
-    void Update()
-    {
-
-
+        particleSystem = GetComponentInChildren<ParticleSystem>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void OnCollisionStay2D(Collision2D collision)
@@ -32,10 +26,9 @@ public class VibrationFloor : MonoBehaviour
             collision.transform.SetParent(transform);
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             playerRb.interpolation = RigidbodyInterpolation2D.None;
-
-            
             ShakeObject();
-
+            particleSystem.Play();
+            //audioManager.StartFloorShake();
         }
     }
 
@@ -46,7 +39,8 @@ public class VibrationFloor : MonoBehaviour
             collision.transform.SetParent(null);
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             playerRb.interpolation = RigidbodyInterpolation2D.Interpolate;
-
+            particleSystem.Stop();
+            //audioManager.StopFloorShake();
            // shakeAmount = 0f;
         }
     }
