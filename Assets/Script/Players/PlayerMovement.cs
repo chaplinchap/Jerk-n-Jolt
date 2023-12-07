@@ -130,9 +130,10 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = localScale;
 
             //Chargebar will flip
-            Vector3 chargebarScale = chargebar.transform.localScale;
-            chargebarScale.x *= -1f;
-            chargebar.transform.localScale = chargebarScale;
+                Vector3 chargebarScale = chargebar.transform.localScale;
+                chargebarScale.x *= -1f;
+                chargebar.transform.localScale = chargebarScale;
+            
             
             if (IsGrounded() && rb.velocity.x >= maxSpeed)
             {
