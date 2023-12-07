@@ -2423,7 +2423,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1836267741}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: GoBackButton
+        m_MethodName: ExitTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3536,7 +3536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxConsumables
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: suddenDeathObject
@@ -11109,7 +11109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxConsumables
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: suddenDeathObject

@@ -21,10 +21,10 @@ public class MainMenu : MonoBehaviour
         Application.Quit(); //closes the game
     }
 
-    public void Tutorial() // When clicking on tutorial button
+    /*public void Tutorial() // When clicking on tutorial button
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +2); //Goes to the tutorial
-    }
+    }*/
     public void ButtonSFXSound()
     {
         audioManagerMainMenu.PlaySFX(audioManagerMainMenu.buttonClick);
