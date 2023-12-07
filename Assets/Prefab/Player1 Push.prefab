@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 5037333228750951469}
   m_Layer: 0
   m_Name: Feet
-  m_TagString: Feet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4956,7 +4956,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4, y: 1, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3000171949723518505}
@@ -5010,7 +5010,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -5061,7 +5061,7 @@ MonoBehaviour:
   speed: 160
   jumpingPower: 60
   movementX: 0
-  fastFallSpeed: 36
+  fastFallSpeed: 50
   maxSpeed: 17.5
   jumpUp: 119
   moveRight: 100
@@ -5084,9 +5084,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityPress: 32
-  abilityPowerForce: 144
+  abilityPowerForce: 100
   minChargingTime: 2
   maxChargeingTime: 4
+  isHit: 0
   hitDuration: 0.25
   powerUPParticles: {fileID: 6240413498075205578}
   powerUPEndParticles: {fileID: 7016364293492553793}
@@ -5095,7 +5096,7 @@ MonoBehaviour:
   ifFailedChargeTime: 0
   ifSuccesChargeTime: 0
   speedReducerMultiplier: 0.75
-  extraForce: 2
+  extraForce: 4
   audioSourceChargedUp: {fileID: 0}
   audioSourcePushSounds: {fileID: 0}
   audioSourceAirPushSounds: {fileID: 0}
@@ -5108,8 +5109,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a715ddf00ff7f24469c72404e8df85e9, type: 3}
   airPushSounds:
   - {fileID: 8300000, guid: 9f64eafc5dc6ecb4b93ede3ca5a841ff, type: 3}
-  hitCircle: {fileID: 1773807659196437401, guid: 8afb80887ec8f8449b1bdaea4f06e9df, type: 3}
-  chargeCircle: {fileID: 1773807659196437401, guid: 8afb80887ec8f8449b1bdaea4f06e9df, type: 3}
 --- !u!114 &6291614743756611388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5168,7 +5167,6 @@ MonoBehaviour:
   dashingPower: 75
   duration: 2
   dashingBuffer: 0.3
-  dashButton: 0
   audioSourceDash: {fileID: 0}
   dashTime: 1
 --- !u!114 &3346434135170326449
@@ -5208,12 +5206,8 @@ MonoBehaviour:
   - {fileID: 4908855351871598811}
   - {fileID: 6462886072796407732}
   ghostAlpha: 0.4
-  isGhostPusher: 0
-  isGhostPuller: 0
-  minGhostDuration: 1.5
+  isGhost: 0
   ghostDuration: 3
-  canExitGhost: 0
-  abilityGameObject: {fileID: 2977566204947500839}
 --- !u!1 &2977566204947500839
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,7 +5256,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4224
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -10277,18 +10271,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6331008746866255769}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.002, y: 0.002, z: 1}
+  m_LocalScale: {x: 0.003, y: 0.002, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 367788939465739780}
   m_Father: {fileID: 5443167318930251627}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.299, y: 0.758}
-  m_SizeDelta: {x: 350, y: 350}
+  m_AnchoredPosition: {x: -1.06, y: 0.04}
+  m_SizeDelta: {x: 750, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &552397986770655753
 Canvas:
@@ -10365,7 +10359,6 @@ GameObject:
   - component: {fileID: 827139409977966561}
   - component: {fileID: 7425394576018600845}
   - component: {fileID: 6602681866735355342}
-  - component: {fileID: 954544823320660782}
   m_Layer: 5
   m_Name: Foreground
   m_TagString: Untagged
@@ -10382,15 +10375,15 @@ RectTransform:
   m_GameObject: {fileID: 6735965420919267519}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1136097, y: 2.3814883, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4446534313316730035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.00061035156}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &827139409977966561
 CanvasRenderer:
@@ -10420,14 +10413,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d30cc01a178f17042856a05284a9c272, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 30c919da45281c24c85336d0ef6dc542, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 2
+  m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!114 &6602681866735355342
@@ -10442,78 +10435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3ac103c19380c4eacfef60843046e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0.12956524, a: 1}
-    key1: {r: 0.72156864, g: 0, b: 0, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
---- !u!114 &954544823320660782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6735965420919267519}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03810a59e9ab30d488a47d7ce2242131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
+  color: {r: 1, g: 1, b: 1, a: 1}
+  duration: 0.5
 --- !u!1 &7933940392559805666
 GameObject:
   m_ObjectHideFlags: 0

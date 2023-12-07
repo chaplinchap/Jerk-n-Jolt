@@ -11,7 +11,6 @@ public class SuddenDeathPlatformTriggerFade : MonoBehaviour
 
     public PlatformScriptableObject platformScriptableObject;
     private ParticleSystem particleSystem;
-    private AudioManager audioManager;
     public float durationTime = 0.25f;
     public float respawnTime = 2f;
     public float cancelFadeTime = 1f;
@@ -27,7 +26,6 @@ public class SuddenDeathPlatformTriggerFade : MonoBehaviour
     private void Start()
     {
         particleSystem = GetComponentInChildren<ParticleSystem>();
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -37,7 +35,6 @@ public class SuddenDeathPlatformTriggerFade : MonoBehaviour
         if (collision.gameObject.CompareTag("Puller") && DeathGameChange.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && DeathGameChange.suddenDeathTriggered)
         {
             particleSystem.Play();
-            audioManager.StartFloorShake();
             onPlatformFade = true;
             offPlatformFade = false;
 
@@ -61,7 +58,6 @@ public class SuddenDeathPlatformTriggerFade : MonoBehaviour
         if (collision.gameObject.CompareTag("Puller") && DeathGameChange.suddenDeathTriggered || collision.gameObject.CompareTag("Pusher") && DeathGameChange.suddenDeathTriggered)
         {
             particleSystem.Stop();
-            audioManager.StopFloorShake();
             offPlatformFade = true;
             onPlatformFade = false;
 
