@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStateChangePlatformDespawn : MonoBehaviour
+public class GameStateChangePlatformDespawn1 : MonoBehaviour
 {
 
     [SerializeField] PlatformScriptableObject platformScriptableObject;
