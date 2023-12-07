@@ -2710,6 +2710,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 142326036}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &511142019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7699,7 +7711,6 @@ MonoBehaviour:
   SFXSource: {fileID: 1350912765}
   mainMenuBackground: {fileID: 8300000, guid: 274c63cc37d2ba149ad1cfb1c77099fa, type: 3}
   buttonClick: {fileID: 8300000, guid: cf7dec43ae6a66a48aaf1ea287f5b675, type: 3}
-  buttonClick: {fileID: 8300000, guid: 9246f836e2f4e424cb3babce6826f0e1, type: 3}
 --- !u!4 &1377568776
 Transform:
   m_ObjectHideFlags: 0
