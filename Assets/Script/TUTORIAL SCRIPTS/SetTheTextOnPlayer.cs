@@ -19,12 +19,11 @@ public class SetTheTextOnPlayer : MonoBehaviour
     [SerializeField]
     TextInputScript scriptPuller;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
 
 
-        if (collision.CompareTag("Pusher"))
-        {
+        if (collision.CompareTag("Pusher")) {
 
             scriptPusher.SetText(textToSetPusher);
 
