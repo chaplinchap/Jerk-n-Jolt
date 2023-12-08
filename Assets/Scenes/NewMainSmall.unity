@@ -9734,7 +9734,7 @@ PrefabInstance:
       objectReference: {fileID: 8182474207030087591, guid: fe1be3976af23e34fadd3f00eb4cf8f9, type: 3}
     - target: {fileID: 847568949796497890, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: abilityPress
-      value: 109
+      value: 305
       objectReference: {fileID: 0}
     - target: {fileID: 847568949796497890, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: chargeCircle
@@ -10117,6 +10117,10 @@ PrefabInstance:
       value: -19.021
       objectReference: {fileID: 0}
     - target: {fileID: 6176417150370209270, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
+      propertyPath: dashButton
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176417150370209270, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: audioSourceDash
       value: 
       objectReference: {fileID: 160561389}
@@ -10289,6 +10293,10 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 775111225}
+    - target: {fileID: 7860616756275976915, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: dashButton
+      value: 304
+      objectReference: {fileID: 0}
     - target: {fileID: 7860616756275976915, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: audioSourceDash
       value: 

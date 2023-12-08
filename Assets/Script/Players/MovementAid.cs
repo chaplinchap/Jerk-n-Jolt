@@ -69,14 +69,16 @@ public class MovementAid : MonoBehaviour
 
     protected void ToggleDash() 
     {
+        
+        if (stunScript.IsStunned() || abilityPowerScript.IsHit()) return; 
 
-        if (Input.GetKeyDown(dashButton) && Input.GetKey(playerMovement.moveLeft)){
+        if (Input.GetKeyDown(dashButton) && Input.GetKey(playerMovement.moveLeft) && canDash){
 
             DashDirection(Vector2.left);
         
         }
 
-        if (Input.GetKeyDown(dashButton) && Input.GetKey(playerMovement.moveRight)) 
+        if (Input.GetKeyDown(dashButton) && Input.GetKey(playerMovement.moveRight) && canDash) 
         {
             DashDirection(Vector2.right);
         }
