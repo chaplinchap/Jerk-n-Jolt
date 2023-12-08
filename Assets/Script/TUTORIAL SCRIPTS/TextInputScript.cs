@@ -11,10 +11,7 @@ public class TextInputScript : MonoBehaviour
 
     void Start()
     {
-        text = GetComponent<TextMeshProUGUI>();
-
-        SetText("Work") ;
-        
+        text = GetComponent<TextMeshProUGUI>();        
     }
 
     
