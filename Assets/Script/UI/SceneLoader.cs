@@ -14,9 +14,19 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine (LoadLevel());
     }
 
+    public void Playtutorial()
+    {
+        StartCoroutine (LoadTutorial());
+    }
+
     public void GoMenu()
     {
         StartCoroutine (LoadMenu());
+    }
+
+    public void GoMenuFromTurorial()
+    {
+        StartCoroutine (LoadMenuFromTutorial());
     }
 
     IEnumerator LoadLevel ()
@@ -31,6 +41,20 @@ public class SceneLoader : MonoBehaviour
         transition.SetTrigger("FadeBlack");
         yield return new WaitForSecondsRealtime(transitionTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+    }
+
+    IEnumerator LoadTutorial ()
+    {
+        transition.SetTrigger("FadeBlack");
+        yield return new WaitForSecondsRealtime(transitionTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +2);
+    }
+
+    IEnumerator LoadMenuFromTutorial ()
+    {
+        transition.SetTrigger("FadeBlack");
+        yield return new WaitForSecondsRealtime(transitionTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -2);
     }
 
 }

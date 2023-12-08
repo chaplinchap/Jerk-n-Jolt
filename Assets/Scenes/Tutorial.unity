@@ -744,6 +744,29 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 485478696032354289, guid: 68ae59a8da69ae64b9c721fecb6ef509, type: 3}
   m_PrefabInstance: {fileID: 222081824}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &223799855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4154673249394897083, guid: 4110c0065584b1646b21524508cf157e, type: 3}
+  m_PrefabInstance: {fileID: 1631810884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &223799861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223799855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd84fb42bff4aa44b8adc7d5052202b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  pusherDeathSounds: []
+  pullerDeathSounds: []
+  pusherObject: {fileID: 1388173218}
+  pullerObject: {fileID: 1449906316}
+  DeathCircle: {fileID: 7846033741640077201, guid: b4a9fbe14ef80a242a6eb0227745bba3, type: 3}
 --- !u!1 &233638141
 GameObject:
   m_ObjectHideFlags: 0
@@ -2418,7 +2441,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1836267741}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: GoBackButton
+        m_MethodName: ExitTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3484,7 +3507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxConsumables
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: suddenDeathObject
@@ -5533,6 +5556,29 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1286598933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4154673249394897083, guid: 4110c0065584b1646b21524508cf157e, type: 3}
+  m_PrefabInstance: {fileID: 1436905686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1286598939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286598933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd84fb42bff4aa44b8adc7d5052202b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  pusherDeathSounds: []
+  pullerDeathSounds: []
+  pusherObject: {fileID: 1388173218}
+  pullerObject: {fileID: 1449906316}
+  DeathCircle: {fileID: 310252869931104311, guid: 7758d4c2dd817b443945964b3d17ff33, type: 3}
 --- !u!1 &1316277506
 GameObject:
   m_ObjectHideFlags: 0
@@ -6204,6 +6250,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 51711125}
     - target: {fileID: 4857315706902823471, guid: 4110c0065584b1646b21524508cf157e, type: 3}
+      propertyPath: randomSpawnPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857315706902823471, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: randomSpawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1594644894}
@@ -6323,10 +6373,14 @@ PrefabInstance:
       propertyPath: pusherDeathSounds.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 1cd77858ca9cb77438fc5b37640137d6, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8295961827963234806, guid: 4110c0065584b1646b21524508cf157e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4154673249394897083, guid: 4110c0065584b1646b21524508cf157e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1286598939}
   m_SourcePrefab: {fileID: 100100000, guid: 4110c0065584b1646b21524508cf157e, type: 3}
 --- !u!114 &1443328319 stripped
 MonoBehaviour:
@@ -7071,6 +7125,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1263994231}
     - target: {fileID: 4857315706902823471, guid: 4110c0065584b1646b21524508cf157e, type: 3}
+      propertyPath: randomSpawnPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4857315706902823471, guid: 4110c0065584b1646b21524508cf157e, type: 3}
       propertyPath: randomSpawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1594644894}
@@ -7190,10 +7248,14 @@ PrefabInstance:
       propertyPath: pusherDeathSounds.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 1cd77858ca9cb77438fc5b37640137d6, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8295961827963234806, guid: 4110c0065584b1646b21524508cf157e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4154673249394897083, guid: 4110c0065584b1646b21524508cf157e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 223799861}
   m_SourcePrefab: {fileID: 100100000, guid: 4110c0065584b1646b21524508cf157e, type: 3}
 --- !u!1 &1631900856
 GameObject:
@@ -9234,6 +9296,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140023860}
   m_CullTransparentMesh: 1
+--- !u!1001 &2438653202345168325
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6484123547023316253, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_Name
+      value: TriggerText
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: textToSetPuller
+      value: Puller Works
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
 --- !u!1001 &2826552128795819710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10136,7 +10259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxConsumables
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: suddenDeathObject
@@ -10334,4 +10457,5 @@ SceneRoots:
   - {fileID: 1631810884}
   - {fileID: 1436905686}
   - {fileID: 1757829276}
+  - {fileID: 2438653202345168325}
   - {fileID: 2039456951}

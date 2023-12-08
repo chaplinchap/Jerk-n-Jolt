@@ -202,6 +202,11 @@ public class UIManager : MonoBehaviour
         SceneLoader.GoMenu();
     }
 
+     public void ExitTutorial() // When clicking button
+    {   
+        SceneLoader.GoMenuFromTurorial();
+    }
+
     public void Quit()
     {
         //UnityEditor.EditorApplication.isPlaying = false; //closes the unity runner
