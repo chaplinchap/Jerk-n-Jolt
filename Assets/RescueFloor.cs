@@ -6,6 +6,7 @@ using UnityEngine;
 public class RescueFloor : MonoBehaviour
 {
     public GameObject rescueFloor;
+    public static bool boostJumpActivated = false;
     
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class RescueFloor : MonoBehaviour
         if (other.CompareTag("Pusher") || other.CompareTag("Puller"))
         {
             rescueFloor.SetActive(true);
+            boostJumpActivated = true;
         }
     }
 }
