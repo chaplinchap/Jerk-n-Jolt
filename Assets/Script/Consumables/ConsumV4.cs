@@ -11,8 +11,8 @@ public class ConsumV4 : MonoBehaviour
     // private DeathGameChange suddenDeathScript;
     public float minSpawnDelay = 20f;  // Change as needed
     public float maxSpawnDelay = 30f;  // Change as needed
-    private int maxSpawnAttempts = 250; // Maximum attempts to find a valid position
-    private float minDistanceBetweenItems = 1f; // Distance between itemPrefabs
+    private int maxSpawnAttempts = 25000; // Maximum attempts to find a valid position
+    private float minDistanceBetweenItems = 2f; // Distance between itemPrefabs
 
     public int maxConsumables = 3;
     public static int currentConsumablesTracker = 0;
