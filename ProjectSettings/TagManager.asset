@@ -20,6 +20,7 @@ TagManager:
   - ParticleTrigger
   - PowerUP
   - PowerUpEndParticle
+  - Feet
   layers:
   - Default
   - TransparentFX

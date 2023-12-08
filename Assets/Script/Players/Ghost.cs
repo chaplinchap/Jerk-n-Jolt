@@ -32,7 +32,13 @@ public class Ghost : MonoBehaviour
     private int ghostLayer = 12;
 
 
-   public void Start() 
+    private void OnEnable()
+    {
+        ghostIsTriggeredOnce = false;
+    }
+
+
+    public void Start() 
     {
 
         playerCollider = GetComponent<BoxCollider2D>();
@@ -48,6 +54,10 @@ public class Ghost : MonoBehaviour
 
     private void Update()
     {
+
+
+
+
         if (isGhostPusher && !ghostIsTriggeredOnce || isGhostPuller && !ghostIsTriggeredOnce)
         {
             turnGhostRoutine = TurnGhost(ghostDuration);
@@ -64,7 +74,7 @@ public class Ghost : MonoBehaviour
 
         if(AbilityPower.hasPressedAbilityInGhostPusher && isGhostPusher && canExitGhost)
         {
-            Debug.Log("Stop ghost mode");
+            
             isGhostPusher = false;
             StopCoroutine(turnGhostRoutine);
             TurnGhostState(startColor, defaultLayer);
@@ -76,7 +86,7 @@ public class Ghost : MonoBehaviour
 
         if (AbilityPower.hasPressedAbilityInGhostPuller && isGhostPuller && canExitGhost)
         {
-            Debug.Log("Stop ghost mode");
+           
             isGhostPuller = false;
             StopCoroutine(turnGhostRoutine);
             TurnGhostState(startColor, defaultLayer);
@@ -86,14 +96,17 @@ public class Ghost : MonoBehaviour
             
           //  otherPlayerCollider.gameObject.layer = defaultLayer;
         }
+
+
     }
 
     public IEnumerator TurnGhost(float duration) 
     {
       
-        TurnGhostState(ghostColor, ghostLayer); 
+        TurnGhostState(ghostColor, ghostLayer);
         yield return new WaitForSeconds(duration);
         TurnGhostState(startColor, defaultLayer);
+   
         isGhostPusher = false;
         isGhostPuller = false;
         ghostIsTriggeredOnce = false;

@@ -1203,6 +1203,10 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 5.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2901866559327265294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: shakeAmount
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5725731760217337183, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Name
       value: FadingFloor (5)
@@ -1290,6 +1294,10 @@ PrefabInstance:
     - target: {fileID: 8366793539177865294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064790203115242014, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: shakeAmount
+      value: 0.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2161,6 +2169,10 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 5.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2901866559327265294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: shakeAmount
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5725731760217337183, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Name
       value: FadingFloor (2)
@@ -2248,6 +2260,10 @@ PrefabInstance:
     - target: {fileID: 8366793539177865294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064790203115242014, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: shakeAmount
+      value: 0.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2721,6 +2737,10 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 5.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2901866559327265294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: shakeAmount
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5725731760217337183, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Name
       value: FadingFloor (4)
@@ -2820,6 +2840,10 @@ PrefabInstance:
     - target: {fileID: 8366793539177865294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064790203115242014, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: shakeAmount
+      value: 0.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3971,6 +3995,10 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 5.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2901866559327265294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: shakeAmount
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5725731760217337183, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Name
       value: FadingFloor (1)
@@ -4062,6 +4090,10 @@ PrefabInstance:
     - target: {fileID: 8366793539177865294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064790203115242014, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: shakeAmount
+      value: 0.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5588,6 +5620,10 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 5.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2901866559327265294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: shakeAmount
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5725731760217337183, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Name
       value: FadingFloor (3)
@@ -5675,6 +5711,10 @@ PrefabInstance:
     - target: {fileID: 8366793539177865294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064790203115242014, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: shakeAmount
+      value: 0.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11084,6 +11124,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 170599958}
     m_Modifications:
+    - target: {fileID: 2901866559327265294, guid: e6c32039061febc438e251c76dd8b513, type: 3}
+      propertyPath: shakeAmount
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5725731760217337183, guid: e6c32039061febc438e251c76dd8b513, type: 3}
       propertyPath: m_Name
       value: FadingFloor

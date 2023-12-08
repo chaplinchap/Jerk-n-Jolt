@@ -43,7 +43,7 @@ public class ConsumV4 : MonoBehaviour
         if (nextSpawnTime <= 0 && currentConsumablesTracker < maxConsumables && !DeathGameChange.suddenDeathTriggered && !UIManager.staticGameOver)
         {
 
-            print("SPawn");
+          
             audioManager.PlaySFX(audioManager.consumableSpawn);
             // Choose a random spawn area and item prefab
             int randomSpawnAreaIndex = Random.Range(0, spawnAreas.Count);
