@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class VibrationFloor : MonoBehaviour
 {
@@ -19,6 +21,14 @@ public class VibrationFloor : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
+        {
+            audioManager.StartFloorShake();
+        }
+    }
+
     public void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
@@ -28,7 +38,6 @@ public class VibrationFloor : MonoBehaviour
             playerRb.interpolation = RigidbodyInterpolation2D.None;
             ShakeObject();
             particleSystem.Play();
-            //audioManager.StartFloorShake();
         }
     }
 
@@ -36,11 +45,11 @@ public class VibrationFloor : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
         {
+            //audioManager.StopFloorShake();
             collision.transform.SetParent(null);
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             playerRb.interpolation = RigidbodyInterpolation2D.Interpolate;
             particleSystem.Stop();
-            //audioManager.StopFloorShake();
            // shakeAmount = 0f;
         }
     }
@@ -59,5 +68,6 @@ public class VibrationFloor : MonoBehaviour
          transform.localPosition = originalPosition + new Vector3(offsetX, offsetY, offsetZ) + new Vector3(shake, 0f, 0f);
     }
 
+    
 
 }

@@ -1891,7 +1891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPusher
-      value: ' <b>Through Floor</b> You can go under platforms by pressing down'
+      value: ' <b>Floor Drop:</b> Pressing [S/Down] drops you through a platform.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1916,7 +1916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2329271348628388686, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 23.22
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 2329271348628388686, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1924,11 +1924,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_Size.x
-      value: 10
+      value: 14.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_Size.y
+      value: 4.16
       objectReference: {fileID: 0}
     - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_Offset.x
-      value: 11.1
+      value: 11.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_Offset.y
+      value: -4.77
       objectReference: {fileID: 0}
     - target: {fileID: 6484123547023316253, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_Name
@@ -1936,7 +1944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6920058169232970133, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 23.22
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 6920058169232970133, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1988,7 +1996,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPusher
-      value: ' <b>Shaking platforms</b> Some platforms will shake and disapear'
+      value: ' <b>Shaking Platforms:</b> Shaking Platforms will shake and disappear
+        when you stand on them.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3166,6 +3175,10 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 11.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6484123547023316253, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_Name
       value: DashText
@@ -3220,11 +3233,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPuller
-      value: ' <b>Dash:</b> Alien can dash on Period'
+      value: ' <b>Dash:</b> Alien can dash with [Right Ctrl].'
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPusher
-      value: ' <b>Dash:</b> Potato can dash on Left Shift'
+      value: ' <b>Dash:</b> Potato can dash with [V].'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3861,12 +3874,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPuller
-      value: ' <b>Alien:</b> Pull the Potato from long away '
+      value: ' <b>Alien:</b> Ability force is range dependent, the further away the
+        more damage.'
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPusher
-      value: ' <b>Charge Up:</b> You can charge your ability by holding down your
-        attack'
+      value: ' <b>Chargeability:</b> Pressing down the Attack key will charge up
+        your ability for extra power.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4473,6 +4487,10 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 11.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.42
+      objectReference: {fileID: 0}
     - target: {fileID: 6484123547023316253, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_Name
       value: PowerUPText
@@ -4531,7 +4549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPusher
-      value: ' <b>PowerUP Pickup:</b> PowerUPs will increase your power'
+      value: ' <b>PowerUP:</b> PowerUPs increase your attack power.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6083,6 +6101,10 @@ PrefabInstance:
       value: 11.1
       objectReference: {fileID: 0}
     - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
       value: 4096
       objectReference: {fileID: 0}
@@ -6144,7 +6166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPusher
-      value: ' <b>Ghost Form:</b> Respawning will temporarily make you a ghost'
+      value: ' <b>Ghost Form:</b> Respawning will temporarily make you untouchable.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7596,11 +7618,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2329271348628388686, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 20.05
+      value: 17.86
       objectReference: {fileID: 0}
     - target: {fileID: 2329271348628388686, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_Size.x
@@ -7609,6 +7631,10 @@ PrefabInstance:
     - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_Offset.x
       value: 11.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.91
       objectReference: {fileID: 0}
     - target: {fileID: 6484123547023316253, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_Name
@@ -7624,11 +7650,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6920058169232970133, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 20.05
+      value: 17.86
       objectReference: {fileID: 0}
     - target: {fileID: 6920058169232970133, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7676,8 +7702,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPusher
-      value: ' <b>Boost Jump:</b> Jumping off the edge of a platform will make your
-        jumps higher'
+      value: ' <b>Boost Jump:</b> Jumping from the tip of a platform will make your
+        jumps higher.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9793,6 +9819,10 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 11.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6484123547023316253, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_Name
       value: HeartText
@@ -9851,7 +9881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPusher
-      value: ' <b>Heart Pickup:</b> Hearts will raise your health by 1'
+      value: ' <b>Heart:</b> Hearts will raise your health by 1.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10543,11 +10573,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPuller
-      value: ' <b>Alien:</b> Moves with Arrow Keys, hits with Right Control'
+      value: ' <b>Alien:</b> Moves with Arrow Keys and attacks with [Period].'
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPusher
-      value: ' <b>Potato:</b> Moves with WASD, hits with Space'
+      value: ' <b>Potato:</b> Moves with WASD and attacks with [F].'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10564,7 +10594,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 847568949796497890, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: abilityPress
-      value: 305
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 847568949796497890, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: audioSourceChargedUp
@@ -10632,7 +10662,7 @@ PrefabInstance:
       objectReference: {fileID: 1171716892}
     - target: {fileID: 6176417150370209270, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: dashButton
-      value: 46
+      value: 305
       objectReference: {fileID: 0}
     - target: {fileID: 6176417150370209270, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: audioSourceDash
@@ -10663,6 +10693,10 @@ PrefabInstance:
       propertyPath: audioSourceJump
       value: 
       objectReference: {fileID: 2083235314}
+    - target: {fileID: 1545128923084080689, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: abilityPress
+      value: 102
+      objectReference: {fileID: 0}
     - target: {fileID: 1545128923084080689, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: audioSourceChargedUp
       value: 
@@ -10725,7 +10759,7 @@ PrefabInstance:
       objectReference: {fileID: 775111225}
     - target: {fileID: 7860616756275976915, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: dashButton
-      value: 304
+      value: 118
       objectReference: {fileID: 0}
     - target: {fileID: 7860616756275976915, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: audioSourceDash

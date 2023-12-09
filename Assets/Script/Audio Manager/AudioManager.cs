@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour
 
     public void StartFloorShake()
     {
-        floorShakeSource.Play();
+        floorShakeSource.PlayOneShot(floorShakeSound);
     }
 
     public void StopFloorShake()
