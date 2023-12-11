@@ -42,7 +42,12 @@ public class MovementAid : MonoBehaviour
     {
         isDashing = false;
         canDash = true;
-        //dashBarScript.UpdateDashBar(1, 1);
+
+        try
+        {
+            dashBarScript.UpdateDashBar(1, 1);
+        }
+        catch { }
     }
 
     float time = 0;

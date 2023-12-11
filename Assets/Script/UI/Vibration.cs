@@ -6,24 +6,27 @@ public class Vibration : MonoBehaviour
     public float shakeAmount = 0f; 
     private float shakeSpeed = 1f;
     public bool coroutineRunning = false;
-    
+
+    private AbilityPower abilityPowerScript;
+
     Vector3 originalPosition;
     [SerializeField] private KeyCode abilityPressed = KeyCode.Space;
 
     void Start()
     {
         originalPosition = transform.localPosition;
+        abilityPowerScript = GetComponentInParent<AbilityPower>();
     }
 
     void LateUpdate()
     {        
         ShakeObject();
 
-        if (Input.GetKeyDown(abilityPressed) && !coroutineRunning)
+        if (Input.GetKeyDown(abilityPowerScript.abilityPress) && !coroutineRunning)
         {
             StartCoroutine (ShakeIntensity());
         }
-        else if (Input.GetKeyUp(abilityPressed) && coroutineRunning)
+        else if (Input.GetKeyUp(abilityPowerScript.abilityPress) && coroutineRunning)
         {
             StopAllCoroutines();
             coroutineRunning = false;
