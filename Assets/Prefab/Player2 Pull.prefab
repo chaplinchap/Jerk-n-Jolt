@@ -15414,7 +15414,7 @@ MonoBehaviour:
   dashingPower: 100
   duration: 2
   dashingBuffer: 0.3
-  dashButton: 305
+  dashButton: 44
   audioSourceDash: {fileID: 0}
   dashTime: 1
 --- !u!114 &2808390417285694909

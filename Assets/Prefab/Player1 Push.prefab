@@ -5168,7 +5168,7 @@ MonoBehaviour:
   dashingPower: 75
   duration: 2
   dashingBuffer: 0.3
-  dashButton: 118
+  dashButton: 103
   audioSourceDash: {fileID: 0}
   dashTime: 1
 --- !u!114 &3346434135170326449
@@ -5346,14 +5346,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4029084570300025291}
   serializedVersion: 8
-  lengthInSec: 2.5
+  lengthInSec: 0.1
   simulationSpeed: 0.5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
