@@ -172,14 +172,14 @@ public class UIManager : MonoBehaviour
 
             else if (player1.activeInHierarchy) // If player 1 is still alive
             {
-                text.text = "Player 1 Wins";
+                text.text = "Potato Wins";
                 zoom = true;
                 scoreManager.UpdateScores(1,0);
             }
                
             else if (player2.activeInHierarchy) // If player 2 is still alive
             {
-                text.text = "Player 2 Wins";
+                text.text = "Alien Wins";
                 zoom = true;
                 scoreManager.UpdateScores(0,1);
             }
