@@ -156,7 +156,7 @@ public class SpawnOoBArrows : MonoBehaviour
         
         if (other.gameObject.CompareTag("Pusher"))
         {
-            Debug.Log("Arrow Despawned");
+            //Debug.Log("Arrow Despawned");
             isOOBPusherY = false;
             arrowPusher.enabled = false;
         }
@@ -164,7 +164,7 @@ public class SpawnOoBArrows : MonoBehaviour
 
         if (other.gameObject.CompareTag("Puller"))
         {
-            Debug.Log("Arrow Despawned");
+            //Debug.Log("Arrow Despawned");
             isOOBPullerY = false;
             arrowPuller.enabled = false;
         }
