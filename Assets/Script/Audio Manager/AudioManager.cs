@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip explosionSound;
     public AudioClip consumableSpawn;
     public AudioClip stun;
+    public AudioClip buttonClick;
 
     void Start()
     {

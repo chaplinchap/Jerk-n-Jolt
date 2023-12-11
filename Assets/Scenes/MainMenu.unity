@@ -286,9 +286,25 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -80.7135
       objectReference: {fileID: 0}
+    - target: {fileID: 1315202798019017300, guid: 53f5c7eb715315046920e0e2f808fddd, type: 3}
+      propertyPath: m_text
+      value: 'Potato: 0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315202798019017300, guid: 53f5c7eb715315046920e0e2f808fddd, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1995618057985498955, guid: 53f5c7eb715315046920e0e2f808fddd, type: 3}
       propertyPath: m_ChildAlignment
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2502517014645627195, guid: 53f5c7eb715315046920e0e2f808fddd, type: 3}
+      propertyPath: m_text
+      value: 'Alien: 0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2502517014645627195, guid: 53f5c7eb715315046920e0e2f808fddd, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3307582905595314044, guid: 53f5c7eb715315046920e0e2f808fddd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -7152,7 +7168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Pusher : 0'
+  m_text: 'Potato : 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e433615d51f03348ab2aeb88d430861, type: 2}
   m_sharedMaterial: {fileID: -4459952937858122559, guid: 4e433615d51f03348ab2aeb88d430861, type: 2}
@@ -10634,7 +10650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1979875307
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11739,7 +11755,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Puller : 0'
+  m_text: 'Alien : 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4e433615d51f03348ab2aeb88d430861, type: 2}
   m_sharedMaterial: {fileID: -4459952937858122559, guid: 4e433615d51f03348ab2aeb88d430861, type: 2}

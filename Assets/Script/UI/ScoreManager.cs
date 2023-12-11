@@ -30,12 +30,12 @@ public class ScoreManager : MonoBehaviour
 
         foreach (var score in player1Score)
         {
-            score.text = "Pusher : " + playerScore1.ToString();
+            score.text = "Potato : " + playerScore1.ToString();
         }
 
         foreach (var score in player2Score)
         {
-            score.text = "Puller : " + playerScore2.ToString();
+            score.text = "Alien : " + playerScore2.ToString();
         }
         PlayerPrefs.Save();
     }

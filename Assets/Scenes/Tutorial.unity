@@ -799,6 +799,7 @@ Transform:
   - {fileID: 98848899}
   - {fileID: 2120609240}
   - {fileID: 1299232828}
+  - {fileID: 611009293}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &258933461 stripped
@@ -2586,6 +2587,109 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601080182}
   m_CullTransparentMesh: 1
+--- !u!1001 &611009292
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 257340981}
+    m_Modifications:
+    - target: {fileID: 70410797161951048, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 70410797161951048, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 2329271348628388686, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 12.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2329271348628388686, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_Size.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_Offset.x
+      value: 11.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484123547023316253, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_Name
+      value: AlienAbilityForce
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920058169232970133, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920058169232970133, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.62445
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2073946
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.14143138
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: textToSetPuller
+      value: ' <b>Alien:</b> Ability force is range dependent, the further away the
+        more damage.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+      propertyPath: textToSetPusher
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+--- !u!4 &611009293 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7200105936652503726, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
+  m_PrefabInstance: {fileID: 611009292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3040,11 +3144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPuller
-      value: ' <b>Dash:</b> Alien can dash with [Right Ctrl].'
+      value: ' <b>Dash:</b> Alien can dash with [Comma].'
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPusher
-      value: ' <b>Dash:</b> Potato can dash with [V].'
+      value: ' <b>Dash:</b> Potato can dash with [G].'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3613,11 +3717,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2329271348628388686, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 12.3
+      value: 10.6
       objectReference: {fileID: 0}
     - target: {fileID: 2329271348628388686, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.21
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2593697263522474612, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: m_Size.x
@@ -3681,8 +3785,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPuller
-      value: ' <b>Alien:</b> Ability force is range dependent, the further away the
-        more damage.'
+      value: ' <b>Chargeability:</b> Pressing down the Attack key will charge up
+        your ability for extra power.'
       objectReference: {fileID: 0}
     - target: {fileID: 8335648133684842737, guid: 960680c268fc5694a9efa1e5da10434c, type: 3}
       propertyPath: textToSetPusher
@@ -10459,6 +10563,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1171716892}
     - target: {fileID: 6176417150370209270, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
+      propertyPath: dashButton
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6176417150370209270, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: audioSourceDash
       value: 
       objectReference: {fileID: 160561389}
@@ -10551,6 +10659,10 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 775111225}
+    - target: {fileID: 7860616756275976915, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: dashButton
+      value: 103
+      objectReference: {fileID: 0}
     - target: {fileID: 7860616756275976915, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: audioSourceDash
       value: 
