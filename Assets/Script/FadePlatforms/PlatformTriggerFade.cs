@@ -103,7 +103,7 @@ public class PlatformTriggerFade : MonoBehaviour
         }
         platformScriptableObject.ChangeAlpha(target);
         
-        Debug.Log("Despawning Platform");
+        //Debug.Log("Despawning Platform");
         yield return new WaitForSeconds(time);
         platformScriptableObject.Despawn(target);
         platformDespawned = true;
@@ -123,7 +123,7 @@ public class PlatformTriggerFade : MonoBehaviour
 
     public IEnumerator Respawn(GameObject target, float time)
     {
-        Debug.Log("Respawns Platform");
+       // Debug.Log("Respawns Platform");
         yield return new WaitForSeconds(time);
         platformScriptableObject.Spawn(target);     
 

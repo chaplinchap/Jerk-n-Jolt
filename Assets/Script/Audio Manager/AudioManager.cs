@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
         {
             countDownSource.clip = countDown;
             countDownSource.Play();
-            Debug.Log("Countdown sound initiated");
+            //Debug.Log("Countdown sound initiated");
         }
         
 

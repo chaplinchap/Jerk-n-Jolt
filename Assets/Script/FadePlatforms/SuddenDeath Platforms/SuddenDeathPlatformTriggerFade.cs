@@ -63,7 +63,11 @@ public class SuddenDeathPlatformTriggerFade : MonoBehaviour
 
             if (offPlatformFade && !onPlatformFade && !platformDespawned)
             {
-                StartCoroutine(CancelDespawn(gameObject, cancelFadeTime));
+                try
+                {
+                    StartCoroutine(CancelDespawn(gameObject, cancelFadeTime));
+                }
+                catch{ }
                 offPlatformFade = false;
                 onPlatformFade = false;
             }
