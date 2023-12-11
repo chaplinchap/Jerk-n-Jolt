@@ -37,7 +37,13 @@ public class VibrationFloor : MonoBehaviour
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             playerRb.interpolation = RigidbodyInterpolation2D.None;
             ShakeObject();
-            particleSystem.Play();
+
+            try
+            {
+                particleSystem.Play();
+            }
+            catch { }
+
         }
     }
 
@@ -49,7 +55,13 @@ public class VibrationFloor : MonoBehaviour
             collision.transform.SetParent(null);
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             playerRb.interpolation = RigidbodyInterpolation2D.Interpolate;
-            particleSystem.Stop();
+
+            try
+            {
+                particleSystem.Stop();
+            }
+            catch {}
+
            // shakeAmount = 0f;
         }
     }
