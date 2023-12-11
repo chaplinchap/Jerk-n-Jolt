@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
         AudioClip clip = background[UnityEngine.Random.Range(0, background.Length)];
         musicSource.PlayOneShot(clip);
 
-        if (countDownSource = null)
+       if (countDownSource != null)
         {
             countDownSource.clip = countDown;
             countDownSource.Play();
