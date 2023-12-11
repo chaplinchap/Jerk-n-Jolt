@@ -30,6 +30,14 @@ public class PullerAnimator : AnimationsParent
     private int state;
     private float lockStateTimer;
 
+
+    protected override void OnEnable() 
+    {
+        base.OnEnable();
+        lineRenderer.SetActive(false);
+    
+    }
+
     protected override void Update()
     {
         base.Update();
