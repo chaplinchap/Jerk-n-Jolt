@@ -37,14 +37,23 @@ public class AudioManager : MonoBehaviour
         AudioClip clip = background[UnityEngine.Random.Range(0, background.Length)];
         musicSource.PlayOneShot(clip);
 
-        countDownSource.clip = countDown;
-        countDownSource.Play();
+        if (countDownSource = null)
+        {
+            countDownSource.clip = countDown;
+            countDownSource.Play();
+            Debug.Log("Countdown sound initiated");
+        }
+        
 
         suddenDeathMusicSource.clip = suddenDeathMusic;
 
         stunSoundSource.clip = stun;
 
-        floorShakeSource.clip = floorShakeSound;
+        if (floorShakeSource = null)
+        {
+            floorShakeSource.clip = floorShakeSound;
+            Debug.Log("FloorShake sound initiated");
+        }
     }
     
     public void PlaySFX(AudioClip clip)
