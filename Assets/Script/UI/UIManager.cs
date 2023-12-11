@@ -80,6 +80,7 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(false); //ensure GameOVerPanel is not loaded on start
         PauseMenu.SetActive(false); //ensure pause menu is not loaded on start
         Invoke ("ShowHealthbar",1);
+        Cursor.visible = false; // Hide mouse cursor
     }
 
    
@@ -134,6 +135,7 @@ public class UIManager : MonoBehaviour
                 PauseMenu.SetActive(true); // Enable Pause Menu
                 Invoke (nameof (Pause), 0.00f); //This works for some reason compared to the line just under. Pause set to true
                 //onPause = true; //This line does not work
+                Cursor.visible = true;
                 Time.timeScale = 0; // Stops time
             }  
             
@@ -141,6 +143,7 @@ public class UIManager : MonoBehaviour
             {
                 PauseMenu.SetActive(false); // disable Pause Menu
                 onPause = false; // Pause set to no false
+                Cursor.visible = false;
                 Time.timeScale = 1; // Starts Time           
             }
         } 
@@ -148,7 +151,7 @@ public class UIManager : MonoBehaviour
 
     void Pause()
         {
-            onPause = true;
+            onPause = true;         
         }
     private bool zoom;
 
@@ -158,6 +161,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         if (!showGameOver)
         {
+            Cursor.visible = true;
             showGameOver = true;
             if (player1Health.currentHealth == 0 && player2Health.currentHealth == 0) // If both players have 0 health 
             {

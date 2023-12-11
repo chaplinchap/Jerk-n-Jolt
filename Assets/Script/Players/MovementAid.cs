@@ -34,14 +34,15 @@ public class MovementAid : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         dashBarScript = GetComponentInChildren<DashBarScript>();
         stunScript = GetComponent<Stunner>();
-        abilityPowerScript = GetComponent<AbilityPower>();  
+        abilityPowerScript = GetComponent<AbilityPower>();
+        dashBarScript.UpdateDashBar(1, 1);
     }
 
     void OnEnable() 
     {
         isDashing = false;
         canDash = true;
-        dashBarScript.UpdateDashBar(1, 1);
+        //dashBarScript.UpdateDashBar(1, 1);
     }
 
     float time = 0;
