@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,12 @@ public class AudioManager : MonoBehaviour
 {
 
     [Header("Audio Source")]
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioSource SFXSource;
-    [SerializeField] private AudioSource countDownSource;
-    [SerializeField] private AudioSource suddenDeathMusicSource;
-    [SerializeField] private AudioSource stunSoundSource;
-    [SerializeField] private AudioSource floorShakeSource;
+    [SerializeField] public AudioSource musicSource;
+    [SerializeField] public AudioSource SFXSource;
+    [SerializeField] public AudioSource countDownSource;
+    [SerializeField] public AudioSource suddenDeathMusicSource;
+    [SerializeField] public AudioSource stunSoundSource;
+    [SerializeField] public AudioSource floorShakeSource;
 
     [Header("Audio Clip")] 
     public AudioClip[] background;
@@ -44,7 +45,7 @@ public class AudioManager : MonoBehaviour
 
         floorShakeSource.clip = floorShakeSound;
     }
-
+    
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);

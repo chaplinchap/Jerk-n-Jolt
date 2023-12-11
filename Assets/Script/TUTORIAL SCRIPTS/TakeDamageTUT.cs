@@ -33,14 +33,12 @@ public class TakeDamageTUT : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) //Trigger on collision
-    {
-       
-
-            if (collision.CompareTag("Pusher"))
-            {
+    { 
+        if (collision.CompareTag("Pusher")) 
+        {
 
                 audioManager.PlaySFX(audioManager.explosionSound);
-            // PusherDeathSounds();
+                PusherDeathSounds();
 
               if (pusherHealth.currentHealth > 1)
                 { collision.GetComponent<HealthV2>().TakeDamage(damage); } //The hit player takes damage
@@ -49,13 +47,11 @@ public class TakeDamageTUT : MonoBehaviour
                 Instantiate(DeathCircle, deathPoint, Quaternion.Euler(0, 0, Random.Range(0f, 0f)));  //Before it was (0f, 360f)
 
                 CameraShake.Instance.ShakeCamera(CameraShakeValues.deathIntensity, CameraShakeValues.deathDuration);
-            }
-            if (collision.CompareTag("Puller")) //When one of the player is hit 
-            {
-           
-
+        }
+        if (collision.CompareTag("Puller")) //When one of the player is hit 
+        {
                 audioManager.PlaySFX(audioManager.explosionSound);
-            // PullerDeathSounds();
+                PullerDeathSounds();
                 if (pullerHealth.currentHealth > 1)
                 {
                 collision.GetComponent<HealthV2>().TakeDamage(damage); 
@@ -65,10 +61,8 @@ public class TakeDamageTUT : MonoBehaviour
                 Instantiate(DeathCircle, deathPoint, Quaternion.Euler(0, 0, Random.Range(0f, 0f)));  //Before it was (0f, 360f)
 
                 CameraShake.Instance.ShakeCamera(CameraShakeValues.deathIntensity, CameraShakeValues.deathDuration);
-            }
-        
+        }
     }
-
     void PusherDeathSounds()
     {
         AudioClip clip = pusherDeathSounds[Random.Range(0, pusherDeathSounds.Length)];

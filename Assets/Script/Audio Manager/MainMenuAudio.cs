@@ -5,8 +5,8 @@ using UnityEngine;
 public class MainMenuAudio : MonoBehaviour
 {
     [Header("Audio Source")]
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
+    [SerializeField] public AudioSource musicSource;
+    [SerializeField] public AudioSource SFXSource;
 
     [Header("Audio Clip")]
     public AudioClip mainMenuBackground;

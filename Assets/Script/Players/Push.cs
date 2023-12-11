@@ -212,7 +212,7 @@ public class Push : AbilityPower
         chargeTrackingTimer = 0;
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    /*public void OnTriggerEnter2D(Collider2D collision)
     {
         powerupParticle = PowerUpParticles();
 
@@ -228,7 +228,7 @@ public class Push : AbilityPower
         yield return new WaitForSeconds(5f);
         powerUPEndParticles.Play();
         CameraShake.Instance.ShakeCamera(CameraShakeValues.powerUPEndIntensity, CameraShakeValues.powerUPEndDuration);
-    }
+    }*/
 
     void ChargeUpSound()
     {

@@ -21,6 +21,8 @@ public class TriggerApplyPower : ConsumableParentObject
     private GameObject pusher;
     private GameObject puller;
     private ParticleSystem particleSystem;
+    private Push push;
+    private Pull pull;
 
     
     private IEnumerator buffDurationPusher;
@@ -30,30 +32,27 @@ public class TriggerApplyPower : ConsumableParentObject
 
 
     AudioManager audioManager;
-
+    
 
     public void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         particleSystem = GetComponent<ParticleSystem>();
+        push = GameObject.FindGameObjectWithTag("Pusher").GetComponent<Push>();
+        pull = GameObject.FindGameObjectWithTag("Puller").GetComponent<Pull>();
     }
 
     private void Awake()
     {
         timeStampOnAwake = Time.time;
-        
-
     }
-
     
-
     private void Update()
     {
         if(Time.time - timeStampOnAwake  > timeToDespawn && !isDespawned && !triggerOnce) 
         {
             isDespawned = true;
             StartCoroutine(DespawnConsumable(timeCoroutineDespawn));
-        
         }
 
         try
@@ -96,7 +95,6 @@ public class TriggerApplyPower : ConsumableParentObject
 
         {
             audioManager.PlaySFX(audioManager.powerUP);
-
             triggerOnce = true;
             buffDurationPusher = DurationbuffPusher(powerUp, collision.gameObject, time);
             buffDurationPuller = DurationbuffPuller(powerUp, collision.gameObject, time);
@@ -111,6 +109,7 @@ public class TriggerApplyPower : ConsumableParentObject
                 powerUp.Apply(pusher);
                 StartCoroutine(buffDurationPusher);
                 StartCoroutine(powerUpParticlesPusher);
+                StartCoroutine(PusherParticles());
             }
 
             if(collision.CompareTag("Puller"))
@@ -119,16 +118,9 @@ public class TriggerApplyPower : ConsumableParentObject
                 powerUp.Apply(puller);
                 StartCoroutine(buffDurationPuller);
                 StartCoroutine(powerUpParticlesPuller);
+                StartCoroutine(PullerParticles());
             }
-
-
-            /*
-            powerUp.Apply(collision.gameObject);
-            //StartCoroutine(Durationbuff(powerUp, collision.gameObject, time));
-            StartCoroutine(buffDuration);
-            */
         }
-
     }
 
     public IEnumerator PowerUPRanOut()
@@ -138,5 +130,20 @@ public class TriggerApplyPower : ConsumableParentObject
         CameraShake.Instance.ShakeCamera(CameraShakeValues.powerUPIntensity, CameraShakeValues.powerUPDuration);
     }
 
+    public IEnumerator PusherParticles()
+    {
+        push.powerUPParticles.Play();
+        yield return new WaitForSeconds(time);
+        push.powerUPParticles.Stop();
+        push.powerUPEndParticles.Play();
+    }
+
+    public IEnumerator PullerParticles()
+    {
+        pull.powerUPParticles.Play();
+        yield return new WaitForSeconds(time);
+        pull.powerUPParticles.Stop();
+        pull.powerUPEndParticles.Play();
+    }
 
 }
