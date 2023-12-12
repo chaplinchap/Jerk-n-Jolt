@@ -307,6 +307,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2240037576661081558, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
       propertyPath: buttonClick
       value: 
@@ -315,6 +319,10 @@ PrefabInstance:
       propertyPath: countDownSource
       value: 
       objectReference: {fileID: 1410201822}
+    - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
+      propertyPath: floorShakeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: eb517f59a3a28e2429cafe9d06f7da8d, type: 3}
     - target: {fileID: 4544540692550397746, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

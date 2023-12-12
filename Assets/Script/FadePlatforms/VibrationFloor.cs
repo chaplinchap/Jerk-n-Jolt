@@ -9,7 +9,7 @@ public class VibrationFloor : MonoBehaviour
     private float shakeSpeed = 1f;
     private ParticleSystem particleSystem;
     private AudioManager audioManager;
-    
+    private bool audioPlaying = false;
 
     Vector3 originalPosition;
   
@@ -20,15 +20,7 @@ public class VibrationFloor : MonoBehaviour
         particleSystem = GetComponentInChildren<ParticleSystem>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
-
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
-        {
-            audioManager.StartFloorShake();
-        }
-    }
-
+    
     public void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Puller") || collision.gameObject.CompareTag("Pusher"))
@@ -37,7 +29,12 @@ public class VibrationFloor : MonoBehaviour
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             playerRb.interpolation = RigidbodyInterpolation2D.None;
             ShakeObject();
-
+            if (!audioPlaying)
+            {
+                audioPlaying = true;
+                audioManager.StartFloorShake();
+            }
+                
             try
             {
                 particleSystem.Play();
@@ -55,6 +52,8 @@ public class VibrationFloor : MonoBehaviour
             collision.transform.SetParent(null);
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             playerRb.interpolation = RigidbodyInterpolation2D.Interpolate;
+            audioPlaying = false;
+            audioManager.StopFloorShake();
 
             try
             {

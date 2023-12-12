@@ -6,6 +6,8 @@ public class SuddenDeathVibrationFloor : MonoBehaviour
     public float shakeAmount = 0f; 
     private float shakeSpeed = 1f;
     private ParticleSystem particleSystem;
+    private AudioManager audioManager;
+    private bool audioPlaying = false;
 
     Vector3 originalPosition;
   
@@ -14,6 +16,7 @@ public class SuddenDeathVibrationFloor : MonoBehaviour
     {
         originalPosition = transform.localPosition;
         particleSystem = GetComponentInChildren<ParticleSystem>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     
     public void OnCollisionStay2D(Collision2D collision)
@@ -26,6 +29,12 @@ public class SuddenDeathVibrationFloor : MonoBehaviour
 
             shakeAmount = 0.25f;
             ShakeObject();
+            if (!audioPlaying)
+            {
+                audioPlaying = true;
+                audioManager.StartFloorShake();
+            }
+            
         }
     }
 
@@ -36,6 +45,8 @@ public class SuddenDeathVibrationFloor : MonoBehaviour
             collision.transform.SetParent(null);
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             playerRb.interpolation = RigidbodyInterpolation2D.Interpolate;
+            audioPlaying = false;
+            audioManager.StopFloorShake();
 
            // shakeAmount = 0f;
         }

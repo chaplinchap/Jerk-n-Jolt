@@ -48,12 +48,8 @@ public class AudioManager : MonoBehaviour
         suddenDeathMusicSource.clip = suddenDeathMusic;
 
         stunSoundSource.clip = stun;
-
-        if (floorShakeSource = null)
-        {
-            floorShakeSource.clip = floorShakeSound;
-            Debug.Log("FloorShake sound initiated");
-        }
+        
+        floorShakeSource.clip = floorShakeSound;
     }
     
     public void PlaySFX(AudioClip clip)
@@ -83,7 +79,7 @@ public class AudioManager : MonoBehaviour
 
     public void StartFloorShake()
     {
-        floorShakeSource.PlayOneShot(floorShakeSound);
+        floorShakeSource.Play();
     }
 
     public void StopFloorShake()
