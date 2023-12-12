@@ -191,6 +191,7 @@ public class UIManager : MonoBehaviour
      public void ContinueButton() { // When clicking button
         PauseMenu.SetActive(false); // Close Pause Menu
         onPause = false; // Set to false
+        Cursor.visible = false;
         Time.timeScale = 1; // Make time run again
     }
 
