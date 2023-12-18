@@ -468,6 +468,10 @@ PrefabInstance:
       propertyPath: buttonClick
       value: 
       objectReference: {fileID: 8300000, guid: 9246f836e2f4e424cb3babce6826f0e1, type: 3}
+    - target: {fileID: 2472584981762301911, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
+      propertyPath: floorShakeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: eb517f59a3a28e2429cafe9d06f7da8d, type: 3}
     - target: {fileID: 4544540692550397746, guid: 9c4470dcf7b00fb4192135b8af21f38a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4617,11 +4621,11 @@ PrefabInstance:
       objectReference: {fileID: 6536721504088083773, guid: d5ee713a78f4ebb43bfd058ab851e004, type: 3}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxSpawnDelay
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: minSpawnDelay
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxConsumables
@@ -12821,11 +12825,11 @@ PrefabInstance:
       objectReference: {fileID: 6536721504088083773, guid: d5ee713a78f4ebb43bfd058ab851e004, type: 3}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxSpawnDelay
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: minSpawnDelay
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7693627682066102071, guid: 896bd69bbc3fb6d43a637d3ce17789dc, type: 3}
       propertyPath: maxConsumables

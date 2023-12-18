@@ -16,6 +16,7 @@ public class RemoveFloor : MonoBehaviour
 
         if (RescueFloor.boostJumpActivated)
         {
+            Debug.Log("called");
             gameObject.SetActive(false);
         }
         

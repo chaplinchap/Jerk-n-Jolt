@@ -1545,10 +1545,11 @@ MonoBehaviour:
   countDown: {fileID: 8300000, guid: 5b9bb0b2e251d6c46ab58f60d0ba2451, type: 3}
   suddenDeathMusic: {fileID: 8300000, guid: 07914a5554ae8b74fb11e0664b3b8dd0, type: 3}
   suddenDeathSound: {fileID: 8300000, guid: eb517f59a3a28e2429cafe9d06f7da8d, type: 3}
-  floorShakeSound: {fileID: 8300000, guid: 5b9bb0b2e251d6c46ab58f60d0ba2451, type: 3}
+  floorShakeSound: {fileID: 8300000, guid: eb517f59a3a28e2429cafe9d06f7da8d, type: 3}
   explosionSound: {fileID: 8300000, guid: b38f90f1635c5514c8cb0db16cd48d4a, type: 3}
   consumableSpawn: {fileID: 8300000, guid: c48a972d3d024c2408a3331750786a29, type: 3}
   stun: {fileID: 8300000, guid: 241f58d2fcbbf8d4f90de633a47eedb5, type: 3}
+  buttonClick: {fileID: 8300000, guid: 9246f836e2f4e424cb3babce6826f0e1, type: 3}
 --- !u!1 &5165464588188444179
 GameObject:
   m_ObjectHideFlags: 0

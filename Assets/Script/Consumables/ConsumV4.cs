@@ -26,6 +26,7 @@ public class ConsumV4 : MonoBehaviour
     private void Awake()
     {
         currentConsumablesTracker = 0;
+        spawnedItemPositions.Clear();
     }
 
 

@@ -11,6 +11,7 @@ public class RescueFloor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        boostJumpActivated = false;
         rescueFloor.SetActive(false);
     }
 
