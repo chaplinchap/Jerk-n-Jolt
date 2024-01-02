@@ -25,8 +25,8 @@ public class SwitchTrigger : MonoBehaviour
     public bool hasSwitched = false; //condition for the first enterCollision trigger
     public bool isTriggeredOnce = false; //condition for the second enterCollision trigger (once its true)
 
-    public Color pushColor;
-    public Color pullColor;
+    public Color pushColor; // color variable to save the pushers color
+    public Color pullColor; // color variable to save the pullers color
 
     
 
@@ -80,8 +80,8 @@ public class SwitchTrigger : MonoBehaviour
 
         if (hasSwitched == false)  //"default" conditions from beginning of game
         {
-            pushColor = pushObject.GetComponent<SpriteRenderer>().color;
-            pullColor = pullObject.GetComponent<SpriteRenderer>().color;
+            pushColor = pushObject.GetComponent<SpriteRenderer>().color; // saves the pushers color into the variable
+            pullColor = pullObject.GetComponent<SpriteRenderer>().color; // saves the pullers color into the variable
 
             if (collision.CompareTag("Pusher") || collision.CompareTag("Puller"))
             {
@@ -93,8 +93,8 @@ public class SwitchTrigger : MonoBehaviour
                 pullObject.GetComponent<Pull>().enabled = false;    // Deactivate puller
 
 
-                pullObject.GetComponent<SpriteRenderer>().color = pushColor;
-                pushObject.GetComponent<SpriteRenderer>().color = pullColor;
+                pullObject.GetComponent<SpriteRenderer>().color = pushColor; //sets the pullers color to the pushers to see that their ability has been changed.
+                pushObject.GetComponent<SpriteRenderer>().color = pullColor; //sets the pushers color to the pullers to see that their ability has been changed.
 
 
                 pullFieldToEnable.SetActive(true); //actives the switchPullField on the pusher - so it has pull range
