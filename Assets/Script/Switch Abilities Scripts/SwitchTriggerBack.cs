@@ -72,6 +72,10 @@ public class SwitchTriggerBack : MonoBehaviour
                 switchTrigger.GetComponent<CapsuleCollider2D>().enabled = false;
                 switchTrigger.GetComponent<SpriteRenderer>().color = new Color(0, 255, 255, 0.01f);
 
+                switchNormal.pushObject.GetComponent<SpriteRenderer>().color = switchNormal.pushColor;
+                switchNormal.pullObject.GetComponent<SpriteRenderer>().color = switchNormal.pullColor;
+
+
                 timeStampBack = Time.time;
                 isSwitchedBack = true; //condtion for the the trigger to "respawn", in void Update() in this script, above
                        

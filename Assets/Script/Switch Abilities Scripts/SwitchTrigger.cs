@@ -24,7 +24,9 @@ public class SwitchTrigger : MonoBehaviour
 
     public bool hasSwitched = false; //condition for the first enterCollision trigger
     public bool isTriggeredOnce = false; //condition for the second enterCollision trigger (once its true)
-   
+
+    public Color pushColor;
+    public Color pullColor;
 
     
 
@@ -78,6 +80,8 @@ public class SwitchTrigger : MonoBehaviour
 
         if (hasSwitched == false)  //"default" conditions from beginning of game
         {
+            pushColor = pushObject.GetComponent<SpriteRenderer>().color;
+            pullColor = pullObject.GetComponent<SpriteRenderer>().color;
 
             if (collision.CompareTag("Pusher") || collision.CompareTag("Puller"))
             {
@@ -87,10 +91,12 @@ public class SwitchTrigger : MonoBehaviour
 
                 pullObject.GetComponent<SwitchPush>().enabled = true;    // Activate switchPusher script on the puller
                 pullObject.GetComponent<Pull>().enabled = false;    // Deactivate puller
-                                                                    
 
 
-                
+                pullObject.GetComponent<SpriteRenderer>().color = pushColor;
+                pushObject.GetComponent<SpriteRenderer>().color = pullColor;
+
+
                 pullFieldToEnable.SetActive(true); //actives the switchPullField on the pusher - so it has pull range
                 pushFieldToEnable.SetActive(true); // actives the switchPushField on the puller - so it has push range
                 pushFieldToDisable.SetActive(false); //deactives the standard pushField on the pusher
