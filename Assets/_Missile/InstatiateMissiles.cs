@@ -26,13 +26,13 @@ public class InstatiateMissiles : MonoBehaviour
         {   
             if (collision.CompareTag("Pusher"))
             {
-                startOnce = true;
+                startOnce = true; // Ensure only 1 instance runs
                 StartCoroutine(SpawnMissilesAgainstPull());
             } 
 
             if (collision.gameObject.tag == "Puller")
             {
-                startOnce= true;
+                startOnce= true; // Ensure only 1 instance runs
                 StartCoroutine(SpawnMissilesAgainstPush());
             }    
         }
@@ -47,7 +47,7 @@ public class InstatiateMissiles : MonoBehaviour
             int randomIndex = Random.Range(0, missileSpawnLocations.Count);
             GameObject spawnLocation = missileSpawnLocations[randomIndex];
 
-            // Instantiate the missilePrefab at the chosen position
+            // Instantiate the missile at the chosen position
             Instantiate(missileAgainstPuller, spawnLocation.transform.position, Quaternion.identity);
 
             // Introduce a delay before the next missile spawns
