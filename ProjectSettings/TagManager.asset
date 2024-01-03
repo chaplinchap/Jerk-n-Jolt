@@ -21,6 +21,7 @@ TagManager:
   - PowerUP
   - PowerUpEndParticle
   - Feet
+  - DeactivateMissileHoming
   layers:
   - Default
   - TransparentFX
