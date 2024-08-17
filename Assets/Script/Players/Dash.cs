@@ -8,7 +8,7 @@ public class Dash : MovementAid
     protected override void Update()
     {
         base.Update();
-        
+        Dashing();
          
         if (dashButton != KeyCode.None) 
         {
