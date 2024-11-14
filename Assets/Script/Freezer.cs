@@ -15,6 +15,7 @@ public class Freezer : MonoBehaviour
         if (pendingFreezeDuration > 0 && !isFrozen)
         {
             StartCoroutine(DoFreeze());
+            Freeze();
         }
 
     }

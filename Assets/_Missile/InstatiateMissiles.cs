@@ -27,7 +27,8 @@ public class InstatiateMissiles : MonoBehaviour
             if (collision.CompareTag("Pusher"))
             {
                 startOnce = true; // Ensure only 1 instance runs
-                StartCoroutine(SpawnMissilesAgainstPull());
+                //StartCoroutine(SpawnMissilesAgainstPull());
+                Invoke("InvokeMissiles", 1f);
             } 
 
             if (collision.gameObject.tag == "Puller")
@@ -36,6 +37,23 @@ public class InstatiateMissiles : MonoBehaviour
                 StartCoroutine(SpawnMissilesAgainstPush());
             }    
         }
+    }
+
+    void InvokeMissiles()
+    {
+        spriteRenderer.color = new Color(1f,1f,1f,0f); // Consumable gets 0% opacity
+        for (int i = 0; i < missileSpawnCount; i++)
+        {
+            // Choose a random position from the list
+            int randomIndex = Random.Range(0, missileSpawnLocations.Count);
+            GameObject spawnLocation = missileSpawnLocations[randomIndex];
+
+            // Instantiate the missile at the chosen position
+            Instantiate(missileAgainstPuller, spawnLocation.transform.position, Quaternion.identity);
+
+        }
+        startOnce = false; // enable coroutine targeting of player again
+        spriteRenderer.color = new Color(1f,1f,1f,1f); // Consumable gets 100% opacity
     }
 
      IEnumerator SpawnMissilesAgainstPull()
@@ -55,7 +73,7 @@ public class InstatiateMissiles : MonoBehaviour
         }
         startOnce = false; // enable coroutine targeting of player again
         spriteRenderer.color = new Color(1f,1f,1f,1f); // Consumable gets 100% opacity
-    }
+     }
 
     IEnumerator SpawnMissilesAgainstPush()
      {
