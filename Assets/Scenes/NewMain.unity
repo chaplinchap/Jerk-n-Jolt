@@ -10336,6 +10336,10 @@ PrefabInstance:
       propertyPath: audioSourceAirPullSounds
       value: 
       objectReference: {fileID: 1867290525}
+    - target: {fileID: 1593877366679419715, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
+      propertyPath: _animData
+      value: 
+      objectReference: {fileID: 11400000, guid: ba94b6298508009478700dbe95f40d8e, type: 2}
     - target: {fileID: 1626964684136801760, guid: ee5b235e5e75b9a4fa3a06520b34bb81, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.97
@@ -10433,6 +10437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1 Push
       objectReference: {fileID: 0}
+    - target: {fileID: 1919701950871859034, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
+      propertyPath: _animData
+      value: 
+      objectReference: {fileID: 11400000, guid: 007a4e488162039438fb0d37baf01079, type: 2}
     - target: {fileID: 5443167318930251627, guid: 4ad3b761f7fbe7345ba8c1a16044942a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.97

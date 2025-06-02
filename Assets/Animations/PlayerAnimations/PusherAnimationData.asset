@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b4c2e401368234984a3585e73fc4aa, type: 3}
+  m_Name: PusherAnimationData
+  m_EditorClassIdentifier: 
+  _idle: {fileID: 7400000, guid: 3e4aa78fd17d1e24c8c93a0e7b8d6c32, type: 2}
+  _jumping: {fileID: 7400000, guid: 264317f0215d40d4c8b4b49780e9a431, type: 2}
+  _running: {fileID: 7400000, guid: 2975db7be21f0f5429448b63b700df4b, type: 2}
+  _attack: {fileID: 7400000, guid: ca8afbe074db61b48836f9ff1abf9253, type: 2}
+  _charge: {fileID: 7400000, guid: 382a9a589920be945ac0b136b1c4f847, type: 2}
+  _chargeJumping: {fileID: 7400000, guid: ef068d9474db9cc4887c69c45896ed3a, type: 2}
+  _chargeRunning: {fileID: 7400000, guid: ff1d269d367f3a1498995d758c679ac5, type: 2}
+  _attackJumping: {fileID: 7400000, guid: b7d4b227413dca14685575dac6658920, type: 2}
+  _stun: {fileID: 7400000, guid: 9c0bfc1346a47584091604ba0f8ed14f, type: 2}
+  _dashing: {fileID: 7400000, guid: e1cb888a400489743ba7c2c47cdff21c, type: 2}
+  _chargeRunningPenalty: {fileID: 7400000, guid: b1647cfff4df9c247b1d9c0abdc5eb69, type: 2}
+  _spawning: {fileID: 7400000, guid: 04d3e68c172b62a4c8e0c9f40b24fd6f, type: 2}
+  _beenHit:
+  - {fileID: 7400000, guid: 16540f616badde643adc3684f313c0b0, type: 2}
+  - {fileID: 7400000, guid: 4f50ced59cd95a347a2c8824f97332ed, type: 2}
+  _winning:
+  - {fileID: 7400000, guid: 06c46f3db810b384688995dec5edd3b1, type: 2}
+  - {fileID: 7400000, guid: 82fd5ebadefe1014f97a772dd843c776, type: 2}

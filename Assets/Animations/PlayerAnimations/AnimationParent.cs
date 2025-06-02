@@ -15,9 +15,10 @@ public class AnimationsParent : MonoBehaviour
     protected AbilityPower abilityPowerScript;
     protected Stunner stunScript;
     protected MovementAid dashScript;
-    //protected UIManager UImanager;
+	//protected UIManager UImanager;
+	[SerializeField] protected AnimationData _animData;
 
-    protected bool isCharging = false;
+	protected bool isCharging = false;
     protected bool isAttacking = false;
     protected bool isRespawing = false;
 
@@ -36,6 +37,7 @@ public class AnimationsParent : MonoBehaviour
         currentState = 0;
         isCharging = false;
         isAttacking = false;
+        _animData.Init();
         //AttackComplete();
         StartCoroutine(Respawner(respawnDuration));
         //Debug.Log("Animation Enable");
@@ -43,8 +45,6 @@ public class AnimationsParent : MonoBehaviour
 
     protected virtual void Update()
     {
-
-
         if (abilityPowerScript.HasPressedAbility()) isCharging = IsCharging();
 
         else if (isCharging)
@@ -52,8 +52,6 @@ public class AnimationsParent : MonoBehaviour
            // Debug.Log("Starts coroutine");
             StartCoroutine(AttackComplete(attackDuration));
         }
-
-
     }
 
 
@@ -107,8 +105,7 @@ public class AnimationsParent : MonoBehaviour
 
     private bool IsCharging() 
     {
-        if (stunScript.IsStunned()) return false;
-        else return true;
+        return !stunScript.IsStunned();
     }
 
 
