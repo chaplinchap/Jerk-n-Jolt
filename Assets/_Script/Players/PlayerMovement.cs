@@ -19,12 +19,10 @@ public class PlayerMovement : MonoBehaviour
     private LayerMask defaultLayer = 0;
     private LayerMask ghostLayer = 12;
 
-    public float speed = 8f;
-    public float jumpingPower = 8f;
-    public int movementX = 0;
-    public float fastFallSpeed = 35;
+    [SerializeField] private PlayerData playerData;
 
-    public float maxSpeed = 17.5f;
+    public int movementX = 0;
+    public float speed;
 
     public KeyCode jumpUp; 
     public KeyCode moveRight;
@@ -32,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode throughButton;
 
     [SerializeField] private LayerMask platformSurface;
+    [SerializeField] private Player player;
 
     
 
@@ -42,12 +41,14 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb.sharedMaterial.friction = 0.5f;
+        speed = playerData.MovementSpeed;
     }
 
     private void OnEnable() 
     {
         movementX = 0;
-
+        InputReader.S_OnPullerMove += KeyInputs;
+        InputReader.S_OnPusherMove += KeyInputs;
     }
 
     
@@ -63,12 +64,12 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-
-        KeyInputs();
         
         Flip();
 
     }
+
+
     private void OnCollisionStay2D(Collision2D other)
     {
         //If the player actually hits the platform allow it to check for the surface of the platform
@@ -98,13 +99,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (movementX == 1)
         {
-            rb.AddForce(Vector2.right * speed, ForceMode2D.Force);
+            rb.AddForce(Vector2.right * playerData.MovementSpeed, ForceMode2D.Force);
             //movementX = 0;            
         }
 
         else if (movementX == -1)
         {
-            rb.AddForce(Vector2.left * speed, ForceMode2D.Force);
+            rb.AddForce(Vector2.left * playerData.MovementSpeed, ForceMode2D.Force);
             //movementX = 0;           
         }
 
@@ -115,11 +116,14 @@ public class PlayerMovement : MonoBehaviour
     {
         canJump = false;
     }
+
     public bool IsGrounded()
     {
          return Physics2D.BoxCast(feet.bounds.center, feet.bounds.size, 0f, Vector2.down, 0.01f, platformSurface);
     }
+
     [SerializeField] private GameObject chargebar;
+
     private void Flip()
     {
         if (isFacingRight && movementX < 0f || !isFacingRight && movementX > 0f)
@@ -134,12 +138,12 @@ public class PlayerMovement : MonoBehaviour
             chargebarScale.x *= -1f;
             chargebar.transform.localScale = chargebarScale;
             
-            if (IsGrounded() && rb.velocity.x >= maxSpeed)
+            if (IsGrounded() && rb.velocity.x >= playerData.MaxSpeed)
             {
                 dashParticles.LandParticles();
             }
 
-            if (IsGrounded() && rb.velocity.x <= -maxSpeed)
+            if (IsGrounded() && rb.velocity.x <= -playerData.MaxSpeed)
             {
                 dashParticles.LandParticles();
             }
@@ -154,8 +158,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void KeyInputs() 
+    private void KeyInputs(Vector2 move) 
     {
+
 
         if (Input.GetKeyUp(moveRight) || Input.GetKeyUp(moveLeft))
              movementX = 0;
@@ -196,7 +201,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!IsGrounded() && Input.GetKey(throughButton))
         {
-            rb.AddForce(Vector2.down * fastFallSpeed, ForceMode2D.Force);
+            rb.AddForce(Vector2.down * playerData.FallSpeed, ForceMode2D.Force);
             
         }
 
@@ -220,7 +225,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (IsGrounded() && canJump)
             {
-                rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * playerData.JumpingPower, ForceMode2D.Impulse);
                 anotherJump(); // Cannot jump again
                 //audioManager.PlaySFX(audioManager.jump);          Old jump sound
                 JumpSound();
@@ -231,7 +236,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (canJump && !IsGrounded())
             {
-                rb.AddForce(Vector2.up * jumpingPower * 1.4f, ForceMode2D.Impulse); //jumping force +added a bit more power, for the jump to look okay
+                rb.AddForce(Vector2.up * playerData.JumpingPower * 1.4f, ForceMode2D.Impulse); //jumping force +added a bit more power, for the jump to look okay
                 anotherJump(); // Cannot jump again
                 //audioManager.PlaySFX(audioManager.jump);          Old jump sound
                 JumpSound();
@@ -300,4 +305,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+}
+
+public enum Player 
+{
+    Pusher,
+    Puller
 }
